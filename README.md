@@ -2,11 +2,11 @@
 
 Presentation notes (in the `assets` folder) and example files in the `data` folder for how to perform selection analyses in [HyPhy](https://hyphy.org)
 
-For additional analyses, you will need the [hyphy-analyses](https://github.com/veg/hyphy-analyses) repository.
+For additional analyses, you will need the [hyphy-analyses](https://github.com/veg/hyphy-analyses) repository. Via `git clone https://github.com/veg/hyphy-analyses.git`
 
-View the presentation at https://veg.github.io/selection-tutorial
+View the presentation (2022) at https://veg.github.io/selection-tutorial
 
-View the presentation at https://veg.github.io/selection-tutorial
+View the presentation (2023) at https://aglucaci.github.io/selection-tutorial
 
 ## Installation
 
