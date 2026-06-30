@@ -1,5 +1,7 @@
 # EEBG2026 HyPhy Selection Tutorial
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
+
 Runnable workshop materials for teaching codon-based tests of molecular adaptation with
 [HyPhy](https://www.hyphy.org/). The package combines command-line scripts, a Jupyter
 notebook, bundled empirical data, simulation exercises, result parsing, plots, and short
@@ -45,7 +47,7 @@ figures/
 
 Use the Colab notebook when students do not have Conda or HyPhy installed locally:
 
-[Open the Colab notebook](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
 
 The first cells clone this repository into `/content/selection-tutorial`, install HyPhy
 with `apt`, install Python dependencies with `pip`, verify the bundled empirical data,
