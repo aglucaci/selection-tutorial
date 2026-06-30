@@ -1,0 +1,25 @@
+{
+  "alignment": "data/simulated/simulated_codon_blocks.fna",
+  "tree": "data/simulated/simulated_tree.nwk",
+  "blocks": [
+    {
+      "name": "purifying",
+      "start_codon": 1,
+      "end_codon": 60,
+      "omega": 0.15
+    },
+    {
+      "name": "neutral_like",
+      "start_codon": 61,
+      "end_codon": 120,
+      "omega": 1.0
+    },
+    {
+      "name": "positive_enriched",
+      "start_codon": 121,
+      "end_codon": 180,
+      "omega": 2.5
+    }
+  ],
+  "note": "Sites are codon positions; use this truth table when comparing FEL/MEME calls."
+}

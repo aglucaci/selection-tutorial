@@ -13,7 +13,7 @@ if ! command -v hyphy >/dev/null 2>&1; then
 fi
 
 if [[ ! -s "$ALIGNMENT" || ! -s "$TREE" ]]; then
-  echo "ERROR: missing simulated data. Run python scripts/05_simulate_codon_data.py first." >&2
+  echo "ERROR: missing bundled simulated data in data/simulated." >&2
   exit 1
 fi
 
@@ -44,4 +44,3 @@ hyphy absrel \
   --tree "$TREE" \
   --branches All \
   --output "$RESULTS_DIR/simulated_absrel.json"
-

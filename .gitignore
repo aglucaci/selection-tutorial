@@ -3,9 +3,7 @@
 __pycache__/
 *.py[cod]
 data/public/tutorial_data/
-data/simulated/
 results/
 tables/
 figures/
 *.log
-

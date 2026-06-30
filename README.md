@@ -23,7 +23,8 @@ student prompts.
 │   ├── 04_run_branch_lineage.sh
 │   ├── 05_simulate_codon_data.py
 │   ├── 06_run_simulated_selection.sh
-│   └── 07_collect_results.py
+│   ├── 07_collect_results.py
+│   └── 08_summarize_empirical_data.py
 ├── notebooks/
 │   ├── EEBG2026_HyPhy_Selection_Tutorial.ipynb
 │   └── EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb
@@ -35,6 +36,7 @@ Bundled empirical data and generated outputs are written to:
 
 ```text
 data/22-empirical/
+data/22-empirical/empirical_alignment_metrics.csv
 data/simulated/
 results/
 tables/
@@ -74,7 +76,6 @@ Run all analyses:
 bash scripts/02_run_gene_wide.sh
 bash scripts/03_run_site_level.sh
 bash scripts/04_run_branch_lineage.sh
-python scripts/05_simulate_codon_data.py
 bash scripts/06_run_simulated_selection.sh
 python scripts/07_collect_results.py
 ```
@@ -124,14 +125,14 @@ Questions:
 
 ## Session 4: Simulation and model checking
 
-The simulation script creates a small codon alignment with three known regimes:
+The bundled simulated dataset in `data/simulated` contains a small codon alignment with three known regimes:
 
 - Purifying block: omega = 0.15
 - Neutral-like block: omega = 1.0
 - Positive-enriched block: omega = 2.5
 
-Students run HyPhy methods on the simulated data and compare inference to the known
-truth.
+Students run HyPhy methods on the bundled simulated data and compare inference to the known
+truth table.
 
 Questions:
 
