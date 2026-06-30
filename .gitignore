@@ -1,0 +1,11 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+data/public/tutorial_data/
+data/simulated/
+results/
+tables/
+figures/
+*.log
+

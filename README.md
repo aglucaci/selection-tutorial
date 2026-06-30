@@ -1,66 +1,173 @@
-# Selection analyses in HyPhy
+# EEBG2026 HyPhy Selection Tutorial
 
-Presentation notes (in the `assets` folder) and example files in the `data` folder for how to perform selection analyses in [HyPhy](https://hyphy.org)
+Runnable workshop materials for teaching codon-based tests of molecular adaptation with
+[HyPhy](https://www.hyphy.org/). The package combines command-line scripts, a Jupyter
+notebook, public tutorial data, simulation exercises, result parsing, plots, and short
+student prompts.
 
-For additional analyses, you will need the [hyphy-analyses](https://github.com/veg/hyphy-analyses) repository. Via `git clone https://github.com/veg/hyphy-analyses.git`
+## Contents
 
-View the presentation (2022) at https://veg.github.io/selection-tutorial
+```text
+.
+├── README.md
+├── environment.yml
+├── scripts/
+│   ├── 00_setup_conda.sh
+│   ├── 00_setup_colab.sh
+│   ├── 01_grab_codon_alignment_and_tree.py
+│   ├── 01_download_tutorial_data.sh
+│   ├── 02_run_gene_wide.sh
+│   ├── 03_run_site_level.sh
+│   ├── 04_run_branch_lineage.sh
+│   ├── 05_simulate_codon_data.py
+│   ├── 06_run_simulated_selection.sh
+│   └── 07_collect_results.py
+├── notebooks/
+│   ├── EEBG2026_HyPhy_Selection_Tutorial.ipynb
+│   └── EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb
+└── docs/
+    └── instructor_notes.md
+```
 
-View the presentation (2023) at https://aglucaci.github.io/selection-tutorial
+Generated data and outputs are written to:
 
-## Installation
+```text
+data/public/tutorial_data/
+data/simulated/
+results/
+tables/
+figures/
+```
 
-Via Anaconda `conda install -c bioconda hyphy`
+## Quick start
 
-To compile from source follow the instructions at http://hyphy.org/download
+### Google Colab
 
-## Example commands
+Use the Colab notebook when students do not have Conda or HyPhy installed locally:
 
-### FitMG94
-`hyphy hyphy-analyses/FitMG94/FitMG94.bf --alignment data/WestNileVirus_NS3.fna --output results/WestNileVirus_NS3.fna.FITTER.json --lrt Yes`
+[Open the Colab notebook](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
 
+The first cells clone this repository into `/content/selection-tutorial`, install HyPhy
+with `apt`, install Python dependencies with `pip`, and then run the same workshop
+scripts used by the local workflow.
 
-### BUSTED
-`hyphy busted --srv No --alignment data/HIV-sets.nex --starting-points 5 --output results/HIV-sets.nex.BUSTED.json`
+### Local Conda
 
-`hyphy busted --srv No --alignment data/WestNileVirus_NS3.fna --starting-points 5 --output results/WestNileVirus_NS3.fna.BUSTED.json`
+Install Conda or Mamba, then create the workshop environment:
 
-`hyphy busted --srv No --alignment data/spike.fas --tree data/spike.tree --starting-points 5 --output results/spike.fas.BUSTED.json`
+```bash
+bash scripts/00_setup_conda.sh
+conda activate eebg2026-hyphy
+```
 
-### aBSREL
+Download the public tutorial data:
 
-`hyphy absrel --alignment data/HIV-sets.nex --output results/HIV-sets.nex.aBSREL.json`
+```bash
+bash scripts/01_download_tutorial_data.sh
+```
 
-`hyphy absrel --alignment data/WestNileVirus_NS3.fna --output results/WestNileVirus_NS3.fna.aBSREL.json`
+Or grab and normalize one codon-aware alignment plus its matching tree:
 
-`hyphy absrel --alignment data/spike.fas --tree data/spike.tree --branches Internal --output results/spike.fas.aBSREL.json`
+```bash
+python scripts/01_grab_codon_alignment_and_tree.py --dataset ksr2
+```
 
-### MEME
+This writes:
 
-`hyphy meme --alignment data/HIV-sets.nex --output results/HIV-sets.nex.MEME.json`
+```text
+data/public/codon_tree/alignment.fna
+data/public/codon_tree/tree.nwk
+data/public/codon_tree/metadata.json
+```
 
-`hyphy meme --alignment data/spike.fas --tree data/spike.tree --output results/spike.fas.MEME.json`
+Run all analyses:
 
-`hyphy meme --alignment data/spike.fas --tree data/spike.tree --output results/spike.fas.MEME-Internal.json --branches Internal`
+```bash
+bash scripts/02_run_gene_wide.sh
+bash scripts/03_run_site_level.sh
+bash scripts/04_run_branch_lineage.sh
+python scripts/05_simulate_codon_data.py
+bash scripts/06_run_simulated_selection.sh
+python scripts/07_collect_results.py
+```
 
-### FEL
+Open the notebook:
 
-`hyphy fel --alignment data/spike.fas --tree data/spike.tree --branches Internal --output results/spike.fas.FEL-Internal.json`
+```bash
+jupyter lab notebooks/EEBG2026_HyPhy_Selection_Tutorial.ipynb
+```
 
-`hyphy fel --alignment data/spike.fas --tree data/spike.tree --branches Internal --output results/spike.fas.FEL-Internal-PBS.json --resample 100`
+## Session 1: Gene-wide selection
 
-`hyphy fel --alignment data/WestNileVirus_NS3.fna --ci Yes --output results/WestNileVirus_NS3.fna.FEL-ci.json`
+Students run BUSTED on HyPhy's tutorial data and compare standard BUSTED with
+synonymous-rate variation and multiple-hit model variants.
 
-### SLAC
+Questions:
 
-`hyphy slac --alignment data/spike.fas --tree data/spike.tree --branches Internal --output results/spike.fas.SLAC.json`
+- What exactly is BUSTED testing?
+- Does a significant BUSTED result identify the selected codon site?
+- Did synonymous-rate variation change the result?
+- Did multi-hit modeling change the result?
+- Which result would you report in a manuscript?
 
-### RELAX
+## Session 2: Site-level selection
 
-`hyphy relax --alignment data/AlphaDeltaSpike.fas --tree data/AlphaDeltaSpike.tree --test Delta --reference Alpha  --starting-points 5 --output results/AlphaDeltaSpike.fas.RELAX.json`
+Students run FEL, MEME, and FUBAR on the lysin example and compare pervasive versus
+episodic diversifying selection.
 
-### Contrast-FEL
+Questions:
 
-`hyphy contrast-fel --alignment data/AlphaDeltaSpike.fas --tree data/AlphaDeltaSpike.tree --branch-set Alpha --branch-set Delta --output results/AlphaDeltaSpike.fas.CFEL.json`
+- What is the difference between pervasive and episodic diversifying selection?
+- Which codons were detected by FEL?
+- Which codons were detected by MEME?
+- Why might FEL and MEME disagree?
+- Which sites would you annotate on a protein schematic?
 
-### GARD, FMM, BSMH
+## Session 3: Branch and lineage selection
+
+Students run aBSREL and RELAX on HIV-1 transmission examples.
+
+Questions:
+
+- What does aBSREL test that BUSTED does not?
+- Why does aBSREL need multiple-testing correction?
+- What does RELAX test?
+- What does K > 1 mean?
+- What does K < 1 mean?
+- How would you choose test and reference branches?
+
+## Session 4: Simulation and model checking
+
+The simulation script creates a small codon alignment with three known regimes:
+
+- Purifying block: omega = 0.15
+- Neutral-like block: omega = 1.0
+- Positive-enriched block: omega = 2.5
+
+Students run HyPhy methods on the simulated data and compare inference to the known
+truth.
+
+Questions:
+
+- Which simulated block should be easiest to detect?
+- Did HyPhy recover the positive-enriched region?
+- Were there signals outside the positive-enriched block?
+- What is the difference between false positives, low power, and model mismatch?
+- How would more taxa or longer alignments change power?
+
+## Final deliverable
+
+Prepare a mini-report or three-slide summary covering:
+
+- Dataset
+- Gene-wide result
+- Site-level result
+- Branch or lineage result
+- Biological interpretation
+- Caveats
+- Next steps
+
+## Notes
+
+The downloader uses HyPhy's public command-line tutorial archive:
+`https://www.hyphy.org/resources/tutorials/hyphy-cmd-tutorial.zip`.
