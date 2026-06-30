@@ -19,14 +19,14 @@ else
 fi
 
 install_hyphy_with_micromamba() {
-  echo "Installing HyPhy from conda-forge with micromamba..."
+  echo "Installing HyPhy from Bioconda with micromamba..."
   if ! command -v micromamba >/dev/null 2>&1; then
     mkdir -p "$MAMBA_ROOT/bin"
     curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest \
       | tar -xj -C "$MAMBA_ROOT/bin" --strip-components=1 bin/micromamba
   fi
 
-  micromamba create -y -p "$HYPHY_ENV" -c conda-forge hyphy
+  micromamba create -y -p "$HYPHY_ENV" -c conda-forge -c bioconda hyphy
   ln -sf "$HYPHY_ENV/bin/hyphy" /usr/local/bin/hyphy
 }
 
