@@ -55,9 +55,8 @@ def main() -> None:
     evolver = pyvolve.Evolver(partitions=pyvolve_partitions, tree=tree)
     evolver(seqfile=str(ALIGNMENT), seqfmt="fasta", ratefile=None, infofile=None)
 
-    # RELAX expects the labeled branch sets in the tree embedded in NEXUS-like data.
-    # For this short exercise we keep the same alignment and provide a companion tree
-    # with a small illustrative test clade label.
+    # Keep a companion copy for exercises that need the simulated alignment in a
+    # separate path.
     LABELED_ALIGNMENT.write_text(ALIGNMENT.read_text(encoding="utf-8"), encoding="utf-8")
 
     TRUTH.write_text(
@@ -81,4 +80,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

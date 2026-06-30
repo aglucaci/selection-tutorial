@@ -2,7 +2,7 @@
 
 Runnable workshop materials for teaching codon-based tests of molecular adaptation with
 [HyPhy](https://www.hyphy.org/). The package combines command-line scripts, a Jupyter
-notebook, public tutorial data, simulation exercises, result parsing, plots, and short
+notebook, bundled empirical data, simulation exercises, result parsing, plots, and short
 student prompts.
 
 ## Contents
@@ -29,10 +29,10 @@ student prompts.
     └── instructor_notes.md
 ```
 
-Generated data and outputs are written to:
+Bundled empirical data and generated outputs are written to:
 
 ```text
-data/public/tutorial_data/
+data/22-empirical/
 data/simulated/
 results/
 tables/
@@ -48,8 +48,8 @@ Use the Colab notebook when students do not have Conda or HyPhy installed locall
 [Open the Colab notebook](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
 
 The first cells clone this repository into `/content/selection-tutorial`, install HyPhy
-with `apt`, install Python dependencies with `pip`, and then run the same workshop
-scripts used by the local workflow.
+with `apt`, install Python dependencies with `pip`, verify the bundled empirical data,
+and then run the same workshop scripts used by the local workflow.
 
 ### Local Conda
 
@@ -60,24 +60,10 @@ bash scripts/00_setup_conda.sh
 conda activate eebg2026-hyphy
 ```
 
-Download the public tutorial data:
+Verify the bundled empirical data:
 
 ```bash
 bash scripts/01_download_tutorial_data.sh
-```
-
-Or grab and normalize one codon-aware alignment plus its matching tree:
-
-```bash
-python scripts/01_grab_codon_alignment_and_tree.py --dataset ksr2
-```
-
-This writes:
-
-```text
-data/public/codon_tree/alignment.fna
-data/public/codon_tree/tree.nwk
-data/public/codon_tree/metadata.json
 ```
 
 Run all analyses:
@@ -99,7 +85,7 @@ jupyter lab notebooks/EEBG2026_HyPhy_Selection_Tutorial.ipynb
 
 ## Session 1: Gene-wide selection
 
-Students run BUSTED on HyPhy's tutorial data and compare standard BUSTED with
+Students run BUSTED on the `HIVvif.nex` empirical dataset and compare standard BUSTED with
 synonymous-rate variation and multiple-hit model variants.
 
 Questions:
@@ -125,16 +111,14 @@ Questions:
 
 ## Session 3: Branch and lineage selection
 
-Students run aBSREL and RELAX on HIV-1 transmission examples.
+Students run aBSREL on the `HIVvif.masked_nex` empirical dataset.
 
 Questions:
 
 - What does aBSREL test that BUSTED does not?
 - Why does aBSREL need multiple-testing correction?
-- What does RELAX test?
-- What does K > 1 mean?
-- What does K < 1 mean?
-- How would you choose test and reference branches?
+- Which branches, if any, show evidence after correction?
+- How would branch labels change the questions you could ask?
 
 ## Session 4: Simulation and model checking
 
@@ -169,5 +153,6 @@ Prepare a mini-report or three-slide summary covering:
 
 ## Notes
 
-The downloader uses HyPhy's public command-line tutorial archive:
-`https://www.hyphy.org/resources/tutorials/hyphy-cmd-tutorial.zip`.
+The analysis scripts read empirical alignments from `data/22-empirical` by default. Set
+`EMPIRICAL_DATA_DIR=/path/to/empirical-data` to run the same workflow on another
+directory with the same file names.

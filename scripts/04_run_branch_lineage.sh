@@ -2,8 +2,8 @@
 set -euo pipefail
 
 RESULTS_DIR="results/session3_branch_lineage"
-ABSREL_ALIGNMENT="data/public/tutorial_data/hiv1_transmission.fna"
-RELAX_ALIGNMENT="data/public/tutorial_data/hiv1_transmission_labeled.fna"
+EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/22-empirical}"
+ABSREL_ALIGNMENT="$EMPIRICAL_DATA_DIR/HIVvif.masked_nex"
 
 mkdir -p "$RESULTS_DIR"
 
@@ -12,8 +12,8 @@ if ! command -v hyphy >/dev/null 2>&1; then
   exit 1
 fi
 
-if [[ ! -s "$ABSREL_ALIGNMENT" || ! -s "$RELAX_ALIGNMENT" ]]; then
-  echo "ERROR: missing HIV tutorial alignments. Run scripts/01_download_tutorial_data.sh first." >&2
+if [[ ! -s "$ABSREL_ALIGNMENT" ]]; then
+  echo "ERROR: missing $ABSREL_ALIGNMENT. Run scripts/01_download_tutorial_data.sh to verify bundled data." >&2
   exit 1
 fi
 
@@ -21,12 +21,4 @@ echo "Running aBSREL..."
 hyphy absrel \
   --alignment "$ABSREL_ALIGNMENT" \
   --branches All \
-  --output "$RESULTS_DIR/hiv1_transmission_absrel.json"
-
-echo "Running RELAX..."
-hyphy relax \
-  --alignment "$RELAX_ALIGNMENT" \
-  --test test \
-  --reference reference \
-  --output "$RESULTS_DIR/hiv1_transmission_relax.json"
-
+  --output "$RESULTS_DIR/hivvif_masked_absrel.json"
