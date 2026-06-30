@@ -2,8 +2,11 @@
 set -euo pipefail
 
 EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/22-empirical}"
-ALIGNMENT="$EMPIRICAL_DATA_DIR/HIVvif.nex"
+ALIGNMENT="${SESSION1_ALIGNMENT:-$EMPIRICAL_DATA_DIR/HIVvif.nex}"
 RESULTS_DIR="results/session1_gene_wide"
+DATASET_NAME="$(basename "$ALIGNMENT")"
+DATASET_PREFIX="${DATASET_NAME%.*}"
+DATASET_PREFIX="${DATASET_PREFIX//[^A-Za-z0-9_]/_}"
 
 mkdir -p "$RESULTS_DIR"
 
@@ -17,11 +20,13 @@ if [[ ! -s "$ALIGNMENT" ]]; then
   exit 1
 fi
 
+echo "Running Session 1 gene-wide tests on $ALIGNMENT"
+
 echo "Running standard BUSTED..."
 hyphy busted \
   --alignment "$ALIGNMENT" \
   --branches All \
-  --output "$RESULTS_DIR/hivvif_busted_standard.json"
+  --output "$RESULTS_DIR/${DATASET_PREFIX}_busted_standard.json"
 
 echo "Running BUSTED with synonymous-rate variation..."
 hyphy busted \
@@ -29,11 +34,11 @@ hyphy busted \
   --branches All \
   --srv Yes \
   --syn-rates 3 \
-  --output "$RESULTS_DIR/hivvif_busted_srv.json"
+  --output "$RESULTS_DIR/${DATASET_PREFIX}_busted_srv.json"
 
 echo "Running BUSTED with multiple-hit model..."
 hyphy busted \
   --alignment "$ALIGNMENT" \
   --branches All \
   --multiple-hits Double+Triple \
-  --output "$RESULTS_DIR/hivvif_busted_multihit.json"
+  --output "$RESULTS_DIR/${DATASET_PREFIX}_busted_multihit.json"
