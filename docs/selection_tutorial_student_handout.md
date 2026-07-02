@@ -49,6 +49,15 @@ than a base Anaconda install with mixed channels.
 - Miniforge: <https://conda-forge.org/download/>
 - Mambaforge: <https://github.com/conda-forge/miniforge>
 
+Choose the installer for your operating system:
+
+- **macOS Apple Silicon:** use the macOS `arm64` installer.
+- **macOS Intel:** use the macOS `x86_64` installer.
+- **Linux:** use the Linux installer for your CPU architecture, usually `x86_64`.
+- **Windows:** use Windows Subsystem for Linux with Ubuntu, then install Miniforge
+  inside the Ubuntu terminal. Native Windows shells are not the recommended workshop
+  path.
+
 After installing Conda, close and reopen the terminal. Check that Conda is available:
 
 ```bash
@@ -128,7 +137,33 @@ conda env create -f environment.yml
 conda activate eebg2026-hyphy
 ```
 
-> **Windows note:** HyPhy is not currently distributed as a native Windows executable through the official installation page. Windows users should use WSL, Datamonkey, Galaxy, or another browser-based option.
+Platform notes:
+
+- **macOS:** if Conda is blocked, Homebrew can install HyPhy directly with
+  `brew install hyphy`, but the Conda environment is still recommended for the tutorial
+  Python and Jupyter packages.
+- **Linux:** install Miniforge, restart the terminal, clone the repository, and run
+  `bash scripts/00_setup_conda.sh` from the repository root.
+- **Windows WSL Ubuntu:** install Ubuntu through WSL, open the Ubuntu terminal, install
+  Miniforge inside Ubuntu, clone the repository there, and run the setup script inside
+  Ubuntu.
+
+Minimal WSL Ubuntu setup outline:
+
+```powershell
+wsl --install -d Ubuntu
+```
+
+Then open Ubuntu and continue there:
+
+```bash
+sudo apt update
+sudo apt install -y git curl wget bzip2
+git clone https://github.com/aglucaci/selection-tutorial.git
+cd selection-tutorial
+bash scripts/00_setup_conda.sh
+conda activate eebg2026-hyphy
+```
 
 ---
 
