@@ -396,6 +396,7 @@ checked-in workshop materials focus on empirical datasets.
 
 - `docs/instructor_notes.md`: teaching goals, timing, method notes, and troubleshooting.
 - `docs/selection_tutorial_student_handout.md`: student-facing workflow and questions.
+- `docs/hyphy_video_resources.md`: annotated HyPhy and DataMonkey video links.
 - `pdf/msad150.pdf`: paper referenced by the student handout.
 
 ## Troubleshooting
