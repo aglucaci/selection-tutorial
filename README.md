@@ -1,6 +1,6 @@
 # EEBG2026 HyPhy Selection Tutorial
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/analysis/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
 
 Runnable workshop materials for teaching codon-based tests of molecular adaptation with
 [HyPhy](https://www.hyphy.org/). The repository includes empirical codon alignments,
@@ -23,7 +23,8 @@ plots.
 │   └── selection_tutorial_student_handout.md
 ├── notebooks/
 │   ├── EEBG2026_HyPhy_Selection_Tutorial.ipynb
-│   └── EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb
+│   └── analysis/
+│       └── EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb
 ├── pdf/
 │   └── msad150.pdf
 └── scripts/
@@ -81,7 +82,7 @@ bundled files. It does not download data.
 
 Use Colab when students do not have Conda or HyPhy installed locally.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/analysis/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
 
 In Colab:
 

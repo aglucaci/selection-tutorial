@@ -73,8 +73,10 @@ hyphy busted \
   "${CODE_ARGS[@]}" \
   --alignment "$ALIGNMENT" \
   --branches All \
+  --srv Yes \
+  --syn-rates 3 \
   --multiple-hits Double+Triple \
-  --output "$RESULTS_DIR/${DATASET_PREFIX}_busted_multihit.json"
+  --output "$RESULTS_DIR/${DATASET_PREFIX}_BUSTED_SRV_MH.json"
 
 echo "Running FitMultiModel with standard MG94 and multi-hit models..."
 hyphy "$FITMULTIMODEL_BF" \

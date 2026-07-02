@@ -63,6 +63,7 @@ def dataset_from_name(path: Path) -> str:
     suffixes = (
         "_busted_standard",
         "_busted_srv",
+        "_BUSTED_SRV_MH",
         "_busted_multihit",
         "_fitmultimodel",
         "_absrel",

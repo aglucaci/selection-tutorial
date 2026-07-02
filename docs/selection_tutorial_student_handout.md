@@ -189,40 +189,18 @@ Open the PDF:
 
 This PDF gives short descriptions of empirical protein-coding datasets. Students should read the descriptions and choose one protein based on biological interest, sequence diversity, taxonomic scope, and interpretability.
 
----
-
-## 4. Choose your input alignment
-
-Set an input file.
-
-Example using HIV Vif:
+The command examples below use shell variables so you can run the same commands on the protein you selected. Replace the example file with the matching alignment in `data/21-empirical`.
 
 ```bash
+export EMPIRICAL_DIR=data/21-empirical
 export DATASET_NAME=HIVvif
 export ALIGNMENT="$EMPIRICAL_DIR/HIVvif.nex"
-```
-
-If a masked alignment is available, use it for the main analyses:
-
-```bash
-export ALIGNMENT="$EMPIRICAL_DIR/HIVvif.masked_nex"
-```
-
-Check that the file exists:
-
-```bash
-ls -lh "$ALIGNMENT"
-```
-
-Create an output directory:
-
-```bash
 mkdir -p results/$DATASET_NAME
 ```
 
 ---
 
-## 5. Inspect the alignment in AliView
+## 4. Inspect the alignment in AliView
 
 Open the alignment:
 
@@ -249,7 +227,7 @@ HyPhy selection inference depends strongly on the quality of the alignment and t
 
 ---
 
-## 6. Analysis 1: BUSTED
+## 5. Analysis 1: BUSTED
 
 ### Biological question
 
@@ -304,7 +282,7 @@ hyphy busted \
 
 ---
 
-## 7. Analysis 2: aBSREL
+## 6. Analysis 2: aBSREL
 
 ### Biological question
 
@@ -351,7 +329,7 @@ Only use this if the branch labels are actually present.
 
 ---
 
-## 8. Analysis 3: FEL
+## 7. Analysis 3: FEL
 
 ### Biological question
 
@@ -417,7 +395,7 @@ and use the options available in your installed version.
 
 ---
 
-## 9. Analysis 4: MEME
+## 8. Analysis 4: MEME
 
 ### Biological question
 
@@ -478,7 +456,7 @@ hyphy meme --help
 
 ---
 
-## 10. Analysis 5: SLAC
+## 9. Analysis 5: SLAC
 
 ### Biological question
 
@@ -511,7 +489,7 @@ hyphy slac \
 
 ---
 
-## 11. Optional pre-analysis: GARD
+## 10. Optional pre-analysis: GARD
 
 Selection analyses can be affected by recombination. If time allows, run GARD before interpreting results.
 
@@ -529,7 +507,7 @@ Questions:
 
 ---
 
-## 12. Visualize HyPhy results using HyPhy Vision
+## 11. Visualize HyPhy results using HyPhy Vision
 
 Use HyPhy Vision:
 
@@ -578,7 +556,7 @@ For each JSON file, record:
 
 ---
 
-## 13. Google Colab visualization
+## 12. Google Colab visualization
 
 Google Colab is used only for downstream visualization and summaries.
 
@@ -638,7 +616,7 @@ for file in json_files:
 
 ---
 
-## 14. Final student report
+## 13. Final student report
 
 Each student or group should prepare a short report or 3-slide summary.
 
@@ -697,7 +675,7 @@ Include at least three:
 
 ---
 
-## 15. Master question list
+## 14. Master question list
 
 ### Dataset questions
 
@@ -758,7 +736,7 @@ Include at least three:
 
 ---
 
-## 16. Recommended method citations
+## 15. Recommended method citations
 
 Students should check and copy current citations from:
 
@@ -777,21 +755,15 @@ Common method citations:
 
 ---
 
-## 17. Minimal command summary
+## 16. Minimal command summary
 
 ```bash
 # Clone data
 git clone https://github.com/aglucaci/selection-tutorial.git
 cd selection-tutorial
 
-# Pick empirical directory
-if [ -d data/21-empirical ]; then
-    export EMPIRICAL_DIR=data/21-empirical
-elif [ -d data/22-empirical ]; then
-    export EMPIRICAL_DIR=data/22-empirical
-fi
-
-# Choose dataset
+# Set the empirical dataset
+export EMPIRICAL_DIR=data/21-empirical
 export DATASET_NAME=HIVvif
 export ALIGNMENT="$EMPIRICAL_DIR/HIVvif.nex"
 mkdir -p results/$DATASET_NAME
@@ -821,7 +793,7 @@ hyphy slac --alignment "$ALIGNMENT" --branches All --pvalue 0.1 --output "result
 
 ---
 
-## 18. End-of-session deliverable
+## 17. End-of-session deliverable
 
 By the end of the practical, students should submit:
 
