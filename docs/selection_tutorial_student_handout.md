@@ -27,8 +27,7 @@ Students will:
    - **SLAC**
 6. Re-run selected analyses with additional model options where available.
 7. Upload HyPhy JSON output files to [**HyPhy Vision**](https://vision.hyphy.org/) for visualization.
-8. Use Google Colab only for downstream plotting, table generation, and result interpretation.
-9. Answer guided biological interpretation questions.
+8. Answer guided biological interpretation questions.
 
 ---
 
@@ -40,18 +39,33 @@ Start with the official HyPhy installation page:
 
 <https://hyphy.org/installation/>
 
-Recommended Conda installation:
+Recommended workshop installation:
+
+Use Conda or Mamba to create the tutorial environment from this repository. If you do
+not already have Conda installed, install Miniforge or Mambaforge first. These installers
+use the `conda-forge` ecosystem by default and are usually more reliable for workshops
+than a base Anaconda install with mixed channels.
+
+- Miniforge: <https://conda-forge.org/download/>
+- Mambaforge: <https://github.com/conda-forge/miniforge>
+
+After installing Conda, close and reopen the terminal. Check that Conda is available:
 
 ```bash
-conda install -c bioconda hyphy
+conda --version
 ```
 
-If Bioconda has not been configured:
+If `mamba` is available, this is also useful:
 
 ```bash
-conda config --add channels bioconda
-conda config --add channels conda-forge
-conda install -c bioconda hyphy
+mamba --version
+```
+
+From the repository root, create or update the environment:
+
+```bash
+bash scripts/00_setup_conda.sh
+conda activate eebg2026-hyphy
 ```
 
 Check that HyPhy works:
@@ -67,6 +81,52 @@ hyphy --version
 ```
 
 Expected outcome: HyPhy prints a help menu, version information, or a list of available analyses.
+
+If environment creation fails, try the manual Conda setup:
+
+```bash
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda config --set channel_priority strict
+conda env create -f environment.yml
+conda activate eebg2026-hyphy
+```
+
+If the environment already exists, update it instead:
+
+```bash
+conda env update -n eebg2026-hyphy -f environment.yml
+conda activate eebg2026-hyphy
+```
+
+If Conda solving is very slow or gets stuck, install Mamba into the base environment and
+retry:
+
+```bash
+conda install -n base -c conda-forge mamba
+mamba env update -n eebg2026-hyphy -f environment.yml
+conda activate eebg2026-hyphy
+```
+
+If `conda activate` is not recognized, initialize Conda for your shell, close the
+terminal, and open a new one:
+
+```bash
+conda init
+```
+
+Common fixes:
+
+- If `hyphy: command not found`, run `conda activate eebg2026-hyphy` and then `hyphy --version`.
+- If packages cannot be found, confirm that both `conda-forge` and `bioconda` are configured.
+- If solving is slow, use Mamba instead of the classic Conda solver.
+- If an old environment behaves strangely, remove and recreate it:
+
+```bash
+conda env remove -n eebg2026-hyphy
+conda env create -f environment.yml
+conda activate eebg2026-hyphy
+```
 
 > **Windows note:** HyPhy is not currently distributed as a native Windows executable through the official installation page. Windows users should use WSL, Datamonkey, Galaxy, or another browser-based option.
 
@@ -556,67 +616,7 @@ For each JSON file, record:
 
 ---
 
-## 12. Google Colab visualization
-
-Google Colab is used only for downstream visualization and summaries.
-
-Students should use Colab to:
-
-1. Upload HyPhy JSON output files.
-2. Parse method summaries.
-3. Create summary tables.
-4. Plot p-values or evidence ratios.
-5. Plot selected sites across the protein.
-6. Compare FEL, MEME, and SLAC site calls.
-7. Save figures for the final report.
-
-### Minimal Colab upload cell
-
-```python
-from google.colab import files
-uploaded = files.upload()
-```
-
-### Minimal JSON loading cell
-
-```python
-import json
-from pathlib import Path
-
-json_files = list(uploaded.keys())
-
-for file in json_files:
-    with open(file) as handle:
-        data = json.load(handle)
-    print(file)
-    print(data.keys())
-```
-
-### Suggested visualizations
-
-1. **BUSTED model comparison bar chart**
-   - Standard BUSTED
-   - BUSTED + synonymous-rate variation
-   - BUSTED + synonymous-rate variation + multiple hits
-
-2. **Site-level selected-site plot**
-   - x-axis: codon position
-   - y-axis: `-log10(p-value)`
-   - overlay FEL, MEME, and SLAC if possible
-
-3. **Method overlap table**
-   - rows: codon sites
-   - columns: FEL, MEME, SLAC
-   - indicate whether each method detected selection
-
-4. **Branch-level aBSREL summary**
-   - branch name
-   - corrected p-value
-   - evidence for episodic selection
-
----
-
-## 13. Final student report
+## 12. Final student report
 
 Each student or group should prepare a short report or 3-slide summary.
 
@@ -675,7 +675,7 @@ Include at least three:
 
 ---
 
-## 14. Master question list
+## 13. Master question list
 
 ### Dataset questions
 
@@ -736,7 +736,7 @@ Include at least three:
 
 ---
 
-## 15. Recommended method citations
+## 14. Recommended method citations
 
 Students should check and copy current citations from:
 
@@ -755,7 +755,7 @@ Common method citations:
 
 ---
 
-## 16. Minimal command summary
+## 15. Minimal command summary
 
 ```bash
 # Clone data
@@ -793,7 +793,7 @@ hyphy slac --alignment "$ALIGNMENT" --branches All --pvalue 0.1 --output "result
 
 ---
 
-## 17. End-of-session deliverable
+## 16. End-of-session deliverable
 
 By the end of the practical, students should submit:
 

@@ -274,10 +274,10 @@ for alignment in "${datasets[@]}"; do
   if [[ "$RUN_BUSTED_MULTIHIT" == "1" ]]; then
     job_id=$((job_id + 1))
     status_files+=("$status_dir/$job_id.status")
-    submit_hyphy "$prefix BUSTED SRV multi-hit" "$prefix BUSTED_SRV_MH" \
-      "$RESULTS_DIR/session1_gene_wide/${prefix}_BUSTED_SRV_MH.json" \
+    submit_hyphy "$prefix BUSTED multi-hit" "$prefix busted_multihit" \
+      "$RESULTS_DIR/session1_gene_wide/${prefix}_busted_multihit.json" \
       "$status_dir/$job_id.status" \
-      hyphy busted "${code_args[@]}" --alignment "$alignment" --branches All --srv Yes --syn-rates 3 --multiple-hits Double+Triple
+      hyphy busted "${code_args[@]}" --alignment "$alignment" --branches All --srv Yes --multiple-hits Double+Triple
   fi
 
   # MG94 ----------------------------------------------------------------------

@@ -1,12 +1,9 @@
 # EEBG2026 HyPhy Selection Tutorial
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/analysis/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
-
 Runnable workshop materials for teaching codon-based tests of molecular adaptation with
 [HyPhy](https://www.hyphy.org/). The repository includes empirical codon alignments,
-Google Colab and local Jupyter notebooks, command-line scripts for workshop sessions,
-batch scripts for precomputing HyPhy results, and helper scripts for summary tables and
-plots.
+local Jupyter notebooks, command-line scripts for workshop sessions, batch scripts for
+precomputing HyPhy results, and helper scripts for summary tables and plots.
 
 ## What Is Included
 
@@ -22,14 +19,11 @@ plots.
 │   ├── instructor_notes.md
 │   └── selection_tutorial_student_handout.md
 ├── notebooks/
-│   ├── EEBG2026_HyPhy_Selection_Tutorial.ipynb
-│   └── analysis/
-│       └── EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb
+│   └── EEBG2026_HyPhy_Selection_Tutorial.ipynb
 ├── pdf/
 │   └── msad150.pdf
 └── scripts/
     ├── 00_setup_conda.sh
-    ├── 00_setup_colab.sh
     ├── 01_download_tutorial_data.sh
     ├── 01_grab_codon_alignment_and_tree.py
     ├── 02_run_gene_wide.sh
@@ -78,38 +72,63 @@ bash scripts/01_download_tutorial_data.sh
 Despite the historical script name, `01_download_tutorial_data.sh` verifies local
 bundled files. It does not download data.
 
-## Run In Google Colab
-
-Use Colab when students do not have Conda or HyPhy installed locally.
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aglucaci/selection-tutorial/blob/main/notebooks/analysis/EEBG2026_HyPhy_Selection_Tutorial_Colab.ipynb)
-
-In Colab:
-
-1. Open the notebook with the badge above.
-2. Run the cells from top to bottom.
-3. If you are teaching from a fork, edit the `REPO_URL` cell before cloning.
-
-The Colab setup script clones or reuses `/content/selection-tutorial`, installs command
-line helpers, installs HyPhy from `apt` when available, falls back to Bioconda with
-micromamba when needed, installs Python packages with `pip`, and verifies the bundled
-data.
-
-At the end of the Colab notebook, an optional cell zips `results/`, `tables/`, and
-`figures/` for download.
-
 ## Install HyPhy Locally
 
 You can run the tutorial locally after installing HyPhy and the Python/Jupyter
 dependencies. The Conda setup below is the recommended workshop path because it installs
 HyPhy and the Python packages into one reproducible environment.
 
-Install Conda or Mamba, then create or update the environment:
+Install Miniforge or Mambaforge if `conda` is not already available. These installers
+use the `conda-forge` ecosystem by default and tend to be more reliable for workshops
+than a base Anaconda install with mixed channels.
+
+- Miniforge: <https://conda-forge.org/download/>
+- Mambaforge: <https://github.com/conda-forge/miniforge>
+
+After installing, close and reopen the terminal. Confirm that one solver is available:
+
+```bash
+conda --version
+mamba --version
+```
+
+If `mamba --version` fails but `conda` works, that is fine. Create or update the
+tutorial environment from the repository root:
 
 ```bash
 bash scripts/00_setup_conda.sh
 conda activate eebg2026-hyphy
 hyphy --version
+```
+
+If environment creation is slow or fails with channel/solver errors, try the manual
+commands below:
+
+```bash
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda config --set channel_priority strict
+conda env update -n eebg2026-hyphy -f environment.yml
+```
+
+If the environment does not exist yet:
+
+```bash
+conda env create -f environment.yml
+conda activate eebg2026-hyphy
+```
+
+If solving still stalls, install `mamba` into the base environment and retry:
+
+```bash
+conda install -n base -c conda-forge mamba
+mamba env update -n eebg2026-hyphy -f environment.yml
+```
+
+If activation fails, initialize Conda for your shell, then open a new terminal:
+
+```bash
+conda init
 ```
 
 On macOS, Homebrew is also an option:
@@ -349,11 +368,14 @@ checked-in workshop materials focus on empirical datasets.
 
 ## Troubleshooting
 
-- `hyphy: command not found`: activate the Conda environment locally, or rerun
-  `bash scripts/00_setup_colab.sh` in Colab.
-- `Unable to locate package hyphy` in Colab: the setup script should fall back to
-  micromamba and Bioconda. Pull the latest repo version if your notebook still uses an
-  old apt-only setup.
+- `hyphy: command not found`: activate the Conda environment with
+  `conda activate eebg2026-hyphy`, then run `hyphy --version`.
+- `conda activate` is unavailable: run `conda init`, close the terminal, reopen it, and
+  try again.
+- Environment solving is very slow: install `mamba` and rerun the setup with Mamba
+  available in the base environment.
+- Package conflicts or missing HyPhy: set strict channel priority and make sure both
+  `conda-forge` and `bioconda` are configured.
 - Missing bundled data: run `bash scripts/01_download_tutorial_data.sh` and check that
   `data/21-empirical/` is present.
 - Empty tables: confirm that the corresponding HyPhy JSON files exist in `results/`.
