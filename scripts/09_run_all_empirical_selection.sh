@@ -167,11 +167,6 @@ run_hyphy() {
   shift 2
   local log="$LOG_DIR/$(basename "${output%.json}").log"
 
-  if [[ -s "$output" && "$FORCE" != "1" ]]; then
-    echo "SKIP $label -> $output"
-    return 0
-  fi
-
   echo "RUN  $label"
   echo "LOG  $log"
   "$@" --output "$output" >"$log" 2>&1
@@ -202,7 +197,15 @@ submit_hyphy() {
   local status_file="$4"
   shift 4
 
+  if [[ -s "$output" && "$FORCE" != "1" ]]; then
+    echo "SKIP $label -> $output"
+    printf 'OK\t%s\n' "$failure_key" >"$status_file"
+    skipped_jobs=$((skipped_jobs + 1))
+    return 0
+  fi
+
   wait_for_slot
+  submitted_jobs=$((submitted_jobs + 1))
   (
     if run_hyphy "$label" "$output" "$@"; then
       printf 'OK\t%s\n' "$failure_key" >"$status_file"
@@ -235,6 +238,8 @@ fi
 echo "Running empirical selection tests with MAX_JOBS=$MAX_JOBS"
 
 job_id=0
+submitted_jobs=0
+skipped_jobs=0
 status_dir="$LOG_DIR/status_$(date +%Y%m%d_%H%M%S)_$$"
 mkdir -p "$status_dir"
 status_files=()
@@ -333,10 +338,14 @@ for alignment in "${datasets[@]}"; do
   fi
 done
 
-if [[ "$job_id" -gt 0 ]]; then
+if [[ "$submitted_jobs" -gt 0 ]]; then
   echo
-  echo "Submitted $job_id job(s). Waiting for completion..."
+  echo "Checked $job_id enabled method/dataset combination(s): submitted $submitted_jobs HyPhy job(s), skipped $skipped_jobs existing output(s)."
+  echo "Waiting for submitted jobs to complete..."
   wait
+elif [[ "$job_id" -gt 0 ]]; then
+  echo
+  echo "Checked $job_id enabled method/dataset combination(s): submitted 0 HyPhy jobs, skipped $skipped_jobs existing output(s)."
 else
   echo
   echo "No HyPhy jobs were enabled."
