@@ -46,9 +46,9 @@ else
   install_hyphy_with_micromamba
 fi
 
-echo "Installing Python packages with pip..."
+echo "Installing Python plotting and analysis packages with pip..."
 python -m pip install -q --upgrade pip
-python -m pip install -q pandas matplotlib seaborn biopython pyvolve pyyaml
+python -m pip install -q pandas matplotlib seaborn biopython pyyaml
 
 echo
 echo "Versions:"

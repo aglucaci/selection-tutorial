@@ -5,9 +5,9 @@ The default source is HyPhy's public command-line tutorial archive. The script s
 the downloaded files for codon-aware alignments, pairs them with an embedded or
 standalone Newick tree, validates basic codon properties, and writes normalized outputs:
 
-  data/22-empirical/codon_tree/alignment.fna
-  data/22-empirical/codon_tree/tree.nwk
-  data/22-empirical/codon_tree/metadata.json
+  data/21-empirical/codon_tree/alignment.fna
+  data/21-empirical/codon_tree/tree.nwk
+  data/21-empirical/codon_tree/metadata.json
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ import zipfile
 
 
 DEFAULT_URL = "https://www.hyphy.org/resources/tutorials/hyphy-cmd-tutorial.zip"
-DEFAULT_OUTDIR = Path("data/22-empirical/codon_tree")
+DEFAULT_OUTDIR = Path("data/21-empirical/codon_tree")
 STOP_CODONS = {"TAA", "TAG", "TGA"}
 DNA = set("ACGTNRYKMSWBDHV?-")
 

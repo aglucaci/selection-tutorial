@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/22-empirical}"
+EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/21-empirical}"
 ALIGNMENT="$EMPIRICAL_DATA_DIR/lysin.nex"
-RESULTS_DIR="results/session2_site_level"
+RESULTS_DIR="results/session3_site_level"
 
 mkdir -p "$RESULTS_DIR"
 
@@ -30,7 +30,8 @@ hyphy meme \
   --branches All \
   --output "$RESULTS_DIR/lysin_meme.json"
 
-echo "Running FUBAR..."
-hyphy fubar \
+echo "Running SLAC..."
+hyphy slac \
   --alignment "$ALIGNMENT" \
-  --output "$RESULTS_DIR/lysin_fubar.json"
+  --branches All \
+  --output "$RESULTS_DIR/lysin_slac.json"

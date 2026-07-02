@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RESULTS_DIR="results/session3_branch_lineage"
-EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/22-empirical}"
-ABSREL_ALIGNMENT="$EMPIRICAL_DATA_DIR/HIVvif.masked_nex"
+RESULTS_DIR="results/session2_branch_lineage"
+EMPIRICAL_DATA_DIR="${EMPIRICAL_DATA_DIR:-data/21-empirical}"
+ABSREL_ALIGNMENT="$EMPIRICAL_DATA_DIR/HIVvif.nex"
 
 mkdir -p "$RESULTS_DIR"
 
@@ -21,4 +21,4 @@ echo "Running aBSREL..."
 hyphy absrel \
   --alignment "$ABSREL_ALIGNMENT" \
   --branches All \
-  --output "$RESULTS_DIR/hivvif_masked_absrel.json"
+  --output "$RESULTS_DIR/hivvif_absrel.json"

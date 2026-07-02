@@ -10,11 +10,10 @@ import re
 from statistics import mean
 
 
-DATA_DIR = Path("data/22-empirical")
-OUT_CSV = DATA_DIR / "empirical_alignment_metrics.csv"
+DATA_DIR = Path("data/21-empirical")
+OUT_CSV = Path("data/empirical_alignment_metrics.csv")
 DNA_BASES = set("ACGT")
 MISSING = set("?N-")
-
 
 def empirical_paths(data_dir: Path) -> list[Path]:
     return sorted(
@@ -22,7 +21,7 @@ def empirical_paths(data_dir: Path) -> list[Path]:
         for path in data_dir.iterdir()
         if path.is_file()
         and path.name != OUT_CSV.name
-        and (path.suffix in {".nex", ".mtnex"} or path.name.endswith(".masked_nex"))
+        and path.suffix in {".nex", ".mtnex"}
     )
 
 
