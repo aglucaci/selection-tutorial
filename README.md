@@ -33,6 +33,7 @@ precomputing HyPhy results, and helper scripts for summary tables and plots.
     ├── 07_collect_results.py
     ├── 08_summarize_empirical_data.py
     ├── 09_run_all_empirical_selection.sh
+    ├── 09_run_all_empirical_selection_mpi.sh
     └── 10_all_empirical_hyphy_commands.sh
 ```
 
@@ -312,6 +313,38 @@ Batch logs are written to:
 ```text
 results/logs/all_empirical/
 ```
+
+### MPI Batch Runner
+
+If you have an MPI-enabled HyPhy executable available as `HYPHYMPI`, you can run the
+same empirical batch through `mpirun`. A regular `hyphy` executable is not sufficient
+for this script; `HYPHYMPI` is a separate MPI build target.
+
+```bash
+MPI_PROCS=4 MAX_JOBS=1 bash scripts/09_run_all_empirical_selection_mpi.sh
+```
+
+`MPI_PROCS` controls the number of MPI ranks used for each HyPhy analysis. `MAX_JOBS`
+controls how many MPI-backed analyses are launched concurrently. For most laptops and
+workstations, start with `MAX_JOBS=1` so a single analysis can use the requested MPI
+ranks without oversubscribing the machine.
+
+Useful MPI options:
+
+```bash
+MPI_PROCS=8 bash scripts/09_run_all_empirical_selection_mpi.sh
+MPIRUN=/path/to/mpirun HYPHYMPI=/path/to/HYPHYMPI bash scripts/09_run_all_empirical_selection_mpi.sh
+RUN_COLLECT=0 MPI_PROCS=4 bash scripts/09_run_all_empirical_selection_mpi.sh HIVvif.nex lysin.nex
+```
+
+If the script reports that `HYPHYMPI` is missing, use the regular batch runner or build
+HyPhy from source with OpenMPI support. The upstream MPI build target is:
+
+```bash
+make HYPHYMPI
+```
+
+See the HyPhy build documentation: <https://github.com/veg/hyphy>
 
 After a batch run, share these directories with students:
 

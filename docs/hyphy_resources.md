@@ -12,6 +12,7 @@ practical.
 - [HyPhy Vision](https://vision.hyphy.org/)
 - [HyPhy book](https://hyphy.org/resources/hyphybook2007.pdf)
 - [Evolution of viral genomes tutorial chapter](https://hyphy.org/resources/tutorial-2017.pdf)
+- [AOC JOSS paper](https://joss.theoj.org/papers/10.21105/joss.09872)
 
 ## Reading
 
@@ -27,6 +28,23 @@ A tutorial-style chapter focused on viral genome evolution and the interaction a
 selection, recombination, and other evolutionary forces. This is especially relevant for
 students analyzing viral datasets or thinking about why recombination and model
 assumptions matter when interpreting HyPhy selection results.
+
+## Workflow Software
+
+### [AOC: A Snakemake workflow for the characterization of natural selection in protein-coding genes](https://joss.theoj.org/papers/10.21105/joss.09872)
+
+Lucaci, A. G., and Pond, S. (2026). DOI:
+[10.21105/joss.09872](https://doi.org/10.21105/joss.09872). Published in the
+Journal of Open Source Software on 19 May 2026.
+
+AOC, the Analysis of Orthologous Collections, is a Snakemake workflow for scaling
+selection analyses across protein-coding genes. It automates the path from unaligned
+homologous sequences to completed results and interactive visualizations, helping users
+identify genomic sites and species or lineages affected by negative selection,
+diversifying or directional positive selection, and differential selection between
+branch groups. The workflow is useful for moving beyond one-gene examples and for
+connecting site-level dN/dS estimates, lineage-specific patterns, and statistical support
+to functional or evolutionary hypotheses.
 
 ## General Introduction
 
