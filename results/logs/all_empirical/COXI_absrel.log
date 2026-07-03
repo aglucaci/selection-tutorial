@@ -1,0 +1,257 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Invertebrate-mtDNA
+>Loaded a multiple sequence alignment with **21** sequences, **510** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/COXI.mtnex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 39 branches for testing: `P_TROGLODYTES, P_PANISCUS, Node8, H_SAPIENS, Node7, G_GORILLA, Node6, P_PYGMAEUS_ABELII, P_PYGMAEUS, Node13, Node5, H_LAR, Node4, M_SYLVANUS, T_GELADA, P_HAMADRYAS, Node20, Node18, C_AETHIOPS, Node17, Node3, C_ALBIFRONS, S_USTUS, S_SCIUREUS, Node26, Node24, Node2, T_BANCANUS, Node1, L_CATTA, P_VERREAUXI, Node31, N_COUCANG, P_POTTO, Node34, Node30, M_MUSCULUS, R_NORVEGICUS, Node37`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -15439.46, AIC-c = 30973.05 (47 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.339
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -12387.44, AIC-c = 24960.48 (92 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.03, and 95% of the weight in  0.00 - 10000000000.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|             N_COUCANG             |   0.40   |    2     |    0.59 ( 1.77%)   |   -12383.77   |   24957.22    |    24957.22     |
+|             N_COUCANG             |   0.40   |    3     |    0.60 ( 0.04%)   |   -12383.77   |   24961.29    |    24957.22     |
+|            T_BANCANUS             |   0.31   |    2     |    0.18 ( 7.75%)   |   -12383.05   |   24959.86    |    24957.22     |
+|            M_MUSCULUS             |   0.31   |    2     |    0.16 ( 5.17%)   |   -12383.75   |   24961.25    |    24957.22     |
+|              Node37               |   0.30   |    2     |    7.16 ( 3.22%)   |   -12362.89   |   24919.54    |    24919.54     |
+|              Node37               |   0.30   |    3     |   27.55 ( 1.92%)   |   -12363.48   |   24924.80    |    24919.54     |
+|              P_POTTO              |   0.23   |    2     |    8.68 ( 0.82%)   |   -12357.30   |   24912.42    |    24912.42     |
+|              P_POTTO              |   0.23   |    3     |   11.26 ( 0.53%)   |   -12357.56   |   24917.02    |    24912.42     |
+|              Node26               |   0.22   |    2     |    1.21 ( 3.01%)   |   -12355.35   |   24912.61    |    24912.42     |
+|               Node2               |   0.22   |    2     |    1.45 ( 4.09%)   |   -12350.68   |   24903.27    |    24903.27     |
+|               Node2               |   0.22   |    3     |    6.41 ( 1.08%)   |   -12350.30   |   24906.58    |    24903.27     |
+|            P_VERREAUXI            |   0.21   |    2     |    0.01 (74.67%)   |   -12350.68   |   24907.34    |    24903.27     |
+|              Node31               |   0.21   |    2     |    2.62 ( 0.79%)   |   -12345.82   |   24897.61    |    24897.61     |
+|              Node31               |   0.21   |    3     |   64.90 ( 0.42%)   |   -12345.96   |   24901.99    |    24897.61     |
+|           R_NORVEGICUS            |   0.18   |    2     |    1.01 ( 2.09%)   |   -12345.48   |   24901.01    |    24897.61     |
+|             T_GELADA              |   0.18   |    2     |    0.25 (28.62%)   |   -12345.11   |   24900.28    |    24897.61     |
+|              L_CATTA              |   0.15   |    2     |    0.36 ( 3.41%)   |   -12345.74   |   24901.53    |    24897.61     |
+|               Node3               |   0.15   |    2     |   13.51 ( 1.38%)   |   -12345.42   |   24900.90    |    24897.61     |
+|               H_LAR               |   0.15   |    2     |    0.01 (31.67%)   |   -12345.82   |   24901.69    |    24897.61     |
+|            C_AETHIOPS             |   0.15   |    2     |    0.64 ( 8.98%)   |   -12342.19   |   24894.44    |    24894.44     |
+|            C_AETHIOPS             |   0.15   |    3     |    0.68 ( 0.18%)   |   -12342.19   |   24898.52    |    24894.44     |
+|              Node17               |   0.14   |    2     |    1.44 ( 3.91%)   |   -12339.13   |   24892.40    |    24892.40     |
+|              Node17               |   0.14   |    3     |    2.00 ( 2.08%)   |   -12339.19   |   24896.60    |    24892.40     |
+|            P_HAMADRYAS            |   0.13   |    2     |    0.71 ( 8.94%)   |   -12335.21   |   24888.63    |    24888.63     |
+|            P_HAMADRYAS            |   0.13   |    3     |    0.75 ( 0.18%)   |   -12335.21   |   24892.71    |    24888.63     |
+|            M_SYLVANUS             |   0.13   |    2     |    0.29 (22.74%)   |   -12334.35   |   24891.01    |    24888.63     |
+|            C_ALBIFRONS            |   0.11   |    2     |    2.98 ( 3.84%)   |   -12328.99   |   24880.29    |    24880.29     |
+|            C_ALBIFRONS            |   0.11   |    3     |    6.35 ( 2.24%)   |   -12328.72   |   24883.82    |    24880.29     |
+|              Node13               |   0.10   |    2     |    0.81 ( 4.79%)   |   -12326.61   |   24879.60    |    24879.60     |
+|              Node13               |   0.10   |    3     |    0.82 ( 0.51%)   |   -12326.61   |   24883.69    |    24879.60     |
+|              Node24               |   0.09   |    2     |    5.09 ( 4.55%)   |   -12322.37   |   24875.21    |    24875.21     |
+|              Node24               |   0.09   |    3     |    6.89 ( 3.00%)   |   -12322.10   |   24878.77    |    24875.21     |
+|              Node34               |   0.09   |    2     |    7.86 ( 1.76%)   |   -12322.13   |   24878.82    |    24875.21     |
+|             H_SAPIENS             |   0.07   |    2     |   0.02 (100.00%)   |   -12322.37   |   24879.30    |    24875.21     |
+|               Node6               |   0.07   |    2     |    0.03 (78.92%)   |   -12322.37   |   24879.30    |    24875.21     |
+|             G_GORILLA             |   0.07   |    2     |    0.02 (48.35%)   |   -12322.37   |   24879.31    |    24875.21     |
+|               Node4               |   0.05   |    2     |    2.25 ( 6.15%)   |   -12319.84   |   24874.25    |    24874.25     |
+|               Node4               |   0.05   |    3     |    2.28 ( 6.15%)   |   -12319.84   |   24878.34    |    24874.25     |
+|         P_PYGMAEUS_ABELII         |   0.04   |    2     |    0.09 (28.68%)   |   -12319.85   |   24878.35    |    24874.25     |
+|            P_PYGMAEUS             |   0.03   |    2     |    0.04 (98.50%)   |   -12319.84   |   24878.34    |    24874.25     |
+|               Node8               |   0.03   |    2     |    0.04 (26.02%)   |   -12319.84   |   24878.33    |    24874.25     |
+|            P_PANISCUS             |   0.02   |    2     |    0.07 (32.45%)   |   -12319.85   |   24878.34    |    24874.25     |
+|               Node7               |   0.02   |    2     |   19.12 ( 1.04%)   |   -12317.03   |   24872.70    |    24872.70     |
+|               Node7               |   0.02   |    3     |   20.92 ( 0.91%)   |   -12317.09   |   24876.93    |    24872.70     |
+|              S_USTUS              |   0.02   |    2     |    0.08 (99.62%)   |   -12317.03   |   24876.80    |    24872.70     |
+|           P_TROGLODYTES           |   0.02   |    2     |    0.26 ( 0.00%)   |   -12317.03   |   24876.80    |    24872.70     |
+|              Node30               |   0.02   |    2     |    0.25 ( 0.00%)   |   -12317.00   |   24876.75    |    24872.70     |
+|               Node5               |   0.01   |    2     |    0.23 ( 0.00%)   |   -12317.03   |   24876.79    |    24872.70     |
+|            S_SCIUREUS             |   0.01   |    2     |    0.28 (49.85%)   |   -12317.03   |   24876.79    |    24872.70     |
+|              Node20               |   0.01   |    2     |    0.20 ( 0.00%)   |   -12317.03   |   24876.80    |    24872.70     |
+|              Node18               |   0.00   |    2     |    0.18 (31.40%)   |   -12326.55   |   24895.84    |    24872.70     |
+|               Node1               |   0.00   |    2     |    0.25 ( 2.00%)   |   -12318.23   |   24879.20    |    24872.70     |
+
+### Rate class analyses summary
+*  13 branches with **2** rate classes
+*  26 branches with **1** rate classes
+
+### Annotated Tree
+(((((((((P_TROGLODYTES{1},P_PANISCUS{1})Node8{1},H_SAPIENS{1})Node7{2},G_GORILLA{1})Node6{1},(P_PYGMAEUS_ABELII{1},P_PYGMAEUS{1})Node13{2})Node5{1},H_LAR{1})Node4{2},((M_SYLVANUS{1},(T_GELADA{1},P_HAMADRYAS{2})Node20{1})Node18{1},C_AETHIOPS{2})Node17{2})Node3{1},(C_ALBIFRONS{2},(S_USTUS{1},S_SCIUREUS{1})Node26{1})Node24{2})Node2{2},T_BANCANUS{1})Node1{1},((L_CATTA{1},P_VERREAUXI{1})Node31{2},(N_COUCANG{2},P_POTTO{2})Node34{1})Node30{1},(M_MUSCULUS{1},R_NORVEGICUS{1})Node37{2})
+
+----
+
+```
+              |P_TROGLODYTES (1)
+             |+Node8 (1)
+             ||P_PANISCUS (1)
+            |+Node7 (2)
+            ||-H_SAPIENS (1)
+          |-+Node6 (1)
+          | |-G_GORILLA (1)
+         |+Node5 (1)
+         || |P_PYGMAEUS_ABELII (1)
+         ||-+Node13 (2)
+         |  |P_PYGMAEUS (1)
+       |-+Node4 (2)
+       | |--H_LAR (1)
+    |--+Node3 (1)
+    |  |  |-M_SYLVANUS (1)
+    |  | |+Node18 (1)
+    |  | |||--T_GELADA (1)
+    |  | ||+Node20 (1)
+    |  | | |-P_HAMADRYAS (2)
+    |  |-+Node17 (2)
+    |    |-C_AETHIOPS (2)
+ |--+Node2 (2)
+ |  | |-C_ALBIFRONS (2)
+ |  |-+Node24 (2)
+ |    |  |S_USTUS (1)
+ |    |--+Node26 (1)
+ |       |S_SCIUREUS (1)
+|+Node1 (1)
+||---T_BANCANUS (1)
+|   |--L_CATTA (1)
+||--+Node31 (2)
+||  |--P_VERREAUXI (1)
+|+Node30 (1)
+|| |----N_COUCANG (2)
+||-+Node34 (1)
+|  |--P_POTTO (2)
+|   |---M_MUSCULUS (1)
+|---+Node37 (2)
+    |--R_NORVEGICUS (1)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -12084.27, AIC-c = 24407.19 (118 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|             N_COUCANG             |     2    |    0.54 ( 1.66%)   |       N/A        |        0.00        |       1.00000      |
+|            T_BANCANUS             |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            M_MUSCULUS             |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node37               |     2    |    8.96 ( 3.34%)   |         15       |        3.32        |       0.07089      |
+|              P_POTTO              |     2    |    7.94 ( 0.99%)   |          5       |        2.04        |       0.13850      |
+|              Node26               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     2    |    1.05 ( 1.62%)   |          4       |       -0.06        |       0.50000      |
+|            P_VERREAUXI            |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node31               |     2    |  301.03 ( 0.41%)   |          2       |        1.27        |       0.21150      |
+|           R_NORVEGICUS            |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             T_GELADA              |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              L_CATTA              |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node3               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               H_LAR               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            C_AETHIOPS             |     2    |    0.73 ( 7.80%)   |       N/A        |        0.00        |       1.00000      |
+|              Node17               |     2    |    0.53 ( 4.25%)   |       N/A        |        0.00        |       1.00000      |
+|            P_HAMADRYAS            |     2    |    0.47 ( 9.60%)   |       N/A        |        0.00        |       1.00000      |
+|            M_SYLVANUS             |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            C_ALBIFRONS            |     2    |    4.24 ( 1.98%)   |          6       |        0.85        |       0.26793      |
+|              Node13               |     2    |    0.49 ( 4.36%)   |       N/A        |        0.00        |       1.00000      |
+|              Node24               |     2    |    7.82 ( 1.62%)   |          4       |        0.26        |       0.38513      |
+|              Node34               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             H_SAPIENS             |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node6               |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             G_GORILLA             |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node4               |     2    |    2.18 ( 6.74%)   |          9       |        0.34        |       0.36603      |
+|         P_PYGMAEUS_ABELII         |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            P_PYGMAEUS             |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node8               |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            P_PANISCUS             |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node7               |     2    |   25.48 ( 0.84%)   |          3       |        3.94        |       0.05131      |
+|              S_USTUS              |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           P_TROGLODYTES           |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node30               |     1    |   0.14 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node5               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            S_SCIUREUS             |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node20               |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node18               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node1               |     1    |  >1000 (100.00%)   |       N/A        |       -0.05        |       0.50000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **39** tested.
+
+
+### Annotated Tree
+(((((((((P_TROGLODYTES,P_PANISCUS)Node8,H_SAPIENS)Node7,G_GORILLA)Node6,(P_PYGMAEUS_ABELII,P_PYGMAEUS)Node13)Node5,H_LAR)Node4,((M_SYLVANUS,(T_GELADA,P_HAMADRYAS)Node20)Node18,C_AETHIOPS)Node17)Node3,(C_ALBIFRONS,(S_USTUS,S_SCIUREUS)Node26)Node24)Node2,T_BANCANUS)Node1,((L_CATTA,P_VERREAUXI)Node31,(N_COUCANG,P_POTTO)Node34)Node30,(M_MUSCULUS,R_NORVEGICUS)Node37)
+
+----
+
+```
+              |P_TROGLODYTES (N.S)
+             |+Node8 (N.S)
+             ||P_PANISCUS (N.S)
+            |+Node7 (N.S)
+            ||-H_SAPIENS (N.S)
+          |-+Node6 (N.S)
+          | |-G_GORILLA (N.S)
+         |+Node5 (N.S)
+         || |P_PYGMAEUS_ABELII (N.S)
+         ||-+Node13 (N.S)
+         |  |P_PYGMAEUS (N.S)
+       |-+Node4 (N.S)
+       | |--H_LAR (N.S)
+    |--+Node3 (N.S)
+    |  |  |-M_SYLVANUS (N.S)
+    |  | |+Node18 (N.S)
+    |  | |||--T_GELADA (N.S)
+    |  | ||+Node20 (N.S)
+    |  | | |-P_HAMADRYAS (N.S)
+    |  |-+Node17 (N.S)
+    |    |-C_AETHIOPS (N.S)
+ |--+Node2 (N.S)
+ |  | |-C_ALBIFRONS (N.S)
+ |  |-+Node24 (N.S)
+ |    |  |S_USTUS (N.S)
+ |    |--+Node26 (N.S)
+ |       |S_SCIUREUS (N.S)
+|+Node1 (N.S)
+||---T_BANCANUS (N.S)
+|   |--L_CATTA (N.S)
+||--+Node31 (N.S)
+||  |--P_VERREAUXI (N.S)
+|+Node30 (N.S)
+|| |----N_COUCANG (N.S)
+||-+Node34 (N.S)
+|  |--P_POTTO (N.S)
+|   |---M_MUSCULUS (N.S)
+|---+Node37 (N.S)
+    |--R_NORVEGICUS (N.S)
+```
+

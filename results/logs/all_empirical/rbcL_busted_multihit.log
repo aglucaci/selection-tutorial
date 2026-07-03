@@ -1,0 +1,135 @@
+
+Analysis Description
+--------------------
+BUSTED (branch-site unrestricted statistical test of episodic
+diversification) uses a random effects branch-site model fitted jointly
+to all or a subset of tree branches in order to test for alignment-wide
+evidence of episodic diversifying selection. Assuming there is evidence
+of positive selection (i.e. there is an omega > 1), BUSTED will also
+perform a quick evidence-ratio style analysis to explore which
+individual sites may have been subject to selection. Version 2.0 adds
+support for synonymous rate variation, and relaxes the test statistic to
+0.5 (chi^2_0 + chi^2_2). Version 2.1 adds a grid search for the initial
+starting point. Version 2.2 changes the grid search to LHC, and adds an
+initial search phase to use adaptive Nedler-Mead. Version 3.0 implements
+the option for branch-site variation in synonymous substitution rates.
+Version 3.1 adds HMM auto-correlation option for SRV, and binds SRV
+distributions for multiple branch sets. Version 4.0 adds support for
+multiple hits (MH), ancestral state reconstruction saved to JSON, and
+profiling of branch-site level support for selection / multiple hits.
+Version 4.2 adds calculation of MH-attributable fractions of
+substitutions. Version 4.5 adds an 'error absorption' component. Version
+4.6 adds support for MSS-type models. Version 4.7 adds user configurable
+options for the error class. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree (optionally annotated
+with {})
+
+- __Citation__: *Gene-wide identification of episodic selection*, Mol Biol Evol.
+32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation
+Dramatically Inflates False Positive Rates of Selection Analyses: Ignore
+at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.7
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **483** sequences, **466** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/rbcL.nex`
+
+>branches => All
+
+>srv => Yes
+The number omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>multiple-hits => Double+Triple
+
+>mss => No
+The number alpha rate classes to include in the model [1-10, default 3] (permissible range = [1,10], default value = 3, integer): 
+>syn-rates => 3
+
+>error-sink => No
+The number of points in the initial distributional guess for likelihood fitting (permissible range = [1,10000], default value = 250, integer): 
+>grid-size => 250
+The number of initial random guesses to 'seed' rate values optimization (permissible range = [1,25], default value = 1, integer): 
+>starting-points => 1
+
+
+### Branches to test for selection in the BUSTED analysis
+* Selected 963 branches to test in the BUSTED analysis: `DIOCA_Z97637, DILDI_AJ235796, DILDI_AF093721, DILDI_AF095734, DILDI_L01903, Node10, Node8, Node6, VITVT_AJ419726, VITVT_AJ419721, Node18, HALSF_U26325, MANGE_AJ235774, LEDGE_L14708, Node26, COMMY_U26321, COMMY_U26338, Node32, LYTMY_AY036148, LYTMY_AY905410, Node36, LYTMY_AY905408, ONAMY_L10219, LYTMY_AY905406, Node43, LYTMY_L10226, LYTMY_L10218, Node47, LYTMY_AY905413, LYTMY_AY496864, LYTMY_AY905404, Node52, Node50, Node46, Node42, Node40, LYTMY_AY905411, Node39, Node35, Node31, VOCMY_U26324, PSIMY_U26333, MYTMY_U26315, Node60, MYTMY_U26317, MYTMY_AJ235785, Node64, MYTMY_U26318, Node63, Node59, Node57, MCYMY_U26327, MCYMY_AF270752, Node70, MSTMY_AF215521, MSTMY_AF215533, MSTMY_AF215537, MSTMY_AJ235777, Node78, Node76, MSTMY_U26323, MSTMY_U26330, Node84, MSTMY_AY456135, Node83, MSTMY_U26334, MSTMY_U26339, Node88, Node82, MSTMY_AF215516, Node81, Node75, Node73, Node69, ALZMY_U26316, PENMY_U26331, OLIMY_U26329, OLIMY_AF215546, Node97, Node95, Node93, CRYMY_AY078157, CRYMY_AY078153, Node100, Node92, Node68, Node56, Node30, BIESP_AF035920, SAPSP_U38922, SAPSP_AJ403001, SAPSP_AJ403008, Node111, SAPSP_AY724341, Node110, SAPSP_AY724366, Node109, Node107, ZYGZY_DQ267165, ANASP_AY462008, ANASP_U38928, Node120, BURSP_U38856, BURSP_U39276, Node123, Node119, Node117, MELSP_DQ238061, MELSP_AJ403017, Node128, MELSP_U38859, Node127, EBEER_AJ402968, RUTSP_U38860, RUTSP_AF066819, RUTSP_AF066812, Node139, Node137, Node135, RUTSP_AF066808, RUTSP_U38862, RUTSP_AF066814, RUTSP_U38861, Node146, Node144, Node142, Node134, RUTSP_U38863, RUTSP_AF123276, Node149, Node133, SIMSP_U38927, SIMSP_U38923, SIMSP_U38924, Node154, Node152, Node132, Node126, Node116, Node106, Node104, SARMV_U26337, DCPMV_AF030238, DCPMV_AJ247623, Node161, Node159, BONMA_AJ402990, THYMV_U26322, THYMV_AJ297230, Node167, Node165, MLVMV_AY328183, MLVMV_AY328175, MLVMV_AY328176, Node175, Node173, MLVMV_AY328190, MLVMV_AY328194, Node178, Node172, MLVMV_AY328174, Node171, MLVMV_AJ233145, Node170, Node164, Node158, SVDBR_X69755, GYRBR_L22439, BRABR_AY483263, BRABR_AJ235809, Node188, Node186, Node184, PETMV_AJ233158, Node183, Node157, Node103, Node29, Node25, GEICS_X83990, ZYGZY_AJ133855, ZYGZY_Y15019, ZYGZY_AF200471, ZYGZY_AY935748, Node199, Node197, Node195, VIOMA_L11674, VIOMA_Z75693, Node209, PFLMA_L01940, PFLMA_AF206802, TURMA_Z75691, Node214, Node212, Node208, ACHMA_AJ418802, ACHMA_AJ418803, Node218, ACHMA_AJ418799, ACHMA_AJ235781, Node221, Node217, Node207, SALMA_AF206726, SALMA_AJ418824, SALMA_AJ418839, Node226, Node224, Node206, BALMA_AF089760, IXOMA_Z75680, ERYMA_AJ402976, RHIMA_AF127695, RHIMA_AF206744, Node237, RHIMA_U26335, Node236, Node234, Node232, Node230, PHAMA_AY663605, PHAMA_AY663597, Node242, PODMA_U68083, PODMA_D89475, Node250, PODMA_U68089, Node249, HYPMA_AF518396, HYPMA_AF518382, Node255, HYPMA_AF206779, HYPMA_AF518395, Node258, Node254, Node248, CLUMA_AF518397, CLUMA_AF518388, Node264, CLUMA_AF518392, Node263, CLUMA_AF518386, CLUMA_AF518381, Node269, CLUMA_AF518390, CLUMA_AF518383, Node272, Node268, Node262, CLUMA_AY625029, CLUMA_AY625025, Node276, CLUMA_AF518393, CLUMA_AY625008, Node280, CLUMA_AY625011, CLUMA_AY625015, Node283, Node279, Node275, Node261, Node247, ELTMA_AJ402927, EUPMA_AY794909, EUPMA_AJ418806, Node289, EUPMA_AY794821, EUPMA_AY794831, Node292, Node288, Node286, Node246, MALMA_AF344511, MALMA_AF344470, MALMA_AF344507, Node302, MALMA_AF344467, Node301, MALMA_AF344483, MALMA_AF344519, Node306, Node300, MALMA_AF344474, Node299, Node297, PDSSF_AJ403018, Node296, IRVMA_AF123278, LOPMA_AY663643, Node311, Node295, Node245, Node241, Node229, Node205, LBOCE_AJ402966, CELCE_AY935727, PARCE_AY935732, CELCE_AJ235795, CELCE_AJ402994, Node321, CELCE_X69754, CELCE_X83996, Node324, Node320, Node318, Node316, Node314, Node204, ELCOX_AF206765, CUNOX_AY549641, CUNOX_AF291930, Node331, CUNOX_AF206759, Node330, Node328, CONOX_L29493, OXAOX_L01938, Node335, Node327, Node203, POLFB_L29492, POLFB_AJ235799, Node340, CAEFB_AY904379, CAEFB_AY904398, CAEFB_AY904416, CAEFB_AY904417, CAEFB_AY904420, Node353, Node351, CAEFB_AY904406, CAEFB_AY904402, Node356, Node350, Node348, CAEFB_AY904395, CAEFB_AY904376, Node359, Node347, Node345, CAEFB_AY904377, CAEFB_AY308532, Node362, Node344, PAPFB_U74258, PAPFB_Z95536, PAPFB_AB045801, PAPFB_U74197, Node369, Node367, Node365, Node343, Node339, ROSRO_AF132893, ROSRO_AY052506, ROSRO_AY052518, ROSRO_AY052513, ROSRO_AF329002, Node382, Node380, ROSRO_AF411503, Node379, ROSRO_AF411494, ROSRO_AF411490, ROSRO_AF411496, Node388, Node386, Node378, Node376, Node374, CANRO_AJ402933, MORRO_AF500345, MORRO_AF500348, MORRO_AF500349, Node398, Node396, Node394, URTRO_AY208707, URTRO_AY208704, Node402, URTRO_AY208700, Node401, Node393, ULMRO_AF500338, Node392, DIRRO_AJ225789, BARRO_AJ225788, Node409, RHARO_AJ225785, RHARO_AJ390030, RHARO_AJ390028, Node415, Node413, RHARO_AJ390038, RHARO_AJ390035, Node418, Node412, Node408, ELARO_U59821, RHARO_AJ390052, RHARO_U59819, Node423, Node421, Node407, Node391, Node373, NOTFA_L13348, JUGFA_AJ235790, CANRO_L12638, FAGFA_AY147096, Node431, Node429, Node427, ANICU_AY935742, CUCCU_AY862550, CUCCU_AF008958, CUCCU_AJ235782, Node439, Node437, Node435, BEGCU_AF534722, BEGCU_AF534740, Node443, COCCU_U06840, Node442, Node434, Node426, Node372, Node338, Node202, Node194, Node192, Node24, HCHGE_L14699, GERGE_L14703, GERGE_L14697, GERGE_L14693, GERGE_U77901, GERGE_U77902, GERGE_U77903, Node458, Node456, Node454, Node452, Node450, Node448, CSOCS_AY101845, Node447, Node23, Node21, Node17, SAXSF_AF374730, HAMSF_AM183407, HAMSF_AF060709, Node466, Node464, HAMSF_AF060708, Node463, HAMSF_AJ131772, Node462, Node16, PLAPR_L01943, DDYBX_AF061994, BUXBX_AF093733, BUXBX_AF203485, Node477, Node475, SABSB_AF206793, CAARA_AF093720, KGDRA_AF093719, Node488, LARRA_L37916, LARRA_L37921, Node492, LARRA_AF093731, Node491, Node487, RANRA_L75849, RANRA_AF093730, RANRA_AF079453, Node500, Node498, BERRA_L75871, BERRA_AF190442, BERRA_L37920, BERRA_L75843, Node509, Node507, BERRA_L75867, Node506, BERRA_L75868, BERRA_L75869, BERRA_AF079454, BERRA_AF093716, Node517, Node515, Node513, Node505, Node503, Node497, MSPRA_AF093726, MSPRA_L37923, Node520, Node496, Node486, EPTRA_AY048174, Node485, PPVRA_U86624, PPVRA_U86632, Node525, FUMRA_U86628, PTPRA_U86631, Node528, Node524, Node484, PROPR_U79178, PROPR_U79165, PROPR_U79166, PROPR_DQ099446, PROPR_U79173, Node538, PROPR_U79164, PROPR_U79174, PROPR_U79171, Node543, Node541, Node537, Node535, Node533, Node531, Node483, NYSCO_AF119178, BRACHYPODIUM_DISTACHYON_NC_011032, HORDEUM_VULGARE_NC_008590, Node550, ORYZA_SATIVA_JAPONICA_NC_001320, ZEA_MAYS_NC_001666, SORGHUM_BICOLOR_NC_008602, Node555, Node553, Node549, Node547, NELPR_DQ182337, Node546, Node482, Node480, Node474, Node472, GUNGU_AF307918, GUNGU_AY008156, Node560, GUNGU_AF060707, Node559, Node471, Node15, SANSL_L26067, SANSL_L26070, Node564, Node14, SPTER_Z83135, LECER_AF077656, LECER_AF077652, LECER_AF077653, LECER_Z80177, LECER_Z80181, LECER_AF022134, Node584, Node582, Node580, Node578, LECER_Z80202, LECER_Z80180, Node588, LECER_Z80183, Node587, Node577, Node575, Node573, PMOER_Z83144, MSNER_AF213821, MSNER_AF213820, MSNER_AF213809, MSNER_AF213807, MSNER_AF213806, Node604, Node602, Node600, Node598, MSNER_AF213813, MSNER_AF213814, MSNER_AF213812, MSNER_AF213811, Node613, MSNER_AF213810, Node612, Node610, Node608, MSNER_Z83145, Node607, Node597, PRMER_AF394965, PRMER_AF395006, Node620, PRMER_AF395005, Node619, PRMER_U96943, PRMER_AF213801, PRMER_AF394964, Node628, Node626, PRMER_AF394997, PRMER_AF395007, PRMER_AF394967, PRMER_AF394975, Node635, Node633, Node631, Node625, PRMER_AF213794, Node624, Node618, Node596, THPER_AF213819, THPER_AF213817, THPER_AF213815, Node642, Node640, THPER_AF213818, Node639, Node595, Node593, THEER_AF380041, THEER_AF380046, THEER_AF380066, Node649, Node647, DIAER_Z83132, DIAER_AY049795, Node653, CYRER_AY082698, ERIER_L12616, MSNER_L12598, ERIER_AF419819, Node664, ERIER_AF419814, Node663, ERIER_L12622, ERIER_AF419838, Node669, ERIER_AF419818, Node668, Node662, ERIER_L12601, ERIER_AF419834, Node675, ERIER_AF419827, ERIER_L12617, ERIER_AF419823, Node681, Node679, ERIER_AF419816, ERIER_AF419828, Node687, ERIER_U49293, ERIER_AF419832, ERIER_U49286, Node692, Node690, Node686, ERIER_AF419820, ERIER_AF419822, Node696, ERIER_AF419821, Node695, Node685, ERIER_U49285, ERIER_AF419826, ERIER_U49289, ERIER_U49288, ERIER_U49294, Node707, Node705, Node703, ERIER_U49292, ERIER_U49291, ERIER_U49287, Node713, Node711, ERIER_U49284, Node710, Node702, Node700, Node684, Node678, Node674, ERIER_U82766, ERIER_AF124587, ERIER_AF124583, Node722, ERIER_AF124589, ERIER_AF124588, Node726, ERIER_U82764, ERIER_AF124580, ERIER_AF124578, Node733, Node731, ERIER_L12626, ERIER_AF419812, Node737, ERIER_L12618, ERIER_AF124574, ERIER_AF124585, ERIER_AF124575, Node746, Node744, ERIER_U82765, Node743, Node741, ERIER_AF124576, ERIER_AF419836, ERIER_AF419837, Node754, Node752, ERIER_AF419835, ERIER_AF419811, Node757, Node751, ERIER_AF124579, Node750, Node740, Node736, Node730, ERIER_AF124581, ERIER_AF124577, Node762, ERIER_AF124573, Node761, Node729, Node725, Node721, ERIER_U79743, ERIER_U79741, ERIER_U80422, ERIER_U80423, Node772, ERIER_U80419, ERIER_U80418, Node776, ERIER_U80424, ERIER_AF156095, ERIER_U80427, Node783, ERIER_U80426, Node782, Node780, ERIER_L12621, ERIER_U80431, ERIER_U80428, ERIER_U80432, ERIER_U80430, ERIER_U80434, Node796, Node794, Node792, Node790, ERIER_U80433, ERIER_U81798, Node799, Node789, Node787, Node779, Node775, Node771, Node769, ERIER_U80421, Node768, Node766, Node720, ERIER_L12606, Node719, Node717, Node673, Node661, Node659, CTHER_Z80212, CTHER_AF421088, Node805, CYRER_L01900, ACTER_AF088852, Node808, Node804, Node658, Node656, Node652, Node646, Node592, Node572, TSTER_Z83149, SYMER_Z80192, Node812, SLAER_AF421108, PPLER_AF419239, Node816, SLAER_AF421109, Node815, Node811, Node571, PCIER_AJ428893, MGVER_Z80200, Node820, Node570, BERRA_AF203487, COMMY_AF281478, Node823, Node569, HANCO_AF323190, HANCO_AF323188, Node827, CRNCO_AY530929, CRNCO_L14395, Node831, CRNCO_AY530927, CRNCO_AF190433, CRNCO_L11217, Node836, Node834, Node830, Node826, Node568, BBOBB_AJ235773, Node567, Node13, Node5, SMDCA_AF093732, APECA_Z83150, PHYCA_Y13116, Node843, MOLCA_AF093727, AIZCA_M62572, SBTCA_AY270148, AIZCA_AJ235778, PHLCA_AJ235800, Node854, Node852, Node850, HPHCA_AJ403024, PORCA_M62568, Node857, Node849, Node847, CPHCA_M83541, AMACA_AY270111, AMACA_AY270074, AMACA_AB050127, AMACA_AY270117, Node868, Node866, Node864, AMACA_AY270118, Node863, AMACA_AY270133, AMACA_AY489263, Node873, AMACA_AY270083, AMACA_AY270131, AMACA_AY270127, Node879, Node877, AMACA_AY270087, AMACA_AY270130, Node882, Node876, Node872, Node862, Node860, Node846, Node842, Node840, Node4, DROCA_L01904, DROCA_L01914, DROCA_AY096106, Node888, DROCA_L01913, DROCA_L01906, Node892, DROCA_L01909, DROCA_AY096107, Node895, Node891, Node887, Node885, Node3, PLMCA_AJ312252, PLMCA_Z97641, PLMCA_Y16905, PGNCA_M77702, Node904, Node902, PLMCA_Z97642, PLMCA_AJ286357, PLMCA_AJ286360, Node912, Node910, PLMCA_Z97639, Node909, PLMCA_AJ286359, PLMCA_Z97646, PLMCA_AJ286363, PLMCA_Z97645, Node921, PLMCA_Z97643, PLMCA_Z97644, Node924, Node920, Node918, Node916, Node908, PLMCA_Y16909, PLMCA_Y16907, Node927, Node907, Node901, Node899, PGNCA_AF297137, PGNCA_Z97648, PGNCA_AF297146, Node934, PGNCA_Z97647, PGNCA_AF297150, Node937, Node933, Node931, PGNCA_AF297135, PGNCA_AF297124, PGNCA_AF297141, PGNCA_AF297149, Node946, Node944, Node942, PGNCA_AF297125, PGNCA_AF297128, PGNCA_AJ235789, Node952, Node950, PGNCA_AF297145, PGNCA_AF297144, Node956, PGNCA_AF297139, Node955, Node949, Node941, PLMCA_M77701, PGNCA_AF297147, Node960, Node940, Node930, Node898, Node2, ACCCA_AF206733`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 20 zero-length internal branches: `Node146, Node207, Node229, Node279, Node347, Node362, Node42, Node496, Node573, Node582, Node633, Node685, Node722, Node725, Node730, Node771, Node796, Node811, Node815, Node924`
+* Log(L) = -84171.84, AIC-c = 170288.48 (971 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 10.510
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -79470.86, AIC-c = 160865.92 (958 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 10.876
+* non-synonymous/synonymous rate ratio for *test* =   0.1890
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -78901.63, AIC-c = 159727.45 (958 estimated parameters)
+* non-synonymous/synonymous rate ratio for *test* =   0.1514
+
+### Performing the full (dN/dS > 1 allowed) branch-site model fit
+* Log(L) = -75520.96, AIC-c = 152988.31 (969 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.1129
+* Corresponding fraction of substitutions :  2.444%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0173
+* Corresponding fraction of substitutions :  0.053%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.105     |   97.931    |                                   |
+|         Neutral evolution         |     1.000     |    1.935    |                                   |
+|      Diversifying selection       |    40.132     |    0.134    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.565               |    65.817     |                                   |
+|               1.427               |    28.821     |                                   |
+|               4.048               |     5.362     |                                   |
+
+
+### Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -75554.52, AIC-c = 153053.40 (968 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.1895
+* Corresponding fraction of substitutions :  3.378%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.1708
+* Corresponding fraction of substitutions :  0.433%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.110     |   98.187    |                                   |
+|         Neutral evolution         |     1.000     |    1.332    |                                   |
+|         Neutral evolution         |     1.000     |    0.481    |       Collapsed rate class        |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.567               |    65.906     |                                   |
+|               1.410               |    28.288     |                                   |
+|               3.921               |     5.806     |                                   |
+
+----
+## Branch-site unrestricted statistical test of episodic diversification [BUSTED]
+Likelihood ratio test for episodic diversifying positive selection, **p =   0.0000**.

@@ -1,0 +1,60 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **54** sequences, **412** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/rbp3.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -23425.29, AIC-c = 47076.96 (113 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.132
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -21839.86, AIC-c = 43921.04 (120 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.506
+* non-synonymous/synonymous rate ratio for *test* =   0.1665
+
+### Fitting Standard MG94
+* Log(L) = -21110.08, AIC-c = 42471.59 (125 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1606
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.126               |    49.571     |                                   |
+|               1.176               |    34.891     |                                   |
+|               3.393               |    15.538     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+Error:
+HyPhy suspended.
+
+Function call stack
+1 :  [namespace = FOkyKley] Optimize(mles, likelihoodFunction);
+-------
+2 :  fitter.results=estimators.FitCodonModel(fitter.filter_names,fitter.trees,model_generator,fitter.codon_data_info[utility.getGlobalValue("terms.code")],{utility.getGlobalValue("terms.run_options.model_type"):utility.getGlobalValue("terms.global"),utility.getGlobalValue("terms.run_options.retain_lf_object"):TRUE,utility.getGlobalValue("terms.run_options.retain_model_object"):TRUE},initial_values);
+-------
+3 :  fitter.two_hit_results=fitter.run_model_fit(fitter.terms.MG94x2,"MG_REV_MH.model.with.GDD",fitter.one_hit_results);
+-------

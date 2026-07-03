@@ -1,0 +1,104 @@
+
+Analysis Description
+--------------------
+SLAC (Single Likelihood Ancestor Counting) uses a maximum likelihood
+ancestral state reconstruction and minimum path substitution counting to
+estimate site - level dS and dN, and applies a simple binomial - based
+test to test if dS differs drom dN. The estimates aggregate information
+over all branches, so the signal is derived from pervasive
+diversification or conservation. A subset of branches can be selected
+for testing as well. Multiple partitions within a NEXUS file are also
+supported for recombination - aware analysis. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Not So Different After All: A Comparison of Methods for Detecting Amino
+Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
+
+- __Written by__: Sergei L Kosakovsky Pond and Simon DW Frost
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.00
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/SARS-CoV-2-spike.nex'
+contains 10 duplicate sequences. Identical sequences do not contribute
+any information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **180** sequences, **1284** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/SARS-CoV-2-spike.nex`
+
+>branches => All
+
+>Select the number of samples used to assess ancestral reconstruction uncertainty [select 0 to skip] (permissible range = [0,100000], default value = 100, integer): 
+>samples => 100
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+
+### Branches to include in the SLAC analysis
+Selected 357 branches to include in SLAC calculations: `B_1_1_523_EPI_ISL_11267908, B_1_619_EPI_ISL_2131789, Node2, P_2_EPI_ISL_1000677, Node1, P_3_EPI_ISL_1073934, B_1_620_EPI_ISL_10010858, B_1_1_7_A67V_K417R_E484K_K1191N_EPI_ISL_1679507, B_1_1_7_E484K_EPI_ISL_1018343, Node15, ALPHA_B_1_1_7_Q_EPI_ISL_1000001, B_1_1_7_Y449N_EPI_ISL_1913212, B_1_1_7_G142V_EPI_ISL_1000652, B_1_1_7_W152R_EPI_ISL_1005892, Node25, Node23, Node21, B_1_1_7_N440S_EPI_ISL_2006667, B_1_1_7_L5F_F490S_EPI_ISL_10301586, B_1_1_7_F490S_EPI_ISL_1007040, Node30, Node28, Node20, B_1_1_7_ALPHA_BASELINE_EPI_ISL_1000001, Node19, B_1_1_7_T20I_EPI_ISL_1000946, Node18, Node14, Node12, B_1_621_K417N_EPI_ISL_2818170, B_1_621_BASELINE_EPI_ISL_10080356, MU_B_1_621_EPI_ISL_10080356, Node37, Node35, Node11, Node9, C_1_2_EPI_ISL_3132623, B_1_640_2_EPI_ISL_7181977, B_1_640_1_EPI_ISL_10352750, Node43, Node41, P_1_8_T470N_P681R_EPI_ISL_2983341, P_1_7_P681H_EPI_ISL_10101603, Node47, GAMMA_P_1_EPI_ISL_1000993, P_1_3_L141_G142_V143_Y144_EPI_ISL_2777314, P_1_GAMMA_BASELINE_EPI_ISL_1000993, Node53, Node51, P_1_4_R246G_N679K_EPI_ISL_10328973, P_1_4_N679K_EPI_ISL_11294218, Node57, P_1_9_Q675H_EPI_ISL_2187251, Node56, Node50, Node46, Node40, Node8, B_1_351_BETA_BASELINE_EPI_ISL_1005538, BETA_B_1_351_EPI_ISL_1005538, Node62, B_1_351_L18F_EPI_ISL_1001463, Node61, Node7, P_4_EPI_ISL_1625983, A_27_EPI_ISL_10046311, B_1_630_EPI_ISL_10657899, Node72, C_37_Q675H_EPI_ISL_1281953, C_37_LAMBDA_BASELINE_EPI_ISL_10072009, LAMBDA_C_37_EPI_ISL_10072009, Node79, Node77, B_1_637_EPI_ISL_1016114, Node76, B_1_617_2_G142_EPI_ISL_10005803, B_1_617_2_T95_L1234I_V1264L_EPI_ISL_10297349, B_1_617_2_T95_A222V_N1074S_V1264L_EPI_ISL_10020013, B_1_617_2_T95_A222V_V1264L_EPI_ISL_10209492, Node99, B_1_617_2_T95_V1264L_EPI_ISL_10145344, Node98, Node96, B_1_617_2_T22I_A67V_T95_EPI_ISL_11059025, Node95, B_1_617_2_T95_EPI_ISL_10005534, B_1_617_2_T95_L455F_EPI_ISL_3125708, B_1_617_2_T95_K77T_E484Q_EPI_ISL_10842950, B_1_617_2_K77T_T95_EPI_ISL_10033693, Node109, Node107, Node105, B_1_617_2_A222V_Q613H_EPI_ISL_10079226, B_1_617_2_T95_V70F_A222V_K417N_EPI_ISL_10954976, B_1_617_2_T95_A222V_V289I_EPI_ISL_10019681, Node116, B_1_617_2_T95_A222V_EPI_ISL_10033438, B_1_617_2_T95_A222V_D253A_D979E_EPI_ISL_10146046, B_1_617_2_T95_A222V_V367L_EPI_ISL_10328807, Node123, B_1_617_2_R21T_T95_A222V_EPI_ISL_11141270, Node122, Node120, B_1_617_2_T95_A222V_A262S_EPI_ISL_2690384, B_1_617_2_T95_A222V_T250S_EPI_ISL_2896249, Node127, Node119, Node115, Node113, B_1_617_2_T95_P251L_EPI_ISL_10019816, Node112, Node104, Node94, B_1_617_2_W258L_K417N_EPI_ISL_10239260, B_1_617_2_T95_W258L_EPI_ISL_10083525, Node134, B_1_617_2_Y248H_EPI_ISL_11140542, B_1_617_2_P809S_EPI_ISL_10019652, Node139, B_1_617_2_E484Q_EPI_ISL_10165790, B_1_617_2_E484K_EPI_ISL_4011209, Node145, B_1_617_2_H655Y_EPI_ISL_10156347, Node144, B_1_617_2_Y144_EPI_ISL_10157229, B_1_617_2_V16F_I1179V_EPI_ISL_10160241, B_1_617_2_P1162S_EPI_ISL_10153453, Node154, Node152, B_1_617_2_S494L_EPI_ISL_11297838, B_1_617_2_V70F_EPI_ISL_10160114, Node158, B_1_617_2_G446V_EPI_ISL_10098575, B_1_617_2_T250N_EPI_ISL_10157097, Node161, Node157, Node151, B_1_617_2_Q675H_EPI_ISL_10077460, B_1_617_2_DELTA_BASELINE_EPI_ISL_10004745, Node165, B_1_617_2_D138H_EPI_ISL_10153441, B_1_617_2_L1141F_EPI_ISL_10156255, Node169, B_1_617_2_K97N_EPI_ISL_10157499, B_1_617_2_S255F_EPI_ISL_10033451, Node174, B_1_617_2_Q677H_EPI_ISL_10065167, B_1_617_2_D253G_EPI_ISL_10302057, Node178, B_1_617_2_L18F_EPI_ISL_10153498, B_1_617_2_Q414H_EPI_ISL_2392330, Node181, Node177, Node173, B_1_617_2_N148S_EPI_ISL_2682118, B_1_617_2_V36F_Y145H_A222V_EPI_ISL_10164032, B_1_617_2_Y145H_A222V_EPI_ISL_10007289, Node188, B_1_617_2_Y145H_A222V_V1264L_EPI_ISL_10014590, Node187, Node185, B_1_617_2_E484A_EPI_ISL_11052514, B_1_617_2_V1104L_EPI_ISL_10005059, Node193, DELTA_B_1_617_2_AY_EPI_ISL_10004745, Node192, Node184, Node172, Node168, Node164, Node150, B_1_617_2_I850L_EPI_ISL_10007287, B_1_617_2_A1078S_EPI_ISL_10162493, Node198, B_1_617_2_T51I_EPI_ISL_10007595, B_1_617_2_K444N_EPI_ISL_10510404, Node201, Node197, Node149, Node143, B_1_617_2_N501Y_P681H_EPI_ISL_3399822, B_1_617_2_S256L_EPI_ISL_11206816, Node204, Node142, Node138, B_1_617_2_S477I_EPI_ISL_10159748, Node137, Node133, B_1_617_2_T29A_T95_T250I_Q613H_EPI_ISL_10619598, B_1_617_2_T29A_T95_T250I_T299I_Q613H_EPI_ISL_10315261, Node210, B_1_617_2_T29A_T95_T250I_EPI_ISL_10032622, Node209, B_1_617_2_S112L_EPI_ISL_10019577, B_1_617_2_T95_S112L_S477G_EPI_ISL_2785874, Node214, Node208, Node132, B_1_617_2_R20I_T95_EPI_ISL_10172478, B_1_617_2_T95_V362F_EPI_ISL_2513971, Node218, B_1_617_2_T95_L244S_EPI_ISL_10640498, B_1_617_2_W258R_A1078S_EPI_ISL_10613938, Node221, Node217, Node131, Node93, B_1_617_2_V70I_T95_EPI_ISL_10077792, Node92, B_1_617_2_T95_L452_EPI_ISL_2987893, B_1_617_2_T95_T791I_EPI_ISL_2811419, Node225, Node91, Node89, B_1_617_2_T95_G142_H69_V70_Y144_EPI_ISL_2356626, Node88, B_1_617_2_T95_G142_H69_V70_Y144_E156_F157_R158_EPI_ISL_2192796, Node87, B_1_617_2_T95_G142_E156_F157_R158_EPI_ISL_10182825, Node86, BA_1_E156_F157_R158G_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_EPI_ISL_10228808, BA_1_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_EPI_ISL_8119611, Node234, BA_1_K417_N440_G446_L452R_EPI_ISL_10145348, BA_1_K417_N440_G446_EPI_ISL_10072811, BA_1_1_R346K_K417_N440_G446_EPI_ISL_10044070, Node241, BA_1_N211_L212_214_V213G_T376A_D405N_R408S_T376A_D405N_R408S_K417_N440_EPI_ISL_10121312, BA_1_K417_EPI_ISL_10016584, BA_1_R346K_E484V_EPI_ISL_10032318, BA_1_R346K_BA_1_1_EPI_ISL_10000001, Node252, BA_1_A701V_EPI_ISL_10000009, BA_1_E484V_EPI_ISL_10188124, BA_1_F643L_A701V_EPI_ISL_10000156, Node257, Node255, Node251, BA_1_OMICRON_BASELINE_EPI_ISL_10000028, OMICRON_B_1_1_529_BA_BA_1_EPI_ISL_10000028, BA_1_R346K_I666S_V736G_C738W_I993S_Y1272D_EPI_ISL_9509444, BA_1_I666S_V736G_C738W_I993S_Y1272D_EPI_ISL_9509467, Node265, BA_1_I1081V_EPI_ISL_10000045, Node264, Node262, Node260, Node250, BA_1_N211_L212_214_EPI_ISL_10012936, BA_1_214GAR_D215N_EPI_ISL_10222778, BA_1_214GAR_D215N_EPI_ISL_10240037, Node273, BA_1_214_EPI_ISL_10007028, Node272, Node270, BA_2_N408_EPI_ISL_10034943, BA_2_S787H_EPI_ISL_10000916, BA_2_P1162L_EPI_ISL_10027138, BA_2_OMICRON_BASELINE_EPI_ISL_10000005, Node285, BA_2_EPI_ISL_10000005, BA_2_M1229I_EPI_ISL_10055581, BA_2_N440_EPI_ISL_10005315, BA_2_I1221T_EPI_ISL_10000574, Node292, Node290, Node288, Node284, Node282, BA_2_A846G_EPI_ISL_10002943, BA_2_S704L_EPI_ISL_10001682, Node295, Node281, BA_2_L24_P25_P26_A27_EPI_ISL_10010992, BA_2XBA_1_BA_2_A67V_H69_V70_EPI_ISL_10019568, BA_2_E484V_EPI_ISL_10857825, Node301, BA_2XBA_1_1_BA_2_R346K_T376_EPI_ISL_10003562, BA_2_P1162S_EPI_ISL_10014673, Node305, BA_2_212SGR_OR_COULD_BE_WRITTEN_AS_213_GRG_EPI_ISL_10013634, Node304, Node300, Node298, Node280, Node278, BA_3_EPI_ISL_10007901, Node277, Node269, Node249, B_1_1_617_L452_N211_L212I_214EPE_G339D_S371L_S373P_S375F_K417N_N440K_G446S_S477N_T478K_E484A_Q493R_G496S_Q498R_N501Y_Y505H_T547K_D614G_H655Y_N679K_P681H_N764K_D796Y_N856K_D950_Q954H_N969K_L981F_EPI_ISL_10207240, Node248, Node246, Node244, Node240, Node238, BA_1_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_EPI_ISL_8524423, Node237, Node233, BA_1_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_T547_H655_N679_P681R_EPI_ISL_8746594, Node232, B_1_617_1_EPI_ISL_10127326, Node231, Node85, A_2_5_EPI_ISL_3037842, Node84, C_36_3_1_S477N_A845S_EPI_ISL_1653201, C_36_3_BASELINE_EPI_ISL_11100917, C_36_3_EPI_ISL_11100917, Node317, Node315, Node83, Node75, Node71, B_1_429_B_1_427_EPI_ISL_10031346, Node70, Node68, B_1_258_17_EPI_ISL_1001674, B_1_466_2_EPI_ISL_1010700, Node323, B_1_177_82_EPI_ISL_1000202, A_23_1_EPI_ISL_10138371, NC_045512_SPIKE_SURFACE_GLYCOPROTEIN, Node329, B_1_214_2_EPI_ISL_1033870, B_1_575_EPI_ISL_1009066, B_1_1_519_EPI_ISL_1002604, Node334, Node332, Node328, Node326, Node322, B_1_1_284_EPI_ISL_1041949, B_1_234_EPI_ISL_1016643, Node337, Node321, Node67, B_1_525_EPI_ISL_1000437, Node66, Node6, B_1_1_318_AZ_EPI_ISL_10010857, AZ_5_EPI_ISL_10047537, Node344, B_1_526_E484_S477N_Q957R_EPI_ISL_1015702, B_1_526_EPI_ISL_1009654, B_1_526_BASELINE_EPI_ISL_1009654, Node349, Node347, Node343, B_1_EPI_ISL_2958387, Node342, R_1_EPI_ISL_1010709, N_10_EPI_ISL_1181370, AT_1_EPI_ISL_1491610, Node355, Node353, Node341`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 113 zero-length internal branches: `Node1, Node104, Node105, Node107, Node11, Node112, Node115, Node116, Node119, Node120, Node122, Node123, Node127, Node131, Node132, Node133, Node138, Node139, Node142, Node143, Node144, Node149, Node15, Node150, Node151, Node152, Node154, Node157, Node158, Node161, Node164, Node165, Node168, Node169, Node172, Node173, Node174, Node177, Node178, Node181, Node184, Node185, Node188, Node19, Node192, Node193, Node197, Node198, Node20, Node201, Node204, Node208, Node21, Node217, Node218, Node221, Node225, Node23, Node234, Node241, Node249, Node25, Node250, Node251, Node257, Node260, Node262, Node264, Node269, Node270, Node272, Node28, Node281, Node282, Node284, Node285, Node288, Node290, Node292, Node295, Node300, Node301, Node304, Node305, Node317, Node321, Node322, Node326, Node328, Node332, Node341, Node342, Node353, Node37, Node50, Node51, Node53, Node56, Node6, Node62, Node66, Node70, Node71, Node75, Node79, Node8, Node83, Node84, Node91, Node93, Node94, Node95, Node98`
+* Log(L) = -9194.36, AIC-c = 19119.10 (365 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.118
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -8987.93, AIC-c = 18494.44 (259 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.117
+* non-synonymous/synonymous rate ratio for *test* =   1.4727
+
+### Performing joint maximum likelihood ancestral state reconstruction
+
+### For partition 1 these sites are significant at p <=0.1
+
+|     Codon      |   Partition    |       S        |       N        |       dS       |       dN       |Selection detected?|
+|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:-----------------:|
+|       67       |       1        |     0.000      |     7.000      |     0.000      |     3.500      |  Pos. p = 0.059   |
+|       68       |       1        |     10.000     |     0.000      |     17.107     |     0.000      |  Neg. p = 0.000   |
+|       95       |       1        |     0.000      |     7.000      |     0.000      |     3.326      |  Pos. p = 0.084   |
+|      147       |       1        |     2.000      |     0.000      |     3.101      |     0.000      |  Neg. p = 0.046   |
+|      213       |       1        |     0.000      |     5.000      |     0.000      |     3.113      |  Pos. p = 0.085   |
+|      319       |       1        |     2.000      |     0.000      |     2.296      |     0.000      |  Neg. p = 0.084   |
+|      353       |       1        |     0.000      |     8.000      |     0.000      |     3.961      |  Pos. p = 0.068   |
+|      459       |       1        |     0.000      |     4.000      |     0.000      |     2.598      |  Pos. p = 0.070   |
+|      491       |       1        |     0.000      |     14.000     |     0.000      |     6.573      |  Pos. p = 0.030   |
+|      692       |       1        |     0.000      |     11.000     |     0.000      |     5.125      |  Pos. p = 0.025   |
+|      718       |       1        |     2.000      |     0.000      |     3.101      |     0.000      |  Neg. p = 0.059   |
+|      734       |       1        |     3.000      |     0.000      |     3.000      |     0.000      |  Neg. p = 0.037   |
+|      1157      |       1        |     3.000      |     0.000      |     4.763      |     0.000      |  Neg. p = 0.009   |
+
+### Ancestor sampling analysis
+
+>Generating 100 ancestral sequence samples to obtain confidence intervals
+
+Resampling results for partition 1
+
+|     Codon      |   Partition    |    S [median, IQR]    |    N [median, IQR]    |    dS [median, IQR]    |    dN [median, IQR]    |  p-value [median, IQR]  |
+|:--------------:|:--------------:|:---------------------:|:---------------------:|:----------------------:|:----------------------:|:-----------------------:|
+|       67       |       1        |   0.00 [0.00-0.00]    |   7.00 [7.00-7.00]    |    0.00 [0.00-0.00]    |    3.50 [3.50-3.50]    |    0.06 [0.06-0.06]     |
+|       68       |       1        |  10.00 [10.00-10.00]  |   0.00 [0.00-0.00]    |  17.11 [17.11-17.11]   |    0.00 [0.00-0.00]    |    0.00 [0.00-0.00]     |
+|       95       |       1        |   0.00 [0.00-0.00]    |   7.00 [7.00-7.00]    |    0.00 [0.00-0.00]    |    3.33 [3.33-3.33]    |    0.08 [0.08-0.08]     |
+|      147       |       1        |   2.00 [2.00-2.00]    |   0.00 [0.00-0.00]    |    3.10 [3.10-3.10]    |    0.00 [0.00-0.00]    |    0.05 [0.05-0.05]     |
+|      213       |       1        |   0.00 [0.00-0.00]    |   5.00 [5.00-5.00]    |    0.00 [0.00-0.00]    |    3.11 [3.11-3.11]    |    0.09 [0.09-0.09]     |
+|      319       |       1        |   2.00 [2.00-2.00]    |   0.00 [0.00-0.00]    |    2.30 [2.30-2.30]    |    0.00 [0.00-0.00]    |    0.08 [0.08-0.08]     |
+|      353       |       1        |   0.00 [0.00-0.00]    |   8.00 [8.00-8.00]    |    0.00 [0.00-0.00]    |    3.96 [3.96-3.96]    |    0.07 [0.07-0.07]     |
+|      459       |       1        |   0.00 [0.00-0.00]    |   4.00 [4.00-4.00]    |    0.00 [0.00-0.00]    |    2.60 [2.60-2.60]    |    0.07 [0.07-0.07]     |
+|      491       |       1        |   0.00 [0.00-0.00]    |  14.00 [14.00-14.00]  |    0.00 [0.00-0.00]    |    6.57 [6.57-6.58]    |    0.03 [0.03-0.03]     |
+|      692       |       1        |   0.00 [0.00-0.00]    |  11.00 [11.00-11.00]  |    0.00 [0.00-0.00]    |    5.12 [5.12-5.12]    |    0.03 [0.03-0.03]     |
+|      718       |       1        |   2.00 [2.00-2.00]    |   0.00 [0.00-0.00]    |    3.10 [3.10-3.10]    |    0.00 [0.00-0.00]    |    0.06 [0.06-0.06]     |
+|      734       |       1        |   3.00 [3.00-3.00]    |   0.00 [0.00-0.00]    |    3.00 [3.00-3.00]    |    0.00 [0.00-0.00]    |    0.04 [0.04-0.04]     |
+|      1157      |       1        |   3.00 [3.00-3.16]    |   0.00 [0.00-0.00]    |    4.76 [4.76-5.01]    |    0.00 [0.00-0.00]    |    0.01 [0.01-0.01]     |

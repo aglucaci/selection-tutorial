@@ -1,0 +1,194 @@
+
+Analysis Description
+--------------------
+BUSTED (branch-site unrestricted statistical test of episodic
+diversification) uses a random effects branch-site model fitted jointly
+to all or a subset of tree branches in order to test for alignment-wide
+evidence of episodic diversifying selection. Assuming there is evidence
+of positive selection (i.e. there is an omega > 1), BUSTED will also
+perform a quick evidence-ratio style analysis to explore which
+individual sites may have been subject to selection. Version 2.0 adds
+support for synonymous rate variation, and relaxes the test statistic to
+0.5 (chi^2_0 + chi^2_2). Version 2.1 adds a grid search for the initial
+starting point. Version 2.2 changes the grid search to LHC, and adds an
+initial search phase to use adaptive Nedler-Mead. Version 3.0 implements
+the option for branch-site variation in synonymous substitution rates.
+Version 3.1 adds HMM auto-correlation option for SRV, and binds SRV
+distributions for multiple branch sets. Version 4.0 adds support for
+multiple hits (MH), ancestral state reconstruction saved to JSON, and
+profiling of branch-site level support for selection / multiple hits.
+Version 4.2 adds calculation of MH-attributable fractions of
+substitutions. Version 4.5 adds an 'error absorption' component. Version
+4.6 adds support for MSS-type models. Version 4.7 adds user configurable
+options for the error class. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree (optionally annotated
+with {})
+
+- __Citation__: *Gene-wide identification of episodic selection*, Mol Biol Evol.
+32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation
+Dramatically Inflates False Positive Rates of Selection Analyses: Ignore
+at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.7
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/SARS-CoV-2-spike.nex'
+contains 10 duplicate sequences. Identical sequences do not contribute
+any information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **180** sequences, **1284** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/SARS-CoV-2-spike.nex`
+
+>branches => All
+
+>srv => Yes
+The number omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>multiple-hits => Double+Triple
+
+>mss => No
+The number alpha rate classes to include in the model [1-10, default 3] (permissible range = [1,10], default value = 3, integer): 
+>syn-rates => 3
+
+>error-sink => No
+The number of points in the initial distributional guess for likelihood fitting (permissible range = [1,10000], default value = 250, integer): 
+>grid-size => 250
+The number of initial random guesses to 'seed' rate values optimization (permissible range = [1,25], default value = 1, integer): 
+>starting-points => 1
+
+
+### Branches to test for selection in the BUSTED analysis
+* Selected 357 branches to test in the BUSTED analysis: `B_1_1_523_EPI_ISL_11267908, B_1_619_EPI_ISL_2131789, Node2, P_2_EPI_ISL_1000677, Node1, P_3_EPI_ISL_1073934, B_1_620_EPI_ISL_10010858, B_1_1_7_A67V_K417R_E484K_K1191N_EPI_ISL_1679507, B_1_1_7_E484K_EPI_ISL_1018343, Node15, ALPHA_B_1_1_7_Q_EPI_ISL_1000001, B_1_1_7_Y449N_EPI_ISL_1913212, B_1_1_7_G142V_EPI_ISL_1000652, B_1_1_7_W152R_EPI_ISL_1005892, Node25, Node23, Node21, B_1_1_7_N440S_EPI_ISL_2006667, B_1_1_7_L5F_F490S_EPI_ISL_10301586, B_1_1_7_F490S_EPI_ISL_1007040, Node30, Node28, Node20, B_1_1_7_ALPHA_BASELINE_EPI_ISL_1000001, Node19, B_1_1_7_T20I_EPI_ISL_1000946, Node18, Node14, Node12, B_1_621_K417N_EPI_ISL_2818170, B_1_621_BASELINE_EPI_ISL_10080356, MU_B_1_621_EPI_ISL_10080356, Node37, Node35, Node11, Node9, C_1_2_EPI_ISL_3132623, B_1_640_2_EPI_ISL_7181977, B_1_640_1_EPI_ISL_10352750, Node43, Node41, P_1_8_T470N_P681R_EPI_ISL_2983341, P_1_7_P681H_EPI_ISL_10101603, Node47, GAMMA_P_1_EPI_ISL_1000993, P_1_3_L141_G142_V143_Y144_EPI_ISL_2777314, P_1_GAMMA_BASELINE_EPI_ISL_1000993, Node53, Node51, P_1_4_R246G_N679K_EPI_ISL_10328973, P_1_4_N679K_EPI_ISL_11294218, Node57, P_1_9_Q675H_EPI_ISL_2187251, Node56, Node50, Node46, Node40, Node8, B_1_351_BETA_BASELINE_EPI_ISL_1005538, BETA_B_1_351_EPI_ISL_1005538, Node62, B_1_351_L18F_EPI_ISL_1001463, Node61, Node7, P_4_EPI_ISL_1625983, A_27_EPI_ISL_10046311, B_1_630_EPI_ISL_10657899, Node72, C_37_Q675H_EPI_ISL_1281953, C_37_LAMBDA_BASELINE_EPI_ISL_10072009, LAMBDA_C_37_EPI_ISL_10072009, Node79, Node77, B_1_637_EPI_ISL_1016114, Node76, B_1_617_2_G142_EPI_ISL_10005803, B_1_617_2_T95_L1234I_V1264L_EPI_ISL_10297349, B_1_617_2_T95_A222V_N1074S_V1264L_EPI_ISL_10020013, B_1_617_2_T95_A222V_V1264L_EPI_ISL_10209492, Node99, B_1_617_2_T95_V1264L_EPI_ISL_10145344, Node98, Node96, B_1_617_2_T22I_A67V_T95_EPI_ISL_11059025, Node95, B_1_617_2_T95_EPI_ISL_10005534, B_1_617_2_T95_L455F_EPI_ISL_3125708, B_1_617_2_T95_K77T_E484Q_EPI_ISL_10842950, B_1_617_2_K77T_T95_EPI_ISL_10033693, Node109, Node107, Node105, B_1_617_2_A222V_Q613H_EPI_ISL_10079226, B_1_617_2_T95_V70F_A222V_K417N_EPI_ISL_10954976, B_1_617_2_T95_A222V_V289I_EPI_ISL_10019681, Node116, B_1_617_2_T95_A222V_EPI_ISL_10033438, B_1_617_2_T95_A222V_D253A_D979E_EPI_ISL_10146046, B_1_617_2_T95_A222V_V367L_EPI_ISL_10328807, Node123, B_1_617_2_R21T_T95_A222V_EPI_ISL_11141270, Node122, Node120, B_1_617_2_T95_A222V_A262S_EPI_ISL_2690384, B_1_617_2_T95_A222V_T250S_EPI_ISL_2896249, Node127, Node119, Node115, Node113, B_1_617_2_T95_P251L_EPI_ISL_10019816, Node112, Node104, Node94, B_1_617_2_W258L_K417N_EPI_ISL_10239260, B_1_617_2_T95_W258L_EPI_ISL_10083525, Node134, B_1_617_2_Y248H_EPI_ISL_11140542, B_1_617_2_P809S_EPI_ISL_10019652, Node139, B_1_617_2_E484Q_EPI_ISL_10165790, B_1_617_2_E484K_EPI_ISL_4011209, Node145, B_1_617_2_H655Y_EPI_ISL_10156347, Node144, B_1_617_2_Y144_EPI_ISL_10157229, B_1_617_2_V16F_I1179V_EPI_ISL_10160241, B_1_617_2_P1162S_EPI_ISL_10153453, Node154, Node152, B_1_617_2_S494L_EPI_ISL_11297838, B_1_617_2_V70F_EPI_ISL_10160114, Node158, B_1_617_2_G446V_EPI_ISL_10098575, B_1_617_2_T250N_EPI_ISL_10157097, Node161, Node157, Node151, B_1_617_2_Q675H_EPI_ISL_10077460, B_1_617_2_DELTA_BASELINE_EPI_ISL_10004745, Node165, B_1_617_2_D138H_EPI_ISL_10153441, B_1_617_2_L1141F_EPI_ISL_10156255, Node169, B_1_617_2_K97N_EPI_ISL_10157499, B_1_617_2_S255F_EPI_ISL_10033451, Node174, B_1_617_2_Q677H_EPI_ISL_10065167, B_1_617_2_D253G_EPI_ISL_10302057, Node178, B_1_617_2_L18F_EPI_ISL_10153498, B_1_617_2_Q414H_EPI_ISL_2392330, Node181, Node177, Node173, B_1_617_2_N148S_EPI_ISL_2682118, B_1_617_2_V36F_Y145H_A222V_EPI_ISL_10164032, B_1_617_2_Y145H_A222V_EPI_ISL_10007289, Node188, B_1_617_2_Y145H_A222V_V1264L_EPI_ISL_10014590, Node187, Node185, B_1_617_2_E484A_EPI_ISL_11052514, B_1_617_2_V1104L_EPI_ISL_10005059, Node193, DELTA_B_1_617_2_AY_EPI_ISL_10004745, Node192, Node184, Node172, Node168, Node164, Node150, B_1_617_2_I850L_EPI_ISL_10007287, B_1_617_2_A1078S_EPI_ISL_10162493, Node198, B_1_617_2_T51I_EPI_ISL_10007595, B_1_617_2_K444N_EPI_ISL_10510404, Node201, Node197, Node149, Node143, B_1_617_2_N501Y_P681H_EPI_ISL_3399822, B_1_617_2_S256L_EPI_ISL_11206816, Node204, Node142, Node138, B_1_617_2_S477I_EPI_ISL_10159748, Node137, Node133, B_1_617_2_T29A_T95_T250I_Q613H_EPI_ISL_10619598, B_1_617_2_T29A_T95_T250I_T299I_Q613H_EPI_ISL_10315261, Node210, B_1_617_2_T29A_T95_T250I_EPI_ISL_10032622, Node209, B_1_617_2_S112L_EPI_ISL_10019577, B_1_617_2_T95_S112L_S477G_EPI_ISL_2785874, Node214, Node208, Node132, B_1_617_2_R20I_T95_EPI_ISL_10172478, B_1_617_2_T95_V362F_EPI_ISL_2513971, Node218, B_1_617_2_T95_L244S_EPI_ISL_10640498, B_1_617_2_W258R_A1078S_EPI_ISL_10613938, Node221, Node217, Node131, Node93, B_1_617_2_V70I_T95_EPI_ISL_10077792, Node92, B_1_617_2_T95_L452_EPI_ISL_2987893, B_1_617_2_T95_T791I_EPI_ISL_2811419, Node225, Node91, Node89, B_1_617_2_T95_G142_H69_V70_Y144_EPI_ISL_2356626, Node88, B_1_617_2_T95_G142_H69_V70_Y144_E156_F157_R158_EPI_ISL_2192796, Node87, B_1_617_2_T95_G142_E156_F157_R158_EPI_ISL_10182825, Node86, BA_1_E156_F157_R158G_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_EPI_ISL_10228808, BA_1_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_EPI_ISL_8119611, Node234, BA_1_K417_N440_G446_L452R_EPI_ISL_10145348, BA_1_K417_N440_G446_EPI_ISL_10072811, BA_1_1_R346K_K417_N440_G446_EPI_ISL_10044070, Node241, BA_1_N211_L212_214_V213G_T376A_D405N_R408S_T376A_D405N_R408S_K417_N440_EPI_ISL_10121312, BA_1_K417_EPI_ISL_10016584, BA_1_R346K_E484V_EPI_ISL_10032318, BA_1_R346K_BA_1_1_EPI_ISL_10000001, Node252, BA_1_A701V_EPI_ISL_10000009, BA_1_E484V_EPI_ISL_10188124, BA_1_F643L_A701V_EPI_ISL_10000156, Node257, Node255, Node251, BA_1_OMICRON_BASELINE_EPI_ISL_10000028, OMICRON_B_1_1_529_BA_BA_1_EPI_ISL_10000028, BA_1_R346K_I666S_V736G_C738W_I993S_Y1272D_EPI_ISL_9509444, BA_1_I666S_V736G_C738W_I993S_Y1272D_EPI_ISL_9509467, Node265, BA_1_I1081V_EPI_ISL_10000045, Node264, Node262, Node260, Node250, BA_1_N211_L212_214_EPI_ISL_10012936, BA_1_214GAR_D215N_EPI_ISL_10222778, BA_1_214GAR_D215N_EPI_ISL_10240037, Node273, BA_1_214_EPI_ISL_10007028, Node272, Node270, BA_2_N408_EPI_ISL_10034943, BA_2_S787H_EPI_ISL_10000916, BA_2_P1162L_EPI_ISL_10027138, BA_2_OMICRON_BASELINE_EPI_ISL_10000005, Node285, BA_2_EPI_ISL_10000005, BA_2_M1229I_EPI_ISL_10055581, BA_2_N440_EPI_ISL_10005315, BA_2_I1221T_EPI_ISL_10000574, Node292, Node290, Node288, Node284, Node282, BA_2_A846G_EPI_ISL_10002943, BA_2_S704L_EPI_ISL_10001682, Node295, Node281, BA_2_L24_P25_P26_A27_EPI_ISL_10010992, BA_2XBA_1_BA_2_A67V_H69_V70_EPI_ISL_10019568, BA_2_E484V_EPI_ISL_10857825, Node301, BA_2XBA_1_1_BA_2_R346K_T376_EPI_ISL_10003562, BA_2_P1162S_EPI_ISL_10014673, Node305, BA_2_212SGR_OR_COULD_BE_WRITTEN_AS_213_GRG_EPI_ISL_10013634, Node304, Node300, Node298, Node280, Node278, BA_3_EPI_ISL_10007901, Node277, Node269, Node249, B_1_1_617_L452_N211_L212I_214EPE_G339D_S371L_S373P_S375F_K417N_N440K_G446S_S477N_T478K_E484A_Q493R_G496S_Q498R_N501Y_Y505H_T547K_D614G_H655Y_N679K_P681H_N764K_D796Y_N856K_D950_Q954H_N969K_L981F_EPI_ISL_10207240, Node248, Node246, Node244, Node240, Node238, BA_1_N211_L212_214_G339_S371_S373_S375_K417_N440_G446_L452R_EPI_ISL_8524423, Node237, Node233, BA_1_G339_S371_S373_S375_K417_N440_G446_L452R_S477_E484_Q493_G496_Q498_N501_Y505_T547_H655_N679_P681R_EPI_ISL_8746594, Node232, B_1_617_1_EPI_ISL_10127326, Node231, Node85, A_2_5_EPI_ISL_3037842, Node84, C_36_3_1_S477N_A845S_EPI_ISL_1653201, C_36_3_BASELINE_EPI_ISL_11100917, C_36_3_EPI_ISL_11100917, Node317, Node315, Node83, Node75, Node71, B_1_429_B_1_427_EPI_ISL_10031346, Node70, Node68, B_1_258_17_EPI_ISL_1001674, B_1_466_2_EPI_ISL_1010700, Node323, B_1_177_82_EPI_ISL_1000202, A_23_1_EPI_ISL_10138371, NC_045512_SPIKE_SURFACE_GLYCOPROTEIN, Node329, B_1_214_2_EPI_ISL_1033870, B_1_575_EPI_ISL_1009066, B_1_1_519_EPI_ISL_1002604, Node334, Node332, Node328, Node326, Node322, B_1_1_284_EPI_ISL_1041949, B_1_234_EPI_ISL_1016643, Node337, Node321, Node67, B_1_525_EPI_ISL_1000437, Node66, Node6, B_1_1_318_AZ_EPI_ISL_10010857, AZ_5_EPI_ISL_10047537, Node344, B_1_526_E484_S477N_Q957R_EPI_ISL_1015702, B_1_526_EPI_ISL_1009654, B_1_526_BASELINE_EPI_ISL_1009654, Node349, Node347, Node343, B_1_EPI_ISL_2958387, Node342, R_1_EPI_ISL_1010709, N_10_EPI_ISL_1181370, AT_1_EPI_ISL_1491610, Node355, Node353, Node341`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 113 zero-length internal branches: `Node1, Node104, Node105, Node107, Node11, Node112, Node115, Node116, Node119, Node120, Node122, Node123, Node127, Node131, Node132, Node133, Node138, Node139, Node142, Node143, Node144, Node149, Node15, Node150, Node151, Node152, Node154, Node157, Node158, Node161, Node164, Node165, Node168, Node169, Node172, Node173, Node174, Node177, Node178, Node181, Node184, Node185, Node188, Node19, Node192, Node193, Node197, Node198, Node20, Node201, Node204, Node208, Node21, Node217, Node218, Node221, Node225, Node23, Node234, Node241, Node249, Node25, Node250, Node251, Node257, Node260, Node262, Node264, Node269, Node270, Node272, Node28, Node281, Node282, Node284, Node285, Node288, Node290, Node292, Node295, Node300, Node301, Node304, Node305, Node317, Node321, Node322, Node326, Node328, Node332, Node341, Node342, Node353, Node37, Node50, Node51, Node53, Node56, Node6, Node62, Node66, Node70, Node71, Node75, Node79, Node8, Node83, Node84, Node91, Node93, Node94, Node95, Node98`
+* Log(L) = -9194.36, AIC-c = 19119.10 (365 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.118
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -8987.93, AIC-c = 18494.44 (259 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.117
+* non-synonymous/synonymous rate ratio for *test* =   1.4727
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -8986.31, AIC-c = 18491.21 (259 estimated parameters)
+* non-synonymous/synonymous rate ratio for *test* =   1.5298
+
+### Performing the full (dN/dS > 1 allowed) branch-site model fit
+* Log(L) = -8647.24, AIC-c = 17835.11 (270 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0173
+* Corresponding fraction of substitutions :  1.214%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|         Neutral evolution         |     1.000     |   29.036    |                                   |
+|         Neutral evolution         |     1.000     |   60.366    |       Collapsed rate class        |
+|      Diversifying selection       |     6.761     |   10.598    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.000               |    71.662     |                                   |
+|               2.165               |    25.857     |                                   |
+|              17.742               |     2.481     |                                   |
+
+
+### Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -8646.18, AIC-c = 17830.98 (269 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0241
+* Corresponding fraction of substitutions :  1.479%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|         Neutral evolution         |     1.000     |   28.749    |                                   |
+|         Neutral evolution         |     1.000     |   60.610    |       Collapsed rate class        |
+|         Neutral evolution         |     1.000     |   10.641    |       Collapsed rate class        |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.253               |    90.384     |                                   |
+|               5.606               |     8.394     |                                   |
+|              24.593               |     1.222     |                                   |
+
+----
+## Negative test LRT (convergence problem). Refitting the alternative model using the null model as a start.
+----
+
+* Log(L) = -8638.50, AIC-c = 17817.63 (270 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0111
+* Corresponding fraction of substitutions :  0.805%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.934     |   45.309    |                                   |
+|        Negative selection         |     0.970     |   45.837    |       Collapsed rate class        |
+|      Diversifying selection       |     9.054     |    8.854    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.250               |    90.741     |                                   |
+|               5.856               |     8.150     |                                   |
+|              26.658               |     1.109     |                                   |
+
+Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -8646.18, AIC-c = 17830.98 (269 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0240
+* Corresponding fraction of substitutions :  1.479%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|         Neutral evolution         |     1.000     |   46.391    |                                   |
+|         Neutral evolution         |     1.000     |   44.637    |       Collapsed rate class        |
+|         Neutral evolution         |     1.000     |    8.972    |       Collapsed rate class        |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.253               |    90.380     |                                   |
+|               5.594               |     8.387     |                                   |
+|              24.480               |     1.233     |                                   |
+
+----
+## Branch-site unrestricted statistical test of episodic diversification [BUSTED]
+Likelihood ratio test for episodic diversifying positive selection, **p =   0.0002**.

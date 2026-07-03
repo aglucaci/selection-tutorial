@@ -1,0 +1,99 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/adora3.nex'
+contains 1 duplicate sequence. Identical sequences do not contribute any
+information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **67** sequences, **107** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/adora3.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 4 zero-length internal branches: `Node17, Node32, Node75, Node88`
+* Log(L) = -6667.32, AIC-c = 13614.47 (139 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.292
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -6312.28, AIC-c = 12914.34 (142 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.452
+* non-synonymous/synonymous rate ratio for *test* =   0.2925
+
+### Fitting Standard MG94
+* Log(L) = -6069.07, AIC-c = 12438.33 (147 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.2862
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.070               |    38.025     |                                   |
+|               0.882               |    45.633     |                                   |
+|               3.495               |    16.342     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -6068.99, AIC-c = 12440.26 (148 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.2846
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0212
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.070               |    38.001     |                                   |
+|               0.880               |    45.606     |                                   |
+|               3.491               |    16.394     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -6068.99, AIC-c = 12442.34 (149 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.2848
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0208
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.0000
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.0000
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.069               |    37.751     |                                   |
+|               0.875               |    45.748     |                                   |
+|               3.477               |    16.501     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |  -6069.07  |    0.2862  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |  -6068.99  |    0.2846  |    0.0212  |       0.6857 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |  -6068.99  |    0.2848  |    0.0208  |      0.9225 (2&3-hit rates = 0)    |    0.0000  |      1.0000 (3-hit rate(s) = 0)    |
+
+### No individual sites showed sufficiently strong preference for multiple-hit models
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/adora3_fitmultimodelmh.json'

@@ -1,0 +1,211 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **16** sequences, **639** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/Bacterial_PTS_trehalose_transporter_suIII.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 29 branches for testing: `NC_004116_22536376, NC_007432_76788255, Node1, AF510742_21217545, NZ_AAFA02000002_81096156, NC_003028_15901712, NC_003098_15903741, Node9, Node7, Node5, NC_003485_19746968, NC_002737_15675853, NZ_AAFV01000043_56808422, NC_007296_71904430, Node18, Node16, NC_004070_21911322, Node15, NC_008023_94993314, NC_006086_50915129, Node24, NC_008022_94991360, Node23, NC_008024_94995272, Node22, Node14, Node12, Node4, NC_004368_25010264`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -9830.29, AIC-c = 19734.67 (37 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.125
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -8916.10, AIC-c = 17977.24 (72 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.14, and 95% of the weight in  0.00 - 370835682.57
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|              Node12               |   0.45   |    2     |    0.90 (14.09%)   |   -8887.15    |   17923.38    |    17923.38     |
+|              Node12               |   0.45   |    3     |  833.54 ( 6.14%)   |   -8886.04    |   17925.23    |    17923.38     |
+|               Node4               |   0.41   |    2     |    1.13 (20.32%)   |   -8853.88    |   17860.91    |    17860.91     |
+|               Node4               |   0.41   |    3     |    2.66 (12.78%)   |   -8852.74    |   17862.69    |    17860.91     |
+|         AF510742_21217545         |   0.30   |    2     |    0.94 (16.97%)   |   -8828.98    |   17815.17    |    17815.17     |
+|         AF510742_21217545         |   0.30   |    3     |   >1000 ( 3.22%)   |   -8828.62    |   17818.52    |    17815.17     |
+|               Node9               |   0.24   |    2     |  371.05 ( 9.60%)   |   -8782.67    |   17726.62    |    17726.62     |
+|               Node9               |   0.24   |    3     |  172.47 ( 9.60%)   |   -8782.67    |   17730.69    |    17726.62     |
+|     NZ_AAFA02000002_81096156      |   0.24   |    2     |  111.11 ( 9.75%)   |   -8740.06    |   17645.45    |    17645.45     |
+|     NZ_AAFA02000002_81096156      |   0.24   |    3     |  136.66 ( 9.71%)   |   -8740.06    |   17649.52    |    17645.45     |
+|               Node5               |   0.10   |    2     |    1.76 ( 8.30%)   |   -8730.27    |   17629.95    |    17629.95     |
+|               Node5               |   0.10   |    3     |    2.65 ( 4.62%)   |   -8730.23    |   17633.93    |    17629.95     |
+|               Node7               |   0.10   |    2     |    5.19 ( 5.17%)   |   -8712.66    |   17598.79    |    17598.79     |
+|               Node7               |   0.10   |    3     |    5.67 ( 4.93%)   |   -8712.73    |   17603.00    |    17598.79     |
+|        NC_003098_15903741         |   0.01   |    2     |    0.07 (30.74%)   |   -8712.65    |   17602.86    |    17598.79     |
+|        NC_008023_94993314         |   0.01   |    2     |    0.51 (31.70%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_003028_15901712         |   0.01   |    2     |    0.27 (52.80%)   |   -8712.64    |   17602.83    |    17598.79     |
+|        NC_004070_21911322         |   0.01   |    2     |    0.29 (50.05%)   |   -8712.66    |   17602.87    |    17598.79     |
+|     NZ_AAFV01000043_56808422      |   0.01   |    2     |   36.81 ( 0.95%)   |   -8711.69    |   17600.93    |    17598.79     |
+|        NC_007296_71904430         |   0.01   |    2     |    0.80 (91.66%)   |   -8712.66    |   17602.87    |    17598.79     |
+|              Node16               |   0.00   |    2     |    2.24 (99.90%)   |   -8712.66    |   17602.86    |    17598.79     |
+|              Node14               |   0.00   |    2     |    0.26 ( 0.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_004368_25010264         |   0.00   |    2     |    0.24 ( 8.57%)   |   -8712.60    |   17602.74    |    17598.79     |
+|        NC_002737_15675853         |   0.00   |    2     |    0.94 (10.39%)   |   -8712.66    |   17602.87    |    17598.79     |
+|        NC_008024_94995272         |   0.00   |    2     |    0.59 (76.22%)   |   -8712.66    |   17602.86    |    17598.79     |
+|              Node24               |   0.00   |    2     |    0.60 (75.18%)   |   -8712.66    |   17602.86    |    17598.79     |
+|              Node18               |   0.00   |    2     |    0.26 ( 0.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_008022_94991360         |   0.00   |    2     |    0.24 (47.77%)   |   -8712.66    |   17602.86    |    17598.79     |
+|              Node23               |   0.00   |    2     |    0.26 ( 0.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_006086_50915129         |   0.00   |    2     |    0.75 (50.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_003485_19746968         |   0.00   |    2     |  27.69 (100.00%)   |   -8712.66    |   17602.87    |    17598.79     |
+|              Node15               |   0.00   |    2     |    0.25 ( 0.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|              Node22               |   0.00   |    2     |    0.26 ( 0.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|               Node1               |   0.00   |    2     |  73.69 (100.00%)   |   -8712.66    |   17602.87    |    17598.79     |
+|        NC_007432_76788255         |   0.00   |    2     |  >1000 (100.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+|        NC_004116_22536376         |   0.00   |    2     |    2.00 ( 2.00%)   |   -8712.66    |   17602.86    |    17598.79     |
+
+### Rate class analyses summary
+*  7 branches with **2** rate classes
+*  22 branches with **1** rate classes
+
+### Annotated Tree
+((NC_004116_22536376{1},NC_007432_76788255{1})Node1{1},((AF510742_21217545{2},(NZ_AAFA02000002_81096156{2},(NC_003028_15901712{1},NC_003098_15903741{1})Node9{2})Node7{2})Node5{2},(NC_003485_19746968{1},(((NC_002737_15675853{1},(NZ_AAFV01000043_56808422{1},NC_007296_71904430{1})Node18{1})Node16{1},NC_004070_21911322{1})Node15{1},(((NC_008023_94993314{1},NC_006086_50915129{1})Node24{1},NC_008022_94991360{1})Node23{1},NC_008024_94995272{1})Node22{1})Node14{1})Node12{2})Node4{2},NC_004368_25010264{1})
+
+----
+
+```
+ |NC_004116_22536376 (1)
+|+Node1 (1)
+||NC_007432_76788255 (1)
+|      |---AF510742_21217545 (2)
+|    |-+Node5 (2)
+|    | | |--NZ_AAFA02000002_81096156 (2)
+|    | |-+Node7 (2)
+|    |   |  |NC_003028_15901712 (1)
+|    |   |--+Node9 (2)
+|    |      |NC_003098_15903741 (1)
+|----+Node4 (2)
+|    |    |NC_003485_19746968 (1)
+|    |----+Node12 (2)
+|         |  |NC_002737_15675853 (1)
+|         | |+Node16 (1)
+|         | |||NZ_AAFV01000043_56808422 (1)
+|         | ||+Node18 (1)
+|         | | |NC_007296_71904430 (1)
+|         ||+Node15 (1)
+|         |||NC_004070_21911322 (1)
+|         |+Node14 (1)
+|          |  |NC_008023_94993314 (1)
+|          | |+Node24 (1)
+|          | ||NC_006086_50915129 (1)
+|          ||+Node23 (1)
+|          |||NC_008022_94991360 (1)
+|          |+Node22 (1)
+|           |NC_008024_94995272 (1)
+|NC_004368_25010264 (1)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -8690.63, AIC-c = 17554.73 (86 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|              Node12               |     2    |  306.13 ( 6.04%)   |         13       |        2.33        |       0.11889      |
+|               Node4               |     2    |    1.22 (13.39%)   |         16       |        0.06        |       0.45164      |
+|         AF510742_21217545         |     2    |    0.61 (18.97%)   |       N/A        |        0.00        |       1.00000      |
+|               Node9               |     2    |  454.33 ( 7.33%)   |         15       |        6.31        |       0.01523      |
+|     NZ_AAFA02000002_81096156      |     2    |  657.85 ( 9.22%)   |         22       |        9.95        |       0.00239      |
+|               Node5               |     2    |    2.11 ( 8.04%)   |         16       |        1.06        |       0.23748      |
+|               Node7               |     2    |    5.83 ( 5.08%)   |         11       |        5.43        |       0.02387      |
+|        NC_003098_15903741         |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_008023_94993314         |     1    |   0.45 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_003028_15901712         |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_004070_21911322         |     1    |   0.14 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|     NZ_AAFV01000043_56808422      |     1    |   0.11 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_007296_71904430         |     1    |   0.69 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node16               |     1    |   2.14 (100.00%)   |       N/A        |        0.55        |       0.31964      |
+|              Node14               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_004368_25010264         |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_002737_15675853         |     1    |   0.27 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_008024_94995272         |     1    |   0.48 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node24               |     1    |   0.48 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node18               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_008022_94991360         |     1    |   0.11 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node23               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_006086_50915129         |     1    |   0.63 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|        NC_003485_19746968         |     1    |   0.80 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node15               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node22               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node1               |     1    |  >1000 (100.00%)   |       N/A        |        0.15        |       0.41678      |
+|        NC_007432_76788255         |     1    |  >1000 (100.00%)   |       N/A        |        0.54        |       0.32085      |
+|        NC_004116_22536376         |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **29** tested.
+
+
+### Annotated Tree
+((NC_004116_22536376,NC_007432_76788255)Node1,((AF510742_21217545,(NZ_AAFA02000002_81096156,(NC_003028_15901712,NC_003098_15903741)Node9)Node7)Node5,(NC_003485_19746968,(((NC_002737_15675853,(NZ_AAFV01000043_56808422,NC_007296_71904430)Node18)Node16,NC_004070_21911322)Node15,(((NC_008023_94993314,NC_006086_50915129)Node24,NC_008022_94991360)Node23,NC_008024_94995272)Node22)Node14)Node12)Node4,NC_004368_25010264)
+
+----
+
+```
+ |NC_004116_22536376 (N.S)
+|+Node1 (N.S)
+||NC_007432_76788255 (N.S)
+|      |---AF510742_21217545 (N.S)
+|    |-+Node5 (N.S)
+|    | | |--NZ_AAFA02000002_81096156 (N.S)
+|    | |-+Node7 (N.S)
+|    |   |  |NC_003028_15901712 (N.S)
+|    |   |--+Node9 (N.S)
+|    |      |NC_003098_15903741 (N.S)
+|----+Node4 (N.S)
+|    |    |NC_003485_19746968 (N.S)
+|    |----+Node12 (N.S)
+|         |  |NC_002737_15675853 (N.S)
+|         | |+Node16 (N.S)
+|         | |||NZ_AAFV01000043_56808422 (N.S)
+|         | ||+Node18 (N.S)
+|         | | |NC_007296_71904430 (N.S)
+|         ||+Node15 (N.S)
+|         |||NC_004070_21911322 (N.S)
+|         |+Node14 (N.S)
+|          |  |NC_008023_94993314 (N.S)
+|          | |+Node24 (N.S)
+|          | ||NC_006086_50915129 (N.S)
+|          ||+Node23 (N.S)
+|          |||NC_008022_94991360 (N.S)
+|          |+Node22 (N.S)
+|           |NC_008024_94995272 (N.S)
+|NC_004368_25010264 (N.S)
+```
+

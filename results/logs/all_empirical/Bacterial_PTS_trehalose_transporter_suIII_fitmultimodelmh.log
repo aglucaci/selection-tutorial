@@ -1,0 +1,95 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **16** sequences, **639** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/Bacterial_PTS_trehalose_transporter_suIII.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -9830.29, AIC-c = 19734.67 (37 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.125
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -8961.57, AIC-c = 18011.52 (44 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.580
+* non-synonymous/synonymous rate ratio for *test* =   0.1163
+
+### Fitting Standard MG94
+* Log(L) = -8628.44, AIC-c = 17355.37 (49 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1207
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.000               |    52.534     |                                   |
+|               1.105               |    31.910     |                                   |
+|               4.161               |    15.556     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -8577.06, AIC-c = 17254.63 (50 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0697
+* rate at which 2 nucleotides are changed instantly within a single codon =   1.0076
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.000               |    51.290     |                                   |
+|               1.452               |    41.759     |                                   |
+|               5.665               |     6.951     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -8573.25, AIC-c = 17249.03 (51 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0708
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.7126
+* rate at which 3 nucleotides are changed instantly within a single codon =   1.1225
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   1.1225
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.000               |    51.228     |                                   |
+|               1.491               |    43.147     |                                   |
+|               6.344               |     5.625     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |  -8628.44  |    0.1207  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |  -8577.06  |    0.0697  |    1.0076  |       0.0000 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |  -8573.25  |    0.0708  |    0.7126  |      0.0000 (2&3-hit rates = 0)    |    1.1225  |      0.0058 (3-hit rate(s) = 0)    |
+
+### 5 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|   239    |           9.1259        |           1.3846        |            AGC->TCT(1), TCT->AGT(1)GCA(1)TCC(1)            |
+|   387    |          60.4078        |           0.7173        |            CTT->ATT(1)CTC(1)TTA(1), TTA->CTT(1)            |
+|   503    |          14.7602        |           0.9656        |               GAT->TCT(1), TCT->AGT(1)TCA(1)               |
+|   512    |           8.9895        |           1.0006        |                     CAA->CAG(1)TCA(1)                      |
+|   622    |         333.9181        |           0.4544        |     AAC->AGT(2), AAT->AAC(1)ACT(1)AGC(1), GAT->AAT(1)      |
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/Bacterial_PTS_trehalose_transporter_suIII_fitmultimodelmh.json'

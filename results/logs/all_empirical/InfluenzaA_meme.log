@@ -1,0 +1,114 @@
+
+Analysis Description
+--------------------
+MEME (Mixed Effects Model of Evolution) estimates a site-wise synonymous
+(&alpha;) and a two-category mixture of non-synonymous (&beta;-, with
+proportion p-, and &beta;+ with proportion [1-p-]) rates, and uses a
+likelihood ratio test to determine if &beta;+ > &alpha; at a site. The
+estimates aggregate information over a proportion of branches at a site,
+so the signal is derived from episodic diversification, which is a
+combination of strength of selection [effect size] and the proportion of
+the tree affected. A subset of branches can be selected for testing as
+well, in which case an additional (nuisance) parameter will be inferred
+-- the non-synonymous rate on branches NOT selected for testing.
+Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 3.0 adds a different format for
+ancestral state reconstruction, branch-site posterior storage, and
+site-level heterogeneity testing. Version 4 adds support for multiple
+hits and more than 2 rate classes on omega, as well as site-level
+imputation option. Version 4.1 fixes bugs with EBF computation for > 2
+more rates and MH reporting. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Detecting Individual Sites Subject to Episodic Diversifying Selection.
+_PLoS Genet_ 8(7): e1002764.
+
+- __Written by__: Sergei L. Kosakovsky Pond, Steven Weaver
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.1
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **349** sequences, **329** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/InfluenzaA.nex`
+
+>branches => All
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+The number omega rate classes to include in the model [2 is the strongly recommended default] (permissible range = [2,4], default value = 2, integer): 
+>rates => 2
+
+>multiple-hits => None
+
+>impute-states => No
+
+>precision => standard
+
+
+### Branches to include in the MEME analysis
+Selected 695 branches to include in the MEME analysis: `WE397, CN10679_997, SYD697, HI1_997, AUC5_697, Node19, Node17, Node15, SYD597, Node14, Node12, HK391_797, PR1_797, SAUS54_797, CANBERRA5_897, Node28, Node26, Node24, HK387_797, Node23, Node11, SYD497, Node10, UR41_197, Node9, SAITAMA8096_97, Node8, BE17_197, BE62_297, Node35, Node7, KO671_297, KO572_297, JA416_297, Node42, Node40, CL170_1096, Node39, SHZH157_796, Node38, Node6, CO_1187, SHA_887, Node82, LA_1287, Node81, GZ187, QL_987, Node86, Node80, VIC87, Node79, TX_12764_483, TX_24753_185, TX_25784_385, Node98, MS85, Node97, Node95, TX_18088_184, TX_18733_184, TX_17988_184, Node109, Node107, CM_885, GZ3_187, TX_12835_583, Node114, Node112, Node106, OITA83, Node105, MI_185, NJ_185, Node120, TX_24752_185, Node119, CT_385, Node118, Node104, CAEN184, Node103, VAL_491, SH_185, Node129, US85, Node128, TX_25887_285, Node127, AK_1284, Node126, Node102, Node94, TG_885, Node93, CC185, CC485, Node137, UY3_688, Node136, Node92, BK_785, BK25_785, LN_286, ST_185, CZ86, Node150, Node148, GM_1185, Node147, YH_1085, Node146, Node144, YG_585, CC_688, Node155, Node143, Node141, Node91, YN_1185, FO_1185, Node158, Node90, Node78, TY6_1287, TY5_1287, Node164, SYD_1287, Node163, CB_188, Node162, TX_39989_288, Node161, Node77, GC_987, SIC_487, Node170, Node76, KB_288, Node75, DL19_389, Node74, ENG88, BE4_189, Node175, Node73, GZ54_489, SIC89, BE57_189, Node182, Node180, ENG64889, Node179, SHA16_989, SHA1_289, Node186, Node178, Node72, GUA39_689, GUA_389, Node189, Node71, VIC589, Node70, BE353_1289, Node69, SHIGA291, IN3_991, Node200, PR1_1090, Node199, SOFIA15593, MX3255_194, SD1_491, Node209, SEOUL45_1191, WA1591, Node212, Node208, Node206, PA09_1191, Node205, SAS36_592, Node204, Node198, BZ91, Node197, HW1_291, Node196, SH6_490, Node195, VIC68_792, UMEA2_1192, UMEA1_1192, Node230, SN8_492, Node229, DJ3946_1292, RU3193, Node234, Node228, TW114391_192, Node227, VIC29_392, WE66_692, Node240, SAS68_692, Node239, BE47_292, Node238, Node226, SP118_293, Node225, Node223, PS8091, Node222, EN26191, Node221, II236_1193, II237_1193, Node249, KA149_1092, Node248, Node220, Node194, Node68, SN91, SH24_890, Node255, PERTH01_492, PS192SPF, Node259, HK34_490, Node258, Node254, KA206_1191, Node253, Node67, NCH3332_493, NCH12_1193, Node271, NCH58_1293, Node270, HAR1592, Node269, SIC4_593, RU58_393, WUZ4_493, Node280, Node278, NGX10_193, Node277, GD04_393, Node276, Node268, HEBEI1293, HK23_792, Node285, Node267, PS688_193, SHD9_393, YOKOHAMA7392, Node293, Node291, SAP_1292, Node290, NY1393, Node289, NCH3396_593, Node288, Node266, AK9_1192, HI3_1192, QD53_392, Node304, Node302, CA271_1192, Node301, TIANJIN3392, VIC193, DJ3109_1291, BE32_192, Node313, Node311, Node309, KITA93, Node308, Node300, BE46_292, Node299, Node265, FR110994, NY64_1293, Node320, NY63_1293, Node319, UR46967_294, Node318, Node264, Node66, CA5_395, JA8695_1294, Node332, SP378_195, Node331, LA1_195, NJ8_1194, Node338, SP351_195, IL5_195, Node345, TX5_1294, Node344, OH3_195, Node343, NJ10_195, Node342, CN124_295, Node341, Node337, PA15_295, Node336, Node330, NY28_1294, Node329, MA1_195, Node328, HK42_396, MEM196_1195, PARIS8395, Node361, Node359, PARIS36395, Node358, NY17_1294, Node357, AG3779_1094, JOH33_794, Node366, Node356, HK434_1096, HK1_694, HK55_794, Node371, Node369, Node355, Node327, PA7_1294, Node326, GD25_693, WUZ1_794, Node387, UDE44_394, Node386, NY38_193, Node385, NO93, WAIK2093, CC893, Node394, Node392, Node384, GD27_594, Node383, AA393, Node382, TH7594, BK122_694, Node400, SN7_694, Node399, Node381, AG3105_693, Node380, GA3_393, TX57_1293, LA4_893, LA6_993, Node411, NY3_293, Node410, Node408, Node406, NY26_293, AK18_493, Node415, Node405, Node379, CA4_794, SP125_293, WY1_1193, Node421, SP190_393, ST1_193, Node424, Node420, Node418, Node378, ENG22093, Node377, PA993_1294, CA5_1193, WA41_1293, Node432, Node430, AKI194, RO182_194, Node437, VT3_194, SANT7198_894, Node441, RO160_194, Node440, Node436, NY4295_1194, NY16_1194, Node446, NY15_894, Node445, Node435, Node429, NED37293, FR120394, Node450, Node428, Node376, WA2693, Node375, Node325, Node65, HAR3_194, Node64, BZ18_496, BR3_496, BR45_696, Node465, BR87_596, Node464, BZ8_496, Node463, Node461, BR184_696, Node460, BR597_796, Node459, NJ11_1294, CN147_495, SN28_595, Node479, Node477, GE767_495, Node476, JOH295, Node475, SN27_595, HK38_895, Node484, Node474, WA186_1294, VA25_1294, Node487, Node473, HK3_195, Node472, Node458, WV1_395, GE578652_295, Node491, Node457, NE11_395, AK10_295, Node496, KWJ195_1194, Node495, CHW995_1294, Node494, Node456, CN17_196, FL4_1195, LA5_1195, Node506, KO45_296, BZ2_395, Node512, CN61_296, Node511, GE491_396, Node510, UK897_696, MN6_1195, Node517, Node509, Node505, Node503, DE3_1195, NV1_1195, Node525, ID4_1195, Node524, MO6_396, Node523, JOH5396_97, Node522, AK16_995, JOH1795, Node531, Node521, ID3_1195, CN2796_1295, Node534, Node520, Node502, AG4057_795, SHD5_894, BE281_1294, Node539, Node537, Node501, Node455, Node63, GNX42_495, Node62, CNIC22_195, Node61, GZH66_497, Node60, BRIS3596, CAR42297, CAR465_896, Node552, Node550, BK197, Node549, MN1_1196, WE4896, DE4_397, Node562, Node560, YOKOHAMA6896_97, Node559, AUC596, Node558, HI2_796, Node557, TH78_397, TH79_397, Node569, CHR196, Node568, Node556, Node548, AUC10896_97, BRI2296, Node573, Node547, MON318_696, Node546, CNIC35_196, NCH813_895, Node579, FUJIAN47_396, WUH359_995, Node582, Node578, NCH933_995, Node577, Node545, Node59, WA596, Node58, FG39_1096, NY9_196, Node589, TH9496_97, Node588, FR7597, Node587, Node57, SHA9_995, Node56, BR51_897, BR43_697, Node597, BR309_796, Node596, GQ1014_1096, JOH10_697, CA10_797, NY43_1196, Node611, MN1_497, MO10_1196, Node614, Node610, CA13_1296, Node609, JOH9_597, Node608, NY50_1196, Node607, Node605, CN101_197, PA2_297, Node621, MO11_1196, MOS2_197, Node624, Node620, Node604, Node602, WI3_896, NY37_1096, Node629, AK2_796, Node628, TW523_596, Node627, Node601, Node595, Node55, RI7_397, Node54, FUK11496E, FUK11496C, Node635, Node53, JA99_196, Node52, VIC4797, VIC3097, Node640, TAS1_797, Node639, Node51, SHZH43_396, WZH1_596, Node646, GD1_396, Node645, CO11_1196, IN1_1196, Node652, KY2_297, Node651, NJ8_1296, Node650, Node644, Node50, TX1196_97, TD5196, TD5096, Node659, Node657, Node49, HAR3_1296, BE24496_197, Node662, Node48, TIANJING51_297, SH19_896, Node667, FUJIAN133_596, SANTAFE208_896, Node670, Node666, JOH3_397, HK358_796, Node673, Node665, Node47, Node5, CORD3278_796, GNX189_796, TD4796, Node680, Node678, AG207_796, AG601_796, Node683, Node677, AG39_796, Node676, Node4, SP214_197, Node3, HK357_696, Node2, GZH11_496, Node1, CI2115_696, NY55_1296, Node691, GZH8_496, Node690, TIANJING55_896`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 153 zero-length internal branches: `Node1, Node104, Node105, Node106, Node109, Node11, Node120, Node14, Node143, Node144, Node148, Node15, Node162, Node163, Node17, Node178, Node186, Node19, Node195, Node196, Node199, Node2, Node208, Node212, Node221, Node222, Node225, Node226, Node23, Node234, Node238, Node239, Node24, Node253, Node26, Node264, Node265, Node267, Node269, Node28, Node288, Node291, Node293, Node3, Node302, Node304, Node308, Node309, Node311, Node320, Node325, Node329, Node330, Node336, Node337, Node341, Node342, Node343, Node344, Node345, Node355, Node356, Node359, Node361, Node375, Node376, Node377, Node378, Node379, Node381, Node382, Node383, Node384, Node385, Node386, Node392, Node4, Node405, Node406, Node408, Node420, Node424, Node429, Node430, Node440, Node441, Node455, Node458, Node463, Node464, Node465, Node472, Node473, Node474, Node475, Node476, Node477, Node479, Node49, Node496, Node5, Node503, Node505, Node509, Node510, Node511, Node512, Node52, Node521, Node522, Node523, Node524, Node537, Node549, Node55, Node550, Node552, Node557, Node558, Node559, Node56, Node560, Node562, Node57, Node573, Node577, Node582, Node587, Node588, Node589, Node59, Node6, Node604, Node608, Node610, Node611, Node62, Node624, Node627, Node640, Node645, Node665, Node670, Node673, Node676, Node690, Node74, Node77, Node79, Node81, Node82, Node92, Node98`
+* Log(L) = -11563.07, AIC-c = 24535.01 (703 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.406
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -11405.74, AIC-c = 23930.93 (557 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.409
+* non-synonymous/synonymous rate ratio for *test* =   0.4894
+
+>full-model => Yes
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -11397.23
+* Log(L) = -11397.23, AIC-c = 23913.89 (557 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.409
+* non-synonymous/synonymous rate ratio for *test* =   0.4585
+
+### For partition 1 these sites are significant at p <=0.1
+
+|   Codon    | Partition  |   alpha    |non-syn rate (beta) distribution, rates : weights|    LRT     |Episodic selection detected?| # branches |         List of most common codon substitutions at this site          |
+|:----------:|:----------:|:----------:|:-----------------------------------------------:|:----------:|:--------------------------:|:----------:|:---------------------------------------------------------------------:|
+|     3      |     1      |    2.703   |             0.00/126.50 : 0.94/0.06             |    3.192   |      Yes, p =  0.0965      |     5      |                 [3]Ctt>Att|[1]CtT>AtG,ctT>ctG,Ctt>Ttt                 |
+|     15     |     1      |    6.345   |            0.00/2682.61 : 1.00/0.00             |    7.009   |      Yes, p =  0.0135      |     1      |               [5]Ctg>Ttg|[2]ctG>ctA|[1]ctG>ctT,CTg>TCg                |
+|     47     |     1      |    0.000   |              0.00/5.06 : 0.01/0.99              |    3.357   |      Yes, p =  0.0885      |     3      |                         [2]Tca>Cca|[1]Tca>Aca                         |
+|     53     |     1      |    0.001   |             0.00/89.83 : 0.94/0.06              |    5.154   |      Yes, p =  0.0348      |     6      |                     [4]Gac>Aac|[1]gAC>gGA,gAc>gGc                     |
+|     78     |     1      |    0.000   |              0.00/4.28 : 0.01/0.99              |    3.226   |      Yes, p =  0.0948      |     5      |                         [4]gGc>gAc|[1]Ggc>Agc                         |
+|     80     |     1      |    0.000   |              0.00/8.96 : 0.01/0.99              |    4.003   |      Yes, p =  0.0632      |     6      |                     [6]Caa>Aaa|[1]Aaa>Caa,Aaa>Gaa                     |
+|    121     |     1      |    2.297   |             0.00/12.04 : 0.01/0.99              |    3.803   |      Yes, p =  0.0701      |     9      |           [7]aTc>aCc|[2]aCc>aTc|[1]aAc>aCc,atC>atT,Atc>Gtc            |
+|    128     |     1      |    0.000   |              0.00/8.83 : 0.01/0.99              |    5.614   |      Yes, p =  0.0275      |     7      |                     [3]aCt>aTt,Act>Gct|[2]Act>Cct                     |
+|    133     |     1      |    0.009   |             0.00/143.48 : 0.89/0.11             |   12.261   |      Yes, p =  0.0009      |     12     |      [5]Gat>Aat|[3]aGt>aAt|[2]Aat>Gat,GAt>AGt|[1]aAt>aGt,Agt>Ggt      |
+|    135     |     1      |    2.091   |             0.34/97.17 : 0.87/0.13              |    7.790   |      Yes, p =  0.0090      |     10     |[2]aAa>aCa|[1]Aaa>Gaa,AAa>GGa,AAA>GGG,aCa>aAa,gaA>gaC,gAa>gGa,gaC>ga...|
+|    138     |     1      |    0.003   |             0.00/22.40 : 0.01/0.99              |   14.362   |      Yes, p =  0.0003      |     16     |                   [12]Gct>Tct|[8]Gct>Act|[2]Tct>Act                   |
+|    145     |     1      |    0.000   |             0.00/19.50 : 0.01/0.99              |    8.986   |      Yes, p =  0.0049      |     18     |                        [19]aaC>aaA|[3]aaA>aaC                         |
+|    156     |     1      |    7.878   |             3.85/50.19 : 0.53/0.47              |    3.833   |      Yes, p =  0.0690      |     0      |[13]Gaa>Aaa|[5]Aaa>Gaa|[3]Aaa>Caa|[2]gAa>gGa|[1]aaA>aaG,aAA>aGT,gaA>...|
+|    157     |     1      |    0.000   |             0.00/484.86 : 0.96/0.04             |   22.551   |      Yes, p =  0.0000      |     7      |                     [3]TTa>CCa,tTa>tCa|[1]Tca>Cca                     |
+|    159     |     1      |   13.066   |             4.98/831.01 : 0.98/0.02             |   14.012   |      Yes, p =  0.0004      |     3      |      [4]Tac>Cac|[3]Tac>Gac,taC>taT|[2]TAc>AGc|[1]AGc>TAc,tAc>tGc      |
+|    162     |     1      |    0.000   |             0.00/511.57 : 1.00/0.00             |    9.283   |      Yes, p =  0.0042      |     1      |                              [1]cCA>cAC                               |
+|    186     |     1      |   18.449   |             0.00/169.05 : 0.85/0.15             |    3.832   |      Yes, p =  0.0691      |     23     |[13]aGc>aTc|[4]aTc>aGc|[3]aGt>aTt|[2]agC>agT,agT>agC|[1]AGc>GTc,Agc>...|
+|    190     |     1      |    0.004   |             0.00/21.62 : 0.50/0.50              |    5.111   |      Yes, p =  0.0356      |     13     |                   [9]gAc>gTc|[3]gaC>gaA|[1]gAa>gTa                    |
+|    193     |     1      |    3.847   |             0.00/18.56 : 0.01/0.99              |    4.000   |      Yes, p =  0.0633      |     20     |[9]agC>agA|[5]aaC>aaA|[3]Agc>Cgc|[2]aGc>aAc,aGc>aTc|[1]aGc>aCc,agC>a...|
+|    194     |     1      |    3.018   |             0.00/21.45 : 0.01/0.99              |    9.850   |      Yes, p =  0.0032      |     12     |                    [13]Cta>Ata|[1]ctA>ctG,ctA>ctT                     |
+|    213     |     1      |    4.272   |             0.00/270.21 : 0.99/0.01             |    5.804   |      Yes, p =  0.0249      |     2      |                     [2]gtA>gtG|[1]GTa>AGa,Gta>Ata                     |
+|    226     |     1      |    2.514   |             1.33/139.88 : 0.50/0.50             |   41.609   |      Yes, p =  0.0000      |     4      |[14]Gtc>Atc|[10]Atc>Gtc,cTg>cAg|[8]cAg>cTg|[1]Atc>Ctc,AtC>CtG,ctG>ct...|
+|    275     |     1      |    0.004   |              0.00/7.69 : 0.01/0.99              |    5.482   |      Yes, p =  0.0294      |     9      |                         [8]gGc>gAc|[1]gAc>gGc                         |
+|    276     |     1      |    0.000   |             0.00/11.43 : 0.01/0.99              |    6.608   |      Yes, p =  0.0165      |     12     |      [4]aaC>aaA|[3]aAc>aCc|[2]aCc>aAc|[1]aAc>aGc,aCc>aTc,Acc>Gcc      |
+|    297     |     1      |    2.304   |             0.00/533.94 : 1.00/0.00             |    6.931   |      Yes, p =  0.0140      |     1      |                          [1]GtA>AtG,gtA>gtG                           |
+|    312     |     1      |    0.001   |              0.00/6.94 : 0.01/0.99              |    3.274   |      Yes, p =  0.0925      |     8      |             [2]aAc>aCc,Aac>Cac,Aac>Gac|[1]aaC>aaA,aAc>aGc             |
+
+### ** Found _26_ sites under episodic diversifying positive selection at p <= 0.1**

@@ -1,0 +1,49 @@
+
+Analysis Description
+--------------------
+Fit one of the available codon models to the data, report fit results
+and model estimates. Model specific options will differ. You can also
+perform Likelihood Ratio Tests (LRT) on any model parameter by passing
+--parameter_name value on the command line.
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 0.1
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/adora3.nex'
+contains 1 duplicate sequence. Identical sequences do not contribute any
+information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **67** sequences, **107** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/adora3.nex`
+Model to fit : Error:
+Could not read all the parameters requested. in call to fscanf(stdin,"String",str_val);
+
+Function call stack
+1 :  [namespace = NJPZWbSQ] fscanf(stdin,"String",str_val);
+
+	Keyword arguments:
+		{
+		 "output":"results/session1_gene_wide/adora3_fitmodel.json"
+		}
+-------
+2 :  fitter.model_name=io.PromptUserForString("Model to fit");
+
+	Keyword arguments:
+		{
+		 "output":"results/session1_gene_wide/adora3_fitmodel.json"
+		}
+-------
+
+Check errors.log for execution error details.

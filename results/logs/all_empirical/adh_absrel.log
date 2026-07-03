@@ -1,0 +1,271 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **23** sequences, **254** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/adh.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 43 branches for testing: `YAK, MEL, SIM, MA, Node7, Node5, Node3, ERE, Node2, PSE, PS, Node14, PER, Node13, MIR, Node12, SUB, AMB, Node19, Node11, Node1, MET, CRA, NIG, MIM, ADI, PIC, SIL, HET, Node36, PLA, DIF, Node39, Node35, AFF, Node34, Node32, Node30, Node28, Node26, Node24, Node22, LEB`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -5137.01, AIC-c = 10376.32 (51 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.184
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -4726.41, AIC-c =  9656.34 (100 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.15, and 95% of the weight in  0.00 -  0.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|                CRA                |   0.19   |    2     |  265.50 ( 8.30%)   |   -4708.07    |    9623.80    |     9623.80     |
+|                CRA                |   0.19   |    3     |   >1000 ( 8.33%)   |   -4708.07    |    9627.94    |     9623.80     |
+|                LEB                |   0.18   |    2     |    9.94 ( 3.86%)   |   -4702.86    |    9617.53    |     9617.53     |
+|                LEB                |   0.18   |    3     |   10.43 ( 3.58%)   |   -4702.92    |    9621.80    |     9617.53     |
+|                MET                |   0.13   |    2     |    0.88 ( 7.29%)   |   -4701.04    |    9618.03    |     9617.53     |
+|              Node22               |   0.12   |    2     |    1.14 (14.65%)   |   -4700.20    |    9616.36    |     9616.36     |
+|              Node22               |   0.12   |    3     |   >1000 ( 2.24%)   |   -4699.15    |    9618.41    |     9616.36     |
+|               Node2               |   0.11   |    2     |   21.15 ( 3.27%)   |   -4684.92    |    9589.94    |     9589.94     |
+|               Node2               |   0.11   |    3     |   20.88 ( 3.25%)   |   -4684.92    |    9594.11    |     9589.94     |
+|                SUB                |   0.07   |    2     |    0.26 (25.43%)   |   -4684.92    |    9594.10    |     9589.94     |
+|               Node1               |   0.07   |    2     |   32.30 ( 5.15%)   |   -4676.97    |    9578.21    |     9578.21     |
+|               Node1               |   0.07   |    3     |   33.12 ( 5.10%)   |   -4676.98    |    9582.37    |     9578.21     |
+|                AMB                |   0.05   |    2     |    5.99 ( 2.70%)   |   -4670.96    |    9570.33    |     9570.33     |
+|                AMB                |   0.05   |    3     |    7.81 ( 1.99%)   |   -4670.95    |    9574.48    |     9570.33     |
+|              Node26               |   0.05   |    2     |   11.78 ( 3.46%)   |   -4662.89    |    9558.36    |     9558.36     |
+|              Node26               |   0.05   |    3     |   15.24 ( 2.81%)   |   -4663.09    |    9562.91    |     9558.36     |
+|              Node24               |   0.05   |    2     |    3.83 ( 5.85%)   |   -4661.38    |    9559.50    |     9558.36     |
+|              Node11               |   0.04   |    2     |    1.07 (10.09%)   |   -4662.49    |    9561.73    |     9558.36     |
+|                NIG                |   0.04   |    2     |   15.80 ( 1.71%)   |   -4660.56    |    9557.85    |     9557.85     |
+|                NIG                |   0.04   |    3     |   30.14 ( 1.11%)   |   -4660.60    |    9562.11    |     9557.85     |
+|                ADI                |   0.03   |    2     |   12.59 ( 3.88%)   |   -4654.66    |    9550.23    |     9550.23     |
+|                ADI                |   0.03   |    3     |   14.45 ( 3.26%)   |   -4654.71    |    9554.49    |     9550.23     |
+|                PIC                |   0.03   |    2     |    2.15 (12.69%)   |   -4654.35    |    9553.77    |     9550.23     |
+|              Node12               |   0.03   |    2     |   15.48 ( 1.23%)   |   -4650.53    |    9546.14    |     9546.14     |
+|              Node12               |   0.03   |    3     |   18.15 ( 1.04%)   |   -4650.52    |    9550.29    |     9546.14     |
+|                YAK                |   0.03   |    2     |   0.11 (100.00%)   |   -4650.53    |    9550.31    |     9546.14     |
+|              Node28               |   0.02   |    2     |    0.28 (11.26%)   |   -4650.34    |    9549.92    |     9546.14     |
+|                MIM                |   0.02   |    2     |   24.96 ( 2.35%)   |   -4647.99    |    9545.22    |     9545.22     |
+|                MIM                |   0.02   |    3     |   25.05 ( 2.16%)   |   -4648.00    |    9549.43    |     9545.22     |
+|                AFF                |   0.02   |    2     |    0.13 (62.68%)   |   -4647.99    |    9549.40    |     9545.22     |
+|               Node3               |   0.02   |    2     |   0.07 (100.00%)   |   -4647.98    |    9549.39    |     9545.22     |
+|                ERE                |   0.02   |    2     |    0.75 (10.13%)   |   -4647.98    |    9549.39    |     9545.22     |
+|              Node19               |   0.01   |    2     |    0.22 (47.83%)   |   -4647.96    |    9549.35    |     9545.22     |
+|               Node5               |   0.01   |    2     |    0.49 ( 9.73%)   |   -4647.99    |    9549.41    |     9545.22     |
+|                MA                 |   0.01   |    2     |    0.39 (75.64%)   |   -4647.99    |    9549.40    |     9545.22     |
+|                MEL                |   0.01   |    2     |    0.26 (50.83%)   |   -4647.99    |    9549.40    |     9545.22     |
+|              Node35               |   0.01   |    2     |    0.71 ( 4.72%)   |   -4647.79    |    9549.00    |     9545.22     |
+|              Node32               |   0.01   |    2     |    0.26 ( 0.00%)   |   -4646.57    |    9546.56    |     9545.22     |
+|                PSE                |   0.01   |    2     |    0.25 ( 0.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|              Node30               |   0.01   |    2     |    0.32 (50.58%)   |   -4647.98    |    9549.38    |     9545.22     |
+|              Node36               |   0.01   |    2     |   2.17 (100.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|              Node13               |   0.01   |    2     |    1.43 (69.54%)   |   -4647.99    |    9549.40    |     9545.22     |
+|              Node34               |   0.01   |    2     |    0.80 (91.16%)   |   -4647.97    |    9549.36    |     9545.22     |
+|                MIR                |   0.01   |    2     |    0.25 (49.22%)   |   -4647.98    |    9549.39    |     9545.22     |
+|                DIF                |   0.01   |    2     |    0.67 (22.87%)   |   -4647.99    |    9549.40    |     9545.22     |
+|               Node7               |   0.00   |    2     |    1.00 (10.00%)   |   -4647.99    |    9549.40    |     9545.22     |
+|              Node39               |   0.00   |    2     |  246.29 (100.00%)  |   -4647.99    |    9549.40    |     9545.22     |
+|                SIL                |   0.00   |    2     |  >1000 (100.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|              Node14               |   0.00   |    2     |    0.49 (49.30%)   |   -4647.99    |    9549.39    |     9545.22     |
+|                SIM                |   0.00   |    2     |    0.25 ( 0.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|                PER                |   0.00   |    2     |    0.25 ( 0.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|                PS                 |   0.00   |    2     |    0.25 ( 2.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|                HET                |   0.00   |    2     |    0.25 ( 2.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+|                PLA                |   0.00   |    2     |    0.25 ( 2.00%)   |   -4647.99    |    9549.39    |     9545.22     |
+
+### Rate class analyses summary
+*  11 branches with **2** rate classes
+*  32 branches with **1** rate classes
+
+### Annotated Tree
+((((YAK{1},(MEL{1},(SIM{1},MA{1})Node7{1})Node5{1})Node3{1},ERE{1})Node2{2},((((PSE{1},PS{1})Node14{1},PER{1})Node13{1},MIR{1})Node12{2},(SUB{1},AMB{2})Node19{1})Node11{1})Node1{2},(MET{1},(CRA{2},(NIG{2},(MIM{2},(ADI{2},(PIC{1},(((SIL{1},HET{1})Node36{1},(PLA{1},DIF{1})Node39{1})Node35{1},AFF{1})Node34{1})Node32{1})Node30{1})Node28{1})Node26{2})Node24{1})Node22{2},LEB{2})
+
+----
+
+```
+           |-YAK (1)
+         |-+Node3 (1)
+         | | |MEL (1)
+         | |-+Node5 (1)
+         |   ||SIM (1)
+         |   |+Node7 (1)
+         |    |MA (1)
+    |----+Node2 (2)
+    |    |-ERE (1)
+|---+Node1 (2)
+|   |      |PSE (1)
+|   |     |+Node14 (1)
+|   |     ||PS (1)
+|   |    |+Node13 (1)
+|   |    ||PER (1)
+|   |  |-+Node12 (2)
+|   |  | |MIR (1)
+|   |--+Node11 (1)
+|      | |---SUB (1)
+|      |-+Node19 (1)
+|        |--AMB (2)
+|     |-----MET (1)
+|-----+Node22 (2)
+|     |  |-------CRA (2)
+|     |--+Node24 (1)
+|        |  |--NIG (2)
+|        |--+Node26 (2)
+|           | |-MIM (2)
+|           |-+Node28 (1)
+|             ||-ADI (2)
+|             |+Node30 (1)
+|              ||-PIC (1)
+|              |+Node32 (1)
+|               |  |SIL (1)
+|               | |+Node36 (1)
+|               | ||HET (1)
+|               ||+Node35 (1)
+|               ||||PLA (1)
+|               |||+Node39 (1)
+|               || |DIF (1)
+|               |+Node34 (1)
+|                |-AFF (1)
+|-------LEB (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -4573.73, AIC-c =  9396.70 (122 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|                CRA                |     2    |   >1000 ( 6.96%)   |          8       |        2.27        |       0.12252      |
+|                LEB                |     2    |    8.17 ( 1.92%)   |          2       |        0.90        |       0.25925      |
+|                MET                |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node22               |     2    |    0.79 (12.82%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     2    |   15.21 ( 3.23%)   |          7       |        7.33        |       0.00902      |
+|                SUB                |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node1               |     2    |   23.71 ( 4.35%)   |          3       |        4.78        |       0.03330      |
+|                AMB                |     2    |    6.71 ( 1.39%)   |          2       |        0.11        |       0.43301      |
+|              Node26               |     2    |    7.95 ( 2.96%)   |          4       |        3.37        |       0.06902      |
+|              Node24               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node11               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                NIG                |     2    |    1.70 (12.18%)   |          9       |       -0.93        |       0.50000      |
+|                ADI                |     2    |   12.09 ( 3.42%)   |          7       |       10.16        |       0.00216      |
+|                PIC                |     1    |   0.14 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node12               |     2    |   23.24 ( 0.56%)   |          1       |        1.40        |       0.19584      |
+|                YAK                |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node28               |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                MIM                |     2    |    6.45 ( 6.11%)   |          8       |        1.93        |       0.14718      |
+|                AFF                |     1    |   0.06 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node3               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                ERE                |     1    |   0.39 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node19               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node5               |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                MA                 |     1    |   0.21 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                MEL                |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node35               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node32               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                PSE                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node30               |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node36               |     1    |   1.39 (100.00%)   |       N/A        |       -1.20        |       0.50000      |
+|              Node13               |     1    |  >1000 (100.00%)   |       N/A        |       -0.59        |       0.50000      |
+|              Node34               |     1    |   0.76 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                MIR                |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                DIF                |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node7               |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node39               |     1    |  >1000 (100.00%)   |       N/A        |       -0.18        |       0.50000      |
+|                SIL                |     1    |  >1000 (100.00%)   |       N/A        |        2.41        |       0.11404      |
+|              Node14               |     1    |   0.27 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                SIM                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                PER                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                PS                 |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                HET                |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                PLA                |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **43** tested.
+
+
+### Annotated Tree
+((((YAK,(MEL,(SIM,MA)Node7)Node5)Node3,ERE)Node2,((((PSE,PS)Node14,PER)Node13,MIR)Node12,(SUB,AMB)Node19)Node11)Node1,(MET,(CRA,(NIG,(MIM,(ADI,(PIC,(((SIL,HET)Node36,(PLA,DIF)Node39)Node35,AFF)Node34)Node32)Node30)Node28)Node26)Node24)Node22,LEB)
+
+----
+
+```
+           |-YAK (N.S)
+         |-+Node3 (N.S)
+         | | |MEL (N.S)
+         | |-+Node5 (N.S)
+         |   ||SIM (N.S)
+         |   |+Node7 (N.S)
+         |    |MA (N.S)
+    |----+Node2 (N.S)
+    |    |-ERE (N.S)
+|---+Node1 (N.S)
+|   |      |PSE (N.S)
+|   |     |+Node14 (N.S)
+|   |     ||PS (N.S)
+|   |    |+Node13 (N.S)
+|   |    ||PER (N.S)
+|   |  |-+Node12 (N.S)
+|   |  | |MIR (N.S)
+|   |--+Node11 (N.S)
+|      | |---SUB (N.S)
+|      |-+Node19 (N.S)
+|        |--AMB (N.S)
+|     |-----MET (N.S)
+|-----+Node22 (N.S)
+|     |  |-------CRA (N.S)
+|     |--+Node24 (N.S)
+|        |  |--NIG (N.S)
+|        |--+Node26 (N.S)
+|           | |-MIM (N.S)
+|           |-+Node28 (N.S)
+|             ||-ADI (N.S)
+|             |+Node30 (N.S)
+|              ||-PIC (N.S)
+|              |+Node32 (N.S)
+|               |  |SIL (N.S)
+|               | |+Node36 (N.S)
+|               | ||HET (N.S)
+|               ||+Node35 (N.S)
+|               ||||PLA (N.S)
+|               |||+Node39 (N.S)
+|               || |DIF (N.S)
+|               |+Node34 (N.S)
+|                |-AFF (N.S)
+|-------LEB (N.S)
+```
+

@@ -1,0 +1,121 @@
+
+Analysis Description
+--------------------
+MEME (Mixed Effects Model of Evolution) estimates a site-wise synonymous
+(&alpha;) and a two-category mixture of non-synonymous (&beta;-, with
+proportion p-, and &beta;+ with proportion [1-p-]) rates, and uses a
+likelihood ratio test to determine if &beta;+ > &alpha; at a site. The
+estimates aggregate information over a proportion of branches at a site,
+so the signal is derived from episodic diversification, which is a
+combination of strength of selection [effect size] and the proportion of
+the tree affected. A subset of branches can be selected for testing as
+well, in which case an additional (nuisance) parameter will be inferred
+-- the non-synonymous rate on branches NOT selected for testing.
+Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 3.0 adds a different format for
+ancestral state reconstruction, branch-site posterior storage, and
+site-level heterogeneity testing. Version 4 adds support for multiple
+hits and more than 2 rate classes on omega, as well as site-level
+imputation option. Version 4.1 fixes bugs with EBF computation for > 2
+more rates and MH reporting. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Detecting Individual Sites Subject to Episodic Diversifying Selection.
+_PLoS Genet_ 8(7): e1002764.
+
+- __Written by__: Sergei L. Kosakovsky Pond, Steven Weaver
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.1
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **212** sequences, **96** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/camelid.nex`
+
+>branches => All
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+The number omega rate classes to include in the model [2 is the strongly recommended default] (permissible range = [2,4], default value = 2, integer): 
+>rates => 2
+
+>multiple-hits => None
+
+>impute-states => No
+
+>precision => standard
+
+
+### Branches to include in the MEME analysis
+Selected 421 branches to include in the MEME analysis: `LGL132362, LGL237315, Node10, LGL131930, Node9, AF000603, CVHP24VCOD, CVHP22VCOD, Node26, CVHP21VCOD, CVHP19VCOD, Node31, CVHP16VCOD, CVHP10VCOD, Node36, CVHP18VCOD, Node35, CVHP17VCOD, Node34, Node30, CVHP09VCOD, Node29, Node25, CVHP14VCOD, CVHP02VCOD, CVHP07VCOD, CVHP12VCOD, Node53, CVHP13VCOD, Node52, Node50, CVHP15VCOD, Node49, Node47, CVHP04VCOD, Node46, CVHP03VCOD, Node45, CVHP06VCOD, Node44, CVHP05VCOD, Node43, CVHP11VCOD, Node42, Node24, CVHP08VCOD, Node23, CVHP29VCOD, Node22, CVHP30VCOD, CVHP52VCOD, Node66, CVHP31VCOD, CVHP34VCOD, Node71, CVHP32VCOD, Node70, CVHP33VCOD, Node69, Node65, Node21, Node19, CVHP45VCOD, CVHP47VCOD, Node79, CVHP46VCOD, CVHP48VCOD, Node83, CVHP51VCOD, Node82, Node78, CVHP43VCOD, CVHP44VCOD, Node89, CVHP49VCOD, Node88, CVHP40VCOD, CVHP41VCOD, Node95, CVHP36VCOD, CVHP38VCOD, Node99, CVHP37VCOD, Node98, Node94, CVHP42VCOD, CVHP50VCOD, Node103, Node93, Node87, Node77, CVHP28VCOD, Node76, Node18, CVHP25VCOD, CVHHP42VCOD, Node107, Node17, CVHHP08VCOD, CVHHP09VCOD, Node111, CVHHP10VCOD, CVHHP11VCOD, Node115, CVHHP12VCOD, Node114, Node110, Node16, CVHHP41VCOD, CVHHP36VCOD, Node124, CVHHP37VCOD, Node123, CVHHP35VCOD, Node122, CVHHP34VCOD, Node121, CVHHP32VCOD, CVHHP33VCOD, Node130, Node120, CVHHP06VCOD, CVHHP07VCOD, Node134, CVHHP15VCOD, CVHHP31VCOD, Node138, CVHHP24VCOD, CVHHP25VCOD, Node147, CVHHP23VCOD, Node146, CVHHP19VCOD, CVHHP22VCOD, Node154, CVHHP27VCOD, Node153, CVHHP21VCOD, CVHHP26VCOD, Node158, Node152, CVHHP20VCOD, Node151, Node145, CVHHP29VCOD, Node144, CVHHP17VCOD, Node143, CVHHP28VCOD, Node142, CVHHP30VCOD, Node141, Node137, Node133, Node119, Node15, AF000604, CVHHP03VCOD, CVHHP04VCOD, Node169, CVHHP05VCOD, Node168, Node166, Node14, Node8, LGL238057, LGL238051, Node182, LGL237297, LGL237381, Node186, LGL237296, LGL237365, Node189, Node185, Node181, LGL238052, Node180, LGL237302, LGL238049, Node193, Node179, LGL237360, LGL238046, LGL237370, Node200, LGL237353, Node199, Node197, LGL237325, LGL237332, Node204, Node196, Node178, LGL131929, LGL237300, Node211, LGL237355, LGL237361, Node214, Node210, LGL237341, Node209, LGL238050, LGL237319, LGL237377, Node223, Node221, LGL237306, LGL237320, Node227, LGL237386, Node226, Node220, LGL238048, Node219, LGL237383, Node218, Node208, LGL237391, Node207, Node177, LGL237356, LGL237367, Node234, Node176, LGL238055, Node175, LGL237380, Node174, LGL237350, Node173, Node7, LGL237366, LGL237304, Node242, LGL237295, LGL237375, Node250, LGL238059, LGL237318, Node254, LGL237322, LGL237357, Node259, LGL237293, Node258, LGL237354, Node257, Node253, Node249, LGL237301, LGL237314, Node268, LGL237310, Node267, LGL237371, Node266, LGL237376, LGL237392, Node274, LGL237298, LGL237299, Node277, Node273, Node265, LGL237387, LGL237393, Node283, LGL237388, Node282, LGL131931, LGL237385, Node288, LGL237382, Node287, Node281, LGL238056, LGL238054, Node294, LGL237384, LGL238045, Node297, Node293, LGL237326, LGL237359, Node301, LGL237389, Node300, Node292, Node280, Node264, Node248, LGL237286, LGL237308, LGL237333, LGL237303, Node311, Node309, LGL238053, Node308, Node306, LGL238058, LGL237329, Node315, Node305, Node247, LGL237328, LGL237378, Node320, LGL237369, Node319, LGL237373, Node318, Node246, LGL238047, LGL237289, Node325, Node245, Node241, LGL237331, Node240, Node6, LGL237346, LGL237287, Node331, LGL237288, Node330, LGL237338, LGL237349, Node335, Node329, Node5, LGL237339, LGL237278, LGL237327, Node341, Node339, LGL237324, LGL237368, Node344, Node338, Node4, LGL237280, LGL237309, Node348, LGL237345, LGL237311, Node352, LGL237321, Node351, Node347, Node3, LGL237342, LGL237351, Node359, LGL237312, LGL237316, LGL237323, Node365, Node363, LGL237283, Node362, Node358, LGL237337, LGL237292, Node371, LGL237285, LGL237347, Node374, Node370, LGL237284, LGL237379, Node378, LGL237330, Node377, Node369, Node357, LGL237313, LGL237281, Node383, LGL237344, LGL237282, Node387, LGL237291, LGL237305, Node391, LGL237276, Node390, Node386, Node382, Node356, Node2, LGL237307, LGL237335, Node395, Node1, LGL237390, LGL237336, Node400, LGL237340, Node399, LGL237294, LGL237358, Node405, LGL238060, LGL237317, Node408, Node404, Node398, LGL237279, LGL237277, LGL237352, Node414, Node412, LGL237362, LGL237363, Node418, LGL237374, Node417, Node411`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 59 zero-length internal branches: `Node1, Node123, Node133, Node137, Node144, Node145, Node151, Node152, Node153, Node154, Node168, Node177, Node178, Node179, Node185, Node197, Node208, Node209, Node21, Node210, Node219, Node22, Node246, Node247, Node248, Node249, Node253, Node282, Node29, Node30, Node305, Node306, Node320, Node329, Node34, Node35, Node358, Node36, Node362, Node382, Node386, Node411, Node43, Node44, Node45, Node46, Node47, Node49, Node5, Node50, Node52, Node53, Node70, Node71, Node76, Node77, Node82, Node87, Node99`
+* Log(L) = -17636.26, AIC-c = 36136.60 (429 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 14.107
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -17516.79, AIC-c = 35801.84 (377 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 14.136
+* non-synonymous/synonymous rate ratio for *test* =   0.8430
+
+>full-model => Yes
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -17513.24
+* Log(L) = -17513.24, AIC-c = 35794.74 (377 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 14.138
+* non-synonymous/synonymous rate ratio for *test* =   0.8324
+
+### For partition 1 these sites are significant at p <=0.1
+
+|   Codon    | Partition  |   alpha    |non-syn rate (beta) distribution, rates : weights|    LRT     |Episodic selection detected?| # branches |         List of most common codon substitutions at this site          |
+|:----------:|:----------:|:----------:|:-----------------------------------------------:|:----------:|:--------------------------:|:----------:|:---------------------------------------------------------------------:|
+|     5      |     1      |    0.000   |             0.00/54.75 : 0.99/0.01              |   11.893   |      Yes, p =  0.0011      |     2      |                          [1]CAg>GTg,gTg>gAg                           |
+|     10     |     1      |    1.052   |             0.00/10.52 : 0.92/0.08              |    6.910   |      Yes, p =  0.0141      |     7      |[3]gGc>gAc,ggC>ggA|[2]ggC>ggT|[1]GGA>AAC,Gga>Cga,ggA>ggC,ggA>ggT,GGc...|
+|     14     |     1      |    1.205   |              0.00/3.83 : 0.01/0.99              |   10.859   |      Yes, p =  0.0019      |     12     |[20]Gct>Cct|[8]Cct>Gct,Gct>Act|[3]gcT>gcG|[2]ccT>ccC|[1]Cct>Act,CCT>...|
+|     23     |     1      |    1.381   |              0.00/4.50 : 0.01/0.99              |   13.285   |      Yes, p =  0.0006      |     15     |[17]gCa>gTa|[14]Gca>Aca|[5]gCa>gAa|[4]gcA>gcG|[3]Gca>Tca|[2]gCA>gAT|...|
+|     24     |     1      |    0.984   |              0.31/8.52 : 0.76/0.24              |    4.806   |      Yes, p =  0.0417      |     4      |[8]gCc>gTc|[3]Gcc>Acc|[2]gcC>gcG,gcC>gcT|[1]GaC>TaT,GcC>AcG,GcC>AcT,...|
+|     25     |     1      |    0.919   |             0.92/50.89 : 0.97/0.03              |   18.645   |      Yes, p =  0.0000      |     4      |[6]Tct>Cct|[4]tcT>tcC|[3]Tct>Act|[2]Tct>Gct|[1]TcT>AcC,TCt>AGt,TCT>C...|
+|     28     |     1      |    2.895   |             0.60/11.92 : 0.62/0.38              |    8.281   |      Yes, p =  0.0070      |     6      |[6]Acc>Gcc|[4]acC>acA|[3]aCc>aTc,aCt>aGt|[2]Acc>Tcc,ACc>TTc,aTc>aCc,...|
+|     29     |     1      |    3.782   |             2.20/21.08 : 0.74/0.26              |    7.413   |      Yes, p =  0.0109      |     0      |[9]tTc>tCc|[8]tTc>tAc|[6]ttC>ttT|[5]Ttc>Ctc|[4]Ttc>Atc,ttC>ttG|[2]TT...|
+|     30     |     1      |    2.859   |             0.00/10.51 : 0.50/0.50              |    9.180   |      Yes, p =  0.0045      |     27     |[7]aGt>aAt|[6]agT>agC,Agt>Ggt|[4]AGt>GAt|[3]gAt>gGt|[2]aGT>aAA,aGt>a...|
+|     32     |     1      |    2.782   |             1.47/25.38 : 0.79/0.21              |   15.248   |      Yes, p =  0.0002      |     3      |[5]Aat>Gat|[4]Aat>Tat|[3]aAt>aGt,taT>taC|[2]aaT>aaC,AAt>GTt,taC>taT,...|
+|     33     |     1      |    3.023   |             3.02/37.66 : 0.65/0.35              |   31.355   |      Yes, p =  0.0000      |     1      |[12]Gcc>Acc|[10]gCc>gTc|[7]gCc>gAc|[5]GCc>CAc|[4]gCc>gGc,Gcc>Tcc|[2]...|
+|     35     |     1      |    4.089   |             3.06/114.88 : 0.94/0.06             |   10.040   |      Yes, p =  0.0029      |     3      |[15]gGc>gCc|[6]Ggc>Agc|[5]ggC>ggG,ggC>ggT|[3]AGc>TAc,gGC>gCG,gGC>gCT...|
+|     38     |     1      |    3.415   |             0.00/900.62 : 0.99/0.01             |    6.293   |      Yes, p =  0.0194      |     4      |     [10]cgC>cgT|[5]cgC>cgG|[3]cgC>cgA|[1]CAC>GTG,cGc>cAc,cGC>cCG      |
+|     40     |     1      |    0.397   |              0.00/6.67 : 0.55/0.45              |   17.270   |      Yes, p =  0.0001      |     18     |[6]gCt>gTt|[4]Gct>Cct|[3]Gct>Act|[2]gCc>gTc,GCt>ATt,gCt>gGt,GCt>TTt,...|
+|     45     |     1      |    2.901   |             0.00/33.26 : 0.94/0.06              |    6.028   |      Yes, p =  0.0222      |     7      |[7]cgC>cgT|[5]cgT>cgC|[2]cGc>cTc|[1]CCc>ATc,cCC>cTG,Ctc>Ttc,ctG>ctC,...|
+|     47     |     1      |    2.684   |             1.19/12.31 : 0.66/0.34              |    3.769   |      Yes, p =  0.0713      |     0      |[7]ttG>ttC|[5]tTg>tGg|[4]Ttg>Atg|[3]gGg>gCg,Ggg>Tgg,Tgg>Ggg,ttG>ttT,...|
+|     50     |     1      |    2.376   |             0.85/37.93 : 0.75/0.25              |   21.264   |      Yes, p =  0.0000      |     5      |[4]Ggt>Agt|[2]Act>Gct,Act>Tct,aGt>aCt,Agt>Ggt,gcT>gcA,gcT>gcG,gCt>gG...|
+|     51     |     1      |    4.340   |             2.15/177.72 : 0.93/0.07             |   24.945   |      Yes, p =  0.0000      |     3      |[9]atT>atC|[4]Act>Tct,Att>Gtt|[2]acT>acC,ACT>CAA,Act>Gct,Att>Ctt,Cgt...|
+|     52     |     1      |    5.970   |             2.84/49.40 : 0.84/0.16              |   18.404   |      Yes, p =  0.0000      |     3      |[7]atT>atC|[5]aaC>aaT,aGt>aAt|[3]aAc>aCc,aAc>aGc,Aat>Tat,aTt>aAt|[2]...|
+|     53     |     1      |    5.379   |             2.93/29.90 : 0.73/0.27              |    7.656   |      Yes, p =  0.0097      |     0      |[7]aGt>aCt|[6]aGt>aAt|[4]Agt>Ggt,Tgg>Cgg|[3]acT>acC,AgT>TgG|[2]acT>a...|
+|     54     |     1      |    2.930   |             2.93/27.81 : 0.71/0.29              |   22.129   |      Yes, p =  0.0000      |     1      |[12]aGt>aAt|[9]aGt>aCt|[5]Agt>Cgt,AGt>GAt,Agt>Ggt,gAt>gGt|[4]aGT>aAC...|
+|     55     |     1      |    3.242   |             3.21/26.16 : 0.87/0.13              |    8.062   |      Yes, p =  0.0079      |     0      |[17]gGt>gAt|[8]Ggt>Agt|[5]ggT>ggA,ggT>ggC|[3]Ggt>Cgt|[2]Gat>Aat,GGt>...|
+|     56     |     1      |    4.311   |             2.26/25.94 : 0.82/0.18              |    6.515   |      Yes, p =  0.0173      |     0      |[10]Ggt>Agt|[9]gGt>gAt,ggT>ggC|[4]Ggt>Cgt,ggT>ggG|[3]gGT>gAG,ggT>ggA...|
+|     58     |     1      |    2.433   |              0.41/7.57 : 0.64/0.36              |    3.554   |      Yes, p =  0.0798      |     5      |[7]acA>acG|[6]aCa>aTa|[5]acA>acC|[4]Aca>Cca|[3]aCa>aAa,Aca>Tca|[2]aC...|
+|     68     |     1      |    0.359   |             0.07/25.14 : 0.98/0.02              |    9.357   |      Yes, p =  0.0041      |     3      |             [2]Ttc>Gtc|[1]TTc>AGc,Ttc>Ctc,TTc>GCc,ttC>ttT             |
+|     71     |     1      |    1.436   |              0.00/8.53 : 0.88/0.12              |    3.824   |      Yes, p =  0.0694      |     9      |      [8]tcC>tcT|[4]Tcc>Acc|[2]Tcc>Gcc|[1]TCc>AAc,TCc>GGc,tCc>tTc      |
+|     72     |     1      |    1.592   |             0.86/160.96 : 0.93/0.07             |   44.870   |      Yes, p =  0.0000      |     11     |[5]aGa>aAa,AGa>CAa,CAa>AGa|[4]agA>agG|[3]Aga>Gga|[2]agA>agT,Aga>Cga,...|
+|     73     |     1      |    1.734   |              0.00/8.03 : 0.86/0.14              |    3.984   |      Yes, p =  0.0638      |     11     |[4]gaC>gaT|[2]Gac>Aac,GAc>AGc,gaC>gaA,gaC>gaG|[1]GAC>ATA,Gac>Cac,gAc...|
+|     75     |     1      |    1.749   |              0.00/7.29 : 0.69/0.31              |    4.508   |      Yes, p =  0.0486      |     20     |[4]gcC>gcG,gCc>gTc|[3]Gcc>Acc,gCc>gAc|[2]gCc>gGc,Gcc>Tcc|[1]GcC>AcG,...|
+|     76     |     1      |    1.395   |              0.04/5.63 : 0.57/0.43              |    3.632   |      Yes, p =  0.0766      |     7      |[10]Aag>Gag|[4]aaG>aaC,aAg>aGg|[3]aaG>aaA|[2]Aag>Cag|[1]AAg>CGg,AAg>...|
+|     78     |     1      |    3.938   |             1.55/31.09 : 0.92/0.08              |    3.534   |      Yes, p =  0.0807      |     3      |[16]aCg>aTg|[8]acG>acA|[6]Acg>Gcg|[4]acG>acC,acG>acT,ACg>GTg|[1]aCG>...|
+|     80     |     1      |    1.670   |             0.80/22.45 : 0.87/0.13              |   12.802   |      Yes, p =  0.0007      |     6      |[5]TAt>ACt,taT>taC,tAt>tTt|[3]tAt>tCt|[2]Tat>Cat,Tat>Gat|[1]Act>Gct,...|
+|     83     |     1      |    0.000   |             0.00/27.52 : 0.96/0.04              |    5.804   |      Yes, p =  0.0249      |     8      |                 [5]Atg>Ttg|[1]atG>atA,Atg>Ctg,Atg>Gtg                 |
+
+### ** Found _33_ sites under episodic diversifying positive selection at p <= 0.1**

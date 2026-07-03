@@ -1,0 +1,89 @@
+
+Analysis Description
+--------------------
+MEME (Mixed Effects Model of Evolution) estimates a site-wise synonymous
+(&alpha;) and a two-category mixture of non-synonymous (&beta;-, with
+proportion p-, and &beta;+ with proportion [1-p-]) rates, and uses a
+likelihood ratio test to determine if &beta;+ > &alpha; at a site. The
+estimates aggregate information over a proportion of branches at a site,
+so the signal is derived from episodic diversification, which is a
+combination of strength of selection [effect size] and the proportion of
+the tree affected. A subset of branches can be selected for testing as
+well, in which case an additional (nuisance) parameter will be inferred
+-- the non-synonymous rate on branches NOT selected for testing.
+Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 3.0 adds a different format for
+ancestral state reconstruction, branch-site posterior storage, and
+site-level heterogeneity testing. Version 4 adds support for multiple
+hits and more than 2 rate classes on omega, as well as site-level
+imputation option. Version 4.1 fixes bugs with EBF computation for > 2
+more rates and MH reporting. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Detecting Individual Sites Subject to Episodic Diversifying Selection.
+_PLoS Genet_ 8(7): e1002764.
+
+- __Written by__: Sergei L. Kosakovsky Pond, Steven Weaver
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.1
+
+
+>code => Invertebrate-mtDNA
+>Loaded a multiple sequence alignment with **21** sequences, **510** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/COXI.mtnex`
+
+>branches => All
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+The number omega rate classes to include in the model [2 is the strongly recommended default] (permissible range = [2,4], default value = 2, integer): 
+>rates => 2
+
+>multiple-hits => None
+
+>impute-states => No
+
+>precision => standard
+
+
+### Branches to include in the MEME analysis
+Selected 39 branches to include in the MEME analysis: `P_TROGLODYTES, P_PANISCUS, Node8, H_SAPIENS, Node7, G_GORILLA, Node6, P_PYGMAEUS_ABELII, P_PYGMAEUS, Node13, Node5, H_LAR, Node4, M_SYLVANUS, T_GELADA, P_HAMADRYAS, Node20, Node18, C_AETHIOPS, Node17, Node3, C_ALBIFRONS, S_USTUS, S_SCIUREUS, Node26, Node24, Node2, T_BANCANUS, Node1, L_CATTA, P_VERREAUXI, Node31, N_COUCANG, P_POTTO, Node34, Node30, M_MUSCULUS, R_NORVEGICUS, Node37`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -15439.47, AIC-c = 30973.09 (47 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.338
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -12525.92, AIC-c = 25160.39 (54 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.795
+* non-synonymous/synonymous rate ratio for *test* =   0.0297
+
+>full-model => Yes
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -12232.13
+* Log(L) = -12232.13, AIC-c = 24572.82 (54 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.972
+* non-synonymous/synonymous rate ratio for *test* =   0.0171
+
+### For partition 1 these sites are significant at p <=0.1
+
+|   Codon    | Partition  |   alpha    |non-syn rate (beta) distribution, rates : weights|    LRT     |Episodic selection detected?| # branches |         List of most common codon substitutions at this site          |
+|:----------:|:----------:|:----------:|:-----------------------------------------------:|:----------:|:--------------------------:|:----------:|:---------------------------------------------------------------------:|
+|    117     |     1      |    0.000   |             0.00/21.69 : 0.81/0.19              |    5.381   |      Yes, p =  0.0310      |     4      |                  [1]aTa>aCa,aTA>aCT,ATa>GCa,Ata>Gta                   |
+|    364     |     1      |    8.133   |             0.00/659.79 : 0.96/0.04             |    3.525   |      Yes, p =  0.0811      |     1      |         [2]Cta>Tta|[1]ctA>ctG,ctA>ctT,CtT>AtA,ctT>ctA,ctT>ctC         |
+|    480     |     1      |    1.636   |             0.00/47.15 : 0.70/0.30              |    4.965   |      Yes, p =  0.0384      |     1      |         [2]Cta>Ata|[1]ATa>GGa,cTa>cCa,ctA>ctC,CTa>TCa,Cta>Tta         |
+
+### ** Found _3_ sites under episodic diversifying positive selection at p <= 0.1**

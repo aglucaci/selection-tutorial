@@ -1,0 +1,99 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **18** sequences, **342** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/flavNS5.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -11349.07, AIC-c = 22780.32 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.714
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -9584.49, AIC-c = 19265.75 (48 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.431
+* non-synonymous/synonymous rate ratio for *test* =   0.0593
+
+### Fitting Standard MG94
+* Log(L) = -9140.02, AIC-c = 18386.98 (53 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0470
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.055               |    63.903     |                                   |
+|               1.489               |    26.505     |                                   |
+|               5.947               |     9.592     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -9088.13, AIC-c = 18285.24 (54 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0341
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.7208
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.090               |    67.162     |                                   |
+|               1.809               |    25.416     |                                   |
+|               6.465               |     7.422     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -9085.91, AIC-c = 18282.83 (55 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0345
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.5093
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.6837
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.6837
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.088               |    66.719     |                                   |
+|               1.793               |    25.740     |                                   |
+|               6.358               |     7.541     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |  -9140.02  |    0.0470  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |  -9088.13  |    0.0341  |    0.7208  |       0.0000 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |  -9085.91  |    0.0345  |    0.5093  |      0.0000 (2&3-hit rates = 0)    |    0.6837  |      0.0351 (3-hit rate(s) = 0)    |
+
+### 9 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|    7     |          11.8813        |           1.8832        |         GTG->AAG(1)AGC(1)GTA(1)GTC(2)GTT(1)TCG(1)          |
+|    43    |         337.8453        |           1.2057        |        AGC->TCC(1), AGT->AGC(2)TGT(1), TCC->TCA(1)         |
+|    66    |           8.6044        |           1.0746        |AAT->AAC(1), GAA->AAT(2)ACG(1)AGT(1)CAC(1)CCA(1)CCC(1)GAC...|
+|    95    |          22.4918        |           0.9202        |         CGG->AGA(1), CGT->AAC(1)AGG(2)CGC(2)CGG(2)         |
+|   124    |          48.9731        |           0.8101        |      GCC->GAT(1)GCA(2), TCC->AGC(1)GCC(1)TCA(1)TCT(3)      |
+|   227    |          15.7704        |           2.0678        |            ACC->ACA(2)ACT(3)ATC(1)GTG(2)GTT(1)             |
+|   281    |        1128.6868        |           1.4564        |            AGC->AGT(1), TCA->AGC(1)TCG(2)TCT(1)            |
+|   305    |           8.6818        |           1.0834        |         AGC->AAC(3)AGT(3)GGG(1)TCT(1), AGT->AGC(1)         |
+|   326    |           8.0310        |           1.0729        |                     GAC->AGT(1)GAT(5)                      |
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/flavNS5_fitmultimodelmh.json'

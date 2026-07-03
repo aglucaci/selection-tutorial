@@ -1,0 +1,116 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/HIV_RT.nex'
+contains 1 duplicate sequence. Identical sequences do not contribute any
+information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **476** sequences, **335** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/HIV_RT.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 39 zero-length internal branches: `Node13, Node14, Node164, Node19, Node190, Node214, Node216, Node285, Node335, Node392, Node4, Node411, Node451, Node453, Node455, Node482, Node490, Node504, Node538, Node539, Node544, Node577, Node580, Node588, Node609, Node610, Node611, Node612, Node615, Node639, Node679, Node765, Node81, Node825, Node844, Node895, Node899, Node98, Node99`
+* Log(L) = -27758.89, AIC-c = 57435.62 (957 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  5.976
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -26211.74, AIC-c = 54284.28 (925 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  6.414
+* non-synonymous/synonymous rate ratio for *test* =   0.1960
+
+### Fitting Standard MG94
+* Log(L) = -24409.92, AIC-c = 50690.75 (930 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1904
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.085               |    71.580     |                                   |
+|               1.845               |    22.179     |                                   |
+|               8.498               |     6.242     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -24362.49, AIC-c = 50597.93 (931 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1782
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0930
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.081               |    70.946     |                                   |
+|               1.723               |    22.283     |                                   |
+|               8.246               |     6.770     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -24360.61, AIC-c = 50596.19 (932 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1762
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0861
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.0475
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.0475
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.083               |    71.222     |                                   |
+|               1.743               |    22.121     |                                   |
+|               8.343               |     6.658     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |-24409.92...|    0.1904  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |-24362.49...|    0.1782  |    0.0930  |       0.0000 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |-24360.61...|    0.1762  |    0.0861  |      0.0000 (2&3-hit rates = 0)    |    0.0475  |      0.0525 (3-hit rate(s) = 0)    |
+
+### 14 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|    48    |         105.0190        |           0.7757        |ACA->RCA(1), TCA->ACA(8)CAA(1)GAA(2)TCC(1)TCG(2)TCR(4), T...|
+|    64    |          12.0628        |           0.9596        |AAA->ARA(2), AAG->AAA(3)AAR(1)AGG(5)ANG(1)ARG(3)CAC(1)TCG...|
+|    69    |           7.9055        |           2.0764        |AAC->AMC(1), ACA->ACR(1), ACC->AAC(1)ACT(1)ACY(2), ACT->A...|
+|    72    |          19.9093        |           0.9461        |  AGA->AAA(1)AGG(5)AGR(11)GAA(1)RGA(2), AGG->AGA(5)AGR(2)   |
+|    75    |          27.2086        |           0.8736        |GTA->ATA(4)ATG(1)GTG(3)GTR(3)GTT(2)GYA(1)RTA(5)TCA(1), GT...|
+|   151    |          72.4024        |           0.8370        |        CAA->CAR(1), CAG->ATG(4)CAA(18)CAN(1)CAR(9)         |
+|   162    |          28.3122        |           1.1731        |ACT->RCT(1), AGC->AGY(1), AGT->ACT(1)AGC(7)AGK(1)AGY(4)AR...|
+|   163    |        2441.2939        |           0.9428        |   AGC->AGT(9)AGY(9)ASC(3)TCC(1)WGC(1), AGT->AGC(1)AGY(1)   |
+|   174    |           8.6631        |           0.8337        |AAA->AGA(1)CAA(2), AGA->AAA(1)ARA(2), CAA->AAA(1)AAC(1)AA...|
+|   181    |          56.8754        |           0.7427        |TAC->TAT(2)TAY(2)TGC(1), TAT->ATT(3)TAC(16)TAY(9)TGT(5)TR...|
+|   188    |         896.3806        |           0.7944        |   TAT->CAT(2)CTT(1)TAC(1)TAY(1)TRT(2)TTA(2)TTG(1)YAT(4)    |
+|   215    |         202.7307        |           0.8601        |ACC->AAC(1)ACA(1)ACR(1)ACT(6)ACY(12)GAC(2)TAC(1)TWC(1), A...|
+|   219    |           8.5611        |           3.2713        |AAA->AAG(15)AAR(11)ARA(2)CAG(1)GAA(1)RAA(2)TGG(1), AAG->A...|
+|   228    |          10.6013        |           5.5809        |AAG->AAR(1), CTC->CTY(1), CTG->CTR(1), CTT->AAG(1)AGA(1)C...|
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/HIV_RT_fitmultimodelmh.json'

@@ -1,0 +1,243 @@
+
+Analysis Description
+--------------------
+FEL (Fixed Effects Likelihood) estimates site-wise synonymous (&alpha;)
+and non-synonymous (&beta;) rates, and uses a likelihood ratio test to
+determine if beta &neq; alpha at a site. The estimates aggregate
+information over all branches, so the signal is derived from pervasive
+diversification or conservation. A subset of branches can be selected
+for testing as well, in which case an additional (nuisance) parameter
+will be inferred -- the non-synonymous rate on branches NOT selected for
+testing. Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 2.5 adds MH support. Version 2.6
+adds substitution mapping. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Not So Different After All: A Comparison of Methods for Detecting Amino
+Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
+
+- __Written by__: Sergei L Kosakovsky Pond and Simon DW Frost
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **23** sequences, **254** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/adh.nex`
+
+>branches => All
+
+>srv => Yes
+
+>multiple-hits => None
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>ci => No
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+
+
+### Branches to include in the FEL analysis
+Selected 43 branches to include in FEL calculations: `YAK, MEL, SIM, MA, Node7, Node5, Node3, ERE, Node2, PSE, PS, Node14, PER, Node13, MIR, Node12, SUB, AMB, Node19, Node11, Node1, MET, CRA, NIG, MIM, ADI, PIC, SIL, HET, Node36, PLA, DIF, Node39, Node35, AFF, Node34, Node32, Node30, Node28, Node26, Node24, Node22, LEB`
+
+>precision => standard
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -5137.01, AIC-c = 10376.32 (51 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.184
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -4772.12, AIC-c =  9661.42 (58 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.365
+* non-synonymous/synonymous rate ratio for *test* =   0.1497
+
+>full-model => Yes
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -4686.17, AIC-c =  9489.52 (58 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.369
+* non-synonymous/synonymous rate ratio for *test* =   0.0936
+
+### For partition 1 these sites are significant at p <=0.1
+
+|     Codon      |   Partition    |     alpha      |      beta      |      LRT       |Selection detected?|
+|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:-----------------:|
+|       3        |       1        |        4.691   |        0.335   |        6.621   |  Neg. p = 0.0101  |
+|       7        |       1        |        0.877   |        0.000   |        4.858   |  Neg. p = 0.0275  |
+|       8        |       1        |        3.518   |        0.216   |        8.132   |  Neg. p = 0.0043  |
+|       10       |       1        |        1.114   |        0.000   |        7.498   |  Neg. p = 0.0062  |
+|       11       |       1        |        3.346   |        0.000   |       15.644   |  Neg. p = 0.0001  |
+|       12       |       1        |        0.598   |        0.000   |        5.483   |  Neg. p = 0.0192  |
+|       15       |       1        |        1.462   |        0.000   |       12.474   |  Neg. p = 0.0004  |
+|       16       |       1        |        0.693   |        0.000   |        5.628   |  Neg. p = 0.0177  |
+|       18       |       1        |        2.492   |        0.000   |       16.270   |  Neg. p = 0.0001  |
+|       19       |       1        |        0.578   |        0.000   |        4.846   |  Neg. p = 0.0277  |
+|       21       |       1        |        0.789   |        0.000   |        6.648   |  Neg. p = 0.0099  |
+|       22       |       1        |        0.999   |        0.000   |        7.718   |  Neg. p = 0.0055  |
+|       25       |       1        |        1.521   |        0.105   |        6.420   |  Neg. p = 0.0113  |
+|       28       |       1        |        1.939   |        0.093   |        9.931   |  Neg. p = 0.0016  |
+|       29       |       1        |        2.078   |        0.312   |        5.002   |  Neg. p = 0.0253  |
+|       32       |       1        |        3.678   |        0.000   |       15.032   |  Neg. p = 0.0001  |
+|       33       |       1        |        1.251   |        0.121   |        5.505   |  Neg. p = 0.0190  |
+|       34       |       1        |        1.214   |        0.000   |        8.752   |  Neg. p = 0.0031  |
+|       35       |       1        |        2.692   |        0.258   |        2.912   |  Neg. p = 0.0879  |
+|       36       |       1        |        1.872   |        0.000   |       13.686   |  Neg. p = 0.0002  |
+|       37       |       1        |        1.370   |        0.000   |       10.513   |  Neg. p = 0.0012  |
+|       38       |       1        |        1.027   |        0.000   |        8.765   |  Neg. p = 0.0031  |
+|       41       |       1        |        2.542   |        0.000   |       14.469   |  Neg. p = 0.0001  |
+|       42       |       1        |        1.881   |        0.096   |        9.003   |  Neg. p = 0.0027  |
+|       46       |       1        |        1.061   |        0.199   |        2.982   |  Neg. p = 0.0842  |
+|       47       |       1        |       57.713   |        0.000   |       24.254   |  Neg. p = 0.0000  |
+|       48       |       1        |        0.601   |        0.000   |        4.913   |  Neg. p = 0.0267  |
+|       50       |       1        |        0.789   |        0.000   |        9.355   |  Neg. p = 0.0022  |
+|       51       |       1        |        1.494   |        0.100   |        5.875   |  Neg. p = 0.0154  |
+|       52       |       1        |        0.747   |        0.000   |        6.917   |  Neg. p = 0.0085  |
+|       53       |       1        |        1.384   |        0.000   |       12.055   |  Neg. p = 0.0005  |
+|       54       |       1        |      230.719   |        0.000   |        6.314   |  Neg. p = 0.0120  |
+|       58       |       1        |        0.676   |        0.088   |        3.154   |  Neg. p = 0.0757  |
+|       59       |       1        |        1.576   |        0.000   |        8.362   |  Neg. p = 0.0038  |
+|       60       |       1        |        0.819   |        0.100   |        2.996   |  Neg. p = 0.0835  |
+|       62       |       1        |        2.155   |        0.000   |       13.959   |  Neg. p = 0.0002  |
+|       64       |       1        |        0.596   |        0.000   |        5.151   |  Neg. p = 0.0232  |
+|       65       |       1        |        1.872   |        0.000   |       13.454   |  Neg. p = 0.0002  |
+|       66       |       1        |        2.770   |        0.000   |       16.401   |  Neg. p = 0.0001  |
+|       67       |       1        |        0.819   |        0.087   |        3.080   |  Neg. p = 0.0793  |
+|       69       |       1        |        2.382   |        0.724   |        2.840   |  Neg. p = 0.0919  |
+|       70       |       1        |        0.685   |        0.000   |        4.567   |  Neg. p = 0.0326  |
+|       71       |       1        |        1.307   |        0.195   |        3.713   |  Neg. p = 0.0540  |
+|       73       |       1        |        1.968   |        0.000   |        6.100   |  Neg. p = 0.0135  |
+|       74       |       1        |        1.558   |        0.000   |       12.155   |  Neg. p = 0.0005  |
+|       75       |       1        |        1.084   |        0.000   |        7.983   |  Neg. p = 0.0047  |
+|       77       |       1        |        0.568   |        0.091   |        2.783   |  Neg. p = 0.0953  |
+|       78       |       1        |        1.170   |        0.000   |        7.529   |  Neg. p = 0.0061  |
+|       79       |       1        |        0.759   |        0.000   |        4.315   |  Neg. p = 0.0378  |
+|       83       |       1        |        1.600   |        0.077   |        3.288   |  Neg. p = 0.0698  |
+|       84       |       1        |        3.236   |        0.000   |       22.262   |  Neg. p = 0.0000  |
+|       86       |       1        |        0.834   |        0.000   |        6.795   |  Neg. p = 0.0091  |
+|       87       |       1        |        2.151   |        0.247   |        5.846   |  Neg. p = 0.0156  |
+|       88       |       1        |        0.628   |        0.000   |        5.305   |  Neg. p = 0.0213  |
+|       89       |       1        |        0.460   |        0.000   |        3.559   |  Neg. p = 0.0592  |
+|       90       |       1        |        0.460   |        0.000   |        3.852   |  Neg. p = 0.0497  |
+|       91       |       1        |        0.944   |        0.000   |        8.095   |  Neg. p = 0.0044  |
+|       92       |       1        |        0.481   |        0.000   |        4.866   |  Neg. p = 0.0274  |
+|       93       |       1        |        1.707   |        0.000   |       12.342   |  Neg. p = 0.0004  |
+|       94       |       1        |        1.872   |        0.000   |       11.489   |  Neg. p = 0.0007  |
+|       95       |       1        |        0.550   |        0.000   |        4.711   |  Neg. p = 0.0300  |
+|       96       |       1        |        3.931   |        0.000   |       14.410   |  Neg. p = 0.0001  |
+|       97       |       1        |        0.739   |        0.000   |        6.575   |  Neg. p = 0.0103  |
+|      100       |       1        |        1.941   |        0.000   |       12.945   |  Neg. p = 0.0003  |
+|      102       |       1        |        1.043   |        0.000   |        8.867   |  Neg. p = 0.0029  |
+|      103       |       1        |        0.646   |        0.000   |        6.048   |  Neg. p = 0.0139  |
+|      104       |       1        |        0.305   |        0.000   |        2.860   |  Neg. p = 0.0908  |
+|      105       |       1        |        0.359   |        0.000   |        3.041   |  Neg. p = 0.0812  |
+|      106       |       1        |        0.891   |        0.119   |        2.869   |  Neg. p = 0.0903  |
+|      107       |       1        |        1.541   |        0.000   |        9.406   |  Neg. p = 0.0022  |
+|      108       |       1        |        1.813   |        0.099   |        6.134   |  Neg. p = 0.0133  |
+|      109       |       1        |        3.177   |        0.283   |        9.678   |  Neg. p = 0.0019  |
+|      110       |       1        |        1.419   |        0.000   |       11.047   |  Neg. p = 0.0009  |
+|      112       |       1        |        1.140   |        0.000   |        8.413   |  Neg. p = 0.0037  |
+|      115       |       1        |        1.794   |        0.000   |       13.895   |  Neg. p = 0.0002  |
+|      116       |       1        |        2.119   |        0.000   |       19.206   |  Neg. p = 0.0000  |
+|      117       |       1        |        0.914   |        0.000   |        6.449   |  Neg. p = 0.0111  |
+|      118       |       1        |        0.857   |        0.000   |        6.775   |  Neg. p = 0.0092  |
+|      121       |       1        |        1.716   |        0.000   |        8.609   |  Neg. p = 0.0033  |
+|      123       |       1        |        0.686   |        0.000   |        4.271   |  Neg. p = 0.0388  |
+|      125       |       1        |        0.811   |        0.000   |        6.331   |  Neg. p = 0.0119  |
+|      127       |       1        |        1.794   |        0.000   |       12.225   |  Neg. p = 0.0005  |
+|      128       |       1        |        1.419   |        0.000   |       11.108   |  Neg. p = 0.0009  |
+|      129       |       1        |        0.454   |        0.000   |        5.856   |  Neg. p = 0.0155  |
+|      130       |       1        |        0.484   |        0.000   |        4.762   |  Neg. p = 0.0291  |
+|      131       |       1        |        1.436   |        0.001   |       10.686   |  Neg. p = 0.0011  |
+|      132       |       1        |        1.659   |        0.215   |        4.354   |  Neg. p = 0.0369  |
+|      135       |       1        |        0.674   |        0.000   |        4.463   |  Neg. p = 0.0346  |
+|      136       |       1        |        1.221   |        0.000   |        9.860   |  Neg. p = 0.0017  |
+|      138       |       1        |        0.978   |        0.000   |        8.436   |  Neg. p = 0.0037  |
+|      139       |       1        |        2.499   |        0.000   |       16.029   |  Neg. p = 0.0001  |
+|      141       |       1        |        2.135   |        0.000   |       16.081   |  Neg. p = 0.0001  |
+|      142       |       1        |        0.686   |        0.000   |        4.069   |  Neg. p = 0.0437  |
+|      143       |       1        |        1.600   |        0.000   |       11.695   |  Neg. p = 0.0006  |
+|      145       |       1        |        0.430   |        0.000   |        3.530   |  Neg. p = 0.0603  |
+|      147       |       1        |        2.788   |        0.000   |        6.178   |  Neg. p = 0.0129  |
+|      149       |       1        |        0.641   |        0.000   |        6.092   |  Neg. p = 0.0136  |
+|      150       |       1        |        1.872   |        0.000   |       12.682   |  Neg. p = 0.0004  |
+|      151       |       1        |        0.731   |        0.000   |        4.148   |  Neg. p = 0.0417  |
+|      152       |       1        |        1.614   |        0.000   |       11.680   |  Neg. p = 0.0006  |
+|      155       |       1        |       42.379   |        0.000   |       17.378   |  Neg. p = 0.0000  |
+|      156       |       1        |        3.897   |        0.000   |       20.813   |  Neg. p = 0.0000  |
+|      157       |       1        |        0.934   |        0.000   |        8.191   |  Neg. p = 0.0042  |
+|      158       |       1        |        1.469   |        0.108   |        5.794   |  Neg. p = 0.0161  |
+|      159       |       1        |        2.011   |        0.255   |        6.122   |  Neg. p = 0.0133  |
+|      161       |       1        |        0.697   |        0.000   |        4.156   |  Neg. p = 0.0415  |
+|      162       |       1        |        0.646   |        0.000   |        6.057   |  Neg. p = 0.0139  |
+|      164       |       1        |        0.720   |        0.000   |        5.922   |  Neg. p = 0.0150  |
+|      168       |       1        |        1.244   |        0.000   |        8.542   |  Neg. p = 0.0035  |
+|      169       |       1        |        2.314   |        0.000   |       15.581   |  Neg. p = 0.0001  |
+|      171       |       1        |        2.800   |        0.091   |       11.140   |  Neg. p = 0.0008  |
+|      172       |       1        |        0.501   |        0.000   |        5.350   |  Neg. p = 0.0207  |
+|      173       |       1        |        0.753   |        0.000   |        5.917   |  Neg. p = 0.0150  |
+|      174       |       1        |        1.518   |        0.000   |       10.699   |  Neg. p = 0.0011  |
+|      175       |       1        |        1.532   |        0.000   |       12.751   |  Neg. p = 0.0004  |
+|      176       |       1        |        1.224   |        0.204   |        4.384   |  Neg. p = 0.0363  |
+|      177       |       1        |        5.834   |        0.000   |       20.187   |  Neg. p = 0.0000  |
+|      178       |       1        |        1.341   |        0.098   |        5.905   |  Neg. p = 0.0151  |
+|      179       |       1        |        2.162   |        0.108   |        6.456   |  Neg. p = 0.0111  |
+|      180       |       1        |        2.092   |        0.000   |       14.275   |  Neg. p = 0.0002  |
+|      181       |       1        |        1.886   |        0.000   |       12.674   |  Neg. p = 0.0004  |
+|      183       |       1        |        1.144   |        0.000   |        7.778   |  Neg. p = 0.0053  |
+|      184       |       1        |        1.322   |        0.000   |       10.129   |  Neg. p = 0.0015  |
+|      185       |       1        |        4.139   |        0.451   |        7.891   |  Neg. p = 0.0050  |
+|      186       |       1        |        0.692   |        0.000   |        6.151   |  Neg. p = 0.0131  |
+|      188       |       1        |        0.550   |        0.000   |        4.677   |  Neg. p = 0.0306  |
+|      189       |       1        |        1.545   |        0.000   |        9.457   |  Neg. p = 0.0021  |
+|      190       |       1        |        0.678   |        0.000   |        4.466   |  Neg. p = 0.0346  |
+|      191       |       1        |        1.302   |        0.074   |        6.226   |  Neg. p = 0.0126  |
+|      192       |       1        |        0.644   |        0.000   |        4.056   |  Neg. p = 0.0440  |
+|      194       |       1        |        2.807   |        0.000   |       15.225   |  Neg. p = 0.0001  |
+|      196       |       1        |        0.511   |        0.000   |        4.533   |  Neg. p = 0.0332  |
+|      198       |       1        |        1.140   |        0.000   |        8.517   |  Neg. p = 0.0035  |
+|      200       |       1        |        0.573   |        0.000   |        6.703   |  Neg. p = 0.0096  |
+|      202       |       1        |        2.379   |        0.000   |       15.536   |  Neg. p = 0.0001  |
+|      203       |       1        |        3.448   |        0.000   |       13.921   |  Neg. p = 0.0002  |
+|      204       |       1        |        1.673   |        0.000   |        5.928   |  Neg. p = 0.0149  |
+|      206       |       1        |        1.941   |        0.000   |       13.433   |  Neg. p = 0.0002  |
+|      207       |       1        |        0.578   |        0.000   |        4.988   |  Neg. p = 0.0255  |
+|      208       |       1        |        3.312   |        0.580   |        2.930   |  Neg. p = 0.0869  |
+|      209       |       1        |        1.158   |        0.167   |        4.028   |  Neg. p = 0.0447  |
+|      210       |       1        |        0.304   |        0.000   |        2.923   |  Neg. p = 0.0873  |
+|      211       |       1        |        0.598   |        0.000   |        6.045   |  Neg. p = 0.0139  |
+|      214       |       1        |        2.191   |        0.215   |        7.885   |  Neg. p = 0.0050  |
+|      216       |       1        |        8.023   |        0.482   |       10.012   |  Neg. p = 0.0016  |
+|      217       |       1        |        2.110   |        0.000   |        9.171   |  Neg. p = 0.0025  |
+|      221       |       1        |        0.331   |        0.000   |        3.014   |  Neg. p = 0.0825  |
+|      222       |       1        |        4.942   |        0.000   |       15.764   |  Neg. p = 0.0001  |
+|      223       |       1        |        1.440   |        0.000   |        5.769   |  Neg. p = 0.0163  |
+|      224       |       1        |        0.720   |        0.000   |        5.875   |  Neg. p = 0.0154  |
+|      225       |       1        |        1.948   |        0.000   |       13.143   |  Neg. p = 0.0003  |
+|      226       |       1        |       22.402   |        0.000   |       14.694   |  Neg. p = 0.0001  |
+|      228       |       1        |        0.615   |        0.000   |        4.375   |  Neg. p = 0.0365  |
+|      230       |       1        |        1.006   |        0.000   |        7.901   |  Neg. p = 0.0049  |
+|      231       |       1        |        1.429   |        0.000   |       11.958   |  Neg. p = 0.0005  |
+|      233       |       1        |        0.476   |        0.000   |        3.630   |  Neg. p = 0.0567  |
+|      235       |       1        |        0.822   |        0.132   |        2.836   |  Neg. p = 0.0922  |
+|      236       |       1        |        1.228   |        0.000   |        8.650   |  Neg. p = 0.0033  |
+|      237       |       1        |        0.956   |        0.000   |        7.355   |  Neg. p = 0.0067  |
+|      238       |       1        |        2.807   |        0.000   |       15.482   |  Neg. p = 0.0001  |
+|      240       |       1        |        1.359   |        0.203   |        3.765   |  Neg. p = 0.0523  |
+|      241       |       1        |        0.578   |        0.000   |        4.847   |  Neg. p = 0.0277  |
+|      244       |       1        |        2.243   |        0.091   |        9.495   |  Neg. p = 0.0021  |
+|      251       |       1        |        2.517   |        0.000   |       10.386   |  Neg. p = 0.0013  |
+|      252       |       1        |        1.228   |        0.000   |        8.473   |  Neg. p = 0.0036  |
+
+### ** Found _0_ sites under pervasive positive diversifying and _165_ sites under negative selection at p <= 0.1**

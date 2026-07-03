@@ -1,0 +1,127 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **38** sequences, **330** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/yokoyama.rh1.cds.mod.1-990.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -14860.35, AIC-c = 29877.02 (78 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.089
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -13501.81, AIC-c = 27174.80 (85 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.766
+* non-synonymous/synonymous rate ratio for *test* =   0.1252
+
+### Fitting Standard MG94
+* Log(L) = -12819.45, AIC-c = 25820.22 (90 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1149
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.084               |    58.764     |                                   |
+|               1.437               |    30.342     |                                   |
+|               4.725               |    10.894     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -12700.17, AIC-c = 25583.69 (91 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0806
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.7153
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.106               |    60.602     |                                   |
+|               1.519               |    29.599     |                                   |
+|               4.962               |     9.799     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -12689.22, AIC-c = 25563.81 (92 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0814
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.5527
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.9819
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.9819
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.106               |    60.373     |                                   |
+|               1.499               |    29.677     |                                   |
+|               4.938               |     9.950     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |-12819.45...|    0.1149  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |-12700.17...|    0.0806  |    0.7153  |       0.0000 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |-12689.22...|    0.0814  |    0.5527  |      0.0000 (2&3-hit rates = 0)    |    0.9819  |      0.0000 (3-hit rate(s) = 0)    |
+
+### 37 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|    13    |          52.5040        |           0.6594        |                        ATG->TTC(2)                         |
+|    14    |         155.8625        |           2.4210        |ATA->CTC(1), GTA->GTG(1)GTT(1), GTG->TCT(1), TCA->ATA(1)G...|
+|    19    |          26.4180        |           0.6178        |GTG->ATA(1)ATC(1)CTG(1)GTA(2)GTT(2), GTT->ATC(1)ATT(4)GTA...|
+|    26    |          37.9010        |           0.7787        |               TAC->GCC(1)TAT(1), TAT->TAC(8)               |
+|    35    |           7.9383        |           1.1208        |     GCA->GCC(1)GCG(2)GTG(1), GCG->GCA(1), TGG->GCA(1)      |
+|    45    |          26.5660        |           0.8003        |                     TTC->ATG(1)TTT(2)                      |
+|    46    |          14.5902        |           2.3701        |      CTG->ATG(1)CTT(1)TTG(1), TTC->ACG(1)CTG(2)TTT(1)      |
+|    50    |          18.7264        |           0.9636        |ACT->ACC(1), ATT->ATC(2)GTC(1)GTG(1)TTT(2), CTT->CTC(2)CT...|
+|    84    |          45.9333        |           0.5926        |                  CTC->CAC(1)CAT(1)TTG(3)                   |
+|    93    |          52.2636        |           3.2159        |               ACC->ACA(2)ACT(1)GTC(1)GTG(1)                |
+|    96    |          37.1927        |           3.6312        |                     TAC->GTG(1)TAT(2)                      |
+|   107    |          10.0357        |           1.2896        |CAA->CAG(1), CCA->ACA(1)CAA(1)CCC(1)GTA(1), CCC->CCA(1)CG...|
+|   108    |          99.6920        |           2.1154        |ACA->ACG(1), ACG->ACA(2)ACC(1)ACT(3)CTT(1)GTA(1), CTC->TT...|
+|   122    |          17.5837        |           2.1720        |      GAA->CAA(1)GAG(2), GAG->ATC(1)ATG(1)CAG(1)GAA(3)      |
+|   136    |          69.3706        |           0.6577        |           TAC->TAT(1), TAT->TAC(2), TGG->TAT(2)            |
+|   144    |         322.2953        |           0.5959        |         AGC->ACC(1)GCC(2)TCC(1), GCC->GAA(1)TCC(1)         |
+|   149    |          22.1745        |           2.5411        |GGA->CAG(1)GGG(4), GGG->ACT(1)GGA(1)GGC(1), GGT->GGA(1)GG...|
+|   158    |          13.5747        |           3.4168        |GCA->ACG(1)ATG(1), GCC->ACC(1)AGT(1)ATC(1)ATG(1)GCA(1)GCG...|
+|   160    |          28.9424        |           0.8812        |            ACC->ACA(2)ACT(1)TCC(2), TCC->AGC(1)            |
+|   162    |          41.8388        |           0.5185        |ATC->ACC(1)ATA(1)ATT(1)GTC(3)TTG(1), GGT->GCC(1), GTA->CT...|
+|   163    |          20.7890        |           0.8486        |                     ATG->GCG(1)TTG(1)                      |
+|   165    |          10.2999        |           1.6397        |CTG->ATG(1), TCC->GGC(1)TGC(1), TCG->TCC(2), TTG->AAT(1)A...|
+|   195    |          42.5914        |           1.7505        |AAG->AAC(1)ACC(1)CAC(1)GCC(1)GCG(1), CAC->CGC(1), GCC->AC...|
+|   196    |           9.5429        |           2.1097        |CAG->CCC(1)GAG(1), CCC->CAG(1), CCG->CCA(1), CCT->CCC(1)C...|
+|   209    |           9.0457        |           0.9594        |ACC->ACA(1), ATC->ACC(1)ATA(1), ATT->CTT(1), GTC->ACC(1)A...|
+|   210    |          81.8801        |           3.4193        |CTC->GTG(1)TTA(1), GTC->GTG(2)GTT(3)TGC(2), GTT->GTC(1), ...|
+|   213    |          23.2127        |           0.5478        |ACC->ATC(2)ATG(1)GTC(1)TCC(2), ATC->ATA(1)ATT(1)CTG(2)TCC...|
+|   236    |          45.4120        |           5.5984        |               CAG->CAA(1)GCC(1), GCC->GCT(1)               |
+|   264    |          32.6367        |           1.1750        |        ACC->ACA(1), TGC->ACC(1)TGT(4), TGT->TGC(1)         |
+|   270    |         214.2861        |           2.9627        |   AGC->AGT(5)GGA(1)GGC(3)GGG(1)TAT(1)TCA(1), GGC->GGA(1)   |
+|   271    |          50.8904        |           1.7622        |      GTG->ACC(1)ACG(1)GTA(1)GTC(1)GTT(2), GTT->GTC(1)      |
+|   273    |           9.7267        |           1.0790        |                  TGG->TTC(1), TTC->GCG(1)                  |
+|   274    |          94.1214        |           0.5330        |            TAC->TAT(2)TTC(2), TAT->TAC(4)TGG(3)            |
+|   277    |         123.2190        |           2.4145        |   ACA->ACG(1)TGT(1), ACC->ACA(1)ACT(1)AGC(1)TGC(2)TTC(1)   |
+|   282    |          92.3835        |           1.4155        |ACT->ACA(1)AGC(1), GAA->AAC(1)ACT(1)GAC(1)GAG(7), GAC->AA...|
+|   297    |           9.0449        |           5.2910        |  ACT->ACG(1), AGC->ACC(2)ACT(1)AGT(4)GCT(1), AGT->ACT(1)   |
+|   311    |          48.0563        |           0.7751        |               AAA->AAG(1), AAG->AAA(1)AGT(1)               |
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/yokoyama_rh1_cds_mod_1_990_fitmultimodelmh.json'

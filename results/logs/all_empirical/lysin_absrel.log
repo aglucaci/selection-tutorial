@@ -1,0 +1,301 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **25** sequences, **134** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/lysin.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 47 branches for testing: `FULGENS, KAMTSCHATKANA, RUFESCENS, SORENSENI, WALALLENSIS, NODE9, NODE7, NODE5, SIEBOLDII, DISCUS_HANNAI, GIGANTEA, NODE14, NODE12, NODE4, CORRUGATA, CRACHERODII, NODE17, NODE3, NODE1, IRIS, PUSTULATA, COCCINEA, TUBERCULATA, NODE24, NODE22, AUSTRALIS, MIDAE, ROEI, SCALARIS, LAEVIGATA, NODE35, NODE33, CYCLOBATES, RUBRA, CONICOPORA, NODE40, NODE38, NODE32, NODE30, OVINA, VARIA, NODE44, DIVERSICOLOR, NODE43, NODE29, NODE27, NODE21`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -4592.89, AIC-c =  9296.39 (55 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.507
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -4490.58, AIC-c =  9204.42 (108 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  1.00, and 95% of the weight in  0.00 -  4.15
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|               IRIS                |   0.22   |    2     |   23.48 (23.84%)   |   -4468.11    |    9163.77    |     9163.77     |
+|               IRIS                |   0.22   |    3     |   23.57 (23.85%)   |   -4468.11    |    9168.05    |     9163.77     |
+|               NODE1               |   0.18   |    2     |    4.95 (25.52%)   |   -4458.74    |    9149.30    |     9149.30     |
+|               NODE1               |   0.18   |    3     |  591.84 (12.91%)   |   -4457.76    |    9151.62    |     9149.30     |
+|               MIDAE               |   0.15   |    2     |   12.44 (11.89%)   |   -4448.50    |    9133.10    |     9133.10     |
+|               MIDAE               |   0.15   |    3     |   13.37 (11.16%)   |   -4448.52    |    9137.43    |     9133.10     |
+|            CYCLOBATES             |   0.13   |    2     |   48.92 (25.92%)   |   -4433.83    |    9108.05    |     9108.05     |
+|            CYCLOBATES             |   0.13   |    3     |   52.45 (24.58%)   |   -4433.81    |    9112.30    |     9108.05     |
+|              FULGENS              |   0.12   |    2     |    3.89 (42.18%)   |   -4432.05    |    9108.79    |     9108.05     |
+|           DIVERSICOLOR            |   0.12   |    2     |    1.87 (26.80%)   |   -4431.05    |    9106.79    |     9106.79     |
+|           DIVERSICOLOR            |   0.12   |    3     |    1.88 (26.73%)   |   -4431.06    |    9111.10    |     9106.79     |
+|               VARIA               |   0.12   |    2     |    0.83 (46.51%)   |   -4430.41    |    9109.82    |     9106.79     |
+|              NODE24               |   0.12   |    2     |   19.05 ( 7.47%)   |   -4428.02    |    9105.04    |     9105.04     |
+|              NODE24               |   0.12   |    3     |   21.45 ( 7.10%)   |   -4428.03    |    9109.35    |     9105.04     |
+|             AUSTRALIS             |   0.10   |    2     |    2.75 (29.21%)   |   -4425.88    |    9105.06    |     9105.04     |
+|            CRACHERODII            |   0.10   |    2     |   22.39 (19.89%)   |   -4415.92    |    9085.14    |     9085.14     |
+|            CRACHERODII            |   0.10   |    3     |   22.62 (19.63%)   |   -4415.92    |    9089.46    |     9085.14     |
+|              NODE22               |   0.08   |    2     |   11.70 (11.97%)   |   -4407.52    |    9072.65    |     9072.65     |
+|              NODE22               |   0.08   |    3     |   11.78 (11.92%)   |   -4407.52    |    9076.97    |     9072.65     |
+|             PUSTULATA             |   0.08   |    2     |    2.63 (18.92%)   |   -4406.87    |    9075.67    |     9072.65     |
+|              NODE21               |   0.07   |    2     |    5.96 ( 3.02%)   |   -4405.74    |    9073.41    |     9072.65     |
+|           KAMTSCHATKANA           |   0.06   |    2     |   34.27 (20.28%)   |   -4404.84    |    9071.60    |     9071.60     |
+|           KAMTSCHATKANA           |   0.06   |    3     |   34.88 (19.22%)   |   -4404.82    |    9075.89    |     9071.60     |
+|               OVINA               |   0.06   |    2     |   18.56 ( 8.92%)   |   -4399.80    |    9065.85    |     9065.85     |
+|               OVINA               |   0.06   |    3     |   20.70 ( 8.16%)   |   -4399.82    |    9070.23    |     9065.85     |
+|               NODE3               |   0.05   |    2     |    0.27 (31.40%)   |   -4419.03    |    9108.63    |     9065.85     |
+|              NODE44               |   0.05   |    2     |   15.53 ( 2.45%)   |   -4399.00    |    9068.58    |     9065.85     |
+|               NODE5               |   0.05   |    2     |  107.46 ( 9.19%)   |   -4390.44    |    9051.46    |     9051.46     |
+|               NODE5               |   0.05   |    3     |  101.29 ( 8.84%)   |   -4390.42    |    9055.76    |     9051.46     |
+|             SCALARIS              |   0.05   |    2     |   >1000 (10.29%)   |   -4378.04    |    9031.00    |     9031.00     |
+|             SCALARIS              |   0.05   |    3     |   >1000 (10.34%)   |   -4378.04    |    9035.34    |     9031.00     |
+|              NODE38               |   0.05   |    2     |    0.27 (31.40%)   |   -4399.19    |    9077.63    |     9031.00     |
+|              NODE14               |   0.05   |    2     |   28.07 (20.41%)   |   -4375.19    |    9029.64    |     9029.64     |
+|              NODE14               |   0.05   |    3     |   28.84 (18.80%)   |   -4375.21    |    9034.01    |     9029.64     |
+|            WALALLENSIS            |   0.04   |    2     |  861.94 ( 0.90%)   |   -4370.57    |    9024.74    |     9024.74     |
+|            WALALLENSIS            |   0.04   |    3     |   >1000 ( 0.89%)   |   -4370.28    |    9028.50    |     9024.74     |
+|              NODE43               |   0.04   |    2     |    7.45 (16.63%)   |   -4369.28    |    9026.51    |     9024.74     |
+|              NODE35               |   0.04   |    2     |   26.92 ( 6.22%)   |   -4367.83    |    9023.60    |     9023.60     |
+|              NODE35               |   0.04   |    3     |   30.07 ( 5.61%)   |   -4367.83    |    9027.97    |     9023.60     |
+|              NODE40               |   0.04   |    2     |   >1000 ( 2.95%)   |   -4363.13    |    9018.55    |     9018.55     |
+|              NODE40               |   0.04   |    3     |   >1000 ( 2.98%)   |   -4363.13    |    9022.92    |     9018.55     |
+|             CORRUGATA             |   0.04   |    2     |   10.88 (19.17%)   |   -4361.71    |    9020.08    |     9018.55     |
+|              NODE30               |   0.04   |    2     |   26.06 ( 8.01%)   |   -4358.83    |    9014.33    |     9014.33     |
+|              NODE30               |   0.04   |    3     |   26.00 ( 8.08%)   |   -4358.83    |    9018.70    |     9014.33     |
+|              NODE12               |   0.03   |    2     |    0.27 (31.40%)   |   -4378.71    |    9058.45    |     9014.33     |
+|             LAEVIGATA             |   0.03   |    2     |   1.31 (100.00%)   |   -4358.80    |    9018.64    |     9014.33     |
+|             RUFESCENS             |   0.03   |    2     |    0.27 (31.40%)   |   -4404.37    |    9109.78    |     9014.33     |
+|               ROEI                |   0.03   |    2     |    0.18 (31.40%)   |   -4390.92    |    9082.86    |     9014.33     |
+|              NODE32               |   0.03   |    2     |   33.42 ( 1.62%)   |   -4358.18    |    9017.40    |     9014.33     |
+|               NODE4               |   0.03   |    2     |    0.25 ( 2.00%)   |   -4367.58    |    9036.18    |     9014.33     |
+|             COCCINEA              |   0.02   |    2     |    9.00 (11.66%)   |   -4357.47    |    9015.96    |     9014.33     |
+|              NODE27               |   0.02   |    2     |   19.41 (11.51%)   |   -4357.80    |    9016.64    |     9014.33     |
+|              NODE17               |   0.01   |    2     |    0.25 ( 2.00%)   |   -4360.48    |    9021.98    |     9014.33     |
+|              NODE33               |   0.01   |    2     |   36.96 ( 1.08%)   |   -4357.65    |    9016.32    |     9014.33     |
+|              NODE29               |   0.01   |    2     |    0.24 ( 0.00%)   |   -4358.83    |    9018.70    |     9014.33     |
+|               NODE9               |   0.01   |    2     |    0.27 (31.40%)   |   -4363.46    |    9027.95    |     9014.33     |
+|               NODE7               |   0.01   |    2     |    0.27 (31.40%)   |   -4362.44    |    9025.91    |     9014.33     |
+|             SORENSENI             |   0.01   |    2     |    0.80 (91.40%)   |   -4358.83    |    9018.69    |     9014.33     |
+|            TUBERCULATA            |   0.01   |    2     |    0.27 (31.40%)   |   -4362.46    |    9025.96    |     9014.33     |
+|             SIEBOLDII             |   0.01   |    2     |    0.25 (50.00%)   |   -4358.79    |    9018.61    |     9014.33     |
+|           DISCUS_HANNAI           |   0.01   |    2     |   1.00 (100.00%)   |   -4359.36    |    9019.76    |     9014.33     |
+|               RUBRA               |   0.00   |    2     |    0.25 ( 2.00%)   |   -4363.07    |    9027.17    |     9014.33     |
+|            CONICOPORA             |   0.00   |    2     |    0.27 (31.40%)   |   -4359.92    |    9020.86    |     9014.33     |
+|             GIGANTEA              |   0.00   |    2     |    0.25 ( 2.00%)   |   -4358.83    |    9018.70    |     9014.33     |
+
+### Rate class analyses summary
+*  17 branches with **2** rate classes
+*  30 branches with **1** rate classes
+
+### Annotated Tree
+((FULGENS{1},(((KAMTSCHATKANA{2},(RUFESCENS{1},(SORENSENI{1},WALALLENSIS{2})NODE9{1})NODE7{1})NODE5{2},(SIEBOLDII{1},(DISCUS_HANNAI{1},GIGANTEA{1})NODE14{2})NODE12{1})NODE4{1},(CORRUGATA{1},CRACHERODII{2})NODE17{1})NODE3{1})NODE1{2},IRIS{2},((PUSTULATA{1},(COCCINEA{1},TUBERCULATA{1})NODE24{2})NODE22{2},(AUSTRALIS{1},((MIDAE{2},((ROEI{1},(SCALARIS{2},LAEVIGATA{1})NODE35{2})NODE33{1},(CYCLOBATES{2},(RUBRA{1},CONICOPORA{1})NODE40{2})NODE38{1})NODE32{1})NODE30{2},((OVINA{2},VARIA{1})NODE44{1},DIVERSICOLOR{2})NODE43{1})NODE29{1})NODE27{1})NODE21{1})
+
+----
+
+```
+        |-----FULGENS (1)
+|-------+NODE1 (2)
+|       |       |--KAMTSCHATKANA (2)
+|       |    |--+NODE5 (2)
+|       |    |  ||-RUFESCENS (1)
+|       |    |  |+NODE7 (1)
+|       |    |   ||SORENSENI (1)
+|       |    |   |+NODE9 (1)
+|       |    |    |--WALALLENSIS (2)
+|       |  |-+NODE4 (1)
+|       |  | | |SIEBOLDII (1)
+|       |  | |-+NODE12 (1)
+|       |  |   |  |DISCUS_HANNAI (1)
+|       |  |   |--+NODE14 (2)
+|       |  |      |GIGANTEA (1)
+|       |--+NODE3 (1)
+|          | |-CORRUGATA (1)
+|          |-+NODE17 (1)
+|            |----CRACHERODII (2)
+|---------IRIS (2)
+|       |---PUSTULATA (1)
+|   |---+NODE22 (2)
+|   |   |     |-COCCINEA (1)
+|   |   |-----+NODE24 (2)
+|   |         |TUBERCULATA (1)
+|---+NODE21 (1)
+    | |----AUSTRALIS (1)
+    |-+NODE27 (1)
+      |  |------MIDAE (2)
+      ||-+NODE30 (2)
+      || |   |-ROEI (1)
+      || | |-+NODE33 (1)
+      || | | |  |--SCALARIS (2)
+      || | | |--+NODE35 (2)
+      || | |    |-LAEVIGATA (1)
+      || |-+NODE32 (1)
+      ||   |  |-----CYCLOBATES (2)
+      ||   |--+NODE38 (1)
+      ||      |  |RUBRA (1)
+      ||      |--+NODE40 (2)
+      ||         |CONICOPORA (1)
+      |+NODE29 (1)
+       |     |--OVINA (2)
+       |  |--+NODE44 (1)
+       |  |  |-----VARIA (1)
+       |--+NODE43 (1)
+          |-----DIVERSICOLOR (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -4353.28, AIC-c =  9003.22 (142 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|               IRIS                |     2    |   30.25 (24.38%)   |         19       |       30.63        |       0.00000      |
+|               NODE1               |     2    |    8.74 (19.28%)   |          6       |        8.41        |       0.00521      |
+|               MIDAE               |     2    |   13.25 (11.47%)   |          8       |       11.58        |       0.00105      |
+|            CYCLOBATES             |     2    |   56.29 (21.83%)   |         11       |       34.96        |       0.00000      |
+|              FULGENS              |     1    |   1.17 (100.00%)   |       N/A        |        0.14        |       0.41985      |
+|           DIVERSICOLOR            |     2    |    1.93 (27.33%)   |          9       |        1.15        |       0.22533      |
+|               VARIA               |     1    |   0.40 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              NODE24               |     2    |   22.47 ( 7.32%)   |          1       |        6.89        |       0.01132      |
+|             AUSTRALIS             |     1    |   0.58 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            CRACHERODII            |     2    |   24.67 (19.01%)   |         15       |       28.22        |       0.00000      |
+|              NODE22               |     2    |   15.28 (11.86%)   |          6       |       12.95        |       0.00053      |
+|             PUSTULATA             |     1    |   0.58 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              NODE21               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           KAMTSCHATKANA           |     2    |   37.87 (17.82%)   |          3       |        8.89        |       0.00410      |
+|               OVINA               |     2    |   18.76 ( 9.05%)   |          3       |       10.30        |       0.00201      |
+|               NODE3               |     1    |  >1000 (100.00%)   |       N/A        |        3.73        |       0.05725      |
+|              NODE44               |     1    |   0.53 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               NODE5               |     2    |  407.83 ( 5.37%)   |          5       |       20.96        |       0.00001      |
+|             SCALARIS              |     2    |   >1000 (10.18%)   |          9       |       31.56        |       0.00000      |
+|              NODE38               |     1    |  >1000 (100.00%)   |       N/A        |        5.04        |       0.02913      |
+|              NODE14               |     2    |   30.16 (19.76%)   |         12       |        9.05        |       0.00378      |
+|            WALALLENSIS            |     2    |   >1000 ( 0.91%)   |          1       |       11.65        |       0.00102      |
+|              NODE43               |     1    |   0.94 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              NODE35               |     2    |   28.89 ( 6.34%)   |          2       |        6.08        |       0.01712      |
+|              NODE40               |     2    |   >1000 ( 3.00%)   |          3       |        9.48        |       0.00303      |
+|             CORRUGATA             |     1    |   1.71 (100.00%)   |       N/A        |        0.52        |       0.32607      |
+|              NODE30               |     2    |   24.72 ( 8.13%)   |          4       |        7.85        |       0.00694      |
+|              NODE12               |     1    |  >1000 (100.00%)   |       N/A        |        6.01        |       0.01770      |
+|             LAEVIGATA             |     1    |   1.38 (100.00%)   |       N/A        |        0.17        |       0.41033      |
+|             RUFESCENS             |     1    |  >1000 (100.00%)   |       N/A        |        5.58        |       0.02206      |
+|               ROEI                |     1    |  >1000 (100.00%)   |       N/A        |        5.10        |       0.02825      |
+|              NODE32               |     1    |   0.62 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               NODE4               |     1    |  >1000 (100.00%)   |       N/A        |        3.25        |       0.07344      |
+|             COCCINEA              |     1    |   1.02 (100.00%)   |       N/A        |       -0.01        |       0.50000      |
+|              NODE27               |     1    |   1.20 (100.00%)   |       N/A        |        0.01        |       0.47984      |
+|              NODE17               |     1    |  >1000 (100.00%)   |       N/A        |        2.23        |       0.12523      |
+|              NODE33               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              NODE29               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               NODE9               |     1    |  >1000 (100.00%)   |       N/A        |        1.56        |       0.17972      |
+|               NODE7               |     1    |  >1000 (100.00%)   |       N/A        |        1.35        |       0.20213      |
+|             SORENSENI             |     1    |   0.77 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            TUBERCULATA            |     1    |  >1000 (100.00%)   |       N/A        |        0.59        |       0.31178      |
+|             SIEBOLDII             |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           DISCUS_HANNAI           |     1    |  >1000 (100.00%)   |       N/A        |        1.06        |       0.23679      |
+|               RUBRA               |     1    |  >1000 (100.00%)   |       N/A        |        0.56        |       0.31688      |
+|            CONICOPORA             |     1    |  >1000 (100.00%)   |       N/A        |        0.49        |       0.33221      |
+|             GIGANTEA              |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **8** branches under selection among **47** tested.
+
+* CYCLOBATES, p-value =  0.00000
+* SCALARIS, p-value =  0.00000
+* IRIS, p-value =  0.00000
+* CRACHERODII, p-value =  0.00001
+* NODE5, p-value =  0.00040
+* NODE22, p-value =  0.02207
+* WALALLENSIS, p-value =  0.04168
+* MIDAE, p-value =  0.04196
+
+### Annotated Tree
+((FULGENS,(((KAMTSCHATKANA,(RUFESCENS,(SORENSENI,WALALLENSIS{0.04167662939295674})NODE9)NODE7)NODE5{0.0004034146007264594},(SIEBOLDII,(DISCUS_HANNAI,GIGANTEA)NODE14)NODE12)NODE4,(CORRUGATA,CRACHERODII{1.081090150800712e-05})NODE17)NODE3)NODE1,IRIS{3.286946097802446e-06},((PUSTULATA,(COCCINEA,TUBERCULATA)NODE24)NODE22{0.02207390094059725},(AUSTRALIS,((MIDAE{0.04196368921703053},((ROEI,(SCALARIS{2.110681631473099e-06},LAEVIGATA)NODE35)NODE33,(CYCLOBATES{3.937986735591537e-07},(RUBRA,CONICOPORA)NODE40)NODE38)NODE32)NODE30,((OVINA,VARIA)NODE44,DIVERSICOLOR)NODE43)NODE29)NODE27)NODE21)
+
+----
+
+```
+        |-----FULGENS (N.S)
+|-------+NODE1 (N.S)
+|       |       |--KAMTSCHATKANA (N.S)
+|       |    |--+NODE5 (0.0004034146007264594)
+|       |    |  ||-RUFESCENS (N.S)
+|       |    |  |+NODE7 (N.S)
+|       |    |   ||SORENSENI (N.S)
+|       |    |   |+NODE9 (N.S)
+|       |    |    |--WALALLENSIS (0.04167662939295674)
+|       |  |-+NODE4 (N.S)
+|       |  | | |SIEBOLDII (N.S)
+|       |  | |-+NODE12 (N.S)
+|       |  |   |  |DISCUS_HANNAI (N.S)
+|       |  |   |--+NODE14 (N.S)
+|       |  |      |GIGANTEA (N.S)
+|       |--+NODE3 (N.S)
+|          | |-CORRUGATA (N.S)
+|          |-+NODE17 (N.S)
+|            |----CRACHERODII (1.081090150800712e-05)
+|---------IRIS (3.286946097802446e-06)
+|       |---PUSTULATA (N.S)
+|   |---+NODE22 (0.02207390094059725)
+|   |   |     |-COCCINEA (N.S)
+|   |   |-----+NODE24 (N.S)
+|   |         |TUBERCULATA (N.S)
+|---+NODE21 (N.S)
+    | |----AUSTRALIS (N.S)
+    |-+NODE27 (N.S)
+      |  |------MIDAE (0.04196368921703053)
+      ||-+NODE30 (N.S)
+      || |   |-ROEI (N.S)
+      || | |-+NODE33 (N.S)
+      || | | |  |--SCALARIS (2.110681631473099e-06)
+      || | | |--+NODE35 (N.S)
+      || | |    |-LAEVIGATA (N.S)
+      || |-+NODE32 (N.S)
+      ||   |  |-----CYCLOBATES (3.937986735591537e-07)
+      ||   |--+NODE38 (N.S)
+      ||      |  |RUBRA (N.S)
+      ||      |--+NODE40 (N.S)
+      ||         |CONICOPORA (N.S)
+      |+NODE29 (N.S)
+       |     |--OVINA (N.S)
+       |  |--+NODE44 (N.S)
+       |  |  |-----VARIA (N.S)
+       |--+NODE43 (N.S)
+          |-----DIVERSICOLOR (N.S)
+```
+

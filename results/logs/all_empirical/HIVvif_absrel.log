@@ -1,0 +1,315 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **29** sequences, **192** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/HIVvif.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 55 branches for testing: `B_LAI, B_P896, Node2, B_MN, B_C18MBC, Node10, B_U39_32, B_U13_2, Node15, B_GMK1, Node14, B_8_18, Node13, Node9, B_IFA10, Node8, B_YU2, B_YU10, Node22, B_3_7, Node21, Node7, B_JRCSF, B_JRFL, Node26, Node6, B_PA_3799, Node5, Node1, B_BCSG3C, B_I2, Node30, B_SF2, B_3202A12, Node36, B_F12, B_OYI, Node39, Node35, B_WEAU160, Node34, B_NL43, B_CAM1, B_D31, B_MANC, Node49, Node47, B_HAN, B_AD8, Node52, Node46, Node44, B_RF, Node43, Node33`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 1 zero-length internal branches: `Node8`
+* Log(L) = -3533.80, AIC-c =  7194.08 (63 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.899
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -3457.19, AIC-c =  7163.90 (122 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.66, and 95% of the weight in  0.18 -  4.90
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|              Node15               |   0.07   |    2     |    8.42 ( 5.51%)   |   -3453.99    |    7161.68    |     7161.68     |
+|              Node15               |   0.07   |    3     |    7.64 ( 5.78%)   |   -3453.99    |    7165.86    |     7161.68     |
+|              B_8_18               |   0.05   |    2     |    0.67 (58.94%)   |   -3453.99    |    7165.86    |     7161.68     |
+|             B_C18MBC              |   0.05   |    2     |    3.80 (31.62%)   |   -3453.15    |    7164.17    |     7161.68     |
+|              B_GMK1               |   0.04   |    2     |    3.24 ( 8.38%)   |   -3452.68    |    7163.23    |     7161.68     |
+|               B_HAN               |   0.04   |    2     |  230.55 ( 1.43%)   |   -3448.02    |    7153.92    |     7153.92     |
+|               B_HAN               |   0.04   |    3     |  240.61 ( 1.47%)   |   -3448.02    |    7158.12    |     7153.92     |
+|              B_CAM1               |   0.04   |    2     |    0.66 (50.76%)   |   -3448.02    |    7158.11    |     7153.92     |
+|               B_AD8               |   0.03   |    2     |   13.25 (13.68%)   |   -3444.81    |    7151.69    |     7151.69     |
+|               B_AD8               |   0.03   |    3     |   13.95 (13.35%)   |   -3444.81    |    7155.88    |     7151.69     |
+|             B_WEAU160             |   0.03   |    2     |    0.52 (82.79%)   |   -3444.81    |    7155.88    |     7151.69     |
+|              B_U13_2              |   0.03   |    2     |    0.49 ( 9.73%)   |   -3444.81    |    7155.89    |     7151.69     |
+|              B_MANC               |   0.03   |    2     |    1.25 (39.87%)   |   -3444.81    |    7155.89    |     7151.69     |
+|               B_RF                |   0.03   |    2     |  383.10 ( 1.95%)   |   -3438.75    |    7143.77    |     7143.77     |
+|               B_RF                |   0.03   |    3     |  365.32 ( 1.94%)   |   -3438.76    |    7147.97    |     7143.77     |
+|               B_3_7               |   0.03   |    2     |    7.11 ( 6.26%)   |   -3437.39    |    7145.24    |     7143.77     |
+|               B_MN                |   0.03   |    2     |    7.46 (20.07%)   |   -3437.85    |    7146.15    |     7143.77     |
+|               B_D31               |   0.03   |    2     |    0.66 (73.26%)   |   -3438.75    |    7147.97    |     7143.77     |
+|              B_NL43               |   0.03   |    2     |   12.88 (11.01%)   |   -3437.47    |    7145.40    |     7143.77     |
+|               B_I2                |   0.03   |    2     |    1.54 (55.02%)   |   -3438.76    |    7147.99    |     7143.77     |
+|               B_F12               |   0.02   |    2     |   4.87 (100.00%)   |   -3438.75    |    7147.97    |     7143.77     |
+|              B_IFA10              |   0.02   |    2     |   2.27 (100.00%)   |   -3438.75    |    7147.97    |     7143.77     |
+|              B_P896               |   0.02   |    2     |   4.76 (100.00%)   |   -3438.75    |    7147.97    |     7143.77     |
+|               B_OYI               |   0.02   |    2     |   36.02 ( 5.07%)   |   -3433.17    |    7136.79    |     7136.79     |
+|               B_OYI               |   0.02   |    3     |   38.51 ( 4.73%)   |   -3433.11    |    7140.87    |     7136.79     |
+|             B_U39_32              |   0.02   |    2     |   28.21 ( 1.88%)   |   -3430.44    |    7135.53    |     7135.53     |
+|             B_U39_32              |   0.02   |    3     |   32.15 ( 1.58%)   |   -3430.44    |    7139.74    |     7135.53     |
+|             B_BCSG3C              |   0.02   |    2     |    0.29 ( 0.00%)   |   -3430.44    |    7139.74    |     7135.53     |
+|               B_SF2               |   0.02   |    2     |   1.87 (100.00%)   |   -3430.44    |    7139.74    |     7135.53     |
+|             B_3202A12             |   0.02   |    2     |  401.13 ( 0.78%)   |   -3428.33    |    7135.51    |     7135.51     |
+|             B_3202A12             |   0.02   |    3     |  411.28 ( 0.78%)   |   -3428.32    |    7139.70    |     7135.51     |
+|              Node22               |   0.02   |    2     |    0.60 (50.74%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              B_JRCSF              |   0.02   |    2     |   3.31 (100.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|               B_LAI               |   0.02   |    2     |    0.50 (49.92%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node52               |   0.01   |    2     |    0.26 ( 9.16%)   |   -3428.31    |    7139.69    |     7135.51     |
+|             B_PA_3799             |   0.01   |    2     |    0.60 (50.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              B_JRFL               |   0.01   |    2     |    1.75 (61.22%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node14               |   0.01   |    2     |    0.24 (94.12%)   |   -3428.29    |    7139.65    |     7135.51     |
+|              Node26               |   0.01   |    2     |    2.00 ( 9.45%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node49               |   0.01   |    2     |    0.39 (51.09%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node13               |   0.01   |    2     |    0.98 (25.12%)   |   -3428.29    |    7139.64    |     7135.51     |
+|              Node39               |   0.01   |    2     |    0.80 (78.75%)   |   -3428.33    |    7139.72    |     7135.51     |
+|               Node2               |   0.01   |    2     |    0.80 (75.88%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node44               |   0.01   |    2     |    0.26 (14.25%)   |   -3438.46    |    7159.99    |     7135.51     |
+|              Node35               |   0.00   |    2     |    0.39 (76.12%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node34               |   0.00   |    2     |    0.40 (78.75%)   |   -3428.33    |    7139.72    |     7135.51     |
+|               B_YU2               |   0.00   |    2     |    0.40 (75.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node46               |   0.00   |    2     |    0.27 (31.40%)   |   -3433.49    |    7150.05    |     7135.51     |
+|               Node7               |   0.00   |    2     |  >1000 (100.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node21               |   0.00   |    2     |    0.27 (31.40%)   |   -3433.78    |    7150.62    |     7135.51     |
+|              Node36               |   0.00   |    2     |    0.47 (49.19%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node10               |   0.00   |    2     |  109.07 ( 0.48%)   |   -3428.13    |    7139.32    |     7135.51     |
+|              Node47               |   0.00   |    2     |    0.25 ( 0.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node33               |   0.00   |    2     |    0.26 ( 0.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|              Node43               |   0.00   |    2     |    0.25 ( 0.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+|               Node9               |   0.00   |    2     |    0.18 (31.40%)   |   -3432.63    |    7148.33    |     7135.51     |
+|               Node5               |   0.00   |    2     |    0.18 (31.40%)   |   -3432.80    |    7148.67    |     7135.51     |
+|               Node1               |   0.00   |    2     |    0.25 ( 2.00%)   |   -3433.01    |    7149.10    |     7135.51     |
+|               Node6               |   0.00   |    2     |    0.27 (31.40%)   |   -3431.64    |    7146.35    |     7135.51     |
+|              Node30               |   0.00   |    2     |    0.27 (31.40%)   |   -3429.65    |    7142.36    |     7135.51     |
+|              B_YU10               |   0.00   |    2     |    0.25 ( 2.00%)   |   -3428.33    |    7139.72    |     7135.51     |
+
+### Rate class analyses summary
+*  7 branches with **2** rate classes
+*  47 branches with **1** rate classes
+
+### Annotated Tree
+(((B_LAI{1},B_P896{1})Node2{1},(((((B_YU2{1},B_YU10{1})Node22{1},B_3_7{1})Node21{1},((B_MN{1},B_C18MBC{1})Node10{1},(((B_U39_32{2},B_U13_2{1})Node15{2},B_GMK1{1})Node14{1},B_8_18{1})Node13{1})Node9{1},B_IFA10{1})Node7{1},(B_JRCSF{1},B_JRFL{1})Node26{1})Node6{1},B_PA_3799{1})Node5{1})Node1{1},(B_BCSG3C{1},B_I2{1})Node30{1},((((B_SF2{1},B_3202A12{2})Node36{1},(B_F12{1},B_OYI{2})Node39{1})Node35{1},B_WEAU160{1})Node34{1},((B_NL43{1},((B_CAM1{1},(B_D31{1},B_MANC{1})Node49{1})Node47{1},(B_HAN{2},B_AD8{2})Node52{1})Node46{1})Node44{1},B_RF{2})Node43{1})Node33{1})
+
+----
+
+```
+   |--B_LAI (1)
+ |-+Node2 (1)
+ | |---B_P896 (1)
+|+Node1 (1)
+||      |B_YU2 (1)
+||   |--+Node22 (1)
+||   |  |B_YU10 (1)
+||  |+Node21 (1)
+||  ||---B_3_7 (1)
+|| |+Node7 (1)
+|| || |---B_MN (1)
+|| |||+Node10 (1)
+|| ||||-----B_C18MBC (1)
+|| ||+Node9 (1)
+|| |||             |---B_U39_32 (2)
+|| |||   |---------+Node15 (2)
+|| |||   |         |----B_U13_2 (1)
+|| ||| |-+Node14 (1)
+|| ||| | |-----B_GMK1 (1)
+|| |||-+Node13 (1)
+|| ||  |-----B_8_18 (1)
+|| ||---B_IFA10 (1)
+|||+Node6 (1)
+|||| |--B_JRCSF (1)
+||||-+Node26 (1)
+|||  |-B_JRFL (1)
+||+Node5 (1)
+| |-B_PA_3799 (1)
+||---B_BCSG3C (1)
+|+Node30 (1)
+||---B_I2 (1)
+|   |--B_SF2 (1)
+|  |+Node36 (1)
+|  ||--B_3202A12 (2)
+| |+Node35 (1)
+| || |---B_F12 (1)
+| ||-+Node39 (1)
+| |  |---B_OYI (2)
+||+Node34 (1)
+|||----B_WEAU160 (1)
+|+Node33 (1)
+ |  |---B_NL43 (1)
+ ||-+Node44 (1)
+ || | |----B_CAM1 (1)
+ || ||+Node47 (1)
+ || ||| |---B_D31 (1)
+ || |||-+Node49 (1)
+ || ||  |---B_MANC (1)
+ || |+Node46 (1)
+ ||  | |----B_HAN (2)
+ ||  |-+Node52 (1)
+ ||    |----B_AD8 (2)
+ |+Node43 (1)
+  |---B_RF (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -3426.38, AIC-c =  7131.63 (136 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|              Node15               |     2    |    8.80 ( 5.53%)   |          3       |        2.82        |       0.09199      |
+|              B_8_18               |     1    |   0.68 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             B_C18MBC              |     1    |   1.05 (100.00%)   |       N/A        |        0.01        |       0.48501      |
+|              B_GMK1               |     1    |   0.29 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               B_HAN               |     2    |  237.48 ( 1.54%)   |          2       |       13.16        |       0.00047      |
+|              B_CAM1               |     1    |   0.67 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               B_AD8               |     2    |   13.53 (13.57%)   |         11       |        6.10        |       0.01687      |
+|             B_WEAU160             |     1    |   0.51 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              B_U13_2              |     1    |   0.46 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              B_MANC               |     1    |   1.14 (100.00%)   |       N/A        |        0.04        |       0.46046      |
+|               B_RF                |     2    |  386.59 ( 1.96%)   |          3       |       10.81        |       0.00155      |
+|               B_3_7               |     1    |   0.55 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               B_MN                |     1    |   1.38 (100.00%)   |       N/A        |        0.25        |       0.38719      |
+|               B_D31               |     1    |   0.66 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              B_NL43               |     1    |   1.35 (100.00%)   |       N/A        |        0.21        |       0.39838      |
+|               B_I2                |     1    |   1.33 (100.00%)   |       N/A        |        0.19        |       0.40485      |
+|               B_F12               |     1    |   4.85 (100.00%)   |       N/A        |        3.51        |       0.06420      |
+|              B_IFA10              |     1    |   2.26 (100.00%)   |       N/A        |        1.35        |       0.20198      |
+|              B_P896               |     1    |   4.95 (100.00%)   |       N/A        |        3.62        |       0.06048      |
+|               B_OYI               |     2    |  743.61 ( 1.30%)   |          2       |       12.49        |       0.00066      |
+|             B_U39_32              |     2    |   30.37 ( 1.93%)   |          2       |        3.95        |       0.05109      |
+|             B_BCSG3C              |     1    |   0.18 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               B_SF2               |     1    |   1.87 (100.00%)   |       N/A        |        0.73        |       0.28695      |
+|             B_3202A12             |     2    |  383.23 ( 0.83%)   |          1       |        4.94        |       0.03062      |
+|              Node22               |     1    |   0.56 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              B_JRCSF              |     1    |   3.33 (100.00%)   |       N/A        |        1.73        |       0.16440      |
+|               B_LAI               |     1    |   0.46 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node52               |     1    |   0.21 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             B_PA_3799             |     1    |   0.55 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              B_JRFL               |     1    |   1.47 (100.00%)   |       N/A        |        0.12        |       0.42787      |
+|              Node14               |     1    |   0.24 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node26               |     1    |   0.37 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node49               |     1    |   0.31 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node13               |     1    |   0.88 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node39               |     1    |   0.78 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     1    |   0.74 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node44               |     1    |  >1000 (100.00%)   |       N/A        |        1.87        |       0.15244      |
+|              Node35               |     1    |   0.36 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node34               |     1    |   0.37 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               B_YU2               |     1    |   0.37 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node46               |     1    |  >1000 (100.00%)   |       N/A        |        1.27        |       0.21050      |
+|               Node7               |     1    |  >1000 (100.00%)   |       N/A        |        1.26        |       0.21267      |
+|              Node21               |     1    |  >1000 (100.00%)   |       N/A        |        1.19        |       0.22011      |
+|              Node36               |     1    |   0.34 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node10               |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node47               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node33               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node43               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node9               |     1    |  >1000 (100.00%)   |       N/A        |        0.61        |       0.30749      |
+|               Node5               |     1    |  >1000 (100.00%)   |       N/A        |        0.63        |       0.30463      |
+|               Node1               |     1    |  >1000 (100.00%)   |       N/A        |        0.62        |       0.30547      |
+|               Node6               |     1    |  >1000 (100.00%)   |       N/A        |        0.62        |       0.30628      |
+|              Node30               |     1    |  >1000 (100.00%)   |       N/A        |        0.53        |       0.32361      |
+|              B_YU10               |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **2** branches under selection among **54** tested.
+
+* B_HAN, p-value =  0.02558
+* B_OYI, p-value =  0.03511
+
+### Annotated Tree
+(((B_LAI,B_P896)Node2,(((((B_YU2,B_YU10)Node22,B_3_7)Node21,((B_MN,B_C18MBC)Node10,(((B_U39_32,B_U13_2)Node15,B_GMK1)Node14,B_8_18)Node13)Node9,B_IFA10)Node7,(B_JRCSF,B_JRFL)Node26)Node6,B_PA_3799)Node5)Node1,(B_BCSG3C,B_I2)Node30,((((B_SF2,B_3202A12)Node36,(B_F12,B_OYI{0.03511170848708639})Node39)Node35,B_WEAU160)Node34,((B_NL43,((B_CAM1,(B_D31,B_MANC)Node49)Node47,(B_HAN{0.02557763934720547},B_AD8)Node52)Node46)Node44,B_RF)Node43)Node33)
+
+----
+
+```
+   |--B_LAI (N.S)
+ |-+Node2 (N.S)
+ | |---B_P896 (N.S)
+|+Node1 (N.S)
+||      |B_YU2 (N.S)
+||   |--+Node22 (N.S)
+||   |  |B_YU10 (N.S)
+||  |+Node21 (N.S)
+||  ||---B_3_7 (N.S)
+|| |+Node7 (N.S)
+|| || |---B_MN (N.S)
+|| |||+Node10 (N.S)
+|| ||||-----B_C18MBC (N.S)
+|| ||+Node9 (N.S)
+|| |||             |---B_U39_32 (N.S)
+|| |||   |---------+Node15 (N.S)
+|| |||   |         |----B_U13_2 (N.S)
+|| ||| |-+Node14 (N.S)
+|| ||| | |-----B_GMK1 (N.S)
+|| |||-+Node13 (N.S)
+|| ||  |-----B_8_18 (N.S)
+|| ||---B_IFA10 (N.S)
+|||+Node6 (N.S)
+|||| |--B_JRCSF (N.S)
+||||-+Node26 (N.S)
+|||  |-B_JRFL (N.S)
+||+Node5 (N.S)
+| |-B_PA_3799 (N.S)
+||---B_BCSG3C (N.S)
+|+Node30 (N.S)
+||---B_I2 (N.S)
+|   |--B_SF2 (N.S)
+|  |+Node36 (N.S)
+|  ||--B_3202A12 (N.S)
+| |+Node35 (N.S)
+| || |---B_F12 (N.S)
+| ||-+Node39 (N.S)
+| |  |---B_OYI (0.03511170848708639)
+||+Node34 (N.S)
+|||----B_WEAU160 (N.S)
+|+Node33 (N.S)
+ |  |---B_NL43 (N.S)
+ ||-+Node44 (N.S)
+ || | |----B_CAM1 (N.S)
+ || ||+Node47 (N.S)
+ || ||| |---B_D31 (N.S)
+ || |||-+Node49 (N.S)
+ || ||  |---B_MANC (N.S)
+ || |+Node46 (N.S)
+ ||  | |----B_HAN (0.02557763934720547)
+ ||  |-+Node52 (N.S)
+ ||    |----B_AD8 (N.S)
+ |+Node43 (N.S)
+  |---B_RF (N.S)
+```
+

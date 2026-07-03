@@ -1,0 +1,112 @@
+
+Analysis Description
+--------------------
+BUSTED (branch-site unrestricted statistical test of episodic
+diversification) uses a random effects branch-site model fitted jointly
+to all or a subset of tree branches in order to test for alignment-wide
+evidence of episodic diversifying selection. Assuming there is evidence
+of positive selection (i.e. there is an omega > 1), BUSTED will also
+perform a quick evidence-ratio style analysis to explore which
+individual sites may have been subject to selection. Version 2.0 adds
+support for synonymous rate variation, and relaxes the test statistic to
+0.5 (chi^2_0 + chi^2_2). Version 2.1 adds a grid search for the initial
+starting point. Version 2.2 changes the grid search to LHC, and adds an
+initial search phase to use adaptive Nedler-Mead. Version 3.0 implements
+the option for branch-site variation in synonymous substitution rates.
+Version 3.1 adds HMM auto-correlation option for SRV, and binds SRV
+distributions for multiple branch sets. Version 4.0 adds support for
+multiple hits (MH), ancestral state reconstruction saved to JSON, and
+profiling of branch-site level support for selection / multiple hits.
+Version 4.2 adds calculation of MH-attributable fractions of
+substitutions. Version 4.5 adds an 'error absorption' component. Version
+4.6 adds support for MSS-type models. Version 4.7 adds user configurable
+options for the error class. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree (optionally annotated
+with {})
+
+- __Citation__: *Gene-wide identification of episodic selection*, Mol Biol Evol.
+32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation
+Dramatically Inflates False Positive Rates of Selection Analyses: Ignore
+at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.7
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **349** sequences, **329** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/InfluenzaA.nex`
+
+>branches => All
+
+>srv => Yes
+The number omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>multiple-hits => Double+Triple
+
+>mss => No
+The number alpha rate classes to include in the model [1-10, default 3] (permissible range = [1,10], default value = 3, integer): 
+>syn-rates => 3
+
+>error-sink => No
+The number of points in the initial distributional guess for likelihood fitting (permissible range = [1,10000], default value = 250, integer): 
+>grid-size => 250
+The number of initial random guesses to 'seed' rate values optimization (permissible range = [1,25], default value = 1, integer): 
+>starting-points => 1
+
+
+### Branches to test for selection in the BUSTED analysis
+* Selected 695 branches to test in the BUSTED analysis: `WE397, CN10679_997, SYD697, HI1_997, AUC5_697, Node19, Node17, Node15, SYD597, Node14, Node12, HK391_797, PR1_797, SAUS54_797, CANBERRA5_897, Node28, Node26, Node24, HK387_797, Node23, Node11, SYD497, Node10, UR41_197, Node9, SAITAMA8096_97, Node8, BE17_197, BE62_297, Node35, Node7, KO671_297, KO572_297, JA416_297, Node42, Node40, CL170_1096, Node39, SHZH157_796, Node38, Node6, CO_1187, SHA_887, Node82, LA_1287, Node81, GZ187, QL_987, Node86, Node80, VIC87, Node79, TX_12764_483, TX_24753_185, TX_25784_385, Node98, MS85, Node97, Node95, TX_18088_184, TX_18733_184, TX_17988_184, Node109, Node107, CM_885, GZ3_187, TX_12835_583, Node114, Node112, Node106, OITA83, Node105, MI_185, NJ_185, Node120, TX_24752_185, Node119, CT_385, Node118, Node104, CAEN184, Node103, VAL_491, SH_185, Node129, US85, Node128, TX_25887_285, Node127, AK_1284, Node126, Node102, Node94, TG_885, Node93, CC185, CC485, Node137, UY3_688, Node136, Node92, BK_785, BK25_785, LN_286, ST_185, CZ86, Node150, Node148, GM_1185, Node147, YH_1085, Node146, Node144, YG_585, CC_688, Node155, Node143, Node141, Node91, YN_1185, FO_1185, Node158, Node90, Node78, TY6_1287, TY5_1287, Node164, SYD_1287, Node163, CB_188, Node162, TX_39989_288, Node161, Node77, GC_987, SIC_487, Node170, Node76, KB_288, Node75, DL19_389, Node74, ENG88, BE4_189, Node175, Node73, GZ54_489, SIC89, BE57_189, Node182, Node180, ENG64889, Node179, SHA16_989, SHA1_289, Node186, Node178, Node72, GUA39_689, GUA_389, Node189, Node71, VIC589, Node70, BE353_1289, Node69, SHIGA291, IN3_991, Node200, PR1_1090, Node199, SOFIA15593, MX3255_194, SD1_491, Node209, SEOUL45_1191, WA1591, Node212, Node208, Node206, PA09_1191, Node205, SAS36_592, Node204, Node198, BZ91, Node197, HW1_291, Node196, SH6_490, Node195, VIC68_792, UMEA2_1192, UMEA1_1192, Node230, SN8_492, Node229, DJ3946_1292, RU3193, Node234, Node228, TW114391_192, Node227, VIC29_392, WE66_692, Node240, SAS68_692, Node239, BE47_292, Node238, Node226, SP118_293, Node225, Node223, PS8091, Node222, EN26191, Node221, II236_1193, II237_1193, Node249, KA149_1092, Node248, Node220, Node194, Node68, SN91, SH24_890, Node255, PERTH01_492, PS192SPF, Node259, HK34_490, Node258, Node254, KA206_1191, Node253, Node67, NCH3332_493, NCH12_1193, Node271, NCH58_1293, Node270, HAR1592, Node269, SIC4_593, RU58_393, WUZ4_493, Node280, Node278, NGX10_193, Node277, GD04_393, Node276, Node268, HEBEI1293, HK23_792, Node285, Node267, PS688_193, SHD9_393, YOKOHAMA7392, Node293, Node291, SAP_1292, Node290, NY1393, Node289, NCH3396_593, Node288, Node266, AK9_1192, HI3_1192, QD53_392, Node304, Node302, CA271_1192, Node301, TIANJIN3392, VIC193, DJ3109_1291, BE32_192, Node313, Node311, Node309, KITA93, Node308, Node300, BE46_292, Node299, Node265, FR110994, NY64_1293, Node320, NY63_1293, Node319, UR46967_294, Node318, Node264, Node66, CA5_395, JA8695_1294, Node332, SP378_195, Node331, LA1_195, NJ8_1194, Node338, SP351_195, IL5_195, Node345, TX5_1294, Node344, OH3_195, Node343, NJ10_195, Node342, CN124_295, Node341, Node337, PA15_295, Node336, Node330, NY28_1294, Node329, MA1_195, Node328, HK42_396, MEM196_1195, PARIS8395, Node361, Node359, PARIS36395, Node358, NY17_1294, Node357, AG3779_1094, JOH33_794, Node366, Node356, HK434_1096, HK1_694, HK55_794, Node371, Node369, Node355, Node327, PA7_1294, Node326, GD25_693, WUZ1_794, Node387, UDE44_394, Node386, NY38_193, Node385, NO93, WAIK2093, CC893, Node394, Node392, Node384, GD27_594, Node383, AA393, Node382, TH7594, BK122_694, Node400, SN7_694, Node399, Node381, AG3105_693, Node380, GA3_393, TX57_1293, LA4_893, LA6_993, Node411, NY3_293, Node410, Node408, Node406, NY26_293, AK18_493, Node415, Node405, Node379, CA4_794, SP125_293, WY1_1193, Node421, SP190_393, ST1_193, Node424, Node420, Node418, Node378, ENG22093, Node377, PA993_1294, CA5_1193, WA41_1293, Node432, Node430, AKI194, RO182_194, Node437, VT3_194, SANT7198_894, Node441, RO160_194, Node440, Node436, NY4295_1194, NY16_1194, Node446, NY15_894, Node445, Node435, Node429, NED37293, FR120394, Node450, Node428, Node376, WA2693, Node375, Node325, Node65, HAR3_194, Node64, BZ18_496, BR3_496, BR45_696, Node465, BR87_596, Node464, BZ8_496, Node463, Node461, BR184_696, Node460, BR597_796, Node459, NJ11_1294, CN147_495, SN28_595, Node479, Node477, GE767_495, Node476, JOH295, Node475, SN27_595, HK38_895, Node484, Node474, WA186_1294, VA25_1294, Node487, Node473, HK3_195, Node472, Node458, WV1_395, GE578652_295, Node491, Node457, NE11_395, AK10_295, Node496, KWJ195_1194, Node495, CHW995_1294, Node494, Node456, CN17_196, FL4_1195, LA5_1195, Node506, KO45_296, BZ2_395, Node512, CN61_296, Node511, GE491_396, Node510, UK897_696, MN6_1195, Node517, Node509, Node505, Node503, DE3_1195, NV1_1195, Node525, ID4_1195, Node524, MO6_396, Node523, JOH5396_97, Node522, AK16_995, JOH1795, Node531, Node521, ID3_1195, CN2796_1295, Node534, Node520, Node502, AG4057_795, SHD5_894, BE281_1294, Node539, Node537, Node501, Node455, Node63, GNX42_495, Node62, CNIC22_195, Node61, GZH66_497, Node60, BRIS3596, CAR42297, CAR465_896, Node552, Node550, BK197, Node549, MN1_1196, WE4896, DE4_397, Node562, Node560, YOKOHAMA6896_97, Node559, AUC596, Node558, HI2_796, Node557, TH78_397, TH79_397, Node569, CHR196, Node568, Node556, Node548, AUC10896_97, BRI2296, Node573, Node547, MON318_696, Node546, CNIC35_196, NCH813_895, Node579, FUJIAN47_396, WUH359_995, Node582, Node578, NCH933_995, Node577, Node545, Node59, WA596, Node58, FG39_1096, NY9_196, Node589, TH9496_97, Node588, FR7597, Node587, Node57, SHA9_995, Node56, BR51_897, BR43_697, Node597, BR309_796, Node596, GQ1014_1096, JOH10_697, CA10_797, NY43_1196, Node611, MN1_497, MO10_1196, Node614, Node610, CA13_1296, Node609, JOH9_597, Node608, NY50_1196, Node607, Node605, CN101_197, PA2_297, Node621, MO11_1196, MOS2_197, Node624, Node620, Node604, Node602, WI3_896, NY37_1096, Node629, AK2_796, Node628, TW523_596, Node627, Node601, Node595, Node55, RI7_397, Node54, FUK11496E, FUK11496C, Node635, Node53, JA99_196, Node52, VIC4797, VIC3097, Node640, TAS1_797, Node639, Node51, SHZH43_396, WZH1_596, Node646, GD1_396, Node645, CO11_1196, IN1_1196, Node652, KY2_297, Node651, NJ8_1296, Node650, Node644, Node50, TX1196_97, TD5196, TD5096, Node659, Node657, Node49, HAR3_1296, BE24496_197, Node662, Node48, TIANJING51_297, SH19_896, Node667, FUJIAN133_596, SANTAFE208_896, Node670, Node666, JOH3_397, HK358_796, Node673, Node665, Node47, Node5, CORD3278_796, GNX189_796, TD4796, Node680, Node678, AG207_796, AG601_796, Node683, Node677, AG39_796, Node676, Node4, SP214_197, Node3, HK357_696, Node2, GZH11_496, Node1, CI2115_696, NY55_1296, Node691, GZH8_496, Node690, TIANJING55_896`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 153 zero-length internal branches: `Node1, Node104, Node105, Node106, Node109, Node11, Node120, Node14, Node143, Node144, Node148, Node15, Node162, Node163, Node17, Node178, Node186, Node19, Node195, Node196, Node199, Node2, Node208, Node212, Node221, Node222, Node225, Node226, Node23, Node234, Node238, Node239, Node24, Node253, Node26, Node264, Node265, Node267, Node269, Node28, Node288, Node291, Node293, Node3, Node302, Node304, Node308, Node309, Node311, Node320, Node325, Node329, Node330, Node336, Node337, Node341, Node342, Node343, Node344, Node345, Node355, Node356, Node359, Node361, Node375, Node376, Node377, Node378, Node379, Node381, Node382, Node383, Node384, Node385, Node386, Node392, Node4, Node405, Node406, Node408, Node420, Node424, Node429, Node430, Node440, Node441, Node455, Node458, Node463, Node464, Node465, Node472, Node473, Node474, Node475, Node476, Node477, Node479, Node49, Node496, Node5, Node503, Node505, Node509, Node510, Node511, Node512, Node52, Node521, Node522, Node523, Node524, Node537, Node549, Node55, Node550, Node552, Node557, Node558, Node559, Node56, Node560, Node562, Node57, Node573, Node577, Node582, Node587, Node588, Node589, Node59, Node6, Node604, Node608, Node610, Node611, Node62, Node624, Node627, Node640, Node645, Node665, Node670, Node673, Node676, Node690, Node74, Node77, Node79, Node81, Node82, Node92, Node98`
+* Log(L) = -11563.07, AIC-c = 24535.01 (703 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.406
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -11405.74, AIC-c = 23930.93 (557 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  1.409
+* non-synonymous/synonymous rate ratio for *test* =   0.4894
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -11397.23, AIC-c = 23913.89 (557 estimated parameters)
+* non-synonymous/synonymous rate ratio for *test* =   0.4586
+
+### Performing the full (dN/dS > 1 allowed) branch-site model fit
+* Log(L) = -11043.16, AIC-c = 23227.98 (568 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0627
+* Corresponding fraction of substitutions :  1.558%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0147
+* Corresponding fraction of substitutions :  0.040%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.441     |   100.000   |                                   |
+|        Negative selection         |     0.593     |    0.000    |       Not supported by data       |
+|      Diversifying selection       |     9.062     |    0.000    |       Not supported by data       |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.426               |    64.937     |                                   |
+|               1.679               |    31.875     |                                   |
+|               5.904               |     3.188     |                                   |
+
+
+### No evidence for episodic diversifying positive selection under the unconstrained model, skipping constrained model fitting
+----
+## Branch-site unrestricted statistical test of episodic diversification [BUSTED]
+Likelihood ratio test for episodic diversifying positive selection, **p =   0.5000**.

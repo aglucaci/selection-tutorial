@@ -1,0 +1,108 @@
+
+Analysis Description
+--------------------
+SLAC (Single Likelihood Ancestor Counting) uses a maximum likelihood
+ancestral state reconstruction and minimum path substitution counting to
+estimate site - level dS and dN, and applies a simple binomial - based
+test to test if dS differs drom dN. The estimates aggregate information
+over all branches, so the signal is derived from pervasive
+diversification or conservation. A subset of branches can be selected
+for testing as well. Multiple partitions within a NEXUS file are also
+supported for recombination - aware analysis. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Not So Different After All: A Comparison of Methods for Detecting Amino
+Acid Sites Under Selection (2005). _Mol Biol Evol_ 22 (5): 1208-1222
+
+- __Written by__: Sergei L Kosakovsky Pond and Simon DW Frost
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.00
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **29** sequences, **192** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/HIVvif.nex`
+
+>branches => All
+
+>Select the number of samples used to assess ancestral reconstruction uncertainty [select 0 to skip] (permissible range = [0,100000], default value = 100, integer): 
+>samples => 100
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+
+### Branches to include in the SLAC analysis
+Selected 55 branches to include in SLAC calculations: `B_LAI, B_P896, Node2, B_MN, B_C18MBC, Node10, B_U39_32, B_U13_2, Node15, B_GMK1, Node14, B_8_18, Node13, Node9, B_IFA10, Node8, B_YU2, B_YU10, Node22, B_3_7, Node21, Node7, B_JRCSF, B_JRFL, Node26, Node6, B_PA_3799, Node5, Node1, B_BCSG3C, B_I2, Node30, B_SF2, B_3202A12, Node36, B_F12, B_OYI, Node39, Node35, B_WEAU160, Node34, B_NL43, B_CAM1, B_D31, B_MANC, Node49, Node47, B_HAN, B_AD8, Node52, Node46, Node44, B_RF, Node43, Node33`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 1 zero-length internal branches: `Node8`
+* Log(L) = -3533.80, AIC-c =  7194.08 (63 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.899
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -3489.16, AIC-c =  7118.07 (69 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.910
+* non-synonymous/synonymous rate ratio for *test* =   0.7612
+
+### Performing joint maximum likelihood ancestral state reconstruction
+
+### For partition 1 these sites are significant at p <=0.1
+
+|     Codon      |   Partition    |       S        |       N        |       dS       |       dN       |Selection detected?|
+|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:--------------:|:-----------------:|
+|       12       |       1        |     3.000      |     0.000      |     4.220      |     0.000      |  Neg. p = 0.026   |
+|       25       |       1        |     3.000      |     0.000      |     3.000      |     0.000      |  Neg. p = 0.037   |
+|       39       |       1        |     0.000      |     9.000      |     0.000      |     3.938      |  Pos. p = 0.088   |
+|       46       |       1        |     3.000      |     1.000      |     5.003      |     0.417      |  Neg. p = 0.027   |
+|       52       |       1        |     2.000      |     0.000      |     3.149      |     0.000      |  Neg. p = 0.045   |
+|       81       |       1        |     4.000      |     0.000      |     2.760      |     0.000      |  Neg. p = 0.069   |
+|       82       |       1        |     3.000      |     0.000      |     3.000      |     0.000      |  Neg. p = 0.037   |
+|       94       |       1        |     2.000      |     0.000      |     3.147      |     0.000      |  Neg. p = 0.058   |
+|      108       |       1        |     3.000      |     0.000      |     4.729      |     0.000      |  Neg. p = 0.009   |
+|      110       |       1        |     5.000      |     5.000      |     7.892      |     2.326      |  Neg. p = 0.055   |
+|      113       |       1        |     3.000      |     1.000      |     4.751      |     0.422      |  Neg. p = 0.031   |
+|      119       |       1        |     3.000      |     0.000      |     3.000      |     0.000      |  Neg. p = 0.037   |
+|      122       |       1        |     0.000      |     11.000     |     0.000      |     4.809      |  Pos. p = 0.061   |
+|      146       |       1        |     4.000      |     0.000      |     5.227      |     0.000      |  Neg. p = 0.010   |
+|      148       |       1        |     5.000      |     0.000      |     3.443      |     0.000      |  Neg. p = 0.036   |
+|      151       |       1        |     0.000      |     7.000      |     0.000      |     3.463      |  Pos. p = 0.065   |
+|      155       |       1        |     0.000      |     6.000      |     0.000      |     2.972      |  Pos. p = 0.095   |
+|      169       |       1        |     6.000      |     0.000      |     3.861      |     0.000      |  Neg. p = 0.022   |
+|      171       |       1        |     2.000      |     0.000      |     2.480      |     0.000      |  Neg. p = 0.079   |
+|      172       |       1        |     3.000      |     0.000      |     4.725      |     0.000      |  Neg. p = 0.009   |
+
+### Ancestor sampling analysis
+
+>Generating 100 ancestral sequence samples to obtain confidence intervals
+
+Resampling results for partition 1
+
+|     Codon      |   Partition    |    S [median, IQR]    |    N [median, IQR]    |    dS [median, IQR]    |    dN [median, IQR]    |  p-value [median, IQR]  |
+|:--------------:|:--------------:|:---------------------:|:---------------------:|:----------------------:|:----------------------:|:-----------------------:|
+|       12       |       1        |   3.00 [3.00-4.00]    |   0.00 [0.00-0.00]    |    4.22 [4.22-5.70]    |    0.00 [0.00-0.00]    |    0.03 [0.01-0.03]     |
+|       25       |       1        |   3.00 [3.00-3.00]    |   0.00 [0.00-0.00]    |    3.00 [3.00-3.00]    |    0.00 [0.00-0.00]    |    0.04 [0.04-0.04]     |
+|       39       |       1        |   0.00 [0.00-0.00]    |   9.00 [9.00-10.00]   |    0.00 [0.00-0.00]    |    3.94 [3.94-4.38]    |    0.09 [0.07-0.09]     |
+|       46       |       1        |   3.00 [3.00-4.00]    |   1.00 [1.00-1.00]    |    5.00 [5.00-6.68]    |    0.42 [0.42-0.42]    |    0.03 [0.01-0.03]     |
+|       52       |       1        |   2.00 [2.00-2.00]    |   0.00 [0.00-0.00]    |    3.15 [3.15-3.15]    |    0.00 [0.00-0.00]    |    0.04 [0.04-0.04]     |
+|       81       |       1        |   4.00 [4.00-4.00]    |   0.00 [0.00-0.00]    |    2.76 [2.76-2.76]    |    0.00 [0.00-0.00]    |    0.07 [0.07-0.07]     |
+|       82       |       1        |   3.00 [3.00-4.00]    |   0.00 [0.00-0.00]    |    3.00 [3.00-4.00]    |    0.00 [0.00-0.00]    |    0.04 [0.01-0.04]     |
+|       94       |       1        |   2.00 [2.00-3.00]    |   0.00 [0.00-0.00]    |    3.15 [3.15-4.74]    |    0.00 [0.00-0.00]    |    0.06 [0.01-0.06]     |
+|      108       |       1        |   3.00 [3.00-4.00]    |   0.00 [0.00-0.00]    |    4.73 [4.73-6.33]    |    0.00 [0.00-0.00]    |    0.01 [0.00-0.01]     |
+|      110       |       1        |   5.00 [4.00-6.00]    |   5.00 [5.00-6.00]    |    7.89 [6.36-9.51]    |    2.33 [2.32-2.78]    |    0.05 [0.02-0.12]     |
+|      113       |       1        |   3.00 [3.00-3.00]    |   1.00 [1.00-2.00]    |    4.75 [4.75-4.78]    |    0.42 [0.42-0.84]    |    0.03 [0.03-0.07]     |
+|      119       |       1        |   3.00 [3.00-4.00]    |   0.00 [0.00-0.00]    |    3.00 [3.00-4.00]    |    0.00 [0.00-0.00]    |    0.04 [0.01-0.04]     |
+|      122       |       1        |   0.00 [0.00-0.00]    |  11.00 [11.00-11.16]  |    0.00 [0.00-0.00]    |    4.81 [4.81-4.90]    |    0.06 [0.06-0.06]     |
+|      146       |       1        |   4.00 [4.00-5.00]    |   0.00 [0.00-0.00]    |    5.23 [5.23-6.51]    |    0.00 [0.00-0.00]    |    0.01 [0.00-0.01]     |
+|      148       |       1        |   5.00 [5.00-6.00]    |   0.00 [0.00-0.00]    |    3.44 [3.44-4.16]    |    0.00 [0.00-0.00]    |    0.04 [0.02-0.04]     |
+|      151       |       1        |   0.00 [0.00-0.00]    |   7.00 [7.00-7.00]    |    0.00 [0.00-0.00]    |    3.46 [3.46-3.46]    |    0.06 [0.06-0.06]     |
+|      155       |       1        |   0.00 [0.00-0.00]    |   6.00 [6.00-7.00]    |    0.00 [0.00-0.00]    |    2.97 [2.97-3.46]    |    0.09 [0.06-0.09]     |
+|      169       |       1        |   6.00 [6.00-7.00]    |   0.00 [0.00-0.00]    |    3.86 [3.86-4.53]    |    0.00 [0.00-0.00]    |    0.02 [0.01-0.02]     |
+|      171       |       1        |   2.00 [2.00-2.00]    |   0.00 [0.00-0.00]    |    2.48 [2.48-2.48]    |    0.00 [0.00-0.00]    |    0.08 [0.08-0.08]     |
+|      172       |       1        |   3.00 [3.00-3.00]    |   0.00 [0.00-0.00]    |    4.72 [4.72-4.72]    |    0.00 [0.00-0.00]    |    0.01 [0.01-0.01]     |

@@ -1,0 +1,225 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **483** sequences, **466** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/rbcL.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 20 zero-length internal branches: `Node146, Node207, Node229, Node279, Node347, Node362, Node42, Node496, Node573, Node582, Node633, Node685, Node722, Node725, Node730, Node771, Node796, Node811, Node815, Node924`
+* Log(L) = -84171.84, AIC-c = 170288.48 (971 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 10.510
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -79470.86, AIC-c = 160865.92 (958 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site) 10.876
+* non-synonymous/synonymous rate ratio for *test* =   0.1890
+
+### Fitting Standard MG94
+* Log(L) = -75410.58, AIC-c = 152755.45 (963 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1604
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.343               |    79.901     |                                   |
+|               1.910               |    14.364     |                                   |
+|               7.873               |     5.735     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -74742.28, AIC-c = 151420.86 (964 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1330
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.2293
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.341               |    79.264     |                                   |
+|               1.772               |    14.789     |                                   |
+|               7.865               |     5.947     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -74664.76, AIC-c = 151267.84 (965 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.1326
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.1959
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.1827
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.1827
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.343               |    79.430     |                                   |
+|               1.781               |    14.683     |                                   |
+|               7.916               |     5.887     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |-75410.58...|    0.1604  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |-74742.28...|    0.1330  |    0.2293  |       0.0000 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |-74664.76...|    0.1326  |    0.1959  |      0.0000 (2&3-hit rates = 0)    |    0.1827  |      0.0000 (3-hit rate(s) = 0)    |
+
+### 133 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|    1     |           8.4997        |           0.8413        |GTC->GTA(1), GTT->ACT(1)ATT(3)CTT(1)GCT(5)GGT(1)GNT(2)GTC...|
+|    2     |       13446.3957        |          16.9804        |         GGA->AGA(1)GGC(2)GGG(6)TGG(1)TTA(1)TTT(1)          |
+|    3     |         186.2829        |           0.7512        |TTC->ATT(2)CCC(1)CTA(1)CTC(3)TAC(1)TCC(3)TNC(1)TTN(1)TTT(...|
+|    6     |          11.6513        |           0.8505        |      GGT->GGC(9)GGG(3)GGN(2)GNT(1)NGT(1)NNT(1)TGG(2)       |
+|    7     |         161.2027        |           0.6174        |GTG->GTT(1), GTT->CGT(1)CTT(1)GCT(1)GGT(1)GTA(1)GTC(2)GTG...|
+|    9     |          96.5425        |           0.6851        |GAC->GAG(1), GAG->CAG(1)GAT(6)NAG(2), GAT->AAG(2)AGT(1)GA...|
+|    12    |          32.5543        |           1.0531        |CTG->CTT(4), TTG->ATG(1)CCG(1)CTG(2)GAG(1)GTG(1)NGG(1)NTG...|
+|    15    |          39.0515        |           0.9043        |TAC->TNN(1), TAT->AAA(1)AAT(1)CAT(1)GAT(1)NAT(4)TAC(2)TAN...|
+|    23    |          26.7588        |           0.6507        |ACC->ACA(8)ACG(2)ACN(1)ACT(12)ANC(1)ATC(4)CCA(1)CCC(11)GT...|
+|    24    |     610421092.6876      |           0.7784        |AAA->AAG(16)AAN(2)ACA(1)ATA(1)CAA(1)CTA(1)GAA(2)GAG(1)GAT...|
+|    25    |       440285.6472       |           9.5225        |CCT->NCT(1), GAC->CCG(1)GAT(1)GCA(1), GAT->AAT(1)AGT(1)CA...|
+|    26    |          16.2645        |           0.9182        |ACG->ACA(2)ACN(1)NNG(1), ACT->AAT(2)ACA(2)ACC(4)ACG(6)ACN...|
+|    29    |          94.2240        |           0.9607        |   TTG->ACG(1)CTA(1)CTG(2)NAG(1)TCG(1)TNG(2)TTA(15)TTN(3)   |
+|    34    |          18.3990        |           0.8536        |               GTA->ATG(2)GTC(7)GTN(3)NTA(2)                |
+|    43    |        2286.0545        |           0.6321        |GAA->GAG(6)GAN(1)GGC(1)GGG(1)NAA(2)TNA(1), GAG->GAA(28)GA...|
+|    44    |         228.0720        |           0.8190        |      GAA->AAA(1)AGA(1)GAG(2)GGA(1)GGG(1)GNA(1)NAA(1)       |
+|    47    |       201872.2797       |           6.0768        |GCA->ACA(1)CGA(1)GCG(2)GCT(1)NNA(2), GCC->CGC(1)GCA(11)GC...|
+|    49    |           9.4326        |           0.9575        |GTA->GAA(1)GAT(1)GCA(1)GGA(1)GTC(7)GTG(1)GTN(1)NTA(2)NTN(...|
+|    50    |     155982590.6264      |           0.5044        |GCG->GCT(1), GCT->CCT(1)CGT(5)GCA(4)GCC(7)GCG(6)GCN(1)GNT...|
+|    52    |          27.3646        |           4.1439        |            GAA->GAG(2)GAT(1)GNA(4)NAA(1)TCG(1)             |
+|    54    |           9.6037        |           6.2652        |TCT->ACT(1)CAA(1)CCT(1)NNT(1)TAN(1)TCC(7)TCG(6)TCN(1)TNT(...|
+|    56    |          16.6045        |           1.1768        |      GGG->ACG(1), GGT->GAT(1)GGA(1)GGG(4)GGN(2)TGT(1)      |
+|    68    |          18.4699        |           0.7250        |AAC->AAT(1)AGC(1), AGC->AAC(12)AAT(1)ACC(1)AGA(1)AGN(2)AG...|
+|    75    |          18.9201        |           4.2406        |AGA->CGA(2), CGA->AGA(9)CAA(1)CGC(4)CGG(2)CGN(1)GGA(1)NNA...|
+|    78    |       152397.1017       |           2.7590        |AAC->AGC(2)CAC(2)GAC(1)GGC(3), CAC->AAC(14)ACA(1)CAG(1)CA...|
+|    79    |          36.8633        |           0.6088        |ATC->AGC(1)ANN(1)ATA(2)ATG(1)ATN(1)ATT(28)CAC(1)CTA(1)CTC...|
+|    82    |          14.7604        |           0.8691        |GTT->ATT(3)CTT(1)GCT(2)GNN(1)GTA(1)GTC(1)GTG(2)NTT(1)TTG(...|
+|    91    |    146151455001.7165    |           1.1169        |GCT->ACT(1)CGT(1)GCC(2)GCG(2)GNN(1)GNT(1)GTT(3)NNT(1)TGC(...|
+|   100    |         395.7935        |           0.8648        |TAT->GAA(1), TTT->CTN(1)NTT(2)TAT(1)TGG(1)TNN(1)TTC(2)TTG...|
+|   103    |          18.9975        |           0.8754        |GGG->GGN(1), GGT->CAT(1)GCN(1)GGC(5)GGG(4)GGN(1)GNN(1)GNT...|
+|   107    |         140.9741        |           0.8457        |        AAC->AAT(21)CTC(1)GAT(1), AAT->AAC(3)AAN(1)         |
+|   114    |          43.8180        |           0.9267        |GGT->CCT(1)CGT(1)GGA(2)GGC(1)GGG(10)GGN(5)GNT(1)NGT(2)TGT...|
+|   119    |          93.6788        |          12.5560        |      TTC->ATC(1)CTC(1)CTT(1)GGG(1)GTC(1)TTN(1)TTT(7)       |
+|   121    |          86.3768        |           0.9191        |GCA->CGA(1), GCC->ACC(1)GCA(3)GCG(3)GCN(1)GCT(20)GNC(1)GT...|
+|   123    |          10.5322        |           4.6055        |CGC->AGC(2)CCN(1)CGA(3)CGG(6)CGN(4)CGT(23)CNA(1)CNC(7)CNN...|
+|   126    |          39.2896        |           0.8136        |CGA->CGG(1), CGG->CGA(1)CGT(1), CGT->AGT(1)CAA(1)CAT(1)CC...|
+|   130    |           9.8025        |           0.8459        |CTA->CTG(3)NNA(1)NTA(1)TTA(3)TTG(1), CTG->CTA(10)CTT(4)TT...|
+|   131    |          19.1911        |           0.9793        |   CGA->AGA(4)CAA(1)CCA(2)CGN(2)CNA(2)CNG(1)GAA(1)GGA(4)    |
+|   134    |         495.7492        |           0.2849        |AAT->AAA(1)AAG(2)ACT(1), ACC->ACT(1)ANN(1)ATC(1)NCC(1), A...|
+|   136    |          86.5727        |           1.0138        |            TAT->GTT(1)TAC(5)TAN(2)TNN(1)TNT(2)             |
+|   137    |        2585.6983        |           2.1002        |ACG->ACA(1)ACC(1)ACT(1)TCG(4), ACT->AAT(1)ACG(1)AGT(1)ATT...|
+|   141    |         206.3379        |           9.8455        |CAA->AAA(1)ATA(1)CAC(1)CAG(5)CAN(1)CAT(2)CGA(1)CNN(1)CTA(...|
+|   145    |          10.5839        |           0.9454        |CAC->CAA(1)CAT(12)NAN(1)TGC(1), CAT->AAT(1)CAC(29)CAN(1)C...|
+|   146    |           7.9114        |           0.7850        |GGC->AGG(1)CGC(1)CGG(1)GCA(1)GGA(6)GGG(14)GGN(7)GGT(40)GN...|
+|   149    |          34.1595        |           0.9288        |      GTG->GTC(1), GTT->AGT(1)GTA(1)GTC(1)GTG(5)NTT(3)      |
+|   160    |         980.5059        |           6.7296        |CCA->CCG(1), CCC->AAA(1)AAC(1)ACC(2)CCA(8)CCG(1)CCT(32)NC...|
+|   161    |         105.8855        |          19.0214        |CTA->ATA(1)ATC(1)CTC(1)CTG(4)CTT(1)NTA(1)TTA(8), CTG->CNG...|
+|   162    |         136.2823        |           1.0335        |TTA->CTA(1)TNA(1)TNN(1)TTG(2), TTG->AAG(1)CTG(2)GTG(1)NTG...|
+|   165    |          20.7449        |           0.8286        |ACC->TCC(1), ACT->ACA(9)ACC(6)ACG(2)ACN(1)ANT(1)CAT(1)CCN...|
+|   170    |          14.6346        |           1.8109        |TTA->TTN(1), TTG->AAN(1)CTG(4)GTG(2)NTG(1)TNG(2)TTA(13)TT...|
+|   172    |         102.5557        |           0.8577        |CTA->CNA(1)CTG(1)NNA(1)NTA(1)TTA(3), TTA->CCA(1)CTA(6)GTA...|
+|   175    |          87.9396        |           0.7259        |AAA->AAG(1)AAN(1)AGA(1)ANA(1)ATA(1)GTA(1), AAG->AAA(13)AA...|
+|   176    |          34.6832        |           7.1765        |AAC->AAA(1)AAN(2)AAT(10)GGA(1)NAC(1), AAT->AAC(3)AAN(4)NA...|
+|   177    |           8.3334        |           0.8400        |TAC->CCC(1)TAN(1)TAT(45)TCC(1)TGC(1)TNC(1)TNN(1)TTC(1), T...|
+|   181    |    11322807461.6431     |           1.8854        |GTT->ATT(1)CTT(1)GCT(2)GNN(1)GNT(1)GTA(1)GTG(5)NGT(2)NNT(...|
+|   182    |          25.3683        |           7.0434        |TAT->AAT(1)ANN(1)GTA(1)NAT(1)TAC(3)TAN(2)TGT(1)TNT(1)TTT(...|
+|   184    |       85872.1161        |           0.6833        |      TGT->AGT(1)GGT(1)GTT(3)NGT(1)TGC(6)TGN(2)TNT(3)       |
+|   186    |          12.1826        |           1.1131        |CGC->CGA(4)CGN(3)CGT(40)CNC(2)GGC(1)NGC(1)NGN(1)TGC(1)TTC...|
+|   192    |          48.6316        |           0.7485        |ACA->ACN(2), ACC->ACA(7)ACG(7)ACT(13)CCA(1)CCC(1)GAC(1)GC...|
+|   193    |          23.9926        |           6.8055        |  AAA->AAG(10)AAN(1)AAT(1)CCC(1)NAA(2), AAG->AAA(2)AAN(1)   |
+|   207    |          63.8818        |           0.7830        |AGA->AAA(2)AGG(5)ANA(4)CGA(4)CGC(1)GAA(1)NGA(2), AGG->AGA...|
+|   211    |          56.1854        |           0.5426        |CTA->ATA(1)CTG(1)GTA(4)NTA(1)TTA(2), GTA->GTG(1)TTA(4), G...|
+|   213    |          65.1371        |           5.3697        |TGT->CGT(2)GTG(1)NGN(1)NGT(4)TCT(1)TGC(4)TGG(7)TGN(4)TNN(...|
+|   219    |          29.7765        |           0.8817        |      AAA->AAC(1)AAG(3)AAN(5)ANN(1)GAA(1)NAA(4)TTA(1)       |
+|   221    |          16.8633        |           0.8946        |CAA->CAG(1)CAN(1)NAA(1), CAG->AAG(1)ANG(1)CAA(21)CAN(6)CA...|
+|   228    |           8.5291        |           0.9691        |AAA->AAC(1)AAG(14)AAT(1)ACA(1)AGA(1)ANA(2)CAA(1)CCA(1)GAA...|
+|   234    |          30.8344        |           0.8105        |GCG->GCA(1)GTG(1), GCT->CTT(1)GCA(3)GCC(4)GCG(6)GCN(1)GNN...|
+|   235    |          25.7689        |           0.9221        |      ACT->ACC(8)ACG(3)ACN(3)ANT(1)CCT(2)CTT(1)GCT(1)       |
+|   239    |       285448.8006       |        6501.4431        |AGT->AAT(1)AGC(1)ANN(1), TCC->CGA(1)TCT(2)TGC(1), TGC->AA...|
+|   246    |          27.6849        |           0.8524        |GCG->GCA(2), GCT->ACT(1)GCA(3)GCC(11)GCG(5)GCN(1)GNN(2)GN...|
+|   247    |          31.9202        |           0.4738        |ATA->ATG(1), GCA->GCG(1)TCA(1), GTA->AGA(1)ATA(21)ATG(2)A...|
+|   250    |       117870.5405       |         668.0407        |AGA->AAA(2)AAT(1)ACA(1)AGG(3)ANA(9)CGA(8)CGC(1)GAC(1)NGA(...|
+|   251    |          19.4094        |           3.1515        |GAA->AAA(2)AAG(1)ANA(1)CAA(2)CAN(1)CTC(1)GAG(12)GAN(2)GGA...|
+|   252    |         130.8681        |           1.0506        |CTG->CTN(1)CTT(1)TTA(1), TTA->CCA(1)TTG(7)TTN(1), TTG->CT...|
+|   261    |          41.4554        |           0.8996        |TAC->TAN(2)TAT(17)TGC(1)TTC(1), TAT->ATT(1)NAT(1)TAC(3)TA...|
+|   267    |          11.8197        |           3.0658        |ACA->CTG(1), ACC->ACG(1)ANN(1)NCC(1), ACT->ACA(7)ACC(18)A...|
+|   269    |          22.3629        |           0.9170        |   AAT->AAC(4)ANN(1)ANT(1)ATT(2)CAT(1)GAA(1)NAT(1)NNT(1)    |
+|   274    |        3082.4021        |           0.4611        |CAG->CAA(1)CAN(1)GAG(1), CAT->CAC(4)CAG(4)CAN(3)CGT(2)CNN...|
+|   278    |          50.5031        |           0.8276        |      GAT->AAT(9)AGT(1)CAT(1)GAC(6)GAN(2)GGG(1)NAT(8)       |
+|   281    |           9.9794        |           0.8968        |CTA->CAG(1)CNA(1)CTC(3)CTG(1)CTT(2)GTA(1)NTA(1)TTA(15), T...|
+|   284    |          97.8549        |           0.9469        |   CAC->AAA(1)CAN(1)CAT(14)CCC(1)CNC(3)CNN(1)GAC(1)NAN(1)   |
+|   291    |          10.5994        |           0.9616        |GCA->CTA(1)GAA(1)GCC(13)GCG(9)GCN(4)GCT(4)GNA(1)GNN(1)NCA...|
+|   292    |         175.2850        |           0.7066        |GTT->AGT(1)GAT(1)GCC(1)GCT(3)GGT(3)GNN(2)GNT(1)GTA(1)GTC(...|
+|   293    |          29.3791        |          16.0992        |ATC->ATN(1)ATT(1), ATT->ATA(1)ATC(2)CTT(3)NTT(6)TCC(1)TTT...|
+|   297    |          16.7657        |           9.7760        |AAA->AAG(2)AAN(1)AGA(1)CAA(1)GAA(1), AAG->AAA(25)AAC(1)AA...|
+|   302    |       10147.5191        |           0.6647        |CAC->ACC(2)CAN(2)CAT(15)CCC(1)CGC(1)CNC(3)GAC(1)NAC(3)TAC...|
+|   309    |        1163.1900        |           0.5126        |CGC->NNC(1), GCC->CGC(3)GCA(1)GCG(4)GCN(1)GCT(13)GGC(5)GN...|
+|   310    |          28.0870        |           1.9970        |CTA->NTA(1)TTA(4), TTA->AAA(1)CCG(1)CTA(9)NNA(2)NTA(1)TCA...|
+|   317    |          78.3469        |           0.9001        |      CAT->CAA(1)CAN(2)CNN(1)CNT(1)CTT(1)GAG(1)NAT(2)       |
+|   326    |          33.1496        |           0.8754        |   AAA->AAG(6)AAN(1)ACA(1)AGA(1)ANA(1)ANN(1)CAT(1)NAA(1)    |
+|   329    |          40.7613        |           4.8924        |GGA->GAG(1)GGC(1)GGG(1)GGN(1)GGT(2)NNA(1), GGC->CGC(1)GGT...|
+|   330    |          27.4569        |           0.8647        |GAA->AAA(1)AGA(1)CAA(1)GAC(1)GAG(4)GAN(1)GCA(1)GNN(1)NAA(...|
+|   333    |          65.8813        |           0.7793        |ATA->ATC(7)TCA(1), ATC->ACC(1)ANN(1)ATA(20)ATG(1)ATN(1)AT...|
+|   335    |          32.0108        |           0.9296        |CTG->CTA(1)CTN(1)TTG(1), TTA->GGA(1)TCA(1)TTG(3)TTN(2), T...|
+|   341    |          23.1507        |           0.7913        |CTA->ATA(1)CCA(2)CGA(2)CNA(2)CTC(1)CTG(8)CTT(1)GGA(1)TTA(...|
+|   342    |          50.6734        |           0.8765        |CGG->AGG(1)CGA(1), CGT->CGA(3)CGC(17)CGG(1)CGN(1)CNC(2)NG...|
+|   343    |      10521832.1235      |          54.3543        |CTC->CTA(1), GAC->GAT(1), GAT->ATT(1)CTC(1)GAC(6)GAG(1)GA...|
+|   350    |          67.7451        |           0.9036        |CCA->GCA(1), CGA->AGA(14)CCA(4)CGC(3)CGG(2)CGN(1)CGT(1)CN...|
+|   351    |    49735297022.7864     |           1.5811        |AGC->AGN(2)AGT(7)ANC(1)ANN(1)GAC(1)GCC(2)GGC(3)NGC(2), AG...|
+|   357    |         282.5866        |           0.6398        |ACC->AAC(1)ACT(1)GCC(1), ACG->ACC(1), ACT->ACC(8)ACG(4)AT...|
+|   359    |         508.4426        |           3.2945        |CCT->CCG(2)GAG(1)GAT(2)TCT(2)TTT(3), GAA->GAT(1), GAC->GA...|
+|   362    |          56.0132        |           0.8858        |TCC->CTC(1)TCG(2)TCT(7), TCG->TCA(2), TCT->NCT(1)TCA(1)TC...|
+|   363    |         267.6068        |           0.4608        |ACA->ACC(2)ATA(1), ACC->ACT(1), ATA->ACA(3)ATN(1)CTA(1), ...|
+|   366    |          18.0045        |           0.8958        |GTG->GTT(3)TTG(1), GTT->AGT(1)CTT(1)GNT(1)GTA(2)GTC(1)GTG...|
+|   367    |   1990746730853.7769    |           0.0288        |ATA->AAT(1)ATC(1)ATG(1)ATT(3)CTA(2)CTG(1), ATG->CTG(1), A...|
+|   370    |        7674.7284        |           1.2787        |CGT->CGG(1), GCG->GCA(1)NNG(1), GCT->CGT(2)GAT(1)GCA(2)GC...|
+|   380    |       95589.8648        |           0.3145        |CCC->ACG(1)CCA(3)CCG(2)CCN(2)CCT(9)CNC(1)NNC(1)NNT(1), CC...|
+|   381    |          14.7955        |           0.9299        |GCG->GCT(1)GGG(1), GCT->ANT(1)CAT(1)CCT(1)GAT(1)GCA(1)GCC...|
+|   385    |          60.4701        |           9.1563        |                  ATC->ATA(2)ATT(13)GGG(1)                  |
+|   388    |          38.0178        |          73.2121        |        GAC->AGA(1), GAT->GAC(13)GAG(1)NAT(3)NTT(1)         |
+|   389    |          11.9850        |          30.4682        |      GAC->GAT(1), GAT->AGA(1)CAT(1)GAA(1)GAC(3)GAG(1)      |
+|   396    |           8.8219        |           0.8821        |GGA->AGA(1)GCA(1)GGC(13)GGG(8)GGT(2)GNA(1)NGA(1)TGG(1), G...|
+|   397    |          10.4066        |           0.7888        |GGA->AGA(1)AGG(2)GAA(1)GGC(2)GGG(10)GGN(1)NGA(2)NGN(1), G...|
+|   401    |        1604.9182        |           4.6674        |CAC->ACA(1)CAN(6)CAT(32)CCA(2)CCC(1)CGA(1)CNC(3)CNN(1)GAC...|
+|   406    |         925.6555        |           0.6036        |CCA->CCG(1)CNN(1)TCA(1), GCA->CCA(3)CGA(3)GCC(1)GCG(18)GC...|
+|   408    |          25.4053        |           7.0752        |GGC->CGC(1)GGA(1)GGN(2)GGT(1), GGT->CCG(1)CGN(1)GGA(4)GGC...|
+|   425    |       14307.5962        |           0.6599        |GAA->CAC(1)GAG(2), GAG->AAG(1)AGG(2)GAA(32)GAC(2)GAN(6)GN...|
+|   427    |        3691.6884        |          22.4649        |CGC->CAA(1)CGA(2)CGT(2)CNC(1)NGC(4)TAC(1), CGG->CGA(1), C...|
+|   428    |          25.2581        |           0.9285        |      GAT->AAA(1)AAT(2)GAC(7)GAN(2)GGT(1)NAT(2)TAT(2)       |
+|   431    |      63027202.5611      |           3.6748        |AGC->NGN(1), CGC->AAA(1)ACC(1)AGC(2)CGA(1)CGG(2)CGT(7)CTG...|
+|   432    |          35.4278        |           5.8524        |GAA->CAA(4)GAG(3)GAN(1)NAA(2), GAG->AAG(1)CAG(6)CGA(1)GAA...|
+|   434    |          28.2833        |           0.9193        |   AAC->AAT(1)CAC(1), AAT->AAC(3)AAN(4)ACT(1)ANT(2)GCT(1)   |
+|   435    |          87.1131        |           3.7284        |ACA->ATC(1)GAC(1)GCA(1), GAA->ACA(3)AGA(1)CAA(3)GAC(5)GAG...|
+|   438    |          91.4530        |          19.8031        |CGA->AAA(1), CGC->CGA(1)CGT(4)CNN(1), CGT->CAT(1)CCC(1)CC...|
+|   439    |         140.9460        |           0.3997        |AAA->CAA(2), AAG->AAN(1)AGG(1)GAA(1), CAA->AAG(1)CAG(1)GA...|
+|   441    |       900280.0023       |          47.7612        |ACT->GCT(1)GGT(1), AGC->AAC(1)ACC(3)ACT(3)AGT(7)ANC(2)CGC...|
+|   443    |          12.0196        |           0.7642        |   TGG->ATG(1)NGG(3)TCG(1)TGC(2)TGN(1)TGT(1)TNG(1)TNN(1)    |
+|   444    |          14.2991        |          64.0816        |AGC->AGN(1)AGT(3), AGT->ACT(1)AGC(10)AGG(2)AGN(1)ANT(8)GA...|
+|   454    |        1142.8537        |           0.6137        |            TGG->GAG(1)GGA(2)NGG(4)TGN(1)TNN(3)             |
+|   455    |           9.3656        |           0.9600        |AAA->AAN(1)GNT(1), AAG->AAA(32)AAN(5)AGG(2)ANA(1)CAG(1)NA...|
+|   456    |           7.4350        |           3.5600        |GAA->AAA(1)GAG(1)NAA(1), GAG->AGT(1)CAA(1)CAG(1)GAA(24)GA...|
+|   457    |          31.7291        |           0.7308        |ATC->AAA(1)ANC(1)ATA(6)ATG(2)ATN(2)ATT(9)GTC(1)NTC(1)TCC(...|
+|   458    |          13.3613        |           4.3007        |AAA->AAG(1)AAN(1)AAT(3)AGA(3)ANA(2)ANN(1)ATA(1)CAA(5)CGA(...|
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/rbcL_fitmultimodelmh.json'

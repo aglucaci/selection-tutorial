@@ -1,0 +1,3159 @@
+{
+ "Evidence Ratios":{
+  },
+ "Site Log Likelihood":{
+   "unconstrained":    [
+[-17.05295302558096, -121.568450191956, -16.12014649704802, -125.5630055341093, -100.8927648226233, -75.33591153180714, -70.0355174789633, -86.75930400982685, -27.14866463735261, -47.35704100590269, -27.18216748098359, -7.466945229614591, -47.37622717535392, -41.12918372816168, -23.08622045606245, -31.73477107640833, -18.96495362412548, -46.17760540087337, -81.63917123846328, -22.29184039972588, -29.42696953408246, -69.44885195977271, -53.71675200585332, -44.33574717420434, -52.6162163227762, -117.4041146146723, -65.30315714565717, -7.466945229614591, -60.09396250068013, -61.1850488174367, -38.15370998143164, -49.37230299007069, -102.7475001425541, -50.23400265649605, -34.21681282814825, -16.96498070675639, -62.49689728446777, -77.08443939799318, -23.88407677981552, -58.94720747017118, -49.82287156588174, -63.97033620581087, -28.22077806036823, -70.62128459683936, -59.96219553578674, -67.58913744799767, -103.7911258642003, -79.75363513770063, -119.253562974899, -43.73286739486871, -34.04698614501224, -46.39564419384673, -61.00445190707016, -86.16293913307032, -97.53794284882679, -34.75704495420662, -51.40649683983782, -30.3391017695636, -45.06539508299215, -25.48026177599591, -18.6742098514211, -21.07861645019179, -71.96326245900528, -56.74584506377019, -33.63552158530185, -37.36139664596344, -63.99841572553589, -55.07839231061342, -42.55150353166341, -36.03867322604165, -46.45803639651044, -40.51414126005265, -55.8486466631787, -17.31414636155968, -56.35759590642655, -90.40340117231725, -30.60200903841983, -7.072639254753593, -29.6130969347134, -46.04373730843708, -48.4775420855127, -42.7877074304077, -40.0147460121573, -62.10799949247332, -25.80481600318771, -50.63512904701948, -89.88433749311238, -111.260603522884, -39.71249388382268, -33.90557383150028, -141.6053120310894, -90.32902114867441, -121.952134793386, -59.06452590097673, -69.21109484988663, -158.5232245546551, -143.8498540746426, -80.27669725389836, -125.08031768805, -103.4788652525988, -64.37373722144778, -64.43555884438773, -41.81841490383838, -41.92851164032904, -51.27956657846139, -39.75831957102451, -41.92292582937134] 
+    ]
+  },
+ "Synonymous site-posteriors":  [
+[0.0409558335788037, 5.465302528089501e-05, 0.1268361563579841, 0.03554690558288762, 0.02505283878911421, 0.9571430248998387, 0.3398281887176577, 0.9791207035339431, 0.4768719382141455, 0.8601956606586559, 0.4062075089623022, 0.04134320440424729, 0.7460204893081209, 0.8865177731763841, 0.2375366736072888, 0.1535300201164556, 0.2345250383313445, 0.9365681985507731, 0.9912452895084498, 0.6291399933843027, 0.2866102711565638, 0.9027394630410949, 0.9772189359844955, 0.6026443782796421, 0.2317536510546679, 0.009843320867626336, 0.9899957221022049, 0.04134320440424729, 0.9839224100403793, 0.8242190206599272, 0.7116274836519538, 0.8935053263102934, 0.1928766556352111, 0.9383933831831122, 0.5065069863722769, 0.2423268722862789, 0.9524013745378465, 0.7072005041074991, 0.1648006404736222, 0.4942270240232475, 0.8427046253680445, 0.8451100890496441, 0.06447398674951745, 0.9942784249304319, 0.9525085053919597, 0.9438277160921978, 0.0001465417793533145, 0.9951979956083314, 0.003248725085187712, 0.6623988960436017, 0.0229372255839953, 0.7162201782407996, 0.9260231384087894, 0.9978928966065682, 0.9992988111768187, 0.8052375842791473, 0.941417053573866, 0.0002118935317704772, 0.04724070181733484, 0.07079601779668339, 0.2440753303140225, 0.05073687705490385, 0.9903892324662704, 0.9116988355889163, 0.2216507371096534, 0.3379708206917898, 0.9640793353432187, 0.9811065953572923, 0.01961406689131234, 0.16101937840127, 0.8990750222059111, 0.8397711584938718, 0.9461192591618479, 0.06560146437562737, 0.8333169104226469, 0.5892691142832952, 0.07876002603600769, 0.1479334993230047, 0.003496771520105301, 0.2906585475566058, 0.9818183335003853, 0.4195852447453638, 0.7037458153969759, 0.9759237245368513, 0.154956741836993, 0.9571890632682677, 0.00897382178366014, 0.02888363117522848, 0.8864921864775505, 0.9240641923642914, 6.819992940624487e-08, 0.5894359799493696, 2.971694004694156e-06, 0.9226124389902882, 0.6614183046245441, 1.310875587159867e-07, 5.893433421737247e-08, 0.9928202332637688, 0.0006160505853944749, 0.0005113408213948133, 0.984998972673546, 0.804086474245408, 0.9406877756570782, 0.05969062829269692, 0.3334156114713908, 0.6178774894089883, 0.9447223843432823],
+  [0.9590441230780402, 8.531238145147119e-13, 0.8731594110847669, 2.032239200576332e-08, 6.437652323557928e-08, 0.0005843521448212474, 0.0001905963850073744, 0.000551168830602426, 0.5229520487050371, 0.1396866363206762, 0.5937109451485159, 0.9586564081479835, 0.2539622849190593, 0.1097078543162378, 0.7624448990166627, 0.8464697862103412, 0.7654566322557804, 0.05404271166790273, 0.00135487105688201, 0.3674115852742784, 0.7133887985750079, 0.00373785538987632, 0.01657012412036721, 0.3973539485358208, 0.7682463440707531, 5.004627078043751e-09, 0.006329154004729444, 0.9586564081479835, 0.002785795437141298, 0.175775952857711, 0.2882534434682142, 0.001677824922096563, 1.339629325036978e-06, 0.06115166853773753, 0.4934676965195294, 0.7576545562691647, 0.001968129746343756, 0.0001280127098946346, 0.8351982415321493, 0.5057729502989065, 0.1570112527912671, 0.1548885821618346, 0.9355259886404103, 0.004560196251562006, 0.04493515880503265, 0.002607729230612893, 4.709905432885027e-11, 0.002471577888032082, 1.141706299046831e-09, 0.3375864604510377, 0.9770627743611315, 0.2837363652676149, 0.07397669497084824, 0.001534967948665936, 0.000676614442775827, 0.1946509403423664, 0.001611516050112032, 0.9997881064682296, 0.9527592981271358, 0.929203939839558, 0.7559027042952052, 0.9492630728338115, 0.009597516384347955, 0.08829298713411513, 0.7783471089247362, 0.6620285718448892, 0.0359134819534799, 0.007586079128075475, 0.9803859330973552, 0.8389806060522731, 0.1008282935355371, 0.1585575957153882, 0.05349133874901413, 0.9343984664267014, 0.166681950210661, 0.0001394700970674753, 0.9212399235636609, 0.8520024340286729, 0.996503228479707, 0.7093414118273407, 0.01796241818225204, 0.5804122373537318, 0.2961259128898308, 0.01494199969602742, 0.8450424900680864, 0.04259541744157791, 2.154488507226664e-08, 2.989565606117818e-07, 0.1099615996722123, 0.07535009595065646, 7.824987241815967e-18, 6.078561291514922e-06, 1.14115598957589e-14, 0.07738605115426389, 0.3385816873939305, 7.488291026971289e-18, 2.056347521368082e-18, 0.006211161037607103, 1.905222031984836e-11, 9.583310928376861e-10, 0.0113765467780285, 0.1959101249320284, 0.05775208050575652, 0.9403093714703975, 0.6665843564654047, 0.3821139496332831, 0.05516910600483241],
+  [4.33431559937549e-08, 0.9999453469738661, 4.432557248925898e-06, 0.9644530740947204, 0.9749470968343626, 0.04227262295533998, 0.659981214897335, 0.0203281276354546, 0.0001760130808174259, 0.0001177030206677017, 8.154588918181522e-05, 3.874477692109557e-07, 1.722577281983184e-05, 0.003774372507378163, 1.842737604867426e-05, 1.936732033014782e-07, 1.832941287516852e-05, 0.009389089781324198, 0.007399839434668077, 0.003448421341419064, 9.302684282802821e-07, 0.0935226815690289, 0.006210939895137358, 1.673184537129744e-06, 4.874578768183199e-09, 0.9901566741277465, 0.003675123893065697, 3.874477692109557e-07, 0.01329179452247947, 5.026482361576266e-06, 0.0001190728798319402, 0.1048168487676101, 0.8071220047354638, 0.0004549482791502653, 2.531710819385761e-05, 1.857144455636271e-05, 0.0456304957158099, 0.2926714831826063, 1.117994228606441e-06, 2.56778460232625e-08, 0.0002841218406885116, 1.328788521343121e-06, 2.461007227140562e-08, 0.001161378818005875, 0.002556335803007709, 0.05356455467718918, 0.9998534581735478, 0.002330426503636463, 0.9967512737731059, 1.464350536069856e-05, 5.487312336804087e-11, 4.345649158546983e-05, 1.666203623242638e-07, 0.0005721354447659182, 2.457438040529622e-05, 0.0001114753784863533, 0.05697143037602209, 9.820104816807238e-18, 5.55293011786634e-11, 4.236375850180638e-08, 2.19653907720906e-05, 5.011128459112167e-08, 1.325114938153629e-05, 8.177276968510331e-06, 2.153965610506483e-06, 6.074633212395755e-07, 7.182703301423975e-06, 0.01130732551463225, 1.133226981887331e-11, 1.554645697039943e-08, 9.668425855189403e-05, 0.001671245790739974, 0.0003894020891379915, 6.919767126318474e-08, 1.139366691990473e-06, 0.4105914156196374, 5.040033145461963e-08, 6.406664832226797e-05, 1.877922742782339e-13, 4.061605355423802e-08, 0.0002192483173627104, 2.517900904510655e-06, 0.000128271713193297, 0.009134275767121393, 7.680949205980915e-07, 0.0002155192901543786, 0.9910261566714549, 0.971116069868211, 0.003546213850237218, 0.0005857116850521906, 0.9999999318000707, 0.4105579414893388, 0.9999970283059838, 1.509855447875069e-06, 7.981525475765348e-09, 0.9999998689124412, 0.9999999410656658, 0.0009686056986241691, 0.9993839493955534, 0.9994886582202742, 0.003624480548425607, 3.400822563611452e-06, 0.00156014383716545, 2.369055578305574e-10, 3.206320450940694e-08, 8.560957728501282e-06, 0.0001085096518855413] 
+  ],
+ "analysis":{
+   "authors":"Sergei L Kosakovsky Pond",
+   "citation":"*Gene-wide identification of episodic selection*, Mol Biol Evol. 32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation Dramatically Inflates False Positive Rates of Selection Analyses: Ignore at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439",
+   "contact":"spond@temple.edu",
+   "info":"BUSTED (branch-site unrestricted statistical test of episodic diversification) uses a random effects branch-site model fitted  jointly to all or a subset of tree branches in order to test for alignment-wide evidence of episodic diversifying selection. Assuming there is evidence of positive selection (i.e. there is an omega > 1),  BUSTED will also perform a quick evidence-ratio style analysis to explore which individual sites may have been subject to selection.\n                               \nVersion 2.0 adds support for synonymous rate variation, and relaxes the test statistic to 0.5 (chi^2_0 + chi^2_2).\nVersion 2.1 adds a grid search for the initial starting point.\nVersion 2.2 changes the grid search to LHC, and adds an initial search phase to use adaptive Nedler-Mead. \nVersion 3.0 implements the option for branch-site variation in synonymous substitution rates. \nVersion 3.1 adds HMM auto-correlation option for SRV, and binds SRV distributions for multiple branch sets.\nVersion 4.0 adds support for multiple hits (MH), ancestral state reconstruction saved to JSON, and profiling of branch-site level support for selection / multiple hits.\nVersion 4.2 adds calculation of MH-attributable fractions of substitutions.\nVersion 4.5 adds an 'error absorption' component. \nVersion 4.6 adds support for MSS-type models.\nVersion 4.7 adds user configurable options for the error class.\n\n",
+   "requirements":"in-frame codon alignment and a phylogenetic tree (optionally annotated with {})",
+   "settings":{
+     "error-sink":0,
+     "mss":"No",
+     "multiple-hit":"Double+Triple",
+     "srv":"Yes"
+    },
+   "version":"4.7"
+  },
+ "background":0,
+ "branch attributes":{
+   "0":{
+     "AILUROPODA":{
+       "Evidence ratio for 2H":        [
+[97, 1.086776661718854] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.07216347778961534,
+       "Nucleotide GTR":0.0637013010365063,
+       "original name":"AILUROPODA",
+       "unconstrained":0.07499567021635002
+      },
+     "AMBLYSOMUS":{
+       "Evidence ratio for 2H":        [
+[18, 1.046143888983568],
+        [37, 1.039508277305316],
+        [75, 1.00060670654614],
+        [85, 1.027265398489166],
+        [90, 1.083636001067853] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.09436049406158863,
+       "Nucleotide GTR":0.09446936097972486,
+       "original name":"AMBLYSOMUS",
+       "unconstrained":0.09896284386611211
+      },
+     "ANTROZOUS":{
+       "Evidence ratio for 2H":        [
+[36, 1.095916498131007],
+        [46, 1.022955376615375],
+        [94, 1.003285450702553],
+        [95, 1.005077644115435] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04496468867484208,
+       "Nucleotide GTR":0.04183248955125136,
+       "original name":"ANTROZOUS",
+       "unconstrained":0.04787348009318666
+      },
+     "ARTIBEUS":{
+       "Evidence ratio for 2H":        [
+[41, 1.099503362566547],
+        [74, 1.004643144449778] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.08976306985621607,
+       "Nucleotide GTR":0.08396233608823589,
+       "original name":"ARTIBEUS",
+       "unconstrained":0.09501427460511096
+      },
+     "BOS":{
+       "Evidence ratio for 2H":        [
+[32, 1.000446789209477],
+        [67, 1.000724584869485] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.008614064752470098,
+       "Nucleotide GTR":0.009085931506161656,
+       "original name":"BOS",
+       "unconstrained":0.008097390409869105
+      },
+     "CANIS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.03251237588457881,
+       "Nucleotide GTR":0.03240992162568115,
+       "original name":"CANIS",
+       "unconstrained":0.03307395132209572
+      },
+     "CASTOR":{
+       "Evidence ratio for 2H":        [
+[46, 1.005651175309612],
+        [54, 1.1874359776062],
+        [86, 1.001222256024724],
+        [92, 1.003957156426438],
+        [96, 1.000282270795066],
+        [97, 1.000160756502113] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.09711466073079809,
+       "Nucleotide GTR":0.09215653388891669,
+       "original name":"CASTOR",
+       "unconstrained":0.104501800540103
+      },
+     "CAVIA":{
+       "Evidence ratio for 2H":        [
+[5, 1.001541571544578],
+        [98, 1.003699498719316] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03129360428018305,
+       "Nucleotide GTR":0.03290328792564945,
+       "original name":"CAVIA",
+       "unconstrained":0.03159041893739761
+      },
+     "CERATOTHERIUM":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.0129232041062757,
+       "Nucleotide GTR":0.01317808289726358,
+       "original name":"CERATOTHERIUM",
+       "unconstrained":0.01329177105011227
+      },
+     "CHAETOPHRACTUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.009602167010852475,
+       "Nucleotide GTR":0.009362499969355736,
+       "original name":"CHAETOPHRACTUS",
+       "unconstrained":0.009578803736962484
+      },
+     "CHOLOEPUSDI":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":1e-06,
+       "original name":"CHOLOEPUSDI",
+       "unconstrained":0
+      },
+     "CHOLOEPUSHO":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.003043455418167547,
+       "Nucleotide GTR":0.00314397902194746,
+       "original name":"CHOLOEPUSHO",
+       "unconstrained":0.002982232861705537
+      },
+     "CYNOCEPHALUS":{
+       "Evidence ratio for 2H":        [
+[25, 1.014542415287417],
+        [66, 1.000003228223998] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.00921609133071437,
+       "Nucleotide GTR":0.009396667471384981,
+       "original name":"CYNOCEPHALUS",
+       "unconstrained":0.009351960089413918
+      },
+     "ECHINOPS":{
+       "Evidence ratio for 2H":        [
+[5, 1.195905226366562],
+        [30, 1.003262814476725],
+        [41, 1.008270701179658],
+        [87, 1.04419233841233],
+        [90, 1.018660065705114],
+        [97, 1.000137446779445],
+        [98, 1.000344870171371] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.09088560884346177,
+       "Nucleotide GTR":0.08899393893302501,
+       "original name":"ECHINOPS",
+       "unconstrained":0.09362196650613816
+      },
+     "ELEPHANTULUS":{
+       "Evidence ratio for 2H":        [
+[1, 1.001227811832007] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03338592233688959,
+       "Nucleotide GTR":0.03223320734293528,
+       "original name":"ELEPHANTULUS",
+       "unconstrained":0.03406737226029913
+      },
+     "EQUUS":{
+       "Evidence ratio for 2H":        [
+[36, 1.000759649623245] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05888487402261641,
+       "Nucleotide GTR":0.05915033704098531,
+       "original name":"EQUUS",
+       "unconstrained":0.05927815491134649
+      },
+     "ERETHIZON":{
+       "Evidence ratio for 2H":        [
+[5, 1.003134488285229],
+        [92, 1.009531991517969],
+        [95, 1.006002748346734],
+        [101, 1.004624119560336] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02616247910428203,
+       "Nucleotide GTR":0.02784349925312095,
+       "original name":"ERETHIZON",
+       "unconstrained":0.02604783712878525
+      },
+     "ERINACEUS":{
+       "Evidence ratio for 2H":        [
+[13, 1.000088287520228],
+        [49, 1.004769097335433],
+        [80, 1.023610450161776],
+        [83, 1.000000714939169],
+        [86, 1.005561848574197],
+        [90, 1.00922579037727],
+        [99, 1.000847876655707] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.09113151561733997,
+       "Nucleotide GTR":0.08859052246984127,
+       "original name":"ERINACEUS",
+       "unconstrained":0.09874668016836925
+      },
+     "EUPHRACTUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":1e-06,
+       "original name":"EUPHRACTUS",
+       "unconstrained":0
+      },
+     "FELIS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.006248841383104549,
+       "Nucleotide GTR":0.005974125053708414,
+       "original name":"FELIS",
+       "unconstrained":0.00595372769178316
+      },
+     "GALEMYS":{
+       "Evidence ratio for 2H":        [
+[5, 1.068623058231657],
+        [6, 1.00040179216574],
+        [13, 1.000087542040462],
+        [45, 1.005860688163404],
+        [90, 1.002006719095314],
+        [92, 1.08027074955586],
+        [96, 1.014541176076401] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.1205336236486938,
+       "Nucleotide GTR":0.1063602935798412,
+       "original name":"GALEMYS",
+       "unconstrained":0.1306757931905528
+      },
+     "GALEOPTERUS":{
+       "Evidence ratio for 2H":        [
+[25, 1.011289512185591],
+        [87, 1.000014379751281] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01583179553809791,
+       "Nucleotide GTR":0.01615104926699527,
+       "original name":"GALEOPTERUS",
+       "unconstrained":0.01554160783060236
+      },
+     "HIPPOPOTAMUS":{
+       "Evidence ratio for 2H":        [
+[3, 1.177344936654086] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04492068150375151,
+       "Nucleotide GTR":0.04494009974393855,
+       "original name":"HIPPOPOTAMUS",
+       "unconstrained":0.04510345198481921
+      },
+     "HOMO":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":1e-06,
+       "original name":"HOMO",
+       "unconstrained":0
+      },
+     "HYDROCHOERUS":{
+       "Evidence ratio for 2H":        [
+[5, 1.001198202578328],
+        [21, 1.000055175369107],
+        [92, 1.000688252228809] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0324651093951098,
+       "Nucleotide GTR":0.0319826150475253,
+       "original name":"HYDROCHOERUS",
+       "unconstrained":0.03212728732413517
+      },
+     "HYSTRIX":{
+       "Evidence ratio for 2H":        [
+[4, 1.001358991822943],
+        [8, 1.211123713397063],
+        [46, 1.010981048049604],
+        [92, 1.009163763769225],
+        [94, 1.11478839077037],
+        [95, 1.021917179726055],
+        [99, 1.00648075366106] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.06072073569991076,
+       "Nucleotide GTR":0.05610064957266556,
+       "original name":"HYSTRIX",
+       "unconstrained":0.05967895428214871
+      },
+     "LAMA":{
+       "Evidence ratio for 2H":        [
+[87, 1.000139571120716] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04377253183399949,
+       "Nucleotide GTR":0.04074815341407319,
+       "original name":"LAMA",
+       "unconstrained":0.04587104935403452
+      },
+     "LEMUR":{
+       "Evidence ratio for 2H":        [
+[18, 1.000472267105614] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.004885417209236443,
+       "Nucleotide GTR":0.006143463263532022,
+       "original name":"LEMUR",
+       "unconstrained":0.005826712650078359
+      },
+     "LOXODONTA":{
+       "Evidence ratio for 2H":        [
+[26, 1.121538027380821],
+        [90, 1.002067897846107],
+        [96, 1.023019899905729],
+        [98, 1.000293949425633] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03876789299329061,
+       "Nucleotide GTR":0.04005668118755026,
+       "original name":"LOXODONTA",
+       "unconstrained":0.03958740959559719
+      },
+     "MACACA":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.009055301684528555,
+       "Nucleotide GTR":0.00912934447624955,
+       "original name":"MACACA",
+       "unconstrained":0.008413189848737694
+      },
+     "MACROSCELIDES":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.02039978796744109,
+       "Nucleotide GTR":0.02045599377007827,
+       "original name":"MACROSCELIDES",
+       "unconstrained":0.02155497131596621
+      },
+     "MANIS":{
+       "Evidence ratio for 2H":        [
+[97, 1.001297504251243] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05104056437492756,
+       "Nucleotide GTR":0.05111003675912261,
+       "original name":"MANIS",
+       "unconstrained":0.0529024321593491
+      },
+     "MEGADERMA":{
+       "Evidence ratio for 2H":        [
+[32, 1.030365580373187] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.079537731625834,
+       "Nucleotide GTR":0.07491770517347406,
+       "original name":"MEGADERMA",
+       "unconstrained":0.08268176186466281
+      },
+     "MEGAPTERA":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.009122793757032384,
+       "Nucleotide GTR":0.008996678881668134,
+       "original name":"MEGAPTERA",
+       "unconstrained":0.009209006868285645
+      },
+     "MICROCEBUS":{
+       "Evidence ratio for 2H":        [
+[14, 1.000006097469287],
+        [18, 1.141304945732833],
+        [22, 1.000520711728043] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03260026659203411,
+       "Nucleotide GTR":0.03233433471923652,
+       "original name":"MICROCEBUS",
+       "unconstrained":0.03155563543642214
+      },
+     "MUS":{
+       "Evidence ratio for 2H":        [
+[7, 1.000940706398524],
+        [96, 1.003322450130947] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04496320968549353,
+       "Nucleotide GTR":0.04467188530511536,
+       "original name":"MUS",
+       "unconstrained":0.04434130650841805
+      },
+     "MUSCARDINUS":{
+       "Evidence ratio for 2H":        [
+[1, 1.002161695621944],
+        [3, 1.049730460336822],
+        [54, 1.06309234907022],
+        [74, 1.075958165173553],
+        [91, 1.002094337320634],
+        [95, 1.093567232339769],
+        [99, 1.001893861531085] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.06922253494209679,
+       "Nucleotide GTR":0.05784499142279771,
+       "original name":"MUSCARDINUS",
+       "unconstrained":0.0715438636035029
+      },
+     "MYOTIS":{
+       "Evidence ratio for 2H":        [
+[1, 1.035189248255793],
+        [46, 1.001336480014601],
+        [50, 1.26942143596121] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03808795978736353,
+       "Nucleotide GTR":0.03742575880893929,
+       "original name":"MYOTIS",
+       "unconstrained":0.03911100911359899
+      },
+     "MYRMECOPHAGA":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.005701762196849578,
+       "Nucleotide GTR":0.006232941215580727,
+       "original name":"MYRMECOPHAGA",
+       "unconstrained":0.005858364179593113
+      },
+     "NYCTERIS":{
+       "Evidence ratio for 2H":        [
+[75, 1.000146920766573],
+        [98, 1.004310309390236] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0725349843842162,
+       "Nucleotide GTR":0.06587310378406609,
+       "original name":"NYCTERIS",
+       "unconstrained":0.07503188929996171
+      },
+     "Node1":{
+       "Evidence ratio for 2H":        [
+[3, 1.026939861602043],
+        [7, 1.186854973543542],
+        [13, 1.000199421371735],
+        [21, 1.000313839269721],
+        [43, 1.052732802817009],
+        [49, 1.000255803297937],
+        [71, 1.162555177491549],
+        [75, 1.006778911650807],
+        [91, 1.011560134555201],
+        [92, 1.000428881842065],
+        [99, 1.002846803284027],
+        [100, 1.000400652641341] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.1249046829687611,
+       "Nucleotide GTR":0.1025716610385221,
+       "unconstrained":0.1402610055352092
+      },
+     "Node102":{
+       "Evidence ratio for 2H":        [
+[75, 1.000220617253191],
+        [98, 1.004679480285105] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03894410373256713,
+       "Nucleotide GTR":0.033876696574458,
+       "unconstrained":0.04015598040888065
+      },
+     "Node104":{
+       "Evidence ratio for 2H":        [
+[90, 1.007047683765266] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03449133618150121,
+       "Nucleotide GTR":0.03502007290855955,
+       "unconstrained":0.03467760106771738
+      },
+     "Node107":{
+       "Evidence ratio for 2H":        [
+[10, 1.000018517490439],
+        [21, 1.000086639781181],
+        [80, 1.083219478554724],
+        [99, 1.033290690603696] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05928060561533644,
+       "Nucleotide GTR":0.04907856546209217,
+       "unconstrained":0.06071808206552296
+      },
+     "Node11":{
+       "Evidence ratio for 2H":        [
+[48, 1.001760236151441],
+        [71, 1.000038188910584] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03721545130994212,
+       "Nucleotide GTR":0.03693430900230863,
+       "unconstrained":0.03814855714313445
+      },
+     "Node110":{
+       "Evidence ratio for 2H":        [
+[1, 1.01036543282811],
+        [46, 1.00130198253998],
+        [91, 1.003052268658738],
+        [98, 1.000446347220347],
+        [99, 1.000045504316888] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02836789872810128,
+       "Nucleotide GTR":0.02364016526218742,
+       "unconstrained":0.03095744718103042
+      },
+     "Node111":{
+       "Evidence ratio for 2H":        [
+[1, 1.000026093853993],
+        [13, 1.000030881926007],
+        [46, 1.002428232838193] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.007333271574581037,
+       "Nucleotide GTR":0.008452927925347737,
+       "unconstrained":0.006734429527259056
+      },
+     "Node112":{
+       "Evidence ratio for 2H":        [
+[1, 1.000519878822986],
+        [46, 1.000202313148174],
+        [86, 1.000132780441395],
+        [87, 1.000945662113727],
+        [92, 1.001114660511963],
+        [95, 1.00000727551228] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.006182968131846181,
+       "Nucleotide GTR":0.003846487002253957,
+       "unconstrained":0.003699140386504204
+      },
+     "Node113":{
+       "Evidence ratio for 2H":        [
+[1, 1.384162543293469],
+        [86, 1.000492070912534],
+        [87, 1.002464852274012],
+        [92, 1.000732090680682] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01312220340341448,
+       "Nucleotide GTR":0.0135765242969789,
+       "unconstrained":0.01346005835071077
+      },
+     "Node114":{
+       "Evidence ratio for 2H":        [
+[1, 1.001680461654321],
+        [4, 1.003220034677057],
+        [46, 1.007811990860356],
+        [86, 1.140075784911976],
+        [96, 1.012392221965702],
+        [99, 1.002718568796527] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03926876373839618,
+       "Nucleotide GTR":0.03840424563406756,
+       "unconstrained":0.04014020893119213
+      },
+     "Node116":{
+       "Evidence ratio for 2H":        [
+[5, 1.001930150649462],
+        [46, 1.016853694335253],
+        [75, 1.000633056912419],
+        [92, 1.018741646801603] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02774877941010231,
+       "Nucleotide GTR":0.02823736639374146,
+       "unconstrained":0.02884481125320747
+      },
+     "Node117":{
+       "Evidence ratio for 2H":        [
+[5, 1.001844221593673],
+        [95, 1.01431489963095],
+        [98, 1.001599843860249],
+        [99, 1.000464629086052] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03819164497710816,
+       "Nucleotide GTR":0.03713259393202489,
+       "unconstrained":0.03907062570776937
+      },
+     "Node122":{
+       "Evidence ratio for 2H":        [
+[6, 1.040144043653691],
+        [17, 1.000145813225625],
+        [21, 1.000215033212924],
+        [29, 1.00887036127744],
+        [46, 1.003890673352565],
+        [49, 1.000115395226915],
+        [87, 1.06780318727872],
+        [97, 1.039781124716405] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.113320035750636,
+       "Nucleotide GTR":0.1079290404071068,
+       "unconstrained":0.1210588654960229
+      },
+     "Node126":{
+       "Evidence ratio for 2H":        [
+[25, 1.019649390392647],
+        [68, 1.000022123122863],
+        [74, 1.000389249779558],
+        [91, 1.004968747003877],
+        [96, 1.128650789917107],
+        [99, 1.001596634893488] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05666519905169318,
+       "Nucleotide GTR":0.05402991008555785,
+       "unconstrained":0.06003689851877553
+      },
+     "Node14":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.04824912549802191,
+       "Nucleotide GTR":0.04304914411564198,
+       "unconstrained":0.05038147735592453
+      },
+     "Node18":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.0126413542755733,
+       "Nucleotide GTR":0.0126583504476865,
+       "unconstrained":0.01278249607429623
+      },
+     "Node19":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01259953703384547,
+       "Nucleotide GTR":0.009620349686698093,
+       "unconstrained":0.01249370807361722
+      },
+     "Node2":{
+       "Evidence ratio for 2H":        [
+[1, 1.0085133738789],
+        [3, 1.035923718609767],
+        [25, 1.000011168754325],
+        [32, 1.001560689552817],
+        [43, 1.004246272035927],
+        [75, 1.005450909674589],
+        [86, 1.007981796305554],
+        [87, 1.009138980431449],
+        [91, 1.009571596206228],
+        [95, 1.004281356737479],
+        [100, 1.006442480092846] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.08163974108953045,
+       "Nucleotide GTR":0.07363406628223407,
+       "unconstrained":0.08516577538968519
+      },
+     "Node20":{
+       "Evidence ratio for 2H":        [
+[48, 1.000644225857262] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.003147579102439371,
+       "Nucleotide GTR":0.003733335479929074,
+       "unconstrained":0.003438280604738536
+      },
+     "Node21":{
+       "Evidence ratio for 2H":        [
+[48, 1.001193613318459] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.003148444021778937,
+       "Nucleotide GTR":0.003064904694562327,
+       "unconstrained":0.002869125818499447
+      },
+     "Node25":{
+       "Evidence ratio for 2H":        [
+[48, 1.000660610117017] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.006710479289877041,
+       "Nucleotide GTR":0.007772048324258347,
+       "unconstrained":0.006099402790286331
+      },
+     "Node26":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01617012301827282,
+       "Nucleotide GTR":0.01546877127916066,
+       "unconstrained":0.01778299702032851
+      },
+     "Node29":{
+       "Evidence ratio for 2H":        [
+[21, 1.000081737764691],
+        [32, 1.011018104730164],
+        [41, 1.168135931925361],
+        [67, 1.026618376943622] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05433038259156747,
+       "Nucleotide GTR":0.05224427228430937,
+       "unconstrained":0.05546855289479077
+      },
+     "Node3":{
+       "Evidence ratio for 2H":        [
+[1, 1.000164706404659],
+        [95, 1.005901324163222],
+        [100, 1.000130178714217] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01501913534514488,
+       "Nucleotide GTR":0.01464265761021431,
+       "unconstrained":0.01552475418818204
+      },
+     "Node33":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":0.003606834655150761,
+       "unconstrained":0
+      },
+     "Node34":{
+       "Evidence ratio for 2H":        [
+[37, 1.000184325462484] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01208683208743638,
+       "Nucleotide GTR":0.01347265594658941,
+       "unconstrained":0.0108521685634414
+      },
+     "Node35":{
+       "Evidence ratio for 2H":        [
+[99, 1.000243706485232] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.009714074283455708,
+       "Nucleotide GTR":0.01067855204932705,
+       "unconstrained":0.01033232224597527
+      },
+     "Node38":{
+       "Evidence ratio for 2H":        [
+[6, 1.00022452323233],
+        [87, 1.000453354406031],
+        [98, 1.014561594457627] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01589537979825892,
+       "Nucleotide GTR":0.01531689239468015,
+       "unconstrained":0.0162083040783294
+      },
+     "Node39":{
+       "Evidence ratio for 2H":        [
+[1, 1.015544296286336],
+        [4, 1.018509934092372],
+        [25, 1.00083003300232],
+        [75, 1.000519905133688],
+        [92, 1.001955939386375],
+        [100, 1.000029270622367] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03094547525229682,
+       "Nucleotide GTR":0.02646239286524795,
+       "unconstrained":0.03412795680974802
+      },
+     "Node4":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":0.01321639581882003,
+       "unconstrained":0
+      },
+     "Node42":{
+       "Evidence ratio for 2H":        [
+[43, 1.00029924626971],
+        [80, 1.03039262898711],
+        [86, 1.004846813361146],
+        [91, 1.000360281141707] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02613677686885951,
+       "Nucleotide GTR":0.02620018025629285,
+       "unconstrained":0.02285251740347001
+      },
+     "Node45":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.007822433873078963,
+       "Nucleotide GTR":0.007669239473266515,
+       "unconstrained":0.007922832447081911
+      },
+     "Node46":{
+       "Evidence ratio for 2H":        [
+[32, 1.0025118159632],
+        [99, 1.000822328708596] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0116063926881328,
+       "Nucleotide GTR":0.01243250636649331,
+       "unconstrained":0.01185518726347559
+      },
+     "Node47":{
+       "Evidence ratio for 2H":        [
+[92, 1.150629987808265],
+        [95, 1.203425497724766] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03688810709283624,
+       "Nucleotide GTR":0.03450515907401092,
+       "unconstrained":0.03719280072971914
+      },
+     "Node5":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.006268885294859839,
+       "Nucleotide GTR":0.006411248976123388,
+       "unconstrained":0.006399570034261974
+      },
+     "Node50":{
+       "Evidence ratio for 2H":        [
+[32, 1.009180981300312],
+        [98, 1.000218918615668] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01562034385646107,
+       "Nucleotide GTR":0.01680659146194781,
+       "unconstrained":0.01650398524820222
+      },
+     "Node51":{
+       "Evidence ratio for 2H":        [
+[26, 1.000008513417357] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.00416086523622249,
+       "Nucleotide GTR":0.00376742088082149,
+       "unconstrained":0.004444861682457618
+      },
+     "Node52":{
+       "Evidence ratio for 2H":        [
+[44, 1.000020126747195],
+        [46, 1.002712399615509] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.05231269424070903,
+       "Nucleotide GTR":0.05256656836729209,
+       "unconstrained":0.05533740044039859
+      },
+     "Node55":{
+       "Evidence ratio for 2H":        [
+[3, 1.000834894458389],
+        [98, 1.008464830279112] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01799217405233842,
+       "Nucleotide GTR":0.01525602761084238,
+       "unconstrained":0.01801651626558892
+      },
+     "Node59":{
+       "Evidence ratio for 2H":        [
+[97, 1.823773056008615] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.009104522791036339,
+       "Nucleotide GTR":0.01109212402338422,
+       "unconstrained":0.007035483208903353
+      },
+     "Node6":{
+       "Evidence ratio for 2H":        [
+[86, 1.005225598719428],
+        [92, 1.002265906419381],
+        [96, 1.005794175505518] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03014626221349894,
+       "Nucleotide GTR":0.03001634568675787,
+       "unconstrained":0.0319703745976393
+      },
+     "Node60":{
+       "Evidence ratio for 2H":        [
+[87, 1.001623459101517],
+        [90, 1.001352957378315],
+        [96, 1.001269424841694],
+        [97, 1.002001810354791] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03044563161822446,
+       "Nucleotide GTR":0.02870742698575871,
+       "unconstrained":0.03032540043618242
+      },
+     "Node61":{
+       "Evidence ratio for 2H":        [
+[97, 1.00057245046338] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.003699042722436424,
+       "Nucleotide GTR":0.005648903034805893,
+       "unconstrained":0.005109981737195024
+      },
+     "Node62":{
+       "Evidence ratio for 2H":        [
+[26, 1.098665900377226],
+        [54, 1.097799115183505] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0495722673691747,
+       "Nucleotide GTR":0.04637827744044374,
+       "unconstrained":0.05049927395935746
+      },
+     "Node68":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01265124930550213,
+       "Nucleotide GTR":0.01277857675353471,
+       "unconstrained":0.01267383002445682
+      },
+     "Node69":{
+       "Evidence ratio for 2H":        [
+[6, 1.000039748385326] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.002764773837519245,
+       "Nucleotide GTR":0.005701848456190556,
+       "unconstrained":0.002313260348826376
+      },
+     "Node7":{
+       "Evidence ratio for 2H":        [
+[87, 1.000103512673833] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.003343604594924894,
+       "Nucleotide GTR":0.006205816109882053,
+       "unconstrained":0.001966570164541784
+      },
+     "Node73":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01729650696325323,
+       "Nucleotide GTR":0.0132801627073832,
+       "unconstrained":0.01615491939074465
+      },
+     "Node74":{
+       "Evidence ratio for 2H":        [
+[87, 1.000784235803387],
+        [90, 1.000019694231419] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.003511782301227027,
+       "Nucleotide GTR":0.0034968718304963,
+       "unconstrained":0.004412915691116139
+      },
+     "Node76":{
+       "Evidence ratio for 2H":        [
+[90, 1.244685470113976] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02067367198642788,
+       "Nucleotide GTR":0.02082954621211692,
+       "unconstrained":0.01965433650865605
+      },
+     "Node79":{
+       "Evidence ratio for 2H":        [
+[95, 1.000677678937282] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.006683653808392808,
+       "Nucleotide GTR":0.006688945068791856,
+       "unconstrained":0.007072242915183076
+      },
+     "Node8":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.04081580145154719,
+       "Nucleotide GTR":0.0415945120400843,
+       "unconstrained":0.04127437339229661
+      },
+     "Node81":{
+       "Evidence ratio for 2H":        [
+[18, 1.007712569822076],
+        [30, 1.007435406176314],
+        [41, 1.004778015515694],
+        [85, 1.000052443248308],
+        [90, 1.000437325186606] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01187887378578155,
+       "Nucleotide GTR":0.01138013832677583,
+       "unconstrained":0.01239333200397448
+      },
+     "Node84":{
+       "Evidence ratio for 2H":        [
+[3, 1.072607152530877],
+        [49, 1.000094084132426],
+        [54, 1.006779202698243],
+        [71, 1.057259615127025],
+        [75, 1.000295855429842],
+        [90, 1.002025352904189],
+        [98, 1.030610378501198] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.09780173241722333,
+       "Nucleotide GTR":0.0932865052043137,
+       "unconstrained":0.1040046857842349
+      },
+     "Node89":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.00339185968362812,
+       "Nucleotide GTR":0.003558523622221486,
+       "unconstrained":0.001907571096539771
+      },
+     "Node90":{
+       "Evidence ratio for 2H":        [
+[75, 1.00007047742467] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.006660045383961141,
+       "Nucleotide GTR":0.01327797135709527,
+       "unconstrained":0.004736051437404899
+      },
+     "Node91":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.04437255780611568,
+       "Nucleotide GTR":0.04092617084988142,
+       "unconstrained":0.0496807781358501
+      },
+     "Node92":{
+       "Evidence ratio for 2H":        [
+[3, 1.000251248315518],
+        [44, 1.007077875029832] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02293891341684453,
+       "Nucleotide GTR":0.02280176977956481,
+       "unconstrained":0.02472897705572252
+      },
+     "Node93":{
+       "Evidence ratio for 2H":        [
+[17, 1.000010728330517],
+        [44, 1.013243326883442] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.008012133208347908,
+       "Nucleotide GTR":0.008171400513903878,
+       "unconstrained":0.008087216461816584
+      },
+     "Node99":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01246124378569514,
+       "Nucleotide GTR":0.009191543723400225,
+       "unconstrained":0.01324474935086434
+      },
+     "OCHOTONA":{
+       "Evidence ratio for 2H":        [
+[1, 1.015431323870619],
+        [3, 1.064529009343457],
+        [12, 1.000253017969968],
+        [15, 1.060745611410342],
+        [17, 1.000271774101732],
+        [18, 1.000183497428905],
+        [52, 1.047617826478173],
+        [87, 1.002948227487207],
+        [91, 1.073929640483215],
+        [92, 1.013698295745209],
+        [96, 1.015275888305825],
+        [100, 1.04264776792316] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.146041386413007,
+       "Nucleotide GTR":0.1477979745634281,
+       "original name":"OCHOTONA",
+       "unconstrained":0.1566209006079328
+      },
+     "ORYCTEROPUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.06666635073958214,
+       "Nucleotide GTR":0.06537407882737244,
+       "original name":"ORYCTEROPUS",
+       "unconstrained":0.06720219328731401
+      },
+     "ORYCTOLAGUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.006432784856633399,
+       "Nucleotide GTR":0.00675547370042465,
+       "original name":"ORYCTOLAGUS",
+       "unconstrained":0.005946341639565111
+      },
+     "OTOLEMUR":{
+       "Evidence ratio for 2H":        [
+[18, 1.308824456161045],
+        [39, 1.240337888518771],
+        [90, 1.009262533773212],
+        [98, 1.001850570084034] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0526166659095533,
+       "Nucleotide GTR":0.05064394608221182,
+       "original name":"OTOLEMUR",
+       "unconstrained":0.05181195683011327
+      },
+     "PAN":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0,
+       "Nucleotide GTR":1e-06,
+       "original name":"PAN",
+       "unconstrained":0
+      },
+     "PANTHERA":{
+       "Evidence ratio for 2H":        [
+[1, 1.000130978772783] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.006627332941657915,
+       "Nucleotide GTR":0.006580599864973145,
+       "original name":"PANTHERA",
+       "unconstrained":0.006973445533262869
+      },
+     "PEDETES":{
+       "Evidence ratio for 2H":        [
+[17, 1.000112044842684],
+        [46, 1.005733767978064],
+        [87, 1.004247665337338],
+        [95, 1.092685120354132],
+        [100, 1.091443436548408] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.08639670114667523,
+       "Nucleotide GTR":0.08930287181157477,
+       "original name":"PEDETES",
+       "unconstrained":0.09287931934171535
+      },
+     "PONGO":{
+       "Evidence ratio for 2H":        [
+[44, 1.157118383950047] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01412632431790366,
+       "Nucleotide GTR":0.01420703412075123,
+       "original name":"PONGO",
+       "unconstrained":0.01381905741544186
+      },
+     "PROCAVIA":{
+       "Evidence ratio for 2H":        [
+[39, 1.098320395356124],
+        [40, 1.007967447372247],
+        [87, 1.043319852838526] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.07929536669259063,
+       "Nucleotide GTR":0.07786841122675525,
+       "original name":"PROCAVIA",
+       "unconstrained":0.08111800477850235
+      },
+     "PTEROPUS":{
+       "Evidence ratio for 2H":        [
+[32, 1.004664917409928],
+        [48, 1.010618668331557] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0457557147556277,
+       "Nucleotide GTR":0.04682041747968691,
+       "original name":"PTEROPUS",
+       "unconstrained":0.04701183751625734
+      },
+     "PTILOCERCUS":{
+       "Evidence ratio for 2H":        [
+[10, 1.00001406692506] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03938045684565614,
+       "Nucleotide GTR":0.0391803914253117,
+       "original name":"PTILOCERCUS",
+       "unconstrained":0.04104964895696792
+      },
+     "RATTUS":{
+       "Evidence ratio for 2H":        [
+[7, 1.078949386183792],
+        [29, 1.00294932605024],
+        [96, 1.00844705877322] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04003748105744578,
+       "Nucleotide GTR":0.03859405765151262,
+       "original name":"RATTUS",
+       "unconstrained":0.04149458165090327
+      },
+     "ROUSETTUS":{
+       "Evidence ratio for 2H":        [
+[32, 1.016340571159734],
+        [48, 1.003753718194305] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.03317303537789611,
+       "Nucleotide GTR":0.03336023973877495,
+       "original name":"ROUSETTUS",
+       "unconstrained":0.03207578892751371
+      },
+     "SOLENODON":{
+       "Evidence ratio for 2H":        [
+[1, 1.007919932019476],
+        [90, 1.019102589545888],
+        [95, 1.094133156555925],
+        [98, 1.016265262084566],
+        [104, 1.105607336241465] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.08733032569282743,
+       "Nucleotide GTR":0.0841651207770087,
+       "original name":"SOLENODON",
+       "unconstrained":0.09068379745757334
+      },
+     "SOREX":{
+       "Evidence ratio for 2H":        [
+[39, 1.077837505903102],
+        [46, 1.007414422978545],
+        [47, 1.136349765944458],
+        [72, 1.06662288696607],
+        [80, 1.003906643337721] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.1487838816778459,
+       "Nucleotide GTR":0.1348901405060544,
+       "original name":"SOREX",
+       "unconstrained":0.1663650494495746
+      },
+     "SUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01748624793767363,
+       "Nucleotide GTR":0.01776327715220335,
+       "original name":"SUS",
+       "unconstrained":0.01644443068729427
+      },
+     "SYLVILAGUS":{
+       "Evidence ratio for 2H":        [
+[92, 1.000069621526425],
+        [99, 1.000110706079526] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.01266644494809873,
+       "Nucleotide GTR":0.01210792677981368,
+       "original name":"SYLVILAGUS",
+       "unconstrained":0.01293651699422117
+      },
+     "TADARIDA":{
+       "Evidence ratio for 2H":        [
+[74, 1.000308537749292],
+        [98, 1.005527493611535] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.02786823364405272,
+       "Nucleotide GTR":0.03155326838573091,
+       "original name":"TADARIDA",
+       "unconstrained":0.02897088126475536
+      },
+     "TALPA":{
+       "Evidence ratio for 2H":        [
+[1, 1.002565287517047],
+        [45, 1.002300106821325],
+        [99, 1.000133782697475],
+        [104, 1.00000238534228] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0347703221877913,
+       "Nucleotide GTR":0.03696021729968123,
+       "original name":"TALPA",
+       "unconstrained":0.03581211965628598
+      },
+     "TAMANDUA":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01956533781041635,
+       "Nucleotide GTR":0.01929607802840124,
+       "original name":"TAMANDUA",
+       "unconstrained":0.0193582515398015
+      },
+     "TAMIAS":{
+       "Evidence ratio for 2H":        [
+[1, 1.074838873890284],
+        [32, 1.000134247084927],
+        [68, 1.006221148723319],
+        [82, 1.075171744497717],
+        [99, 1.009725137664091] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.08046372880748144,
+       "Nucleotide GTR":0.07824419381161338,
+       "original name":"TAMIAS",
+       "unconstrained":0.08862956051187723
+      },
+     "TAPIRUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01245774010175644,
+       "Nucleotide GTR":0.009567182804336981,
+       "original name":"TAPIRUS",
+       "unconstrained":0.0125622079660568
+      },
+     "TARSIUS":{
+       "Evidence ratio for 2H":        [
+[14, 1.000025027473782],
+        [21, 1.000129722909799],
+        [95, 1.016319481059025] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.0820707850977566,
+       "Nucleotide GTR":0.0784953084066146,
+       "original name":"TARSIUS",
+       "unconstrained":0.08922464028936211
+      },
+     "TRAGELAPHUS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.02644752642399481,
+       "Nucleotide GTR":0.02604332785737789,
+       "original name":"TRAGELAPHUS",
+       "unconstrained":0.02696018283318587
+      },
+     "TRICHECHUS":{
+       "Evidence ratio for 2H":        [
+[52, 1.174910150979186],
+        [53, 1.102766794412047],
+        [96, 1.002715085656813] 
+        ],
+       "MG94xREV with separate rates for branch sets":0.04895345457549901,
+       "Nucleotide GTR":0.04920971402719215,
+       "original name":"TRICHECHUS",
+       "unconstrained":0.04769843817952976
+      },
+     "TUPAIA":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.04107804430836375,
+       "Nucleotide GTR":0.03885188439539262,
+       "original name":"TUPAIA",
+       "unconstrained":0.04234396049331287
+      },
+     "TURSIOPS":{
+       "Evidence ratio for 2H":        [
+        ],
+       "MG94xREV with separate rates for branch sets":0.01597897913049362,
+       "Nucleotide GTR":0.01655235873345591,
+       "original name":"TURSIOPS",
+       "unconstrained":0.01624447341176453
+      }
+    },
+   "attributes":{
+     "Evidence ratio for 2H":{
+       "attribute type":"branch annotations",
+       "display order":4
+      },
+     "MG94xREV with separate rates for branch sets":{
+       "attribute type":"branch length",
+       "display order":1
+      },
+     "Nucleotide GTR":{
+       "attribute type":"branch length",
+       "display order":0
+      },
+     "original name":{
+       "attribute type":"node label",
+       "display order":0
+      },
+     "unconstrained":{
+       "attribute type":"branch length",
+       "display order":0
+      }
+    }
+  },
+ "data partitions":{
+   "0":{
+     "coverage":      [
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106] 
+      ],
+     "name":"busted.filter.default"
+    }
+  },
+ "fits":{
+   "MG94xREV with separate rates for branch sets":{
+     "AIC-c":12874.64007097999,
+     "Equilibrium frequencies":      [
+[0.008390100623712133],
+      [0.02784068655534828],
+      [0.01847670951639435],
+      [0.0153915748092009],
+      [0.005380775876222611],
+      [0.01785491036557001],
+      [0.01184956382487345],
+      [0.009870991796732634],
+      [0.004909872977339252],
+      [0.01629232362271687],
+      [0.01081253978150193],
+      [0.009007124064854826],
+      [0.01532991264698607],
+      [0.05086891231308933],
+      [0.0337595883045252],
+      [0.02812260637944605],
+      [0.005583586630000242],
+      [0.01852789283374436],
+      [0.0122961943901565],
+      [0.01024304655851423],
+      [0.003580890097622174],
+      [0.01188238893289225],
+      [0.007885848944040983],
+      [0.00656911523388774],
+      [0.003267505640372345],
+      [0.01084249217397231],
+      [0.007195712574616119],
+      [0.005994213866892281],
+      [0.01020201057575777],
+      [0.03385310753857838],
+      [0.02246690407487143],
+      [0.01871550962538517],
+      [0.005901886226246378],
+      [0.01958409939040206],
+      [0.01299715489620863],
+      [0.01082696471004568],
+      [0.003785023381083897],
+      [0.01255975992225917],
+      [0.008335391988911079],
+      [0.006943596166162757],
+      [0.003453774036473589],
+      [0.01146058250013192],
+      [0.007605913500826778],
+      [0.006335921801250008],
+      [0.01078358941787961],
+      [0.03578294783214717],
+      [0.02374765907516269],
+      [0.01978241152053862],
+      [0.03605530566530046],
+      [0.01993298309338818],
+      [0.006968417195746637],
+      [0.02312314567305451],
+      [0.01534587320096907],
+      [0.01278350753826862],
+      [0.02109950510908669],
+      [0.01400286684975382],
+      [0.01166474866480037],
+      [0.01985312701289179],
+      [0.0658781951610122],
+      [0.04372062711293046],
+      [0.03642040820724909] 
+      ],
+     "Log Likelihood":-6292.429913087492,
+     "Rate Distributions":{
+       "non-synonymous/synonymous rate ratio for *test*":        [
+[0.2628759337357435, 1] 
+        ]
+      },
+     "display order":1,
+     "estimated parameters":142
+    },
+   "Nucleotide GTR":{
+     "AIC-c":13614.46724527388,
+     "Equilibrium frequencies":      [
+[0.2046078021109406],
+      [0.2557074440879714],
+      [0.1981447900683498],
+      [0.3415399637327383] 
+      ],
+     "Log Likelihood":-6667.322872414634,
+     "Rate Distributions":{
+       "Substitution rate from nucleotide A to nucleotide C":0.2423789125648051,
+       "Substitution rate from nucleotide A to nucleotide G":1,
+       "Substitution rate from nucleotide A to nucleotide T":0.09453884840218423,
+       "Substitution rate from nucleotide C to nucleotide G":0.2722234424951407,
+       "Substitution rate from nucleotide C to nucleotide T":0.601456354142791,
+       "Substitution rate from nucleotide G to nucleotide T":0.1610262454453852
+      },
+     "display order":0,
+     "estimated parameters":139
+    },
+   "Unconstrained model":{
+     "AIC-c":12612.17544034595,
+     "Log Likelihood":-6149.728917607044,
+     "Rate Distributions":{
+       "Fraction of subs rate at which 2 nucleotides are changed instantly within a single codon":0.00606456489241671,
+       "Fraction of subs rate at which 3 nucleotides are changed instantly within a single codon":0,
+       "Synonymous site-to-site rates":{
+         "0":{
+           "proportion":0.3184187895697353,
+           "rate":0.4119816830923174
+          },
+         "1":{
+           "proportion":0.5239913683073802,
+           "rate":0.9247630144980316
+          },
+         "2":{
+           "proportion":0.1575898421228844,
+           "rate":2.438288208438797
+          }
+        },
+       "Test":{
+         "0":{
+           "omega":0.1904064045427971,
+           "proportion":0.547777618762236
+          },
+         "1":{
+           "omega":0.3186952017171957,
+           "proportion":0.452222381237764
+          },
+         "2":{
+           "omega":16.11496427328294,
+           "proportion":0
+          }
+        },
+       "rate at which 2 nucleotides are changed instantly within a single codon":0.04462873740498715,
+       "rate at which 3 nucleotides are changed instantly within a single codon":0
+      },
+     "display order":2,
+     "estimated parameters":153
+    }
+  },
+ "input":{
+   "file name":"/Users/alex/Documents/selection-tutorial/data/21-empirical/adora3.nex",
+   "number of sequences":67,
+   "number of sites":107,
+   "partition count":1,
+   "trees":{
+     "0":"(((((((((CHOLOEPUSHO:0.00359733,CHOLOEPUSDI:4.4e-07)Node8:0.05228775,(MYRMECOPHAGA:0.00732466,TAMANDUA:0.02274041)Node11:0.04854762)Node7:0.00121422,(CHAETOPHRACTUS:0.01071937,EUPHRACTUS:4.1e-07)Node14:0.05483511)Node6:0.03975579,((((MEGAPTERA:0.0106679,TURSIOPS:0.01989034)Node21:0.00288516,HIPPOPOTAMUS:0.05429153)Node20:0.00498546,((MEGADERMA:0.0933493,SUS:0.02046408)Node26:0.02073712,(BOS:0.01019905,TRAGELAPHUS:0.03138643)Node29:0.06733595000000001)Node25:0.00674954)Node19:0.01159339,(((LAMA:0.05223291,SOLENODON:0.1114387)Node35:0.01240299,((GALEMYS:0.14010164,TALPA:0.04792183)Node39:0.03039602,(ERINACEUS:0.12349813,SOREX:0.19660878)Node42:0.02523836)Node38:0.02109811)Node34:0.01194321,(((ROUSETTUS:0.03797979,PTEROPUS:0.05894012)Node47:0.04389865,(((ANTROZOUS:0.05296318,MYOTIS:0.04587334)Node52:0.06482159999999999,(TADARIDA:0.03702206,ARTIBEUS:0.10741376)Node55:0.0168183)Node51:0.00581155,NYCTERIS:0.08085792999999999)Node50:0.02091727)Node46:0.0160945,((((FELIS:0.00580756,PANTHERA:0.008635479999999999)Node62:0.05694079,CANIS:0.03996544)Node61:0.00665927,AILUROPODA:0.07825066)Node60:0.0363519,MANIS:0.06579945)Node59:0.01176747)Node45:0.00868532)Node33:0.00392892,((CERATOTHERIUM:0.01609605,EQUUS:0.07263985000000001)Node69:0.00591969,TAPIRUS:0.01155241)Node68:0.01489917)Node18:0.01490666,(((ELEPHANTULUS:0.04048935,MACROSCELIDES:0.02268416)Node84:0.12580432,(LOXODONTA:0.04889495,TRICHECHUS:0.05943903)Node76:0.02495427,(ORYCTEROPUS:0.07924989,(ECHINOPS:0.11714273,AMBLYSOMUS:0.12359622)Node81:0.01486766)Node79:0.04048935)Node74:0.00492168,PROCAVIA:0.10051029)Node73:0.01376051)Node5:0.0076102,(((((PAN:1e-08,HOMO:1e-08)Node93:0.00939749,PONGO:0.016509)Node92:0.02770877,MACACA:0.01016505)Node91:0.0549979,TARSIUS:0.10237948)Node90:0.01147367,(PTILOCERCUS:0.0482116,TUPAIA:0.04648008)Node99:0.011376)Node89:0.00382455,(OTOLEMUR:0.06372162000000001,(LEMUR:0.00400167,MICROCEBUS:0.0414116)Node104:0.04561215)Node102:0.04095385)Node4:0.00824075,(CYNOCEPHALUS:0.01076044,GALEOPTERUS:0.0192166)Node107:0.06926267)Node3:0.01792261,(((((HYSTRIX:0.07027896,((CAVIA:0.03976298,HYDROCHOERUS:0.03857314)Node117:0.04672055,ERETHIZON:0.03251694)Node116:0.03472845)Node114:0.0524524,CASTOR:0.12175686)Node113:0.01673416,(MUS:0.05386664,RATTUS:0.04601165)Node122:0.14662646)Node112:0.00395435,PEDETES:0.11488848)Node111:0.00838242,(MUSCARDINUS:0.07462831,TAMIAS:0.10326057)Node126:0.06976507)Node110:0.03365758)Node2:0.08801965,OCHOTONA:0.21969713)Node1:0.1584372,ORYCTOLAGUS:0.00630998,SYLVILAGUS:0.01537648)"
+    }
+  },
+ "runtime":"2.5.100",
+ "substitutions":{
+   "0":{
+     "0":{
+       "AILUROPODA":"TGT",
+       "Node117":"TGT",
+       "root":"TGC"
+      },
+     "1":{
+       "ECHINOPS":"AAA",
+       "ELEPHANTULUS":"CGG",
+       "ERINACEUS":"CAA",
+       "GALEMYS":"GAG",
+       "HIPPOPOTAMUS":"CAG",
+       "MUSCARDINUS":"CAC",
+       "MYOTIS":"CAG",
+       "Node104":"CAG",
+       "Node110":"CAT",
+       "Node113":"TCT",
+       "Node122":"CAC",
+       "Node2":"CAA",
+       "Node34":"CAG",
+       "Node39":"AAG",
+       "Node50":"AAA",
+       "Node6":"AAA",
+       "Node60":"CAG",
+       "Node84":"CAG",
+       "OCHOTONA":"ACG",
+       "PANTHERA":"AAG",
+       "PEDETES":"CGT",
+       "PROCAVIA":"CAG",
+       "SOLENODON":"AAG",
+       "SUS":"CAG",
+       "TAMIAS":"TGT",
+       "TARSIUS":"CAG",
+       "TRAGELAPHUS":"CGA",
+       "root":"AAA"
+      },
+     "10":{
+       "AMBLYSOMUS":"TAT",
+       "Node107":"TTC",
+       "PTILOCERCUS":"TTC",
+       "ROUSETTUS":"TAT",
+       "root":"TAC"
+      },
+     "100":{
+       "CASTOR":"TTG",
+       "MACROSCELIDES":"TTA",
+       "MYRMECOPHAGA":"TTT",
+       "Node110":"CTG",
+       "Node2":"TTG",
+       "Node39":"CTG",
+       "Node91":"ATG",
+       "OCHOTONA":"ATC",
+       "PEDETES":"ATA",
+       "TADARIDA":"CTG",
+       "TARSIUS":"CTG",
+       "root":"GTG"
+      },
+     "101":{
+       "CAVIA":"AGC",
+       "ECHINOPS":"GGT",
+       "ERETHIZON":"GCC",
+       "HYSTRIX":"AGC",
+       "MUS":"GGG",
+       "Node126":"AGC",
+       "Node8":"GGT",
+       "OCHOTONA":"TGC",
+       "ORYCTEROPUS":"GGT",
+       "PANTHERA":"GGA",
+       "TADARIDA":"GCC",
+       "root":"GGC"
+      },
+     "102":{
+       "AMBLYSOMUS":"ATT",
+       "ERINACEUS":"ATT",
+       "LOXODONTA":"ATT",
+       "MUSCARDINUS":"ATT",
+       "Node61":"ATT",
+       "Node84":"ATT",
+       "PEDETES":"ATT",
+       "PTILOCERCUS":"ATT",
+       "TAPIRUS":"ATT",
+       "root":"ATC"
+      },
+     "103":{
+       "CASTOR":"CTT",
+       "ECHINOPS":"TTG",
+       "LOXODONTA":"CTA",
+       "Node114":"CTC",
+       "Node62":"TTG",
+       "PEDETES":"CTA",
+       "PTEROPUS":"TTG",
+       "TAMANDUA":"TTG",
+       "root":"CTG"
+      },
+     "104":{
+       "ECHINOPS":"CTC",
+       "EQUUS":"TTG",
+       "Node107":"CTT",
+       "Node122":"TTG",
+       "Node29":"CTC",
+       "Node61":"CTC",
+       "PEDETES":"TTG",
+       "SOLENODON":"TTT",
+       "TALPA":"TTG",
+       "root":"CTG"
+      },
+     "105":{
+       "EQUUS":"TCT",
+       "ERINACEUS":"TCT",
+       "HYDROCHOERUS":"TCC",
+       "Node116":"TCT",
+       "Node52":"TCT",
+       "PROCAVIA":"TCG",
+       "ROUSETTUS":"TCG",
+       "SOREX":"TCG",
+       "root":"TCC"
+      },
+     "106":{
+       "AILUROPODA":"CAC",
+       "HIPPOPOTAMUS":"CAC",
+       "MEGADERMA":"CAC",
+       "MUS":"CAC",
+       "Node14":"CAC",
+       "Node2":"CAT",
+       "Node29":"CAC",
+       "Node52":"CAC",
+       "PROCAVIA":"CAC",
+       "SOLENODON":"CAC",
+       "TARSIUS":"CAC",
+       "root":"CAC"
+      },
+     "11":{
+       "root":"ATG"
+      },
+     "12":{
+       "ERINACEUS":"GTG",
+       "MUSCARDINUS":"GTT",
+       "Node14":"GTG",
+       "Node52":"GTG",
+       "Node91":"GTA",
+       "Node99":"GTT",
+       "OCHOTONA":"TTC",
+       "TADARIDA":"GTG",
+       "TARSIUS":"GTG",
+       "root":"GTC"
+      },
+     "13":{
+       "AILUROPODA":"TAT",
+       "ERINACEUS":"TTC",
+       "GALEMYS":"TTC",
+       "HIPPOPOTAMUS":"TAT",
+       "Node1":"TAC",
+       "Node111":"TTC",
+       "Node47":"TAT",
+       "root":"TTC"
+      },
+     "14":{
+       "MICROCEBUS":"GTC",
+       "Node2":"TTC",
+       "TARSIUS":"GTC",
+       "root":"TTT"
+      },
+     "15":{
+       "MACROSCELIDES":"AGA",
+       "Node29":"AGT",
+       "Node6":"AGT",
+       "OCHOTONA":"AAT",
+       "root":"AGC"
+      },
+     "16":{
+       "Node114":"TTT",
+       "ORYCTEROPUS":"TTT",
+       "PTILOCERCUS":"TTT",
+       "root":"TTC"
+      },
+     "17":{
+       "CASTOR":"TTG",
+       "Node122":"GTC",
+       "Node93":"CTC",
+       "OCHOTONA":"CTC",
+       "PEDETES":"CTC",
+       "PTEROPUS":"TTA",
+       "PTILOCERCUS":"TTT",
+       "RATTUS":"ATC",
+       "root":"TTC"
+      },
+     "18":{
+       "AILUROPODA":"ACC",
+       "AMBLYSOMUS":"GTC",
+       "ARTIBEUS":"TCT",
+       "BOS":"ACG",
+       "EQUUS":"ACC",
+       "ERINACEUS":"ACA",
+       "MEGADERMA":"ACG",
+       "MICROCEBUS":"GCG",
+       "Node18":"ACT",
+       "Node62":"ACG",
+       "Node81":"ATC",
+       "OCHOTONA":"ATC",
+       "OTOLEMUR":"GTC",
+       "SOREX":"ACG",
+       "TAMANDUA":"ATC",
+       "root":"ACC"
+      },
+     "19":{
+       "Node104":"GGG",
+       "OCHOTONA":"TGC",
+       "TARSIUS":"TTG",
+       "root":"TGG"
+      },
+     "2":{
+       "AMBLYSOMUS":"TTT",
+       "Node93":"TTT",
+       "root":"TTC"
+      },
+     "20":{
+       "CANIS":"ATC",
+       "EQUUS":"ATC",
+       "LAMA":"ATC",
+       "Node110":"ATC",
+       "OCHOTONA":"GTT",
+       "SOREX":"ATC",
+       "root":"ATT"
+      },
+     "21":{
+       "AMBLYSOMUS":"TTT",
+       "HIPPOPOTAMUS":"TTA",
+       "HYDROCHOERUS":"CTC",
+       "MANIS":"TTT",
+       "Node1":"TTC",
+       "Node102":"TTA",
+       "Node107":"CTC",
+       "Node122":"CTC",
+       "Node29":"CTC",
+       "Node60":"TTA",
+       "Node73":"TTG",
+       "TARSIUS":"CTC",
+       "root":"CTC"
+      },
+     "22":{
+       "AMBLYSOMUS":"ATA",
+       "HYDROCHOERUS":"GTC",
+       "MEGADERMA":"ATC",
+       "MICROCEBUS":"CTT",
+       "MUS":"GTC",
+       "Node104":"ATT",
+       "Node19":"ATT",
+       "ORYCTEROPUS":"ATT",
+       "PEDETES":"ATT",
+       "TALPA":"GTC",
+       "TUPAIA":"ATT",
+       "root":"ATC"
+      },
+     "23":{
+       "ECHINOPS":"CCT",
+       "HIPPOPOTAMUS":"CCA",
+       "LAMA":"CCT",
+       "NYCTERIS":"CCG",
+       "Node11":"CCT",
+       "PROCAVIA":"CCT",
+       "SOREX":"CCT",
+       "TAMIAS":"CCT",
+       "TARSIUS":"CCT",
+       "root":"CCC"
+      },
+     "24":{
+       "ANTROZOUS":"CTA",
+       "ARTIBEUS":"CTC",
+       "LAMA":"TTG",
+       "Node104":"CTA",
+       "Node117":"CTA",
+       "Node6":"CTT",
+       "Node8":"CTC",
+       "ORYCTEROPUS":"TTG",
+       "TUPAIA":"CTC",
+       "TURSIOPS":"CTA",
+       "root":"CTG"
+      },
+     "25":{
+       "AILUROPODA":"ATT",
+       "ANTROZOUS":"GTG",
+       "ARTIBEUS":"GTG",
+       "CASTOR":"CTT",
+       "CHOLOEPUSHO":"ATT",
+       "CYNOCEPHALUS":"ATT",
+       "EQUUS":"GCT",
+       "GALEMYS":"CTG",
+       "GALEOPTERUS":"GTC",
+       "HYDROCHOERUS":"ATT",
+       "MACACA":"GTA",
+       "MANIS":"CTT",
+       "MEGADERMA":"GTC",
+       "NYCTERIS":"GTG",
+       "Node11":"CTT",
+       "Node126":"ATC",
+       "Node2":"GTT",
+       "Node39":"CTT",
+       "Node84":"ATT",
+       "PROCAVIA":"CTT",
+       "ROUSETTUS":"GTC",
+       "SOREX":"GTG",
+       "TARSIUS":"GTG",
+       "TRICHECHUS":"ATT",
+       "TUPAIA":"ATT",
+       "root":"CTT"
+      },
+     "26":{
+       "AMBLYSOMUS":"GTT",
+       "GALEOPTERUS":"NTC",
+       "LOXODONTA":"ATT",
+       "MEGADERMA":"ATC",
+       "Node1":"GTC",
+       "Node126":"ATC",
+       "Node51":"GCC",
+       "Node62":"ATT",
+       "ORYCTEROPUS":"ATC",
+       "PEDETES":"GTA",
+       "SOLENODON":"ATC",
+       "SOREX":"GTG",
+       "TALPA":"GTT",
+       "root":"CTC"
+      },
+     "27":{
+       "root":"ATG"
+      },
+     "28":{
+       "AILUROPODA":"TGC",
+       "Node104":"TGC",
+       "Node126":"TGC",
+       "Node26":"TGC",
+       "Node39":"TGC",
+       "Node46":"TGC",
+       "Node6":"TGC",
+       "Node62":"TGC",
+       "Node68":"AGT",
+       "Node92":"TGC",
+       "OCHOTONA":"TGC",
+       "RATTUS":"TGC",
+       "SYLVILAGUS":"TGC",
+       "TUPAIA":"TGC",
+       "root":"TGT"
+      },
+     "29":{
+       "MEGADERMA":"GTC",
+       "MICROCEBUS":"GGC",
+       "NYCTERIS":"ACC",
+       "Node102":"GTC",
+       "Node11":"ACC",
+       "Node122":"GTC",
+       "Node84":"GCA",
+       "ORYCTEROPUS":"GGC",
+       "RATTUS":"ATC",
+       "TAMIAS":"ACC",
+       "TRICHECHUS":"GCT",
+       "root":"GCC"
+      },
+     "3":{
+       "AILUROPODA":"CGC",
+       "ARTIBEUS":"CTC",
+       "CANIS":"AGT",
+       "CASTOR":"CCT",
+       "HIPPOPOTAMUS":"ATT",
+       "HYSTRIX":"CTT",
+       "MUSCARDINUS":"CAA",
+       "Node1":"GGT",
+       "Node107":"CAT",
+       "Node117":"AGT",
+       "Node14":"ACT",
+       "Node2":"CGT",
+       "Node55":"CTT",
+       "Node6":"AGT",
+       "Node84":"TAT",
+       "Node91":"CTT",
+       "Node92":"GTT",
+       "OCHOTONA":"ACG",
+       "PEDETES":"CCT",
+       "SOREX":"CGC",
+       "TALPA":"CGC",
+       "TARSIUS":"CGC",
+       "TURSIOPS":"CAT",
+       "root":"GAT"
+      },
+     "30":{
+       "CAVIA":"ATT",
+       "ECHINOPS":"CTT",
+       "MANIS":"ATT",
+       "MUSCARDINUS":"ATT",
+       "Node1":"ATC",
+       "Node81":"CTC",
+       "PEDETES":"ATT",
+       "root":"CTC"
+      },
+     "31":{
+       "ARTIBEUS":"TAC",
+       "CASTOR":"TAC",
+       "ERINACEUS":"TAC",
+       "MEGADERMA":"TAT",
+       "MUS":"TAC",
+       "Node1":"TAT",
+       "Node102":"TAC",
+       "Node14":"TAC",
+       "Node19":"TAC",
+       "Node73":"TAC",
+       "Node99":"TAC",
+       "PEDETES":"TAC",
+       "SOREX":"TAC",
+       "TAPIRUS":"TAC",
+       "root":"TAC"
+      },
+     "32":{
+       "AILUROPODA":"CTC",
+       "BOS":"TTC",
+       "CHAETOPHRACTUS":"CTC",
+       "EQUUS":"CTG",
+       "ERINACEUS":"CTA",
+       "GALEMYS":"CTC",
+       "GALEOPTERUS":"CTG",
+       "MEGADERMA":"ATC",
+       "MUS":"CTA",
+       "MYOTIS":"ATG",
+       "NYCTERIS":"ATC",
+       "Node110":"CTG",
+       "Node2":"CTT",
+       "Node29":"TTT",
+       "Node50":"ATT",
+       "ORYCTEROPUS":"ATT",
+       "OTOLEMUR":"TTT",
+       "PTEROPUS":"ATT",
+       "ROUSETTUS":"CTC",
+       "TADARIDA":"ATC",
+       "TAMIAS":"ATG",
+       "TARSIUS":"CTC",
+       "root":"GTT"
+      },
+     "33":{
+       "AMBLYSOMUS":"GAG",
+       "CASTOR":"AAC",
+       "GALEMYS":"CAC",
+       "HYDROCHOERUS":"CAC",
+       "Node1":"GAC",
+       "Node116":"AAC",
+       "Node29":"GAT",
+       "OCHOTONA":"AAC",
+       "PEDETES":"GAT",
+       "TARSIUS":"GAT",
+       "root":"TAC"
+      },
+     "34":{
+       "CAVIA":"ATT",
+       "ERINACEUS":"ATA",
+       "LOXODONTA":"ATT",
+       "MEGADERMA":"ATA",
+       "Node60":"ATA",
+       "SOLENODON":"ATT",
+       "root":"ATC"
+      },
+     "35":{
+       "ERINACEUS":"TTT",
+       "Node91":"TTT",
+       "OCHOTONA":"TTT",
+       "root":"TTC"
+      },
+     "36":{
+       "ANTROZOUS":"CGC",
+       "CERATOTHERIUM":"TAC",
+       "CHAETOPHRACTUS":"TAC",
+       "EQUUS":"TTT",
+       "Node102":"TAC",
+       "Node117":"TAC",
+       "Node122":"TAC",
+       "Node46":"TGT",
+       "Node91":"TAC",
+       "OCHOTONA":"TGT",
+       "ORYCTOLAGUS":"TAC",
+       "SOREX":"TAC",
+       "TRAGELAPHUS":"TAC",
+       "TUPAIA":"TAN",
+       "root":"TAT"
+      },
+     "37":{
+       "AMBLYSOMUS":"ATT",
+       "CASTOR":"ATC",
+       "HIPPOPOTAMUS":"ATC",
+       "HYSTRIX":"ATC",
+       "MICROCEBUS":"GTC",
+       "Node102":"ATC",
+       "Node122":"ATC",
+       "Node2":"GTC",
+       "Node34":"ATC",
+       "Node52":"ATC",
+       "Node8":"ATC",
+       "Node84":"ATC",
+       "Node91":"ATC",
+       "SOLENODON":"ATT",
+       "TRAGELAPHUS":"ATC",
+       "TUPAIA":"ATC",
+       "TURSIOPS":"GTA",
+       "root":"ATC"
+      },
+     "38":{
+       "MANIS":"ATT",
+       "Node11":"ATT",
+       "Node92":"ATT",
+       "SOREX":"ATT",
+       "root":"ATC"
+      },
+     "39":{
+       "CASTOR":"CGC",
+       "MACROSCELIDES":"AGG",
+       "Node11":"CGA",
+       "Node122":"CGA",
+       "Node47":"CGA",
+       "OTOLEMUR":"CAC",
+       "PROCAVIA":"CAA",
+       "SOREX":"CAC",
+       "TRICHECHUS":"AGG",
+       "root":"CGG"
+      },
+     "4":{
+       "ECHINOPS":"TCT",
+       "ELEPHANTULUS":"TCA",
+       "EQUUS":"TCT",
+       "ERINACEUS":"TCT",
+       "GALEOPTERUS":"TCG",
+       "HIPPOPOTAMUS":"TCT",
+       "HYSTRIX":"CTT",
+       "MACACA":"TCT",
+       "MYOTIS":"TCG",
+       "NYCTERIS":"TCC",
+       "Node104":"TCA",
+       "Node114":"CCT",
+       "Node117":"CGT",
+       "Node122":"TCC",
+       "Node29":"TCG",
+       "Node3":"TCC",
+       "Node39":"ACC",
+       "Node45":"TCT",
+       "Node55":"TCC",
+       "PROCAVIA":"TCA",
+       "SOLENODON":"TCT",
+       "SOREX":"TCT",
+       "TALPA":"ACA",
+       "TARSIUS":"TCG",
+       "root":"TCT"
+      },
+     "40":{
+       "ERINACEUS":"AAT",
+       "MUS":"AAT",
+       "Node26":"CAC",
+       "Node84":"AAT",
+       "OTOLEMUR":"AAG",
+       "PONGO":"AAA",
+       "PROCAVIA":"ACN",
+       "TAMIAS":"AAA",
+       "root":"AAC"
+      },
+     "41":{
+       "ANTROZOUS":"AAG",
+       "ARTIBEUS":"CGA",
+       "ECHINOPS":"AGG",
+       "MUS":"AAG",
+       "Node29":"CGA",
+       "Node38":"AGA",
+       "Node81":"AGA",
+       "PTEROPUS":"AAG",
+       "PTILOCERCUS":"AAG",
+       "SOLENODON":"AGA",
+       "SOREX":"CGA",
+       "root":"AAA"
+      },
+     "42":{
+       "LAMA":"CTG",
+       "Node107":"CTT",
+       "Node2":"CTC",
+       "Node74":"CTT",
+       "root":"CTG"
+      },
+     "43":{
+       "ARTIBEUS":"AAC",
+       "EQUUS":"AGT",
+       "MEGADERMA":"AGT",
+       "Node1":"GGT",
+       "Node126":"AAT",
+       "Node2":"AGT",
+       "Node29":"AGT",
+       "Node34":"AGT",
+       "Node39":"AAT",
+       "Node47":"AGT",
+       "Node5":"AAT",
+       "Node52":"AGT",
+       "SOREX":"AGC",
+       "TARSIUS":"AGC",
+       "root":"GTC"
+      },
+     "44":{
+       "CERATOTHERIUM":"CTG",
+       "Node122":"CAA",
+       "Node52":"CTG",
+       "Node92":"CCG",
+       "Node93":"CTG",
+       "PONGO":"CCA",
+       "PROCAVIA":"CAA",
+       "PTILOCERCUS":"CAA",
+       "SOLENODON":"CAC",
+       "SUS":"CAT",
+       "root":"CAG"
+      },
+     "45":{
+       "ARTIBEUS":"AGC",
+       "GALEMYS":"AGC",
+       "MANIS":"AAT",
+       "Node1":"AAC",
+       "Node42":"AAT",
+       "Node62":"AGC",
+       "Node76":"AAG",
+       "Node8":"AAA",
+       "PROCAVIA":"AAG",
+       "PTEROPUS":"AGC",
+       "RATTUS":"AAT",
+       "TALPA":"AAA",
+       "TAMIAS":"AGC",
+       "root":"AGC"
+      },
+     "46":{
+       "ANTROZOUS":"GTA",
+       "ARTIBEUS":"TCT",
+       "CASTOR":"TTG",
+       "ECHINOPS":"TCT",
+       "EQUUS":"TCT",
+       "ERINACEUS":"TTC",
+       "GALEMYS":"TTC",
+       "HYSTRIX":"TTC",
+       "LAMA":"TTC",
+       "MACROSCELIDES":"TTC",
+       "MANIS":"TTC",
+       "MUSCARDINUS":"CTT",
+       "MYOTIS":"ATT",
+       "Node116":"CTT",
+       "Node122":"CTG",
+       "Node47":"GTT",
+       "Node52":"GTT",
+       "Node62":"TTC",
+       "Node8":"CTT",
+       "Node89":"TTC",
+       "Node92":"TTA",
+       "PEDETES":"TTG",
+       "SOREX":"GTC",
+       "SUS":"TTC",
+       "root":"TTT"
+      },
+     "47":{
+       "ARTIBEUS":"TCG",
+       "CANIS":"TCA",
+       "ECHINOPS":"TCC",
+       "ELEPHANTULUS":"TTT",
+       "GALEMYS":"TCC",
+       "HIPPOPOTAMUS":"TCC",
+       "MUSCARDINUS":"TCG",
+       "MYOTIS":"TCC",
+       "Node50":"TCA",
+       "Node60":"TCG",
+       "PROCAVIA":"NCT",
+       "PTILOCERCUS":"TCA",
+       "RATTUS":"ACT",
+       "ROUSETTUS":"CCT",
+       "SOLENODON":"CCT",
+       "SOREX":"AAT",
+       "root":"TCT"
+      },
+     "48":{
+       "AILUROPODA":"GGC",
+       "ARTIBEUS":"ACC",
+       "CASTOR":"AGC",
+       "ECHINOPS":"ATC",
+       "ERINACEUS":"AAC",
+       "GALEMYS":"AAC",
+       "NYCTERIS":"AGG",
+       "Node107":"GGC",
+       "Node11":"ACC",
+       "Node110":"GGC",
+       "Node116":"GCC",
+       "Node14":"AAC",
+       "Node21":"AAC",
+       "Node25":"GGC",
+       "Node68":"GGC",
+       "Node84":"GGC",
+       "Node91":"AAC",
+       "ORYCTEROPUS":"GGC",
+       "OTOLEMUR":"AAC",
+       "PONGO":"AAG",
+       "PTEROPUS":"AAC",
+       "ROUSETTUS":"GGC",
+       "SOLENODON":"GGC",
+       "TAMANDUA":"ACT",
+       "TARSIUS":"GGC",
+       "TRICHECHUS":"AGT",
+       "root":"AGC"
+      },
+     "49":{
+       "ERINACEUS":"ACC",
+       "Node1":"TCC",
+       "Node102":"TCT",
+       "Node122":"TTC",
+       "Node84":"TTC",
+       "PTEROPUS":"TGC",
+       "SOREX":"TCT",
+       "TALPA":"TCT",
+       "root":"TTC"
+      },
+     "5":{
+       "AMBLYSOMUS":"GTA",
+       "CAVIA":"ATT",
+       "ECHINOPS":"ACT",
+       "EQUUS":"GTT",
+       "ERETHIZON":"ATC",
+       "ERINACEUS":"GTT",
+       "GALEMYS":"GAA",
+       "Node1":"GTC",
+       "Node117":"GTT",
+       "Node122":"GTG",
+       "Node73":"GTT",
+       "Node84":"GTG",
+       "SOREX":"GTG",
+       "TAMANDUA":"GTT",
+       "TURSIOPS":"GTG",
+       "root":"GTT"
+      },
+     "50":{
+       "MYOTIS":"AGG",
+       "Node122":"AGA",
+       "Node14":"AAG",
+       "OCHOTONA":"AAG",
+       "SOREX":"AGA",
+       "root":"AAA"
+      },
+     "51":{
+       "AILUROPODA":"GAC",
+       "AMBLYSOMUS":"GAT",
+       "MYOTIS":"GAA",
+       "Node107":"AAG",
+       "Node116":"GAA",
+       "PROCAVIA":"GAC",
+       "PTEROPUS":"GAC",
+       "TUPAIA":"GAA",
+       "root":"GAG"
+      },
+     "52":{
+       "AILUROPODA":"ACG",
+       "CAVIA":"ACG",
+       "ECHINOPS":"ACG",
+       "ELEPHANTULUS":"ACC",
+       "GALEMYS":"ACG",
+       "LAMA":"ACG",
+       "Node122":"ACG",
+       "Node14":"ACG",
+       "Node84":"ACG",
+       "OCHOTONA":"ATG",
+       "PTEROPUS":"ACG",
+       "SOREX":"ACT",
+       "TARSIUS":"ACC",
+       "TRICHECHUS":"ATG",
+       "root":"ACA"
+      },
+     "53":{
+       "CASTOR":"GGG",
+       "CAVIA":"GGC",
+       "CERATOTHERIUM":"GGA",
+       "CHAETOPHRACTUS":"GGC",
+       "ELEPHANTULUS":"AGT",
+       "GALEMYS":"GGG",
+       "LAMA":"GGG",
+       "NYCTERIS":"GGC",
+       "Node104":"AGT",
+       "Node122":"CGT",
+       "Node2":"GGT",
+       "Node62":"GGC",
+       "Node99":"GGG",
+       "PEDETES":"AGT",
+       "SOREX":"GGA",
+       "TAMIAS":"AGT",
+       "TRICHECHUS":"AGC",
+       "root":"GGG"
+      },
+     "54":{
+       "AMBLYSOMUS":"ACA",
+       "ANTROZOUS":"ACA",
+       "CASTOR":"ATA",
+       "GALEMYS":"GCG",
+       "MACROSCELIDES":"TCG",
+       "MEGADERMA":"GCG",
+       "MUSCARDINUS":"GTG",
+       "MYOTIS":"TCA",
+       "NYCTERIS":"GCG",
+       "Node1":"GCA",
+       "Node14":"GCC",
+       "Node62":"ACG",
+       "Node84":"TCA",
+       "PEDETES":"GTA",
+       "PONGO":"GGA",
+       "PROCAVIA":"GTA",
+       "ROUSETTUS":"GCC",
+       "SOREX":"GCC",
+       "TRAGELAPHUS":"ACA",
+       "TRICHECHUS":"ACA",
+       "root":"GCC"
+      },
+     "55":{
+       "CASTOR":"TCT",
+       "GALEMYS":"TTC",
+       "MEGADERMA":"TTC",
+       "NYCTERIS":"TTC",
+       "Node29":"TTC",
+       "SOREX":"TTC",
+       "TAMIAS":"TAT",
+       "TARSIUS":"TTC",
+       "root":"TTT"
+      },
+     "56":{
+       "AILUROPODA":"TAC",
+       "FELIS":"TAC",
+       "GALEMYS":"TAC",
+       "HIPPOPOTAMUS":"TAC",
+       "HYDROCHOERUS":"TAC",
+       "HYSTRIX":"TAC",
+       "LAMA":"TAC",
+       "MEGAPTERA":"TAC",
+       "Node1":"TAT",
+       "Node126":"TAC",
+       "RATTUS":"TAC",
+       "SOREX":"TAC",
+       "TRAGELAPHUS":"TAC",
+       "TUPAIA":"TAC",
+       "root":"TAC"
+      },
+     "57":{
+       "AMBLYSOMUS":"GGG",
+       "ARTIBEUS":"GGG",
+       "Node1":"GGA",
+       "RATTUS":"GGT",
+       "root":"AGA"
+      },
+     "58":{
+       "AMBLYSOMUS":"CGA",
+       "ANTROZOUS":"AGG",
+       "ECHINOPS":"CGC",
+       "ERINACEUS":"AGG",
+       "LAMA":"CGA",
+       "PEDETES":"CGA",
+       "PROCAVIA":"CGA",
+       "SOLENODON":"CGA",
+       "TUPAIA":"CGT",
+       "root":"CGG"
+      },
+     "59":{
+       "HIPPOPOTAMUS":"GAA",
+       "MANIS":"GAA",
+       "Node76":"GAA",
+       "OCHOTONA":"GAA",
+       "root":"GAG"
+      },
+     "6":{
+       "CAVIA":"ATC",
+       "GALEMYS":"TTG",
+       "Node102":"ATA",
+       "Node107":"ATA",
+       "Node122":"GTC",
+       "Node2":"ATG",
+       "Node38":"GTG",
+       "Node47":"ATA",
+       "Node69":"GTG",
+       "ORYCTOLAGUS":"ATC",
+       "OTOLEMUR":"ATC",
+       "ROUSETTUS":"ATC",
+       "TAMANDUA":"GTG",
+       "root":"ATA"
+      },
+     "60":{
+       "CAVIA":"TTT",
+       "PEDETES":"TTT",
+       "TRICHECHUS":"TTT",
+       "root":"TTC"
+      },
+     "61":{
+       "MANIS":"AAA",
+       "ORYCTEROPUS":"AAA",
+       "PTILOCERCUS":"AAA",
+       "root":"AAG"
+      },
+     "62":{
+       "ERETHIZON":"ACG",
+       "ERINACEUS":"ACT",
+       "GALEMYS":"ACT",
+       "Node1":"ACA",
+       "Node102":"ACG",
+       "Node34":"ACG",
+       "Node52":"ACG",
+       "Node60":"ACG",
+       "Node84":"ACT",
+       "Node92":"ACG",
+       "OCHOTONA":"ACT",
+       "PROCAVIA":"ACG",
+       "RATTUS":"ACC",
+       "ROUSETTUS":"ACG",
+       "SOLENODON":"ACT",
+       "TAMANDUA":"GCA",
+       "TUPAIA":"ACG",
+       "root":"ACG"
+      },
+     "63":{
+       "CASTOR":"GCG",
+       "ECHINOPS":"GCG",
+       "ELEPHANTULUS":"GCG",
+       "HYSTRIX":"GCC",
+       "MANIS":"GCG",
+       "NYCTERIS":"GCG",
+       "Node107":"GCC",
+       "Node117":"GCA",
+       "Node126":"GCC",
+       "Node18":"GCC",
+       "Node2":"GCT",
+       "Node84":"GCC",
+       "root":"GCC"
+      },
+     "64":{
+       "LAMA":"AAA",
+       "Node79":"AAA",
+       "OCHOTONA":"ATG",
+       "TAMIAS":"AGG",
+       "TRICHECHUS":"AGG",
+       "root":"AAG"
+      },
+     "65":{
+       "CANIS":"TCC",
+       "NYCTERIS":"TCC",
+       "Node1":"TCC",
+       "Node18":"TCT",
+       "Node52":"TCC",
+       "Node8":"TCT",
+       "SOREX":"TAT",
+       "root":"TCG"
+      },
+     "66":{
+       "AMBLYSOMUS":"TTG",
+       "CASTOR":"CTA",
+       "CAVIA":"CTT",
+       "CYNOCEPHALUS":"TTG",
+       "MEGADERMA":"CTT",
+       "Node114":"CTC",
+       "Node52":"TTG",
+       "Node8":"CTA",
+       "Node84":"CTT",
+       "Node91":"TTG",
+       "OCHOTONA":"CTA",
+       "PTILOCERCUS":"CTA",
+       "SOLENODON":"CTA",
+       "SOREX":"TTG",
+       "TRAGELAPHUS":"TTG",
+       "root":"CTG"
+      },
+     "67":{
+       "ARTIBEUS":"TTC",
+       "BOS":"TCA",
+       "ECHINOPS":"TTC",
+       "ERINACEUS":"TTC",
+       "MEGADERMA":"TTC",
+       "Node104":"TCT",
+       "Node29":"TTA",
+       "Node52":"TTC",
+       "Node84":"TTC",
+       "SOLENODON":"CTT",
+       "TARSIUS":"TCT",
+       "TUPAIA":"TTC",
+       "root":"TTT"
+      },
+     "68":{
+       "ARTIBEUS":"CTC",
+       "HYDROCHOERUS":"CTA",
+       "Node126":"CTA",
+       "PTEROPUS":"CTA",
+       "TADARIDA":"CTA",
+       "TAMIAS":"GTA",
+       "TAPIRUS":"CTA",
+       "root":"CTG"
+      },
+     "69":{
+       "LOXODONTA":"GTC",
+       "MEGADERMA":"GTG",
+       "PROCAVIA":"ATT",
+       "SOREX":"ATT",
+       "TAMIAS":"ATT",
+       "TARSIUS":"GTC",
+       "TUPAIA":"GTC",
+       "root":"GTT"
+      },
+     "7":{
+       "ECHINOPS":"AGA",
+       "EQUUS":"AGC",
+       "ERINACEUS":"AGA",
+       "Node1":"AGT",
+       "Node126":"AGC",
+       "Node3":"AGA",
+       "Node5":"AGG",
+       "Node55":"AAG",
+       "Node62":"ACG",
+       "Node8":"AGA",
+       "OTOLEMUR":"AAA",
+       "PEDETES":"AGG",
+       "PTEROPUS":"AAG",
+       "RATTUS":"GGC",
+       "TRICHECHUS":"AAG",
+       "root":"CCC"
+      },
+     "70":{
+       "AMBLYSOMUS":"CTT",
+       "ERINACEUS":"CTA",
+       "LAMA":"CTT",
+       "NYCTERIS":"CTG",
+       "Node1":"CTC",
+       "Node19":"CTT",
+       "Node91":"CTT",
+       "OCHOTONA":"CTG",
+       "OTOLEMUR":"CTT",
+       "TADARIDA":"CTT",
+       "root":"CTT"
+      },
+     "71":{
+       "MICROCEBUS":"TTG",
+       "Node1":"TTC",
+       "Node11":"TCC",
+       "Node50":"TTT",
+       "Node84":"TCT",
+       "root":"GCC"
+      },
+     "72":{
+       "CASTOR":"CTG",
+       "GALEOPTERUS":"TGG",
+       "MYRMECOPHAGA":"TTA",
+       "Node26":"TTA",
+       "Node45":"CTG",
+       "ORYCTEROPUS":"TTA",
+       "PTILOCERCUS":"TTA",
+       "SOREX":"CTT",
+       "TAMIAS":"TTA",
+       "TARSIUS":"CTG",
+       "root":"TTG"
+      },
+     "73":{
+       "GALEMYS":"TTC",
+       "MUSCARDINUS":"TTC",
+       "NYCTERIS":"TTC",
+       "root":"TTT"
+      },
+     "74":{
+       "AMBLYSOMUS":"GTT",
+       "ARTIBEUS":"GTT",
+       "GALEMYS":"GCC",
+       "MUS":"GCG",
+       "MUSCARDINUS":"ACA",
+       "NYCTERIS":"GCN",
+       "Node122":"GCC",
+       "Node126":"GCC",
+       "Node26":"GCC",
+       "Node52":"GCC",
+       "TADARIDA":"ACT",
+       "TAPIRUS":"GCC",
+       "root":"GCT"
+      },
+     "75":{
+       "AMBLYSOMUS":"GTG",
+       "ARTIBEUS":"CTG",
+       "CANIS":"TTT",
+       "HYDROCHOERUS":"CTA",
+       "MUS":"CTG",
+       "NYCTERIS":"GTG",
+       "Node1":"GTG",
+       "Node102":"GTG",
+       "Node116":"CTG",
+       "Node14":"TTT",
+       "Node2":"TTG",
+       "Node39":"GTG",
+       "Node84":"GTG",
+       "Node90":"CTG",
+       "ORYCTEROPUS":"TTA",
+       "PEDETES":"TTC",
+       "TAMIAS":"CTG",
+       "root":"GGG"
+      },
+     "76":{
+       "Node3":"TCC",
+       "Node91":"TCA",
+       "OCHOTONA":"TTC",
+       "ORYCTEROPUS":"TCT",
+       "root":"TGC"
+      },
+     "77":{
+       "root":"TGG"
+      },
+     "78":{
+       "CASTOR":"CTA",
+       "HYDROCHOERUS":"TTA",
+       "Node116":"CTA",
+       "SOREX":"TTG",
+       "TARSIUS":"CTA",
+       "root":"CTG"
+      },
+     "79":{
+       "AILUROPODA":"CCC",
+       "CASTOR":"CCC",
+       "MEGADERMA":"CCC",
+       "MICROCEBUS":"CCA",
+       "NYCTERIS":"CCC",
+       "Node102":"CCG",
+       "ORYCTEROPUS":"CCA",
+       "OTOLEMUR":"CCA",
+       "TAMIAS":"CCA",
+       "root":"CCT"
+      },
+     "8":{
+       "HYSTRIX":"GTA",
+       "Node122":"TTG",
+       "TADARIDA":"CTG",
+       "root":"ATG"
+      },
+     "80":{
+       "AILUROPODA":"TTG",
+       "CASTOR":"CTG",
+       "EQUUS":"TTG",
+       "ERINACEUS":"CTC",
+       "GALEMYS":"TTG",
+       "MACROSCELIDES":"TTG",
+       "MEGADERMA":"TTG",
+       "NYCTERIS":"TTN",
+       "Node1":"TTA",
+       "Node107":"CTG",
+       "Node110":"TTG",
+       "Node29":"TTG",
+       "Node42":"CTA",
+       "SOREX":"CTG",
+       "root":"TTG"
+      },
+     "81":{
+       "CANIS":"TCT",
+       "EQUUS":"TCG",
+       "Node107":"TCT",
+       "Node14":"TCG",
+       "Node47":"TGC",
+       "Node92":"TCT",
+       "SUS":"TCT",
+       "root":"TCC"
+      },
+     "82":{
+       "ERETHIZON":"ATT",
+       "MEGAPTERA":"GTC",
+       "Node107":"GTC",
+       "Node76":"ATT",
+       "PROCAVIA":"ATT",
+       "TAMIAS":"TTT",
+       "root":"ATC"
+      },
+     "83":{
+       "ERINACEUS":"ACC",
+       "GALEMYS":"ACC",
+       "HYSTRIX":"GTC",
+       "MANIS":"ACC",
+       "MEGAPTERA":"GTC",
+       "Node104":"ATG",
+       "Node11":"ATG",
+       "Node76":"GTC",
+       "ORYCTEROPUS":"ATT",
+       "PEDETES":"ATG",
+       "SOLENODON":"ATG",
+       "root":"ATC"
+      },
+     "84":{
+       "ELEPHANTULUS":"AAT",
+       "Node122":"AAT",
+       "Node20":"AAT",
+       "SOREX":"AAT",
+       "TUPAIA":"AAN",
+       "root":"AAC"
+      },
+     "85":{
+       "AMBLYSOMUS":"AGC",
+       "ARTIBEUS":"TGC",
+       "CASTOR":"TGC",
+       "ECHINOPS":"TGC",
+       "ERETHIZON":"TGC",
+       "LOXODONTA":"TGC",
+       "MYOTIS":"TGC",
+       "NYCTERIS":"TGC",
+       "Node122":"TTT",
+       "Node91":"TGC",
+       "OCHOTONA":"TCT",
+       "root":"TGT"
+      },
+     "86":{
+       "ARTIBEUS":"GTC",
+       "CASTOR":"ATC",
+       "ECHINOPS":"GTT",
+       "ERINACEUS":"GTT",
+       "MANIS":"ATT",
+       "MEGADERMA":"GTC",
+       "MUSCARDINUS":"ATC",
+       "NYCTERIS":"GTC",
+       "Node102":"GTT",
+       "Node114":"GCT",
+       "Node122":"GTT",
+       "Node14":"CTC",
+       "Node18":"ATC",
+       "Node2":"ATT",
+       "Node42":"GTC",
+       "Node6":"CTT",
+       "Node8":"CTG",
+       "Node91":"ATC",
+       "ORYCTEROPUS":"ATA",
+       "PROCAVIA":"GTT",
+       "TARSIUS":"ATG",
+       "root":"GTC"
+      },
+     "87":{
+       "AMBLYSOMUS":"ACC",
+       "CANIS":"ACG",
+       "ECHINOPS":"CTC",
+       "EQUUS":"ACA",
+       "GALEOPTERUS":"ACC",
+       "LAMA":"ACC",
+       "Node113":"CTC",
+       "Node122":"TCC",
+       "Node2":"ATC",
+       "Node38":"CTC",
+       "Node60":"ACC",
+       "Node68":"ATA",
+       "Node7":"ACC",
+       "Node76":"ACC",
+       "Node84":"ACC",
+       "OCHOTONA":"GCC",
+       "PEDETES":"AAC",
+       "PROCAVIA":"CTT",
+       "TAMIAS":"ATG",
+       "root":"ACC"
+      },
+     "88":{
+       "ARTIBEUS":"CAC",
+       "LOXODONTA":"TAT",
+       "MACACA":"CAC",
+       "MUS":"TAT",
+       "Node8":"TAT",
+       "ORYCTEROPUS":"TAT",
+       "TALPA":"CAC",
+       "root":"TAC"
+      },
+     "89":{
+       "AILUROPODA":"TTC",
+       "ARTIBEUS":"TTC",
+       "CASTOR":"TCT",
+       "ELEPHANTULUS":"TTC",
+       "GALEMYS":"TTC",
+       "Node2":"TTT",
+       "Node62":"TTC",
+       "PROCAVIA":"TTC",
+       "SOREX":"TTC",
+       "root":"TTC"
+      },
+     "9":{
+       "LEMUR":"GAT",
+       "NYCTERIS":"GAT",
+       "Node1":"GAC",
+       "Node114":"GAG",
+       "Node122":"GAT",
+       "Node126":"GAA",
+       "Node29":"GAT",
+       "SOLENODON":"GAT",
+       "TAMIAS":"GAG",
+       "root":"GAA"
+      },
+     "90":{
+       "AILUROPODA":"CAC",
+       "AMBLYSOMUS":"TTT",
+       "ARTIBEUS":"AAG",
+       "CYNOCEPHALUS":"CAT",
+       "ECHINOPS":"CAG",
+       "EQUUS":"AAC",
+       "ERINACEUS":"GAC",
+       "FELIS":"CAC",
+       "GALEMYS":"CAC",
+       "HIPPOPOTAMUS":"GAT",
+       "LOXODONTA":"GGA",
+       "MEGADERMA":"AAG",
+       "MUS":"GAT",
+       "NYCTERIS":"AAC",
+       "Node1":"AAC",
+       "Node104":"AGT",
+       "Node114":"AAA",
+       "Node126":"AAC",
+       "Node2":"AAT",
+       "Node26":"AAA",
+       "Node29":"AAC",
+       "Node39":"AAC",
+       "Node55":"AAA",
+       "Node60":"CAT",
+       "Node73":"CAT",
+       "Node76":"GGT",
+       "Node84":"CAC",
+       "ORYCTEROPUS":"GAT",
+       "OTOLEMUR":"GAT",
+       "PEDETES":"CAT",
+       "ROUSETTUS":"AAC",
+       "SOLENODON":"CAC",
+       "root":"AAA"
+      },
+     "91":{
+       "AILUROPODA":"GGG",
+       "ANTROZOUS":"GGG",
+       "ARTIBEUS":"GGC",
+       "ELEPHANTULUS":"GGC",
+       "GALEMYS":"GGC",
+       "MUS":"GTA",
+       "MUSCARDINUS":"ATC",
+       "NYCTERIS":"GGC",
+       "Node1":"GGC",
+       "Node107":"GGC",
+       "Node110":"GTT",
+       "Node114":"GTC",
+       "Node122":"GTG",
+       "Node126":"ATT",
+       "Node14":"GTG",
+       "Node2":"GGT",
+       "Node35":"GGC",
+       "Node42":"GTT",
+       "Node47":"GGC",
+       "Node6":"GTT",
+       "OCHOTONA":"AAC",
+       "OTOLEMUR":"GGC",
+       "root":"TGC"
+      },
+     "92":{
+       "AMBLYSOMUS":"GAT",
+       "ANTROZOUS":"GAC",
+       "CASTOR":"AAA",
+       "ECHINOPS":"GAA",
+       "ERETHIZON":"AGG",
+       "GALEMYS":"AGC",
+       "HYDROCHOERUS":"ACG",
+       "HYSTRIX":"GAA",
+       "LAMA":"AAG",
+       "MEGADERMA":"GAC",
+       "MUSCARDINUS":"AAG",
+       "Node1":"GAG",
+       "Node107":"AAG",
+       "Node11":"AAA",
+       "Node112":"AAG",
+       "Node19":"GAA",
+       "Node39":"GAT",
+       "Node47":"CAC",
+       "Node55":"GAC",
+       "Node6":"AAG",
+       "Node84":"GAC",
+       "OCHOTONA":"GCA",
+       "OTOLEMUR":"GAC",
+       "PTEROPUS":"CAT",
+       "SOREX":"GAT",
+       "SYLVILAGUS":"CAG",
+       "root":"AAG"
+      },
+     "93":{
+       "ARTIBEUS":"GTA",
+       "MANIS":"GTC",
+       "MICROCEBUS":"GTG",
+       "Node11":"GTC",
+       "Node116":"ATA",
+       "Node122":"ATA",
+       "Node126":"GTG",
+       "Node25":"GTG",
+       "Node39":"GTG",
+       "Node45":"GTG",
+       "Node8":"GTG",
+       "PEDETES":"GTG",
+       "PROCAVIA":"GTG",
+       "SOREX":"GTG",
+       "root":"GTA"
+      },
+     "94":{
+       "AILUROPODA":"CCT",
+       "ANTROZOUS":"CAC",
+       "ECHINOPS":"TCA",
+       "GALEMYS":"CCC",
+       "HIPPOPOTAMUS":"CCG",
+       "HYSTRIX":"TCG",
+       "LOXODONTA":"TCA",
+       "Node1":"CCA",
+       "Node117":"ACA",
+       "Node52":"CCC",
+       "Node62":"CCG",
+       "SOLENODON":"TCA",
+       "TAMIAS":"CCG",
+       "root":"CCG"
+      },
+     "95":{
+       "AMBLYSOMUS":"GAC",
+       "ANTROZOUS":"GAG",
+       "ARTIBEUS":"GAA",
+       "CASTOR":"GAC",
+       "ERETHIZON":"GAT",
+       "ERINACEUS":"CCA",
+       "GALEMYS":"CAG",
+       "HYSTRIX":"GCG",
+       "MICROCEBUS":"CCA",
+       "MUS":"GAT",
+       "MUSCARDINUS":"AAC",
+       "Node1":"GAC",
+       "Node117":"AAA",
+       "Node122":"GAG",
+       "Node14":"CAG",
+       "Node2":"GAA",
+       "Node3":"CAA",
+       "Node47":"ACA",
+       "Node52":"CAG",
+       "Node59":"CAG",
+       "Node62":"CAA",
+       "Node79":"GAA",
+       "Node84":"CAG",
+       "Node91":"CAG",
+       "PEDETES":"CCA",
+       "PTEROPUS":"ACG",
+       "PTILOCERCUS":"GAA",
+       "SOLENODON":"GCA",
+       "SOREX":"CGA",
+       "SUS":"GAA",
+       "SYLVILAGUS":"AAT",
+       "TARSIUS":"GAG",
+       "TRAGELAPHUS":"GAA",
+       "root":"GAT"
+      },
+     "96":{
+       "AMBLYSOMUS":"ATT",
+       "ARTIBEUS":"GTG",
+       "CANIS":"ATC",
+       "CASTOR":"ATT",
+       "EQUUS":"ACT",
+       "ERETHIZON":"GAC",
+       "ERINACEUS":"GCT",
+       "GALEMYS":"GCG",
+       "HYSTRIX":"GAG",
+       "LOXODONTA":"GCT",
+       "MANIS":"GTG",
+       "MEGADERMA":"GTC",
+       "MUS":"GTC",
+       "NYCTERIS":"GTC",
+       "Node1":"GTT",
+       "Node107":"CTT",
+       "Node114":"GAT",
+       "Node126":"TAT",
+       "Node14":"CTG",
+       "Node29":"ATT",
+       "Node52":"GTG",
+       "Node6":"CTT",
+       "Node60":"ATT",
+       "Node68":"ATT",
+       "Node8":"CTC",
+       "Node91":"CTT",
+       "Node99":"GTG",
+       "OCHOTONA":"CTG",
+       "ORYCTEROPUS":"ATT",
+       "OTOLEMUR":"ATT",
+       "PROCAVIA":"ATT",
+       "RATTUS":"ATT",
+       "SOLENODON":"GTG",
+       "SOREX":"GGT",
+       "TRICHECHUS":"ATT",
+       "root":"GTC"
+      },
+     "97":{
+       "AILUROPODA":"CTT",
+       "CASTOR":"TTG",
+       "ECHINOPS":"TTG",
+       "EQUUS":"GTA",
+       "MEGADERMA":"ATG",
+       "MICROCEBUS":"GTA",
+       "Node122":"GCA",
+       "Node59":"ATA",
+       "Node84":"GTC",
+       "ORYCTEROPUS":"GTT",
+       "PTILOCERCUS":"GTA",
+       "TARSIUS":"GCG",
+       "TRICHECHUS":"CTG",
+       "root":"GTG"
+      },
+     "98":{
+       "AMBLYSOMUS":"TTA",
+       "ANTROZOUS":"ATG",
+       "CASTOR":"ATA",
+       "CAVIA":"CTA",
+       "CERATOTHERIUM":"ATG",
+       "ECHINOPS":"ATA",
+       "LOXODONTA":"ATA",
+       "MANIS":"CTA",
+       "NYCTERIS":"ATN",
+       "Node102":"TTG",
+       "Node11":"CTC",
+       "Node110":"ATG",
+       "Node117":"ATA",
+       "Node38":"CAG",
+       "Node55":"GTG",
+       "Node62":"CTT",
+       "Node73":"CTA",
+       "Node8":"CTA",
+       "Node84":"GTT",
+       "OCHOTONA":"CTA",
+       "ORYCTEROPUS":"CTG",
+       "OTOLEMUR":"TTA",
+       "SOLENODON":"TTA",
+       "SOREX":"CAA",
+       "TADARIDA":"GTT",
+       "TALPA":"CAA",
+       "TAMANDUA":"CNC",
+       "TUPAIA":"TTG",
+       "TURSIOPS":"CTC",
+       "root":"CTG"
+      },
+     "99":{
+       "CANIS":"TAT",
+       "ELEPHANTULUS":"TAT",
+       "ERINACEUS":"TTC",
+       "HYSTRIX":"TTT",
+       "MANIS":"TAT",
+       "Node1":"TAC",
+       "Node107":"AAT",
+       "Node110":"TGC",
+       "Node114":"TTC",
+       "Node117":"TAC",
+       "Node126":"TTC",
+       "Node35":"AAC",
+       "Node46":"AAC",
+       "OCHOTONA":"TAT",
+       "PTEROPUS":"AAA",
+       "SYLVILAGUS":"CTC",
+       "TALPA":"AAC",
+       "TAMIAS":"CNC",
+       "TRAGELAPHUS":"AAC",
+       "TRICHECHUS":"CAC",
+       "root":"CAC"
+      }
+    }
+  },
+ "test results":{
+   "LRT":0,
+   "p-value":0.5
+  },
+ "tested":{
+   "0":{
+     "AILUROPODA":"test",
+     "AMBLYSOMUS":"test",
+     "ANTROZOUS":"test",
+     "ARTIBEUS":"test",
+     "BOS":"test",
+     "CANIS":"test",
+     "CASTOR":"test",
+     "CAVIA":"test",
+     "CERATOTHERIUM":"test",
+     "CHAETOPHRACTUS":"test",
+     "CHOLOEPUSDI":"test",
+     "CHOLOEPUSHO":"test",
+     "CYNOCEPHALUS":"test",
+     "ECHINOPS":"test",
+     "ELEPHANTULUS":"test",
+     "EQUUS":"test",
+     "ERETHIZON":"test",
+     "ERINACEUS":"test",
+     "EUPHRACTUS":"test",
+     "FELIS":"test",
+     "GALEMYS":"test",
+     "GALEOPTERUS":"test",
+     "HIPPOPOTAMUS":"test",
+     "HOMO":"test",
+     "HYDROCHOERUS":"test",
+     "HYSTRIX":"test",
+     "LAMA":"test",
+     "LEMUR":"test",
+     "LOXODONTA":"test",
+     "MACACA":"test",
+     "MACROSCELIDES":"test",
+     "MANIS":"test",
+     "MEGADERMA":"test",
+     "MEGAPTERA":"test",
+     "MICROCEBUS":"test",
+     "MUS":"test",
+     "MUSCARDINUS":"test",
+     "MYOTIS":"test",
+     "MYRMECOPHAGA":"test",
+     "NYCTERIS":"test",
+     "Node1":"test",
+     "Node102":"test",
+     "Node104":"test",
+     "Node107":"test",
+     "Node11":"test",
+     "Node110":"test",
+     "Node111":"test",
+     "Node112":"test",
+     "Node113":"test",
+     "Node114":"test",
+     "Node116":"test",
+     "Node117":"test",
+     "Node122":"test",
+     "Node126":"test",
+     "Node14":"test",
+     "Node18":"test",
+     "Node19":"test",
+     "Node2":"test",
+     "Node20":"test",
+     "Node21":"test",
+     "Node25":"test",
+     "Node26":"test",
+     "Node29":"test",
+     "Node3":"test",
+     "Node33":"test",
+     "Node34":"test",
+     "Node35":"test",
+     "Node38":"test",
+     "Node39":"test",
+     "Node4":"test",
+     "Node42":"test",
+     "Node45":"test",
+     "Node46":"test",
+     "Node47":"test",
+     "Node5":"test",
+     "Node50":"test",
+     "Node51":"test",
+     "Node52":"test",
+     "Node55":"test",
+     "Node59":"test",
+     "Node6":"test",
+     "Node60":"test",
+     "Node61":"test",
+     "Node62":"test",
+     "Node68":"test",
+     "Node69":"test",
+     "Node7":"test",
+     "Node73":"test",
+     "Node74":"test",
+     "Node76":"test",
+     "Node79":"test",
+     "Node8":"test",
+     "Node81":"test",
+     "Node84":"test",
+     "Node89":"test",
+     "Node90":"test",
+     "Node91":"test",
+     "Node92":"test",
+     "Node93":"test",
+     "Node99":"test",
+     "OCHOTONA":"test",
+     "ORYCTEROPUS":"test",
+     "ORYCTOLAGUS":"test",
+     "OTOLEMUR":"test",
+     "PAN":"test",
+     "PANTHERA":"test",
+     "PEDETES":"test",
+     "PONGO":"test",
+     "PROCAVIA":"test",
+     "PTEROPUS":"test",
+     "PTILOCERCUS":"test",
+     "RATTUS":"test",
+     "ROUSETTUS":"test",
+     "SOLENODON":"test",
+     "SOREX":"test",
+     "SUS":"test",
+     "SYLVILAGUS":"test",
+     "TADARIDA":"test",
+     "TALPA":"test",
+     "TAMANDUA":"test",
+     "TAMIAS":"test",
+     "TAPIRUS":"test",
+     "TARSIUS":"test",
+     "TRAGELAPHUS":"test",
+     "TRICHECHUS":"test",
+     "TUPAIA":"test",
+     "TURSIOPS":"test"
+    }
+  },
+ "timers":{
+   "Overall":{
+     "order":0,
+     "timer":719
+    },
+   "Preliminary model fitting":{
+     "order":1,
+     "timer":15
+    },
+   "Unconstrained BUSTED model fitting":{
+     "order":2,
+     "timer":660
+    }
+  }
+}

@@ -1,0 +1,110 @@
+
+Analysis Description
+--------------------
+BUSTED (branch-site unrestricted statistical test of episodic
+diversification) uses a random effects branch-site model fitted jointly
+to all or a subset of tree branches in order to test for alignment-wide
+evidence of episodic diversifying selection. Assuming there is evidence
+of positive selection (i.e. there is an omega > 1), BUSTED will also
+perform a quick evidence-ratio style analysis to explore which
+individual sites may have been subject to selection. Version 2.0 adds
+support for synonymous rate variation, and relaxes the test statistic to
+0.5 (chi^2_0 + chi^2_2). Version 2.1 adds a grid search for the initial
+starting point. Version 2.2 changes the grid search to LHC, and adds an
+initial search phase to use adaptive Nedler-Mead. Version 3.0 implements
+the option for branch-site variation in synonymous substitution rates.
+Version 3.1 adds HMM auto-correlation option for SRV, and binds SRV
+distributions for multiple branch sets. Version 4.0 adds support for
+multiple hits (MH), ancestral state reconstruction saved to JSON, and
+profiling of branch-site level support for selection / multiple hits.
+Version 4.2 adds calculation of MH-attributable fractions of
+substitutions. Version 4.5 adds an 'error absorption' component. Version
+4.6 adds support for MSS-type models. Version 4.7 adds user configurable
+options for the error class. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree (optionally annotated
+with {})
+
+- __Citation__: *Gene-wide identification of episodic selection*, Mol Biol Evol.
+32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation
+Dramatically Inflates False Positive Rates of Selection Analyses: Ignore
+at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.7
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **18** sequences, **342** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/flavNS5.nex`
+
+>branches => All
+
+>srv => Yes
+The number omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>multiple-hits => Double+Triple
+
+>mss => No
+The number alpha rate classes to include in the model [1-10, default 3] (permissible range = [1,10], default value = 3, integer): 
+>syn-rates => 3
+
+>error-sink => No
+The number of points in the initial distributional guess for likelihood fitting (permissible range = [1,10000], default value = 250, integer): 
+>grid-size => 250
+The number of initial random guesses to 'seed' rate values optimization (permissible range = [1,25], default value = 1, integer): 
+>starting-points => 1
+
+
+### Branches to test for selection in the BUSTED analysis
+* Selected 33 branches to test in the BUSTED analysis: `KYASANURFD, LI, NEGISHI, Node6, WTBE, Node5, RSSE, SOLFJIN, Node12, TBE, Node11, VASILCHENK, Node10, Node4, OMSK, Node3, Node1, LANGAT, KARSHI, ROYALFARM, Node21, GADGETGULL, KADAM, MEABAN, SAUMAREZRE, TYULENIY, Node30, Node28, Node26, Node24, Node20, POWASAN, Node19`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -11349.07, AIC-c = 22780.32 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.714
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -9584.49, AIC-c = 19265.75 (48 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.431
+* non-synonymous/synonymous rate ratio for *test* =   0.0593
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -9495.75, AIC-c = 19088.27 (48 estimated parameters)
+* non-synonymous/synonymous rate ratio for *test* =   0.0406
+
+### Performing the full (dN/dS > 1 allowed) branch-site model fit
+* Log(L) = -9184.55, AIC-c = 18488.25 (59 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.3765
+* Corresponding fraction of substitutions :  2.062%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.9715
+* Corresponding fraction of substitutions :  0.479%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.008     |    0.000    |       Not supported by data       |
+|        Negative selection         |     0.016     |   100.000   |                                   |
+|      Diversifying selection       |     3.671     |    0.000    |       Not supported by data       |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.216               |    21.832     |                                   |
+|               0.632               |    66.106     |                                   |
+|               4.436               |    12.063     |                                   |
+
+
+### No evidence for episodic diversifying positive selection under the unconstrained model, skipping constrained model fitting
+----
+## Branch-site unrestricted statistical test of episodic diversification [BUSTED]
+Likelihood ratio test for episodic diversifying positive selection, **p =   0.5000**.

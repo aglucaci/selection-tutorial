@@ -1,0 +1,271 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Vertebrate-mtDNA
+>Loaded a multiple sequence alignment with **20** sequences, **3331** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/mammalian_mtDNA.mtnex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 37 branches for testing: `H_SAPIENS, CHIMPANZEE, BONOBO, Node8, Node6, GORILLA, Node5, BORNEAN_ORANGUTAN, SUMATRAN_ORANGUTAN, Node12, Node4, GIBBON, Node3, HARBOR_SEAL, GREY_SEAL, Node19, CAT, Node18, HORSE, RHINOCEROS, Node23, Node17, COW, FIN_WHALE, BLUE_WHALE, Node28, Node26, Node16, Node2, RAT, MOUSE, Node31, Node1, WALLAROO, OPOSSUM, Node34, PLATYPUS`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -106918.75, AIC-c = 213927.53 (45 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.541
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -92495.77, AIC-c = 185167.78 (88 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.06, and 95% of the weight in  0.03 -  0.92
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|             PLATYPUS              |   0.66   |    2     |    1.37 ( 9.64%)   |   -92356.26   |   184892.77   |    184892.77    |
+|             PLATYPUS              |   0.66   |    3     |    1.36 ( 9.66%)   |   -92356.26   |   184896.78   |    184892.77    |
+|              OPOSSUM              |   0.37   |    2     |    2.49 ( 4.91%)   |   -92289.57   |   184763.40   |    184763.40    |
+|              OPOSSUM              |   0.37   |    3     |    2.51 ( 4.89%)   |   -92289.57   |   184767.41   |    184763.40    |
+|             WALLAROO              |   0.32   |    2     |    2.51 ( 3.71%)   |   -92243.68   |   184675.62   |    184675.62    |
+|             WALLAROO              |   0.32   |    3     |    3.99 ( 2.07%)   |   -92244.11   |   184680.50   |    184675.62    |
+|               Node3               |   0.28   |    2     |    0.79 (20.48%)   |   -92167.90   |   184528.09   |    184528.09    |
+|               Node3               |   0.28   |    3     |  521.84 ( 2.30%)   |   -92161.18   |   184518.65   |    184518.65    |
+|               Node3               |   0.28   |    4     |  140.28 ( 2.28%)   |   -92161.18   |   184522.67   |    184518.65    |
+|                CAT                |   0.22   |    2     |    0.42 (10.35%)   |   -92142.96   |   184486.23   |    184486.23    |
+|                CAT                |   0.22   |    3     |    2.02 ( 1.68%)   |   -92141.58   |   184487.49   |    184486.23    |
+|               MOUSE               |   0.22   |    2     |    0.80 ( 8.04%)   |   -92107.59   |   184419.49   |    184419.49    |
+|               MOUSE               |   0.22   |    3     |    1.92 ( 2.27%)   |   -92107.43   |   184423.19   |    184419.49    |
+|                COW                |   0.22   |    2     |    0.58 ( 9.06%)   |   -92080.57   |   184369.47   |    184369.47    |
+|                COW                |   0.22   |    3     |   >1000 ( 0.31%)   |   -92080.30   |   184372.93   |    184369.47    |
+|                RAT                |   0.21   |    2     |    3.24 ( 2.67%)   |   -92037.33   |   184287.00   |    184287.00    |
+|                RAT                |   0.21   |    3     |   66.42 ( 1.61%)   |   -92037.52   |   184291.40   |    184287.00    |
+|              Node19               |   0.20   |    2     |    0.65 ( 9.38%)   |   -91999.52   |   184215.40   |    184215.40    |
+|              Node19               |   0.20   |    3     |    0.75 ( 0.19%)   |   -91999.52   |   184219.42   |    184215.40    |
+|              Node28               |   0.19   |    2     |    0.83 (13.02%)   |   -91956.25   |   184132.87   |    184132.87    |
+|              Node28               |   0.19   |    3     |   >1000 ( 0.59%)   |   -91955.17   |   184134.72   |    184132.87    |
+|              Node31               |   0.17   |    2     |    9.31 ( 6.89%)   |   -91857.78   |   183939.94   |    183939.94    |
+|              Node31               |   0.17   |    3     |    9.43 ( 6.77%)   |   -91857.78   |   183943.96   |    183939.94    |
+|               HORSE               |   0.15   |    2     |    0.65 ( 7.98%)   |   -91834.07   |   183896.54   |    183896.54    |
+|               HORSE               |   0.15   |    3     |  348.72 ( 0.28%)   |   -91832.48   |   183897.37   |    183896.54    |
+|            RHINOCEROS             |   0.14   |    2     |    0.79 ( 9.38%)   |   -91802.25   |   183836.91   |    183836.91    |
+|            RHINOCEROS             |   0.14   |    3     |    0.79 ( 9.19%)   |   -91802.25   |   183840.92   |    183836.91    |
+|              GIBBON               |   0.13   |    2     |    1.19 ( 8.52%)   |   -91757.37   |   183751.16   |    183751.16    |
+|              GIBBON               |   0.13   |    3     |    2.12 ( 2.21%)   |   -91757.26   |   183754.96   |    183751.16    |
+|               Node2               |   0.08   |    2     |   13.88 ( 3.98%)   |   -91718.16   |   183676.76   |    183676.76    |
+|               Node2               |   0.08   |    3     |   34.08 ( 2.50%)   |   -91715.05   |   183674.54   |    183674.54    |
+|               Node2               |   0.08   |    4     |   30.66 ( 2.67%)   |   -91714.97   |   183678.40   |    183674.54    |
+|              Node12               |   0.08   |    2     |    1.16 (12.97%)   |   -91690.26   |   183628.99   |    183628.99    |
+|              Node12               |   0.08   |    3     |    1.33 ( 5.32%)   |   -91690.28   |   183633.05   |    183628.99    |
+|              GORILLA              |   0.07   |    2     |    0.95 ( 7.35%)   |   -91676.78   |   183606.04   |    183606.04    |
+|              GORILLA              |   0.07   |    3     |  917.89 ( 0.14%)   |   -91675.65   |   183607.80   |    183606.04    |
+|             FIN_WHALE             |   0.07   |    2     |   0.03 (100.00%)   |   -91676.78   |   183610.05   |    183606.04    |
+|              Node26               |   0.07   |    2     |    2.56 ( 3.65%)   |   -91663.47   |   183583.43   |    183583.43    |
+|              Node26               |   0.07   |    3     |    3.93 ( 2.09%)   |   -91663.23   |   183586.98   |    183583.43    |
+|              Node18               |   0.06   |    2     |    5.19 ( 4.34%)   |   -91622.22   |   183504.96   |    183504.96    |
+|              Node18               |   0.06   |    3     |    7.51 ( 3.01%)   |   -91622.24   |   183509.01   |    183504.96    |
+|             H_SAPIENS             |   0.06   |    2     |    0.47 (12.86%)   |   -91618.25   |   183501.02   |    183501.02    |
+|             H_SAPIENS             |   0.06   |    3     |    0.47 (12.60%)   |   -91618.25   |   183505.04   |    183501.02    |
+|               Node1               |   0.05   |    2     |   >1000 ( 4.57%)   |   -91537.59   |   183343.72   |    183343.72    |
+|               Node1               |   0.05   |    3     |   >1000 ( 4.57%)   |   -91537.59   |   183347.74   |    183343.72    |
+|              Node23               |   0.05   |    2     |    2.03 ( 3.45%)   |   -91529.95   |   183332.46   |    183332.46    |
+|              Node23               |   0.05   |    3     |    2.51 ( 2.09%)   |   -91530.00   |   183336.58   |    183332.46    |
+|              Node16               |   0.05   |    2     |    9.98 ( 6.74%)   |   -91504.61   |   183285.80   |    183285.80    |
+|              Node16               |   0.05   |    3     |   11.66 ( 5.41%)   |   -91504.63   |   183289.86   |    183285.80    |
+|               Node5               |   0.05   |    2     |    0.93 (10.19%)   |   -91499.61   |   183279.81   |    183279.81    |
+|               Node5               |   0.05   |    3     |    0.93 ( 9.98%)   |   -91499.61   |   183283.83   |    183279.81    |
+|        SUMATRAN_ORANGUTAN         |   0.04   |    2     |    0.93 ( 9.23%)   |   -91495.06   |   183274.73   |    183274.73    |
+|        SUMATRAN_ORANGUTAN         |   0.04   |    3     |    1.00 ( 0.19%)   |   -91495.06   |   183278.74   |    183274.73    |
+|              Node34               |   0.04   |    2     |  344.79 ( 3.91%)   |   -91437.11   |   183162.85   |    183162.85    |
+|              Node34               |   0.04   |    3     |  339.28 ( 3.89%)   |   -91437.12   |   183166.88   |    183162.85    |
+|            BLUE_WHALE             |   0.04   |    2     |   27.43 ( 0.12%)   |   -91430.23   |   183153.10   |    183153.10    |
+|            BLUE_WHALE             |   0.04   |    3     |   35.50 ( 0.11%)   |   -91430.26   |   183157.18   |    183153.10    |
+|         BORNEAN_ORANGUTAN         |   0.04   |    2     |    0.12 (99.90%)   |   -91430.22   |   183157.10   |    183153.10    |
+|               Node8               |   0.04   |    2     |    0.33 (15.72%)   |   -91429.27   |   183155.21   |    183153.10    |
+|            CHIMPANZEE             |   0.02   |    2     |    0.61 (11.68%)   |   -91429.70   |   183156.06   |    183153.10    |
+|               Node4               |   0.02   |    2     |    3.34 ( 6.21%)   |   -91425.92   |   183148.51   |    183148.51    |
+|               Node4               |   0.02   |    3     |    4.04 ( 4.14%)   |   -91425.94   |   183152.57   |    183148.51    |
+|               Node6               |   0.02   |    2     |    0.84 ( 8.95%)   |   -91425.61   |   183151.90   |    183148.51    |
+|             GREY_SEAL             |   0.02   |    2     |    0.05 (99.56%)   |   -91425.92   |   183152.53   |    183148.51    |
+|              BONOBO               |   0.02   |    2     |    0.74 (11.90%)   |   -91424.63   |   183149.95   |    183148.51    |
+|            HARBOR_SEAL            |   0.02   |    2     |   0.05 (100.00%)   |   -91425.92   |   183152.53   |    183148.51    |
+|              Node17               |   0.01   |    2     |    1.87 (10.71%)   |   -91425.21   |   183151.10   |    183148.51    |
+
+### Rate class analyses summary
+*  26 branches with **2** rate classes
+*  2 branches with **3** rate classes
+*  9 branches with **1** rate classes
+
+### Annotated Tree
+(((((((H_SAPIENS{2},(CHIMPANZEE{1},BONOBO{1})Node8{1})Node6{1},GORILLA{2})Node5{2},(BORNEAN_ORANGUTAN{1},SUMATRAN_ORANGUTAN{2})Node12{2})Node4{2},GIBBON{2})Node3{3},((((HARBOR_SEAL{1},GREY_SEAL{1})Node19{2},CAT{2})Node18{2},(HORSE{2},RHINOCEROS{2})Node23{2})Node17{1},(COW{2},(FIN_WHALE{1},BLUE_WHALE{2})Node28{2})Node26{2})Node16{2})Node2{3},(RAT{2},MOUSE{2})Node31{2})Node1{2},(WALLAROO{2},OPOSSUM{2})Node34{2},PLATYPUS{2})
+
+----
+
+```
+             |-H_SAPIENS (2)
+            |+Node6 (1)
+            || |CHIMPANZEE (1)
+            ||-+Node8 (1)
+            |  |BONOBO (1)
+          |-+Node5 (2)
+          | |-GORILLA (2)
+         |+Node4 (2)
+         || |-BORNEAN_ORANGUTAN (1)
+         ||-+Node12 (2)
+         |  |-SUMATRAN_ORANGUTAN (2)
+    |----+Node3 (3)
+    |    |--GIBBON (2)
+  |-+Node2 (3)
+  | |        |HARBOR_SEAL (1)
+  | |    |---+Node19 (2)
+  | |    |   |GREY_SEAL (1)
+  | |  |-+Node18 (2)
+  | |  | |---CAT (2)
+  | | |+Node17 (1)
+  | | || |--HORSE (2)
+  | | ||-+Node23 (2)
+  | | |  |--RHINOCEROS (2)
+  | |-+Node16 (2)
+  |   | |---COW (2)
+  |   |-+Node26 (2)
+  |     |   |-FIN_WHALE (1)
+  |     |---+Node28 (2)
+  |         |-BLUE_WHALE (2)
+|-+Node1 (2)
+| |   |---RAT (2)
+| |---+Node31 (2)
+|     |---MOUSE (2)
+| |-----WALLAROO (2)
+|-+Node34 (2)
+| |------OPOSSUM (2)
+|----------PLATYPUS (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -90378.10, AIC-c = 181052.87 (148 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|             PLATYPUS              |     2    |   >1000 ( 7.56%)   |         58       |        5.13        |       0.02781      |
+|              OPOSSUM              |     2    |   38.57 ( 4.80%)   |         36       |        5.86        |       0.01909      |
+|             WALLAROO              |     2    |    2.93 ( 3.25%)   |         20       |        1.68        |       0.16813      |
+|               Node3               |     3    |  495.73 ( 3.49%)   |        134       |        1.54        |       0.18224      |
+|                CAT                |     2    |    0.33 ( 8.68%)   |       N/A        |        0.00        |       1.00000      |
+|               MOUSE               |     2    |    0.51 ( 8.06%)   |       N/A        |        0.00        |       1.00000      |
+|                COW                |     2    |   14.78 ( 1.76%)   |         28       |        7.22        |       0.00957      |
+|                RAT                |     2    |   12.77 ( 2.08%)   |         26       |       -8.58        |       0.50000      |
+|              Node19               |     2    |    0.53 ( 8.42%)   |       N/A        |        0.00        |       1.00000      |
+|              Node28               |     2    |    0.57 (12.24%)   |       N/A        |        0.00        |       1.00000      |
+|              Node31               |     2    |   68.63 ( 6.74%)   |         53       |        8.52        |       0.00493      |
+|               HORSE               |     2    |    2.51 ( 1.35%)   |         17       |        1.73        |       0.16392      |
+|            RHINOCEROS             |     2    |    0.60 ( 9.65%)   |       N/A        |        0.00        |       1.00000      |
+|              GIBBON               |     2    |    0.88 ( 9.39%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     3    |   33.98 ( 2.15%)   |         18       |       18.03        |       0.00004      |
+|              Node12               |     2    |    1.01 (11.27%)   |        107       |       -1.23        |       0.50000      |
+|              GORILLA              |     2    |    0.95 ( 4.97%)   |       N/A        |        0.00        |       1.00000      |
+|             FIN_WHALE             |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node26               |     2    |    7.45 ( 1.51%)   |         27       |        4.12        |       0.04660      |
+|              Node18               |     2    |   57.20 ( 2.01%)   |         36       |       39.98        |       0.00000      |
+|             H_SAPIENS             |     2    |    0.36 (13.16%)   |       N/A        |        0.00        |       1.00000      |
+|               Node1               |     2    |   >1000 ( 4.84%)   |         39       |       69.28        |       0.00000      |
+|              Node23               |     2    |    2.03 ( 2.42%)   |         36       |        1.04        |       0.24037      |
+|              Node16               |     2    |    7.81 ( 4.91%)   |         24       |       10.74        |       0.00160      |
+|               Node5               |     2    |    0.69 ( 9.54%)   |       N/A        |        0.00        |       1.00000      |
+|        SUMATRAN_ORANGUTAN         |     2    |    0.65 (10.24%)   |       N/A        |        0.00        |       1.00000      |
+|              Node34               |     2    |   >1000 ( 5.06%)   |         43       |       44.52        |       0.00000      |
+|            BLUE_WHALE             |     2    |   11.57 ( 0.14%)   |          6       |        0.60        |       0.31081      |
+|         BORNEAN_ORANGUTAN         |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node8               |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            CHIMPANZEE             |     1    |   0.06 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node4               |     2    |    1.63 ( 4.94%)   |         21       |       -1.38        |       0.50000      |
+|               Node6               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             GREY_SEAL             |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              BONOBO               |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            HARBOR_SEAL            |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node17               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **4** branches under selection among **37** tested.
+
+* Node1, p-value =  0.00000
+* Node34, p-value =  0.00000
+* Node18, p-value =  0.00000
+* Node2, p-value =  0.00139
+
+### Annotated Tree
+(((((((H_SAPIENS,(CHIMPANZEE,BONOBO)Node8)Node6,GORILLA)Node5,(BORNEAN_ORANGUTAN,SUMATRAN_ORANGUTAN)Node12)Node4,GIBBON)Node3,((((HARBOR_SEAL,GREY_SEAL)Node19,CAT)Node18{2.368577944888983e-08},(HORSE,RHINOCEROS)Node23)Node17,(COW,(FIN_WHALE,BLUE_WHALE)Node28)Node26)Node16)Node2{0.001385020582629681},(RAT,MOUSE)Node31)Node1{1.232347557333924e-14},(WALLAROO,OPOSSUM)Node34{2.508823149227624e-09},PLATYPUS)
+
+----
+
+```
+             |-H_SAPIENS (N.S)
+            |+Node6 (N.S)
+            || |CHIMPANZEE (N.S)
+            ||-+Node8 (N.S)
+            |  |BONOBO (N.S)
+          |-+Node5 (N.S)
+          | |-GORILLA (N.S)
+         |+Node4 (N.S)
+         || |-BORNEAN_ORANGUTAN (N.S)
+         ||-+Node12 (N.S)
+         |  |-SUMATRAN_ORANGUTAN (N.S)
+    |----+Node3 (N.S)
+    |    |--GIBBON (N.S)
+  |-+Node2 (0.001385020582629681)
+  | |        |HARBOR_SEAL (N.S)
+  | |    |---+Node19 (N.S)
+  | |    |   |GREY_SEAL (N.S)
+  | |  |-+Node18 (2.368577944888983e-08)
+  | |  | |---CAT (N.S)
+  | | |+Node17 (N.S)
+  | | || |--HORSE (N.S)
+  | | ||-+Node23 (N.S)
+  | | |  |--RHINOCEROS (N.S)
+  | |-+Node16 (N.S)
+  |   | |---COW (N.S)
+  |   |-+Node26 (N.S)
+  |     |   |-FIN_WHALE (N.S)
+  |     |---+Node28 (N.S)
+  |         |-BLUE_WHALE (N.S)
+|-+Node1 (1.232347557333924e-14)
+| |   |---RAT (N.S)
+| |---+Node31 (N.S)
+|     |---MOUSE (N.S)
+| |-----WALLAROO (N.S)
+|-+Node34 (2.508823149227624e-09)
+| |------OPOSSUM (N.S)
+|----------PLATYPUS (N.S)
+```
+

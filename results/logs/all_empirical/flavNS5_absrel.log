@@ -1,0 +1,240 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **18** sequences, **342** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/flavNS5.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 33 branches for testing: `KYASANURFD, LI, NEGISHI, Node6, WTBE, Node5, RSSE, SOLFJIN, Node12, TBE, Node11, VASILCHENK, Node10, Node4, OMSK, Node3, Node1, LANGAT, KARSHI, ROYALFARM, Node21, GADGETGULL, KADAM, MEABAN, SAUMAREZRE, TYULENIY, Node30, Node28, Node26, Node24, Node20, POWASAN, Node19`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -11349.07, AIC-c = 22780.32 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.714
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -9472.46, AIC-c = 19107.05 (80 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.04, and 95% of the weight in  0.00 -  0.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|              POWASAN              |1690.91...|    2     |    0.05 (12.07%)   |   -9462.26    |   19090.76    |    19090.76     |
+|              POWASAN              |1690.91...|    3     |    0.05 ( 0.00%)   |   -9462.11    |   19094.57    |    19090.76     |
+|             ROYALFARM             |   0.89   |    2     |   14.63 ( 3.32%)   |   -9454.18    |   19078.71    |    19078.71     |
+|             ROYALFARM             |   0.89   |    3     |    9.02 ( 1.81%)   |   -9454.22    |   19082.91    |    19078.71     |
+|              MEABAN               |   0.83   |    2     |    0.36 ( 6.16%)   |   -9445.08    |   19064.62    |    19064.62     |
+|              MEABAN               |   0.83   |    3     |    0.36 ( 6.02%)   |   -9445.08    |   19068.74    |    19064.62     |
+|              KARSHI               |   0.46   |    2     |    0.36 (10.13%)   |   -9441.68    |   19061.95    |    19061.95     |
+|              KARSHI               |   0.46   |    3     |   45.22 ( 1.94%)   |   -9440.00    |   19062.69    |    19061.95     |
+|            GADGETGULL             |   0.41   |    2     |    0.68 (12.88%)   |   -9428.41    |   19039.52    |    19039.52     |
+|            GADGETGULL             |   0.41   |    3     |    7.26 ( 4.59%)   |   -9425.52    |   19037.87    |    19037.87     |
+|            GADGETGULL             |   0.41   |    4     |   61.27 ( 2.90%)   |   -9426.11    |   19043.17    |    19037.87     |
+|             TYULENIY              |   0.38   |    2     |    0.49 (15.98%)   |   -9416.54    |   19024.03    |    19024.03     |
+|             TYULENIY              |   0.38   |    3     |   53.86 ( 3.17%)   |   -9415.93    |   19026.94    |    19024.03     |
+|               KADAM               |   0.37   |    2     |    1.10 (14.45%)   |   -9397.50    |   18990.08    |    18990.08     |
+|               KADAM               |   0.37   |    3     |   46.75 ( 6.86%)   |   -9394.89    |   18988.98    |    18988.98     |
+|               KADAM               |   0.37   |    4     |   61.62 ( 6.97%)   |   -9394.87    |   18993.07    |    18988.98     |
+|            KYASANURFD             |   0.35   |    2     |    0.99 ( 9.67%)   |   -9376.74    |   18956.82    |    18956.82     |
+|            KYASANURFD             |   0.35   |    3     |  164.64 ( 1.36%)   |   -9376.55    |   18960.56    |    18956.82     |
+|            SAUMAREZRE             |   0.33   |    2     |    0.60 (11.75%)   |   -9371.29    |   18950.05    |    18950.05     |
+|            SAUMAREZRE             |   0.33   |    3     |    7.13 ( 1.18%)   |   -9371.04    |   18953.69    |    18950.05     |
+|              LANGAT               |   0.31   |    2     |    1.57 ( 3.22%)   |   -9365.68    |   18942.97    |    18942.97     |
+|              LANGAT               |   0.31   |    3     |   71.49 ( 1.80%)   |   -9365.28    |   18946.31    |    18942.97     |
+|               OMSK                |   0.15   |    2     |    1.71 ( 3.72%)   |   -9358.84    |   18933.42    |    18933.42     |
+|               OMSK                |   0.15   |    3     |   63.81 ( 1.11%)   |   -9358.54    |   18936.97    |    18933.42     |
+|              Node11               |   0.12   |    2     |    0.09 (45.05%)   |   -9358.84    |   18937.57    |    18933.42     |
+|              Node26               |   0.11   |    2     |    9.82 ( 8.48%)   |   -9335.28    |   18890.45    |    18890.45     |
+|              Node26               |   0.11   |    3     |    9.83 ( 8.45%)   |   -9335.28    |   18894.61    |    18890.45     |
+|               Node4               |   0.09   |    2     |    0.01 (13.43%)   |   -9335.28    |   18894.60    |    18890.45     |
+|               Node3               |   0.08   |    2     |    0.08 (99.99%)   |   -9335.21    |   18894.45    |    18890.45     |
+|               Node6               |   0.08   |    2     |    0.03 (47.82%)   |   -9335.28    |   18894.60    |    18890.45     |
+|            VASILCHENK             |   0.06   |    2     |    0.11 (14.73%)   |   -9335.28    |   18894.60    |    18890.45     |
+|              Node20               |   0.06   |    2     |    7.79 ( 2.34%)   |   -9333.62    |   18891.27    |    18890.45     |
+|               WTBE                |   0.06   |    2     |    0.28 (15.77%)   |   -9335.27    |   18894.57    |    18890.45     |
+|               Node5               |   0.05   |    2     |    5.99 ( 0.90%)   |   -9330.94    |   18885.92    |    18885.92     |
+|               Node5               |   0.05   |    3     |    8.96 ( 0.63%)   |   -9331.11    |   18890.42    |    18885.92     |
+|               Node1               |   0.04   |    2     |    0.08 (38.05%)   |   -9330.87    |   18889.92    |    18885.92     |
+|                TBE                |   0.04   |    2     |   0.08 (100.00%)   |   -9330.94    |   18890.07    |    18885.92     |
+|              NEGISHI              |   0.04   |    2     |    0.07 ( 9.94%)   |   -9330.94    |   18890.07    |    18885.92     |
+|              Node19               |   0.03   |    2     |  237.40 ( 1.73%)   |   -9323.50    |   18875.19    |    18875.19     |
+|              Node19               |   0.03   |    3     |  192.20 ( 1.73%)   |   -9323.51    |   18879.36    |    18875.19     |
+|              Node10               |   0.03   |    2     |    0.06 (78.86%)   |   -9323.49    |   18879.33    |    18875.19     |
+|              Node28               |   0.03   |    2     |    0.18 (31.40%)   |   -9361.57    |   18955.47    |    18875.19     |
+|                LI                 |   0.02   |    2     |    0.46 (49.87%)   |   -9323.50    |   18879.34    |    18875.19     |
+|              Node30               |   0.02   |    2     |    0.18 (31.40%)   |   -9345.38    |   18923.10    |    18875.19     |
+|              SOLFJIN              |   0.02   |    2     |    0.24 (52.98%)   |   -9323.52    |   18879.37    |    18875.19     |
+|              Node21               |   0.01   |    2     |    0.18 (31.40%)   |   -9334.17    |   18900.68    |    18875.19     |
+|              Node24               |   0.01   |    2     |    0.25 ( 2.00%)   |   -9332.09    |   18896.52    |    18875.19     |
+|               RSSE                |   0.01   |    2     |    0.26 ( 0.00%)   |   -9323.50    |   18879.34    |    18875.19     |
+|              Node12               |   0.01   |    2     |    0.41 (50.69%)   |   -9323.50    |   18879.34    |    18875.19     |
+
+### Rate class analyses summary
+*  12 branches with **2** rate classes
+*  2 branches with **3** rate classes
+*  19 branches with **1** rate classes
+
+### Annotated Tree
+((KYASANURFD{2},((((LI{1},NEGISHI{1})Node6{1},WTBE{1})Node5{2},(((RSSE{1},SOLFJIN{1})Node12{1},TBE{1})Node11{1},VASILCHENK{1})Node10{1})Node4{1},OMSK{2})Node3{1})Node1{1},LANGAT{2},(((KARSHI{2},ROYALFARM{2})Node21{1},(GADGETGULL{3},(KADAM{3},(MEABAN{2},(SAUMAREZRE{2},TYULENIY{2})Node30{1})Node28{1})Node26{2})Node24{1})Node20{1},POWASAN{2})Node19{2})
+
+----
+
+```
+ |KYASANURFD (2)
+|+Node1 (1)
+||   |LI (1)
+||  |+Node6 (1)
+||  ||NEGISHI (1)
+|| |+Node5 (2)
+|| ||WTBE (1)
+|||+Node4 (1)
+||||  |RSSE (1)
+|||| |+Node12 (1)
+|||| ||SOLFJIN (1)
+|||||+Node11 (1)
+||||||TBE (1)
+||||+Node10 (1)
+||| |VASILCHENK (1)
+||+Node3 (1)
+| |OMSK (2)
+|LANGAT (2)
+|  |KARSHI (2)
+| |+Node21 (1)
+| ||ROYALFARM (2)
+||+Node20 (1)
+||||GADGETGULL (3)
+|||+Node24 (1)
+|| ||KADAM (3)
+|| |+Node26 (2)
+||  ||MEABAN (2)
+||  |+Node28 (1)
+||   ||SAUMAREZRE (2)
+||   |+Node30 (1)
+||    |TYULENIY (2)
+|+Node19 (2)
+ |----------------------POWASAN (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -9298.34, AIC-c = 18824.87 (112 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|              POWASAN              |     2    |    0.03 (10.22%)   |       N/A        |        0.00        |       1.00000      |
+|             ROYALFARM             |     2    |    4.81 ( 3.26%)   |          5       |       -0.28        |       0.50000      |
+|              MEABAN               |     2    |    0.46 ( 6.92%)   |       N/A        |        0.00        |       1.00000      |
+|              KARSHI               |     2    |  163.15 ( 1.86%)   |          3       |        1.60        |       0.17608      |
+|            GADGETGULL             |     3    |  187.00 ( 5.52%)   |          9       |        2.18        |       0.12853      |
+|             TYULENIY              |     2    |   16.34 ( 4.16%)   |          7       |        0.83        |       0.27118      |
+|               KADAM               |     3    |  534.69 ( 6.50%)   |         11       |        5.27        |       0.02587      |
+|            KYASANURFD             |     2    |    1.19 ( 8.37%)   |         19       |       -0.69        |       0.50000      |
+|            SAUMAREZRE             |     2    |    5.10 ( 2.33%)   |          3       |       -0.20        |       0.50000      |
+|              LANGAT               |     2    |    2.08 ( 2.54%)   |          4       |        0.32        |       0.37102      |
+|               OMSK                |     2    |   >1000 ( 1.12%)   |          3       |        1.17        |       0.22241      |
+|              Node11               |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node26               |     2    |   >1000 ( 7.13%)   |         14       |       13.23        |       0.00046      |
+|               Node4               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node3               |     1    |   0.12 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node6               |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            VASILCHENK             |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node20               |     1    |  >1000 (100.00%)   |       N/A        |       -0.79        |       0.50000      |
+|               WTBE                |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node5               |     2    |    4.77 ( 0.92%)   |          2       |        0.47        |       0.33549      |
+|               Node1               |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                TBE                |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              NEGISHI              |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node19               |     2    |   45.11 ( 1.82%)   |          3       |        4.82        |       0.03253      |
+|              Node10               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node28               |     1    |  >1000 (100.00%)   |       N/A        |       62.14        |       0.00000      |
+|                LI                 |     1    |   0.40 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node30               |     1    |  >1000 (100.00%)   |       N/A        |       32.99        |       0.00000      |
+|              SOLFJIN              |     1    |   0.12 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node21               |     1    |  >1000 (100.00%)   |       N/A        |        0.09        |       0.43919      |
+|              Node24               |     1    |  >1000 (100.00%)   |       N/A        |       -0.60        |       0.50000      |
+|               RSSE                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node12               |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **3** branches under selection among **33** tested.
+
+* Node28, p-value =  0.00000
+* Node30, p-value =  0.00000
+* Node26, p-value =  0.01417
+
+### Annotated Tree
+((KYASANURFD,((((LI,NEGISHI)Node6,WTBE)Node5,(((RSSE,SOLFJIN)Node12,TBE)Node11,VASILCHENK)Node10)Node4,OMSK)Node3)Node1,LANGAT,(((KARSHI,ROYALFARM)Node21,(GADGETGULL,(KADAM,(MEABAN,(SAUMAREZRE,TYULENIY)Node30{7.195675557625236e-07})Node28{3.370637102761975e-13})Node26{0.01417323809292897})Node24)Node20,POWASAN)Node19)
+
+----
+
+```
+ |KYASANURFD (N.S)
+|+Node1 (N.S)
+||   |LI (N.S)
+||  |+Node6 (N.S)
+||  ||NEGISHI (N.S)
+|| |+Node5 (N.S)
+|| ||WTBE (N.S)
+|||+Node4 (N.S)
+||||  |RSSE (N.S)
+|||| |+Node12 (N.S)
+|||| ||SOLFJIN (N.S)
+|||||+Node11 (N.S)
+||||||TBE (N.S)
+||||+Node10 (N.S)
+||| |VASILCHENK (N.S)
+||+Node3 (N.S)
+| |OMSK (N.S)
+|LANGAT (N.S)
+|  |KARSHI (N.S)
+| |+Node21 (N.S)
+| ||ROYALFARM (N.S)
+||+Node20 (N.S)
+||||GADGETGULL (N.S)
+|||+Node24 (N.S)
+|| ||KADAM (N.S)
+|| |+Node26 (0.01417323809292897)
+||  ||MEABAN (N.S)
+||  |+Node28 (3.370637102761975e-13)
+||   ||SAUMAREZRE (N.S)
+||   |+Node30 (7.195675557625236e-07)
+||    |TYULENIY (N.S)
+|+Node19 (N.S)
+ |----------------------POWASAN (N.S)
+```
+

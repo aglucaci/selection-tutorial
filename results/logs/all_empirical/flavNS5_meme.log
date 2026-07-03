@@ -1,0 +1,93 @@
+
+Analysis Description
+--------------------
+MEME (Mixed Effects Model of Evolution) estimates a site-wise synonymous
+(&alpha;) and a two-category mixture of non-synonymous (&beta;-, with
+proportion p-, and &beta;+ with proportion [1-p-]) rates, and uses a
+likelihood ratio test to determine if &beta;+ > &alpha; at a site. The
+estimates aggregate information over a proportion of branches at a site,
+so the signal is derived from episodic diversification, which is a
+combination of strength of selection [effect size] and the proportion of
+the tree affected. A subset of branches can be selected for testing as
+well, in which case an additional (nuisance) parameter will be inferred
+-- the non-synonymous rate on branches NOT selected for testing.
+Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 3.0 adds a different format for
+ancestral state reconstruction, branch-site posterior storage, and
+site-level heterogeneity testing. Version 4 adds support for multiple
+hits and more than 2 rate classes on omega, as well as site-level
+imputation option. Version 4.1 fixes bugs with EBF computation for > 2
+more rates and MH reporting. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Detecting Individual Sites Subject to Episodic Diversifying Selection.
+_PLoS Genet_ 8(7): e1002764.
+
+- __Written by__: Sergei L. Kosakovsky Pond, Steven Weaver
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.1
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **18** sequences, **342** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/flavNS5.nex`
+
+>branches => All
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+The number omega rate classes to include in the model [2 is the strongly recommended default] (permissible range = [2,4], default value = 2, integer): 
+>rates => 2
+
+>multiple-hits => None
+
+>impute-states => No
+
+>precision => standard
+
+
+### Branches to include in the MEME analysis
+Selected 33 branches to include in the MEME analysis: `KYASANURFD, LI, NEGISHI, Node6, WTBE, Node5, RSSE, SOLFJIN, Node12, TBE, Node11, VASILCHENK, Node10, Node4, OMSK, Node3, Node1, LANGAT, KARSHI, ROYALFARM, Node21, GADGETGULL, KADAM, MEABAN, SAUMAREZRE, TYULENIY, Node30, Node28, Node26, Node24, Node20, POWASAN, Node19`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -11349.07, AIC-c = 22780.32 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.714
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -9584.49, AIC-c = 19265.75 (48 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.431
+* non-synonymous/synonymous rate ratio for *test* =   0.0593
+
+>full-model => Yes
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -9495.75
+* Log(L) = -9495.75, AIC-c = 19088.27 (48 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  5.537
+* non-synonymous/synonymous rate ratio for *test* =   0.0406
+
+### For partition 1 these sites are significant at p <=0.1
+
+|   Codon    | Partition  |   alpha    |non-syn rate (beta) distribution, rates : weights|    LRT     |Episodic selection detected?| # branches |         List of most common codon substitutions at this site          |
+|:----------:|:----------:|:----------:|:-----------------------------------------------:|:----------:|:--------------------------:|:----------:|:---------------------------------------------------------------------:|
+|     7      |     1      |    4.039   |             0.00/34.66 : 0.87/0.13              |    3.303   |      Yes, p =  0.0910      |     3      |         [2]gtG>gtC|[1]GTg>AAg,GTG>AGC,gtG>gtA,gtG>gtT,GTg>TCg         |
+|     43     |     1      |    2.284   |             0.00/27.03 : 0.92/0.08              |    4.092   |      Yes, p =  0.0603      |     2      |                 [2]agT>agC|[1]AGc>TCc,Agt>Tgt,tcC>tcA                 |
+|     45     |     1      |    1.308   |             0.00/93.90 : 0.90/0.10              |    4.349   |      Yes, p =  0.0528      |     3      |             [2]gCT>gGA|[1]gcT>gcA,gcT>gcG,Gct>Tct,ggA>ggT             |
+|     85     |     1      |    2.413   |             0.00/35.17 : 0.92/0.08              |    3.999   |      Yes, p =  0.0633      |     2      |             [2]gcA>gcG,gcA>gcT|[1]gcA>gcC,Gca>Tca,GCt>AGt             |
+|    126     |     1      |    0.366   |             0.29/110.68 : 0.89/0.11             |    4.691   |      Yes, p =  0.0442      |     2      |              [1]GaT>CaA,gaT>gaA,gaT>gaG,gAT>gCA,GAT>TCG               |
+|    175     |     1      |    0.683   |             0.00/35.73 : 0.84/0.16              |    6.151   |      Yes, p =  0.0209      |     1      |                 [2]Tca>Gca|[1]GCA>ATG,gCA>gTT,tcA>tcC                 |
+|    281     |     1      |    2.211   |             0.00/46.14 : 0.96/0.04              |    4.215   |      Yes, p =  0.0566      |     1      |                 [2]tcA>tcG|[1]agC>agT,TCA>AGC,tcA>tcT                 |
+
+### ** Found _7_ sites under episodic diversifying positive selection at p <= 0.1**

@@ -1,0 +1,92 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Invertebrate-mtDNA
+>Loaded a multiple sequence alignment with **21** sequences, **510** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/COXI.mtnex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -15439.47, AIC-c = 30973.09 (47 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.338
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -12525.55, AIC-c = 25159.65 (54 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.796
+* non-synonymous/synonymous rate ratio for *test* =   0.0297
+
+### Fitting Standard MG94
+* Log(L) = -12034.71, AIC-c = 24188.09 (59 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0177
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.137               |    73.773     |                                   |
+|               1.652               |    18.250     |                                   |
+|               7.486               |     7.977     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -12027.81, AIC-c = 24176.31 (60 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0155
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.4337
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.211               |    81.766     |                                   |
+|               2.829               |    12.435     |                                   |
+|               8.210               |     5.799     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -12027.83, AIC-c = 24178.36 (61 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.0156
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.4310
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.0000
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.0000
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.214               |    82.080     |                                   |
+|               2.933               |    12.340     |                                   |
+|               8.290               |     5.581     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |-12034.71...|    0.0177  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |-12027.81...|    0.0155  |    0.4337  |       0.0002 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |-12027.83...|    0.0156  |    0.4310  |      0.0010 (2&3-hit rates = 0)    |    0.0000  |      1.0000 (3-hit rate(s) = 0)    |
+
+### 2 individual sites which showed sufficiently strong preference for multiple-hit models
+
+|   Site   |       ER (2 vs 1)       |       ER (3 vs 2)       |                       Substitutions                        |
+|:--------:|:-----------------------:|:-----------------------:|:----------------------------------------------------------:|
+|   271    |           9.3373        |           1.0004        |            GTC->ACC(1)GTA(1)GTT(6), GTT->GTA(1)            |
+|   483    |           8.3955        |           1.0083        |            GAA->GAG(1)TCA(1), TCA->TCC(1)TCG(1)            |
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/COXI_fitmultimodelmh.json'

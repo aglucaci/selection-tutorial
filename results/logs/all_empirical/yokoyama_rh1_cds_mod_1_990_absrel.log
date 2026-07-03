@@ -1,0 +1,410 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **38** sequences, **330** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/yokoyama.rh1.cds.mod.1-990.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 70 branches for testing: `EELA, CONGERA, Node2, EELB, CONGERB, Node5, Node1, CAVEFISH, GOLDFISH, ZEBRAFISH, Node11, Node9, NSAM, NARG, Node19, SPUN, SMIC, SDIA, SXAN, Node23, Node18, NAUR, SSPI, STIE, Node29, Node27, Node17, MVIO, MBER, Node32, Node16, BFNKILLIFISH, ONIL, XCAU, Node38, Node36, THORNYHEAD, Node35, Node15, LAMPFISH, SCABBARDA, SCABBARDB, Node44, VIPERFISH, BLACKDRAGON, Node48, LOOSEJAW, Node47, Node43, Node14, Node8, COELACANTH, CLAWEDFROG, SALAMANDER, Node55, CHAMELEON, PIGEON, CHICKEN, Node62, ZEBRAFINCH, Node61, Node59, BOVINE, DOLPHIN, Node67, ELEPHANT, Node66, Node58, Node54, Node52`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -14860.35, AIC-c = 29877.02 (78 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.089
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -13321.62, AIC-c = 26955.08 (154 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.13, and 95% of the weight in  0.01 - 10000000000.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|             CHAMELEON             |   0.22   |    2     |    0.37 (24.87%)   |   -13318.67   |   26953.29    |    26953.29     |
+|             CHAMELEON             |   0.22   |    3     |    0.37 (24.37%)   |   -13318.67   |   26957.39    |    26953.29     |
+|             ZEBRAFISH             |   0.19   |    2     |    1.09 ( 3.05%)   |   -13316.05   |   26952.16    |    26952.16     |
+|             ZEBRAFISH             |   0.19   |    3     |   73.72 ( 0.78%)   |   -13316.04   |   26956.24    |    26952.16     |
+|             LAMPFISH              |   0.18   |    2     |    3.05 (17.07%)   |   -13289.31   |   26902.78    |    26902.78     |
+|             LAMPFISH              |   0.18   |    3     |    3.06 (17.07%)   |   -13289.31   |   26906.89    |    26902.78     |
+|              Node66               |   0.16   |    2     |    1.44 ( 5.15%)   |   -13283.22   |   26894.71    |    26894.71     |
+|              Node66               |   0.16   |    3     |    1.44 ( 5.13%)   |   -13283.22   |   26898.82    |    26894.71     |
+|            COELACANTH             |   0.14   |    2     |    1.10 (16.41%)   |   -13276.03   |   26884.44    |    26884.44     |
+|            COELACANTH             |   0.14   |    3     |   13.81 ( 0.87%)   |   -13275.74   |   26887.97    |    26884.44     |
+|             CAVEFISH              |   0.13   |    2     |    1.81 (11.36%)   |   -13269.54   |   26875.56    |    26875.56     |
+|             CAVEFISH              |   0.13   |    3     |  428.81 ( 3.38%)   |   -13268.37   |   26877.33    |    26875.56     |
+|            CLAWEDFROG             |   0.12   |    2     |    0.90 (13.47%)   |   -13265.46   |   26871.51    |    26871.51     |
+|            CLAWEDFROG             |   0.12   |    3     |    1.00 ( 0.27%)   |   -13265.46   |   26875.62    |    26871.51     |
+|              Node52               |   0.12   |    2     |  391.67 ( 3.46%)   |   -13245.95   |   26836.59    |    26836.59     |
+|              Node52               |   0.12   |    3     |  108.51 ( 3.47%)   |   -13245.95   |   26840.71    |    26836.59     |
+|             VIPERFISH             |   0.12   |    2     |    0.73 (12.24%)   |   -13243.59   |   26836.00    |    26836.00     |
+|             VIPERFISH             |   0.12   |    3     |  154.48 ( 1.00%)   |   -13242.24   |   26837.41    |    26836.00     |
+|              Node61               |   0.11   |    2     |    1.11 ( 5.32%)   |   -13239.08   |   26831.08    |    26831.08     |
+|              Node61               |   0.11   |    3     |    1.44 ( 1.36%)   |   -13239.10   |   26835.24    |    26831.08     |
+|             GOLDFISH              |   0.11   |    2     |    1.09 (11.69%)   |   -13236.23   |   26829.49    |    26829.49     |
+|             GOLDFISH              |   0.11   |    3     |   18.33 ( 1.69%)   |   -13234.57   |   26830.29    |    26829.49     |
+|            SALAMANDER             |   0.11   |    2     |    1.48 ( 7.43%)   |   -13229.82   |   26820.80    |    26820.80     |
+|            SALAMANDER             |   0.11   |    3     |   >1000 ( 1.72%)   |   -13229.51   |   26824.29    |    26820.80     |
+|           BFNKILLIFISH            |   0.10   |    2     |    5.20 ( 4.61%)   |   -13215.83   |   26796.93    |    26796.93     |
+|           BFNKILLIFISH            |   0.10   |    3     |  144.04 ( 3.01%)   |   -13215.11   |   26799.61    |    26796.93     |
+|             LOOSEJAW              |   0.09   |    2     |  364.63 ( 4.64%)   |   -13201.11   |   26771.62    |    26771.62     |
+|             LOOSEJAW              |   0.09   |    3     |  267.88 ( 4.27%)   |   -13200.84   |   26775.20    |    26771.62     |
+|              Node47               |   0.09   |    2     |    3.61 ( 6.34%)   |   -13190.29   |   26754.08    |    26754.08     |
+|              Node47               |   0.09   |    3     |    6.06 ( 3.95%)   |   -13190.25   |   26758.14    |    26754.08     |
+|               Node5               |   0.09   |    2     |    2.80 ( 2.25%)   |   -13186.45   |   26750.53    |    26750.53     |
+|               Node5               |   0.09   |    3     |  112.42 ( 0.83%)   |   -13186.27   |   26754.29    |    26750.53     |
+|               EELA                |   0.09   |    2     |    2.17 ( 8.84%)   |   -13178.69   |   26739.13    |    26739.13     |
+|               EELA                |   0.09   |    3     |  265.42 ( 1.94%)   |   -13176.96   |   26739.80    |    26739.13     |
+|              Node44               |   0.08   |    2     |    3.12 ( 8.88%)   |   -13171.42   |   26728.72    |    26728.72     |
+|              Node44               |   0.08   |    3     |  391.77 ( 2.02%)   |   -13169.56   |   26729.12    |    26728.72     |
+|            THORNYHEAD             |   0.07   |    2     |  421.88 ( 1.96%)   |   -13165.51   |   26721.01    |    26721.01     |
+|            THORNYHEAD             |   0.07   |    3     |  165.71 ( 1.97%)   |   -13165.50   |   26725.13    |    26721.01     |
+|             SCABBARDA             |   0.07   |    2     |  223.99 ( 1.94%)   |   -13160.04   |   26714.20    |    26714.20     |
+|             SCABBARDA             |   0.07   |    3     |  139.62 ( 1.83%)   |   -13160.08   |   26718.41    |    26714.20     |
+|             SCABBARDB             |   0.07   |    2     |    3.50 (10.76%)   |   -13152.97   |   26704.20    |    26704.20     |
+|             SCABBARDB             |   0.07   |    3     |    4.56 ( 7.06%)   |   -13153.05   |   26708.49    |    26704.20     |
+|             ELEPHANT              |   0.07   |    2     |   0.07 (100.00%)   |   -13152.97   |   26708.32    |    26704.20     |
+|               Node2               |   0.07   |    2     |   >1000 ( 3.82%)   |   -13138.90   |   26680.18    |    26680.18     |
+|               Node2               |   0.07   |    3     |  114.27 ( 3.11%)   |   -13138.55   |   26683.61    |    26680.18     |
+|              Node38               |   0.06   |    2     |    1.89 ( 5.19%)   |   -13136.21   |   26678.94    |    26678.94     |
+|              Node38               |   0.06   |    3     |    1.90 ( 5.22%)   |   -13136.21   |   26683.08    |    26678.94     |
+|              CONGERB              |   0.06   |    2     |    3.65 ( 9.99%)   |   -13130.02   |   26670.70    |    26670.70     |
+|              CONGERB              |   0.06   |    3     |    4.75 ( 6.63%)   |   -13130.03   |   26674.84    |    26670.70     |
+|              CONGERA              |   0.06   |    2     |    0.22 (44.60%)   |   -13130.01   |   26674.81    |    26670.70     |
+|              Node32               |   0.06   |    2     |    1.97 ( 8.38%)   |   -13128.98   |   26672.74    |    26670.70     |
+|              CHICKEN              |   0.06   |    2     |    1.05 ( 3.29%)   |   -13129.85   |   26674.48    |    26670.70     |
+|               EELB                |   0.06   |    2     |    3.70 ( 3.14%)   |   -13127.31   |   26669.40    |    26669.40     |
+|               EELB                |   0.06   |    3     |    5.13 ( 1.98%)   |   -13127.36   |   26673.63    |    26669.40     |
+|              DOLPHIN              |   0.06   |    2     |   0.12 (100.00%)   |   -13127.31   |   26673.53    |    26669.40     |
+|               Node8               |   0.05   |    2     |    6.36 ( 6.55%)   |   -13119.26   |   26657.43    |    26657.43     |
+|               Node8               |   0.05   |    3     |  823.76 ( 2.73%)   |   -13117.73   |   26658.51    |    26657.43     |
+|              Node15               |   0.05   |    2     |    8.86 ( 2.24%)   |   -13115.84   |   26654.74    |    26654.74     |
+|              Node15               |   0.05   |    3     |   12.67 ( 1.68%)   |   -13115.88   |   26658.94    |    26654.74     |
+|              PIGEON               |   0.05   |    2     |    2.54 ( 2.18%)   |   -13115.24   |   26657.67    |    26654.74     |
+|              BOVINE               |   0.05   |    2     |    3.20 ( 7.89%)   |   -13111.34   |   26649.86    |    26649.86     |
+|              BOVINE               |   0.05   |    3     |    4.07 ( 5.15%)   |   -13111.38   |   26654.09    |    26649.86     |
+|              Node14               |   0.05   |    2     |   46.36 ( 3.01%)   |   -13097.59   |   26626.51    |    26626.51     |
+|              Node14               |   0.05   |    3     |   53.30 ( 2.91%)   |   -13097.62   |   26630.71    |    26626.51     |
+|               Node9               |   0.05   |    2     |   23.17 ( 1.55%)   |   -13094.48   |   26624.43    |    26624.43     |
+|               Node9               |   0.05   |    3     |   27.52 ( 1.25%)   |   -13094.46   |   26628.52    |    26624.43     |
+|              Node54               |   0.04   |    2     |    0.33 (27.52%)   |   -13094.33   |   26628.27    |    26624.43     |
+|              Node43               |   0.04   |    2     |    2.59 ( 4.54%)   |   -13092.49   |   26624.58    |    26624.43     |
+|              Node11               |   0.04   |    2     |   >1000 ( 3.29%)   |   -13084.00   |   26607.62    |    26607.62     |
+|              Node11               |   0.04   |    3     |   >1000 ( 3.33%)   |   -13084.01   |   26611.76    |    26607.62     |
+|              Node67               |   0.04   |    2     |    8.39 ( 1.14%)   |   -13079.77   |   26603.29    |    26603.29     |
+|              Node67               |   0.04   |    3     |  197.66 ( 0.86%)   |   -13079.52   |   26606.94    |    26603.29     |
+|              Node48               |   0.04   |    2     |   11.24 ( 8.42%)   |   -13074.23   |   26596.35    |    26596.35     |
+|              Node48               |   0.04   |    3     |   12.88 ( 7.02%)   |   -13074.24   |   26600.53    |    26596.35     |
+|              Node16               |   0.03   |    2     |    7.89 ( 7.22%)   |   -13070.84   |   26593.72    |    26593.72     |
+|              Node16               |   0.03   |    3     |    9.81 ( 5.77%)   |   -13070.85   |   26597.89    |    26593.72     |
+|            BLACKDRAGON            |   0.03   |    2     |   13.51 ( 2.19%)   |   -13068.16   |   26592.51    |    26592.51     |
+|            BLACKDRAGON            |   0.03   |    3     |   86.71 ( 1.59%)   |   -13068.32   |   26596.97    |    26592.51     |
+|            ZEBRAFINCH             |   0.03   |    2     |    0.25 ( 4.56%)   |   -13068.16   |   26596.66    |    26592.51     |
+|               Node1               |   0.03   |    2     |    5.74 ( 2.94%)   |   -13066.16   |   26592.66    |    26592.51     |
+|              Node27               |   0.03   |    2     |    8.79 ( 6.05%)   |   -13064.86   |   26590.05    |    26590.05     |
+|              Node27               |   0.03   |    3     |   10.21 ( 4.97%)   |   -13064.90   |   26594.28    |    26590.05     |
+|              Node35               |   0.03   |    2     |    3.32 ( 6.63%)   |   -13063.96   |   26592.40    |    26590.05     |
+|              Node58               |   0.03   |    2     |    6.08 ( 1.35%)   |   -13064.21   |   26592.90    |    26590.05     |
+|              Node62               |   0.03   |    2     |    0.06 (44.19%)   |   -13064.86   |   26594.20    |    26590.05     |
+|              Node17               |   0.03   |    2     |    0.26 (16.41%)   |   -13064.84   |   26594.15    |    26590.05     |
+|               NAUR                |   0.03   |    2     |    0.26 (19.26%)   |   -13064.86   |   26594.20    |    26590.05     |
+|              Node55               |   0.02   |    2     |   30.43 ( 3.72%)   |   -13060.31   |   26585.11    |    26585.11     |
+|              Node55               |   0.02   |    3     |   >1000 ( 1.55%)   |   -13058.87   |   26586.36    |    26585.11     |
+|               XCAU                |   0.02   |    2     |  103.65 ( 1.91%)   |   -13054.93   |   26578.49    |    26578.49     |
+|               XCAU                |   0.02   |    3     |  105.10 ( 1.86%)   |   -13054.93   |   26582.65    |    26578.49     |
+|               SPUN                |   0.02   |    2     |    6.12 ( 6.59%)   |   -13054.16   |   26581.10    |    26578.49     |
+|              Node23               |   0.02   |    2     |   32.23 ( 3.98%)   |   -13051.60   |   26575.99    |    26575.99     |
+|              Node23               |   0.02   |    3     |   35.63 ( 3.65%)   |   -13051.63   |   26580.19    |    26575.99     |
+|              Node29               |   0.02   |    2     |    6.15 (10.21%)   |   -13051.41   |   26579.76    |    26575.99     |
+|               SXAN                |   0.02   |    2     |    0.39 (96.55%)   |   -13051.60   |   26580.15    |    26575.99     |
+|              Node19               |   0.01   |    2     |   15.48 ( 6.35%)   |   -13049.41   |   26575.76    |    26575.76     |
+|              Node19               |   0.01   |    3     |   16.37 ( 5.73%)   |   -13049.42   |   26579.93    |    26575.76     |
+|              Node36               |   0.01   |    2     |    5.49 ( 4.46%)   |   -13048.84   |   26578.78    |    26575.76     |
+|               MBER                |   0.01   |    2     |    0.61 (50.78%)   |   -13049.41   |   26579.90    |    26575.76     |
+|               ONIL                |   0.01   |    2     |    1.49 (63.78%)   |   -13049.41   |   26579.92    |    26575.76     |
+|               SSPI                |   0.01   |    2     |   57.58 ( 0.73%)   |   -13046.61   |   26574.31    |    26574.31     |
+|               SSPI                |   0.01   |    3     |   76.71 ( 0.68%)   |   -13046.66   |   26578.57    |    26574.31     |
+|               SMIC                |   0.01   |    2     |    0.60 (75.67%)   |   -13046.61   |   26578.47    |    26574.31     |
+|               SDIA                |   0.01   |    2     |    0.73 ( 9.43%)   |   -13046.61   |   26578.47    |    26574.31     |
+|               NARG                |   0.01   |    2     |   74.94 ( 0.58%)   |   -13043.61   |   26572.46    |    26572.46     |
+|               NARG                |   0.01   |    3     |   76.79 ( 0.57%)   |   -13043.62   |   26576.65    |    26572.46     |
+|               STIE                |   0.00   |    2     |    0.25 ( 0.00%)   |   -13043.60   |   26576.60    |    26572.46     |
+|               MVIO                |   0.00   |    2     |    5.02 (31.53%)   |   -13043.59   |   26576.58    |    26572.46     |
+|              Node59               |   0.00   |    2     |    0.25 ( 2.00%)   |   -13048.22   |   26585.84    |    26572.46     |
+|               NSAM                |   0.00   |    2     |  >1000 (100.00%)   |   -13043.54   |   26576.49    |    26572.46     |
+|              Node18               |   0.00   |    2     |    0.25 ( 2.00%)   |   -13043.22   |   26575.84    |    26572.46     |
+
+### Rate class analyses summary
+*  42 branches with **2** rate classes
+*  28 branches with **1** rate classes
+
+### Annotated Tree
+(((EELA{2},CONGERA{1})Node2{2},(EELB{2},CONGERB{2})Node5{2})Node1{1},((CAVEFISH{2},(GOLDFISH{2},ZEBRAFISH{2})Node11{2})Node9{2},((((((NSAM{1},NARG{2})Node19{2},SPUN{1},(SMIC{1},SDIA{1},SXAN{1})Node23{2})Node18{1},(NAUR{1},(SSPI{2},STIE{1})Node29{1})Node27{2})Node17{1},(MVIO{1},MBER{1})Node32{1})Node16{2},((BFNKILLIFISH{2},(ONIL{1},XCAU{2})Node38{2})Node36{1},THORNYHEAD{2})Node35{1})Node15{2},LAMPFISH{2},((SCABBARDA{2},SCABBARDB{2})Node44{2},((VIPERFISH{2},BLACKDRAGON{2})Node48{2},LOOSEJAW{2})Node47{2})Node43{1})Node14{2})Node8{2},(COELACANTH{2},((CLAWEDFROG{2},SALAMANDER{2})Node55{2},((CHAMELEON{2},((PIGEON{1},CHICKEN{1})Node62{1},ZEBRAFINCH{1})Node61{2})Node59{1},((BOVINE{2},DOLPHIN{1})Node67{2},ELEPHANT{1})Node66{2})Node58{1})Node54{1})Node52{2})
+
+----
+
+```
+     |---EELA (2)
+  |--+Node2 (2)
+  |  |--CONGERA (1)
+|-+Node1 (1)
+| |   |--EELB (2)
+| |---+Node5 (2)
+|     |--CONGERB (2)
+|     |-----CAVEFISH (2)
+|  |--+Node9 (2)
+|  |  | |----GOLDFISH (2)
+|  |  |-+Node11 (2)
+|  |    |-------ZEBRAFISH (2)
+|--+Node8 (2)
+|  |            |NSAM (1)
+|  |          |-+Node19 (2)
+|  |          | |NARG (2)
+|  |         |+Node18 (1)
+|  |         ||-SPUN (1)
+|  |         || |SMIC (1)
+|  |         ||-+Node23 (2)
+|  |         |  |SDIA (1)
+|  |         |  |-SXAN (1)
+|  |       |-+Node17 (1)
+|  |       | | |-NAUR (1)
+|  |       | |-+Node27 (2)
+|  |       |   | |SSPI (2)
+|  |       |   |-+Node29 (1)
+|  |       |     |STIE (1)
+|  |     |-+Node16 (2)
+|  |     | |  |MVIO (1)
+|  |     | |--+Node32 (1)
+|  |     |    |MBER (1)
+|  |  |--+Node15 (2)
+|  |  |  |   |---BFNKILLIFISH (2)
+|  |  |  | |-+Node36 (1)
+|  |  |  | | |  |ONIL (1)
+|  |  |  | | |--+Node38 (2)
+|  |  |  | |    |-XCAU (2)
+|  |  |  |-+Node35 (1)
+|  |  |    |---THORNYHEAD (2)
+|  |--+Node14 (2)
+|     |------LAMPFISH (2)
+|     |     |--SCABBARDA (2)
+|     | |---+Node44 (2)
+|     | |   |--SCABBARDB (2)
+|     |-+Node43 (1)
+|       |     |----VIPERFISH (2)
+|       |   |-+Node48 (2)
+|       |   | |-BLACKDRAGON (2)
+|       |---+Node47 (2)
+|           |---LOOSEJAW (2)
+|    |-----COELACANTH (2)
+|----+Node52 (2)
+     |    |----CLAWEDFROG (2)
+     |  |-+Node55 (2)
+     |  | |----SALAMANDER (2)
+     |--+Node54 (1)
+        |  |--------CHAMELEON (2)
+        | |+Node59 (1)
+        | ||      |--PIGEON (1)
+        | ||    |-+Node62 (1)
+        | ||    | |--CHICKEN (1)
+        | ||----+Node61 (2)
+        | |     |-ZEBRAFINCH (1)
+        |-+Node58 (1)
+          |        |--BOVINE (2)
+          |      |-+Node67 (2)
+          |      | |--DOLPHIN (1)
+          |------+Node66 (2)
+                 |--ELEPHANT (1)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -12950.61, AIC-c = 26386.47 (238 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|             CHAMELEON             |     2    |    0.32 (23.39%)   |       N/A        |        0.00        |       1.00000      |
+|             ZEBRAFISH             |     2    |    0.64 ( 2.95%)   |       N/A        |        0.00        |       1.00000      |
+|             LAMPFISH              |     2    |    2.29 (17.72%)   |         42       |        5.43        |       0.02382      |
+|              Node66               |     2    |    0.99 ( 5.50%)   |       N/A        |        0.00        |       1.00000      |
+|            COELACANTH             |     2    |    4.06 ( 3.86%)   |          7       |        1.24        |       0.21428      |
+|             CAVEFISH              |     2    |  556.78 ( 3.53%)   |          4       |        2.30        |       0.12083      |
+|            CLAWEDFROG             |     2    |    0.78 (12.68%)   |       N/A        |        0.00        |       1.00000      |
+|              Node52               |     2    |   56.73 ( 3.79%)   |          9       |       10.60        |       0.00172      |
+|             VIPERFISH             |     2    |  540.15 ( 1.20%)   |          2       |        1.58        |       0.17765      |
+|              Node61               |     2    |    0.89 ( 5.10%)   |       N/A        |        0.00        |       1.00000      |
+|             GOLDFISH              |     2    |    1.01 ( 9.66%)   |          2       |       -0.02        |       0.50000      |
+|            SALAMANDER             |     2    |    1.26 ( 7.33%)   |         13       |        0.12        |       0.42928      |
+|           BFNKILLIFISH            |     2    |   41.23 ( 3.08%)   |          6       |        6.80        |       0.01184      |
+|             LOOSEJAW              |     2    |   25.89 ( 4.89%)   |          7       |        5.91        |       0.01866      |
+|              Node47               |     2    |    2.83 ( 6.33%)   |         10       |        2.73        |       0.09620      |
+|               Node5               |     2    |    2.50 ( 2.28%)   |          3       |        0.63        |       0.30406      |
+|               EELA                |     2    |    1.83 ( 9.19%)   |         16       |        0.97        |       0.24992      |
+|              Node44               |     2    |   >1000 ( 2.24%)   |          3       |        7.74        |       0.00732      |
+|            THORNYHEAD             |     2    |   43.84 ( 1.89%)   |          3       |        4.60        |       0.03655      |
+|             SCABBARDA             |     2    |   68.26 ( 1.05%)   |          1       |        3.70        |       0.05809      |
+|             SCABBARDB             |     2    |    2.32 (10.87%)   |         11       |        1.73        |       0.16398      |
+|             ELEPHANT              |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     2    |   >1000 ( 2.53%)   |          4       |        6.99        |       0.01073      |
+|              Node38               |     2    |    1.45 ( 5.25%)   |          5       |        0.15        |       0.41765      |
+|              CONGERB              |     2    |    3.07 ( 7.21%)   |          4       |        1.34        |       0.20275      |
+|              CONGERA              |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node32               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              CHICKEN              |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               EELB                |     2    |    2.97 ( 3.65%)   |          6       |        0.91        |       0.25846      |
+|              DOLPHIN              |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node8               |     2    |    4.04 ( 6.78%)   |          7       |        1.92        |       0.14780      |
+|              Node15               |     2    |    5.01 ( 1.41%)   |          2       |        1.35        |       0.20194      |
+|              PIGEON               |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              BOVINE               |     2    |    2.18 ( 8.56%)   |         12       |        0.91        |       0.25901      |
+|              Node14               |     2    |   38.41 ( 2.91%)   |          3       |       10.16        |       0.00215      |
+|               Node9               |     2    |   >1000 ( 0.54%)   |          1       |        2.20        |       0.12770      |
+|              Node54               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node43               |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node11               |     2    |   >1000 ( 3.60%)   |          6       |       11.48        |       0.00111      |
+|              Node67               |     2    |   >1000 ( 1.27%)   |          4       |        4.01        |       0.04950      |
+|              Node48               |     2    |    7.37 ( 7.93%)   |          9       |        4.05        |       0.04853      |
+|              Node16               |     2    |    7.43 ( 6.92%)   |         11       |        5.20        |       0.02675      |
+|            BLACKDRAGON            |     2    |    6.96 ( 2.15%)   |          5       |        1.86        |       0.15267      |
+|            ZEBRAFINCH             |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node1               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node27               |     2    |    5.75 ( 7.03%)   |         11       |        2.94        |       0.08607      |
+|              Node35               |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node58               |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node62               |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node17               |     1    |   0.19 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               NAUR                |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node55               |     2    |   21.18 ( 3.67%)   |          8       |        4.17        |       0.04549      |
+|               XCAU                |     2    |  155.79 ( 1.53%)   |          3       |       10.87        |       0.00150      |
+|               SPUN                |     1    |   0.19 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node23               |     2    |   24.64 ( 4.46%)   |          8       |        5.44        |       0.02370      |
+|              Node29               |     1    |   0.38 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               SXAN                |     1    |   0.31 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node19               |     2    |   13.38 ( 6.07%)   |          7       |        3.36        |       0.06944      |
+|              Node36               |     1    |   0.14 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               MBER                |     1    |   0.46 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               ONIL                |     1    |   1.20 (100.00%)   |       N/A        |        0.01        |       0.47847      |
+|               SSPI                |     2    |   33.65 ( 0.81%)   |          2       |        3.53        |       0.06339      |
+|               SMIC                |     1    |   0.50 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               SDIA                |     1    |   0.06 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               NARG                |     2    |   55.24 ( 0.52%)   |          1       |        4.28        |       0.04311      |
+|               STIE                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               MVIO                |     1    |   2.21 (100.00%)   |       N/A        |        0.11        |       0.43334      |
+|              Node59               |     1    |  >1000 (100.00%)   |       N/A        |        0.09        |       0.44078      |
+|               NSAM                |     1    |  >1000 (100.00%)   |       N/A        |        1.32        |       0.20474      |
+|              Node18               |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **70** tested.
+
+
+### Annotated Tree
+(((EELA,CONGERA)Node2,(EELB,CONGERB)Node5)Node1,((CAVEFISH,(GOLDFISH,ZEBRAFISH)Node11)Node9,((((((NSAM,NARG)Node19,SPUN,(SMIC,SDIA,SXAN)Node23)Node18,(NAUR,(SSPI,STIE)Node29)Node27)Node17,(MVIO,MBER)Node32)Node16,((BFNKILLIFISH,(ONIL,XCAU)Node38)Node36,THORNYHEAD)Node35)Node15,LAMPFISH,((SCABBARDA,SCABBARDB)Node44,((VIPERFISH,BLACKDRAGON)Node48,LOOSEJAW)Node47)Node43)Node14)Node8,(COELACANTH,((CLAWEDFROG,SALAMANDER)Node55,((CHAMELEON,((PIGEON,CHICKEN)Node62,ZEBRAFINCH)Node61)Node59,((BOVINE,DOLPHIN)Node67,ELEPHANT)Node66)Node58)Node54)Node52)
+
+----
+
+```
+     |---EELA (N.S)
+  |--+Node2 (N.S)
+  |  |--CONGERA (N.S)
+|-+Node1 (N.S)
+| |   |--EELB (N.S)
+| |---+Node5 (N.S)
+|     |--CONGERB (N.S)
+|     |-----CAVEFISH (N.S)
+|  |--+Node9 (N.S)
+|  |  | |----GOLDFISH (N.S)
+|  |  |-+Node11 (N.S)
+|  |    |-------ZEBRAFISH (N.S)
+|--+Node8 (N.S)
+|  |            |NSAM (N.S)
+|  |          |-+Node19 (N.S)
+|  |          | |NARG (N.S)
+|  |         |+Node18 (N.S)
+|  |         ||-SPUN (N.S)
+|  |         || |SMIC (N.S)
+|  |         ||-+Node23 (N.S)
+|  |         |  |SDIA (N.S)
+|  |         |  |-SXAN (N.S)
+|  |       |-+Node17 (N.S)
+|  |       | | |-NAUR (N.S)
+|  |       | |-+Node27 (N.S)
+|  |       |   | |SSPI (N.S)
+|  |       |   |-+Node29 (N.S)
+|  |       |     |STIE (N.S)
+|  |     |-+Node16 (N.S)
+|  |     | |  |MVIO (N.S)
+|  |     | |--+Node32 (N.S)
+|  |     |    |MBER (N.S)
+|  |  |--+Node15 (N.S)
+|  |  |  |   |---BFNKILLIFISH (N.S)
+|  |  |  | |-+Node36 (N.S)
+|  |  |  | | |  |ONIL (N.S)
+|  |  |  | | |--+Node38 (N.S)
+|  |  |  | |    |-XCAU (N.S)
+|  |  |  |-+Node35 (N.S)
+|  |  |    |---THORNYHEAD (N.S)
+|  |--+Node14 (N.S)
+|     |------LAMPFISH (N.S)
+|     |     |--SCABBARDA (N.S)
+|     | |---+Node44 (N.S)
+|     | |   |--SCABBARDB (N.S)
+|     |-+Node43 (N.S)
+|       |     |----VIPERFISH (N.S)
+|       |   |-+Node48 (N.S)
+|       |   | |-BLACKDRAGON (N.S)
+|       |---+Node47 (N.S)
+|           |---LOOSEJAW (N.S)
+|    |-----COELACANTH (N.S)
+|----+Node52 (N.S)
+     |    |----CLAWEDFROG (N.S)
+     |  |-+Node55 (N.S)
+     |  | |----SALAMANDER (N.S)
+     |--+Node54 (N.S)
+        |  |--------CHAMELEON (N.S)
+        | |+Node59 (N.S)
+        | ||      |--PIGEON (N.S)
+        | ||    |-+Node62 (N.S)
+        | ||    | |--CHICKEN (N.S)
+        | ||----+Node61 (N.S)
+        | |     |-ZEBRAFINCH (N.S)
+        |-+Node58 (N.S)
+          |        |--BOVINE (N.S)
+          |      |-+Node67 (N.S)
+          |      | |--DOLPHIN (N.S)
+          |------+Node66 (N.S)
+                 |--ELEPHANT (N.S)
+```
+

@@ -1,0 +1,231 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **17** sequences, **144** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/bglobin.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 31 branches for testing: `ELEPHSEAL, PIG, COW, SHEEP, Node6, Node4, Node2, BUSHBABY, HARE, RABBIT, Node12, Node10, HUMAN, TARSIER, Node15, Node9, Node1, HAMSTER, RAT, MOUSE, Node20, Node18, MARSUPIAL, DUCK, CHICKEN, Node26, XENLAEV, XENTROP, Node29, Node25, Node23`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -3925.80, AIC-c =  7930.03 (39 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.041
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -3767.93, AIC-c =  7692.80 (76 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.35, and 95% of the weight in  0.03 - 10000000000.00
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|              Node29               |   0.51   |    2     |    0.61 (45.09%)   |   -3764.83    |    7690.86    |     7690.86     |
+|              Node29               |   0.51   |    3     |    1.67 (17.13%)   |   -3764.54    |    7694.55    |     7690.86     |
+|             MARSUPIAL             |   0.25   |    2     |    8.64 (17.46%)   |   -3746.67    |    7658.81    |     7658.81     |
+|             MARSUPIAL             |   0.25   |    3     |   20.81 (13.57%)   |   -3745.74    |    7661.24    |     7658.81     |
+|              XENTROP              |   0.24   |    2     |    1.40 (25.88%)   |   -3742.16    |    7654.07    |     7654.07     |
+|              XENTROP              |   0.24   |    3     |    4.19 (10.43%)   |   -3741.68    |    7657.40    |     7654.07     |
+|              Node26               |   0.12   |    2     |  855.84 (11.07%)   |   -3729.76    |    7633.57    |     7633.57     |
+|              Node26               |   0.12   |    3     |   >1000 (11.01%)   |   -3729.76    |    7637.86    |     7633.57     |
+|              HAMSTER              |   0.11   |    2     |    4.74 (22.75%)   |   -3723.91    |    7626.17    |     7626.17     |
+|              HAMSTER              |   0.11   |    3     |    4.73 (22.67%)   |   -3723.92    |    7630.47    |     7626.17     |
+|                PIG                |   0.10   |    2     |    3.80 (13.09%)   |   -3717.05    |    7616.75    |     7616.75     |
+|                PIG                |   0.10   |    3     |    3.78 (13.06%)   |   -3717.06    |    7621.06    |     7616.75     |
+|              XENLAEV              |   0.10   |    2     |   10.33 (12.57%)   |   -3712.49    |    7611.93    |     7611.93     |
+|              XENLAEV              |   0.10   |    3     |    9.46 (13.14%)   |   -3712.49    |    7616.25    |     7611.93     |
+|              Node25               |   0.08   |    2     |    4.42 ( 8.41%)   |   -3711.49    |    7614.24    |     7611.93     |
+|              Node23               |   0.08   |    2     |  298.91 ( 4.48%)   |   -3710.13    |    7611.53    |     7611.53     |
+|              Node23               |   0.08   |    3     |  298.45 ( 4.42%)   |   -3710.13    |    7615.85    |     7611.53     |
+|              TARSIER              |   0.08   |    2     |   0.14 (100.00%)   |   -3710.13    |    7615.85    |     7611.53     |
+|              Node18               |   0.07   |    2     |  161.89 ( 7.49%)   |   -3700.63    |    7596.85    |     7596.85     |
+|              Node18               |   0.07   |    3     |  164.62 ( 7.43%)   |   -3700.64    |    7601.20    |     7596.85     |
+|             ELEPHSEAL             |   0.07   |    2     |   17.26 ( 2.27%)   |   -3698.56    |    7597.05    |     7596.85     |
+|               HUMAN               |   0.06   |    2     |    1.99 (10.01%)   |   -3699.54    |    7599.00    |     7596.85     |
+|               MOUSE               |   0.06   |    2     |    9.01 (10.09%)   |   -3695.96    |    7591.84    |     7591.84     |
+|               MOUSE               |   0.06   |    3     |    9.04 ( 9.95%)   |   -3695.96    |    7596.18    |     7591.84     |
+|               DUCK                |   0.05   |    2     |    0.06 (97.84%)   |   -3695.96    |    7596.17    |     7591.84     |
+|              Node12               |   0.05   |    2     |    3.10 ( 9.16%)   |   -3694.26    |    7592.78    |     7591.84     |
+|             BUSHBABY              |   0.05   |    2     |   27.13 ( 2.63%)   |   -3691.63    |    7587.51    |     7587.51     |
+|             BUSHBABY              |   0.05   |    3     |   29.30 ( 2.46%)   |   -3691.63    |    7591.87    |     7587.51     |
+|                RAT                |   0.04   |    2     |   >1000 ( 1.75%)   |   -3688.48    |    7585.57    |     7585.57     |
+|                RAT                |   0.04   |    3     |  559.86 ( 1.13%)   |   -3688.12    |    7589.20    |     7585.57     |
+|               Node6               |   0.04   |    2     |   32.30 ( 3.96%)   |   -3686.03    |    7585.01    |     7585.01     |
+|               Node6               |   0.04   |    3     |   34.58 ( 3.82%)   |   -3686.03    |    7589.38    |     7585.01     |
+|               Node1               |   0.04   |    2     |   19.62 ( 2.53%)   |   -3684.07    |    7585.46    |     7585.01     |
+|               SHEEP               |   0.03   |    2     |   28.10 ( 5.86%)   |   -3680.24    |    7577.79    |     7577.79     |
+|               SHEEP               |   0.03   |    3     |   30.66 ( 5.33%)   |   -3680.29    |    7582.27    |     7577.79     |
+|              CHICKEN              |   0.03   |    2     |    0.04 (82.09%)   |   -3680.23    |    7582.14    |     7577.79     |
+|              Node20               |   0.02   |    2     |    0.18 (31.40%)   |   -3702.50    |    7626.69    |     7577.79     |
+|               Node9               |   0.02   |    2     |    0.53 (86.63%)   |   -3680.20    |    7582.09    |     7577.79     |
+|                COW                |   0.02   |    2     |   64.99 ( 1.46%)   |   -3679.56    |    7580.80    |     7577.79     |
+|              RABBIT               |   0.02   |    2     |   46.32 ( 2.44%)   |   -3673.02    |    7567.73    |     7567.73     |
+|              RABBIT               |   0.02   |    3     |   48.84 ( 2.32%)   |   -3673.05    |    7572.16    |     7567.73     |
+|               Node4               |   0.02   |    2     |   46.78 ( 2.53%)   |   -3670.93    |    7567.93    |     7567.73     |
+|               Node2               |   0.02   |    2     |   22.01 ( 2.08%)   |   -3671.32    |    7568.70    |     7567.73     |
+|              Node15               |   0.01   |    2     |  200.54 ( 2.41%)   |   -3664.92    |    7555.90    |     7555.90     |
+|              Node15               |   0.01   |    3     |  192.73 ( 2.32%)   |   -3664.94    |    7560.34    |     7555.90     |
+|               HARE                |   0.01   |    2     |    0.74 (24.08%)   |   -3664.90    |    7560.25    |     7555.90     |
+|              Node10               |   0.01   |    2     |    0.18 (31.40%)   |   -3668.60    |    7567.65    |     7555.90     |
+
+### Rate class analyses summary
+*  16 branches with **2** rate classes
+*  15 branches with **1** rate classes
+
+### Annotated Tree
+(((ELEPHSEAL{1},(PIG{2},(COW{1},SHEEP{2})Node6{2})Node4{1})Node2{1},((BUSHBABY{2},(HARE{1},RABBIT{2})Node12{1})Node10{1},(HUMAN{1},TARSIER{1})Node15{2})Node9{1})Node1{1},(HAMSTER{2},(RAT{2},MOUSE{2})Node20{1})Node18{2},(MARSUPIAL{2},((DUCK{1},CHICKEN{1})Node26{2},(XENLAEV{2},XENTROP{2})Node29{2})Node25{1})Node23{2})
+
+----
+
+```
+    |--ELEPHSEAL (1)
+  |-+Node2 (1)
+  | | |---PIG (2)
+  | |-+Node4 (1)
+  |   | |-COW (1)
+  |   |-+Node6 (2)
+  |     |-SHEEP (2)
+|-+Node1 (1)
+| |  |--BUSHBABY (2)
+| | |+Node10 (1)
+| | ||  |HARE (1)
+| | ||--+Node12 (1)
+| | |   |-RABBIT (2)
+| |-+Node9 (1)
+|   ||--HUMAN (1)
+|   |+Node15 (2)
+|    |---TARSIER (1)
+|  |----HAMSTER (2)
+|--+Node18 (2)
+|  | |-RAT (2)
+|  |-+Node20 (1)
+|    |--MOUSE (2)
+|   |--------MARSUPIAL (2)
+|---+Node23 (2)
+    |        |--DUCK (1)
+    |   |----+Node26 (2)
+    |   |    |-CHICKEN (1)
+    |---+Node25 (1)
+        |                 |---XENLAEV (2)
+        |-----------------+Node29 (2)
+                          |--------XENTROP (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -3631.57, AIC-c =  7489.20 (108 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|              Node29               |     2    |    1.17 (24.79%)   |          1       |        0.04        |       0.46338      |
+|             MARSUPIAL             |     2    |   >1000 (13.05%)   |          9       |        9.66        |       0.00277      |
+|              XENTROP              |     2    |    6.29 ( 6.20%)   |          2       |        2.85        |       0.09022      |
+|              Node26               |     2    |   >1000 ( 8.63%)   |          5       |        5.46        |       0.02351      |
+|              HAMSTER              |     2    |    3.76 (22.34%)   |         19       |        5.45        |       0.02356      |
+|                PIG                |     2    |    2.44 (14.32%)   |         12       |        1.86        |       0.15257      |
+|              XENLAEV              |     2    |   10.38 (14.49%)   |          6       |        3.15        |       0.07731      |
+|              Node25               |     1    |   0.11 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node23               |     2    |  172.69 ( 5.42%)   |          2       |        4.09        |       0.04748      |
+|              TARSIER              |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node18               |     2    |  393.73 ( 7.06%)   |          6       |       14.40        |       0.00025      |
+|             ELEPHSEAL             |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               HUMAN               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               MOUSE               |     2    |   16.03 ( 5.90%)   |          3       |        7.74        |       0.00735      |
+|               DUCK                |     1    |   0.03 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node12               |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             BUSHBABY              |     2    |   20.55 ( 2.58%)   |          2       |        3.85        |       0.05362      |
+|                RAT                |     2    |   >1000 ( 1.00%)   |          1       |        2.35        |       0.11758      |
+|               Node6               |     2    |   20.53 ( 5.44%)   |          3       |        4.31        |       0.04227      |
+|               Node1               |     1    |   0.01 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               SHEEP               |     2    |   36.00 ( 5.09%)   |          5       |       10.86        |       0.00151      |
+|              CHICKEN              |     1    |   0.04 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node20               |     1    |  >1000 (100.00%)   |       N/A        |        1.06        |       0.23744      |
+|               Node9               |     1    |   0.47 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                COW                |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              RABBIT               |     2    |   24.35 ( 2.69%)   |          3       |        7.49        |       0.00832      |
+|               Node4               |     1    |   0.22 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node15               |     2    |  188.47 ( 2.42%)   |          3       |       10.72        |       0.00162      |
+|               HARE                |     1    |   0.34 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node10               |     1    |  >1000 (100.00%)   |       N/A        |        0.20        |       0.40290      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **3** branches under selection among **31** tested.
+
+* Node18, p-value =  0.00787
+* SHEEP, p-value =  0.04531
+* Node15, p-value =  0.04702
+
+### Annotated Tree
+(((ELEPHSEAL,(PIG,(COW,SHEEP{0.04530797548104593})Node6)Node4)Node2,((BUSHBABY,(HARE,RABBIT)Node12)Node10,(HUMAN,TARSIER)Node15{0.04701908105880059})Node9)Node1,(HAMSTER,(RAT,MOUSE)Node20)Node18{0.007873346028223871},(MARSUPIAL,((DUCK,CHICKEN)Node26,(XENLAEV,XENTROP)Node29)Node25)Node23)
+
+----
+
+```
+    |--ELEPHSEAL (N.S)
+  |-+Node2 (N.S)
+  | | |---PIG (N.S)
+  | |-+Node4 (N.S)
+  |   | |-COW (N.S)
+  |   |-+Node6 (N.S)
+  |     |-SHEEP (0.04530797548104593)
+|-+Node1 (N.S)
+| |  |--BUSHBABY (N.S)
+| | |+Node10 (N.S)
+| | ||  |HARE (N.S)
+| | ||--+Node12 (N.S)
+| | |   |-RABBIT (N.S)
+| |-+Node9 (N.S)
+|   ||--HUMAN (N.S)
+|   |+Node15 (0.04701908105880059)
+|    |---TARSIER (N.S)
+|  |----HAMSTER (N.S)
+|--+Node18 (0.007873346028223871)
+|  | |-RAT (N.S)
+|  |-+Node20 (N.S)
+|    |--MOUSE (N.S)
+|   |--------MARSUPIAL (N.S)
+|---+Node23 (N.S)
+    |        |--DUCK (N.S)
+    |   |----+Node26 (N.S)
+    |   |    |-CHICKEN (N.S)
+    |---+Node25 (N.S)
+        |                 |---XENLAEV (N.S)
+        |-----------------+Node29 (N.S)
+                          |--------XENTROP (N.S)
+```
+

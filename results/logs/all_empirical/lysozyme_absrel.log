@@ -1,0 +1,209 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **19** sequences, **130** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/lysozyme.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 33 branches for testing: `LANGUR_SEN_SVE, LANGUR_TOB_TFR, DOUC_LANGUR_PNE, Node4, PROBISCIS_NLA, Node3, COLOBUS_CGU_CAN, Node2, BABOON_PCY, MANGABEY_CAT, Node12, RHESUS_MMU, Node11, ALLEN_ANI, TALAPOIN_MTA, PATAS_EPA, VERVET_CAE, Node19, Node17, Node10, Node1, HUMAN, CHIMP_BONOBO_GORILLA, Node24, ORANGUTAN_PPY, Node23, GIBBON_GGO, Node22, SQUIRREL_M, TAMARIN_SOE, MARMOSET_CJA, Node31, Node29`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 3 zero-length internal branches: `Node11, Node12, Node31`
+* Log(L) = -1057.87, AIC-c =  2198.20 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.226
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -1013.12, AIC-c =  2178.87 (74 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.56, and 95% of the weight in  0.00 -  3.72
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|              Node29               |   0.04   |    2     |   11.25 ( 4.18%)   |   -1011.34    |    2179.58    |     2178.87     |
+|               Node2               |   0.03   |    2     |   3.70 (100.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|              Node22               |   0.02   |    2     |    0.25 ( 2.00%)   |   -1043.26    |    2243.41    |     2178.87     |
+|               Node1               |   0.01   |    2     |   1.62 (100.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|           MARMOSET_CJA            |   0.01   |    2     |    0.99 ( 9.79%)   |   -1013.13    |    2183.14    |     2178.87     |
+|          COLOBUS_CGU_CAN          |   0.01   |    2     |   1.50 (100.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|            GIBBON_GGO             |   0.01   |    2     |    0.50 ( 5.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|            TAMARIN_SOE            |   0.01   |    2     |    0.26 (50.83%)   |   -1013.12    |    2183.13    |     2178.87     |
+|               Node3               |   0.01   |    2     |    0.99 (49.42%)   |   -1013.12    |    2183.13    |     2178.87     |
+|            SQUIRREL_M             |   0.01   |    2     |    0.80 (52.50%)   |   -1013.12    |    2183.13    |     2178.87     |
+|          DOUC_LANGUR_PNE          |   0.01   |    2     |    0.27 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|              Node10               |   0.01   |    2     |    0.50 (50.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|             ALLEN_ANI             |   0.01   |    2     |  >1000 (100.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|               HUMAN               |   0.01   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|           TALAPOIN_MTA            |   0.01   |    2     |    0.40 (95.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|             PATAS_EPA             |   0.01   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|              Node17               |   0.00   |    2     |    0.25 ( 2.00%)   |   -1019.63    |    2196.15    |     2178.87     |
+|              Node24               |   0.00   |    2     |   1.00 (100.00%)   |   -1013.45    |    2183.79    |     2178.87     |
+|               Node4               |   0.00   |    2     |  >1000 (100.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|            RHESUS_MMU             |   0.00   |    2     |   1.00 (100.00%)   |   -1013.45    |    2183.80    |     2178.87     |
+|            BABOON_PCY             |   0.00   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|              Node19               |   0.00   |    2     |    0.27 (31.40%)   |   -1017.68    |    2192.25    |     2178.87     |
+|          LANGUR_SEN_SVE           |   0.00   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|            VERVET_CAE             |   0.00   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|           PROBISCIS_NLA           |   0.00   |    2     |    0.25 ( 0.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|              Node23               |   0.00   |    2     |    0.27 (31.40%)   |   -1014.80    |    2186.49    |     2178.87     |
+|       CHIMP_BONOBO_GORILLA        |   0.00   |    2     |    0.50 ( 2.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|           ORANGUTAN_PPY           |   0.00   |    2     |    0.50 ( 2.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|           MANGABEY_CAT            |   0.00   |    2     |    0.25 ( 5.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+|          LANGUR_TOB_TFR           |   0.00   |    2     |    0.25 ( 2.00%)   |   -1013.12    |    2183.13    |     2178.87     |
+
+### Rate class analyses summary
+*  30 branches with **1** rate classes
+
+### Annotated Tree
+(((((LANGUR_SEN_SVE{1},LANGUR_TOB_TFR{1},DOUC_LANGUR_PNE{1})Node4{1},PROBISCIS_NLA{1})Node3{1},COLOBUS_CGU_CAN{1})Node2{1},(ALLEN_ANI{1},(TALAPOIN_MTA{1},(PATAS_EPA{1},VERVET_CAE{1})Node19{1})Node17{1},RHESUS_MMU{1},BABOON_PCY{1},MANGABEY_CAT{1})Node10{1})Node1{1},(((HUMAN{1},CHIMP_BONOBO_GORILLA{1})Node24{1},ORANGUTAN_PPY{1})Node23{1},GIBBON_GGO{1})Node22{1},(SQUIRREL_M{1},TAMARIN_SOE{1},MARMOSET_CJA{1})Node29{1})
+
+----
+
+```
+                      |-LANGUR_SEN_SVE (1)
+                    |-+Node4 (1)
+                    | |LANGUR_TOB_TFR (1)
+                    | |---DOUC_LANGUR_PNE (1)
+                |---+Node3 (1)
+                |   |-PROBISCIS_NLA (1)
+      |---------+Node2 (1)
+      |         |----COLOBUS_CGU_CAN (1)
+|-----+Node1 (1)
+|     |  |--ALLEN_ANI (1)
+|     |  | |--TALAPOIN_MTA (1)
+|     |  |-+Node17 (1)
+|     |  | | |--PATAS_EPA (1)
+|     |  | |-+Node19 (1)
+|     |  |   |-VERVET_CAE (1)
+|     |--+Node10 (1)
+|        |-RHESUS_MMU (1)
+|        |-BABOON_PCY (1)
+|        |MANGABEY_CAT (1)
+|            |--HUMAN (1)
+|          |-+Node24 (1)
+|          | |CHIMP_BONOBO_GORILLA (1)
+|        |-+Node23 (1)
+|        | |ORANGUTAN_PPY (1)
+|--------+Node22 (1)
+|        |----GIBBON_GGO (1)
+|              |---SQUIRREL_M (1)
+|--------------+Node29 (1)
+               |----TAMARIN_SOE (1)
+               |----MARMOSET_CJA (1)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -1012.58, AIC-c =  2177.80 (74 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|              Node29               |     1    |   0.34 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node2               |     1    |   3.37 (100.00%)   |       N/A        |        1.63        |       0.17321      |
+|              Node22               |     1    |  >1000 (100.00%)   |       N/A        |        3.76        |       0.05639      |
+|               Node1               |     1    |   1.44 (100.00%)   |       N/A        |        0.11        |       0.43129      |
+|           MARMOSET_CJA            |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|          COLOBUS_CGU_CAN          |     1    |   1.34 (100.00%)   |       N/A        |        0.07        |       0.44836      |
+|            GIBBON_GGO             |     1    |   0.36 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            TAMARIN_SOE            |     1    |   0.12 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node3               |     1    |   0.83 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            SQUIRREL_M             |     1    |   0.59 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|          DOUC_LANGUR_PNE          |     1    |   0.18 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node10               |     1    |   0.41 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             ALLEN_ANI             |     1    |  >1000 (100.00%)   |       N/A        |        1.21        |       0.21861      |
+|               HUMAN               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           TALAPOIN_MTA            |     1    |   0.35 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             PATAS_EPA             |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node17               |     1    |  >1000 (100.00%)   |       N/A        |        0.61        |       0.30795      |
+|              Node24               |     1    |  >1000 (100.00%)   |       N/A        |        0.61        |       0.30885      |
+|               Node4               |     1    |  >1000 (100.00%)   |       N/A        |        0.60        |       0.31005      |
+|            RHESUS_MMU             |     1    |  >1000 (100.00%)   |       N/A        |        0.61        |       0.30856      |
+|            BABOON_PCY             |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node19               |     1    |  >1000 (100.00%)   |       N/A        |        0.60        |       0.31074      |
+|          LANGUR_SEN_SVE           |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            VERVET_CAE             |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           PROBISCIS_NLA           |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node23               |     1    |  >1000 (100.00%)   |       N/A        |        0.56        |       0.31741      |
+|       CHIMP_BONOBO_GORILLA        |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           ORANGUTAN_PPY           |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           MANGABEY_CAT            |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|          LANGUR_TOB_TFR           |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **30** tested.
+
+
+### Annotated Tree
+(((((LANGUR_SEN_SVE,LANGUR_TOB_TFR,DOUC_LANGUR_PNE)Node4,PROBISCIS_NLA)Node3,COLOBUS_CGU_CAN)Node2,(ALLEN_ANI,(TALAPOIN_MTA,(PATAS_EPA,VERVET_CAE)Node19)Node17,RHESUS_MMU,BABOON_PCY,MANGABEY_CAT)Node10)Node1,(((HUMAN,CHIMP_BONOBO_GORILLA)Node24,ORANGUTAN_PPY)Node23,GIBBON_GGO)Node22,(SQUIRREL_M,TAMARIN_SOE,MARMOSET_CJA)Node29)
+
+----
+
+```
+                      |-LANGUR_SEN_SVE (N.S)
+                    |-+Node4 (N.S)
+                    | |LANGUR_TOB_TFR (N.S)
+                    | |---DOUC_LANGUR_PNE (N.S)
+                |---+Node3 (N.S)
+                |   |-PROBISCIS_NLA (N.S)
+      |---------+Node2 (N.S)
+      |         |----COLOBUS_CGU_CAN (N.S)
+|-----+Node1 (N.S)
+|     |  |--ALLEN_ANI (N.S)
+|     |  | |--TALAPOIN_MTA (N.S)
+|     |  |-+Node17 (N.S)
+|     |  | | |--PATAS_EPA (N.S)
+|     |  | |-+Node19 (N.S)
+|     |  |   |-VERVET_CAE (N.S)
+|     |--+Node10 (N.S)
+|        |-RHESUS_MMU (N.S)
+|        |-BABOON_PCY (N.S)
+|        |MANGABEY_CAT (N.S)
+|            |--HUMAN (N.S)
+|          |-+Node24 (N.S)
+|          | |CHIMP_BONOBO_GORILLA (N.S)
+|        |-+Node23 (N.S)
+|        | |ORANGUTAN_PPY (N.S)
+|--------+Node22 (N.S)
+|        |----GIBBON_GGO (N.S)
+|              |---SQUIRREL_M (N.S)
+|--------------+Node29 (N.S)
+               |----TAMARIN_SOE (N.S)
+               |----MARMOSET_CJA (N.S)
+```
+

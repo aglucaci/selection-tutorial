@@ -1,0 +1,529 @@
+
+Analysis Description
+--------------------
+aBSREL (Adaptive branch-site random effects likelihood) uses an adaptive
+random effects branch-site model framework to test whether each branch
+has evolved under positive selection, using a procedure which infers an
+optimal number of rate categories per branch. v2.2 adds support for
+multiple-hit models. v2.3 adds support for SRV. v2.5 adds support for
+ancestral state reconstruction, identification of sites contributing to
+selection signal, and some diagnostics. v2.6 adds tree reports and ASCII
+art
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__:  Less Is More: An Adaptive Branch-Site Random Effects Model for
+Efficient Detection of Episodic Diversifying Selection (2015). Mol Biol
+Evol 32 (5): 1342-1353. 
+
+- __Written by__: Sergei L Kosakovsky Pond, Ben Murrell, Steven Weaver and Temple iGEM /
+UCSD viral evolution group
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 2.6
+
+[Advanced option] Bag of little bootstrap alignment resampling rate (permissible range = [0.01,1], default value = 1): blb: 1
+
+>code => Universal
+>Loaded a multiple sequence alignment with **54** sequences, **412** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/rbp3.nex`
+
+>branches => All
+
+>multiple-hits => None
+
+>srv => No
+
+
+### * Selected 105 branches for testing: `MACROSCELIDES, ELEPHANTULUS, ORYCTEROPUS, PROCAVIA, TRICHECHUS, LOXODONTA, Node8, Node6, Node4, CHOLOEPUSDI, TAMANDUA, MYRMECOPHAGA, Node14, Node12, OTOLEMUR, MICROCEBUS, LEMUR, Node22, Node20, TARSIUS, CALLITHRIX, MACACA, PONGO, GORILLA, HOMO, PAN, Node35, Node33, Node31, Node29, Node27, Node25, Node19, OCHOTONA, ORYCTOLAGUS, Node40, HYSTRIX, ERETHIZON, HYDROCHOERUS, CAVIA, Node48, Node46, Node44, PEDETES, DIPODOMYS, RATTUS, MUS, Node56, Node54, TAMIAS, SPERMOPHILUS, Node60, CASTOR, MUSCARDINUS, Node63, Node59, Node53, Node51, Node43, Node39, CYNOCEPHALUS, GALEOPTERUS, Node67, TUPAIA, Node66, Node38, Node18, PANTHERA, FELIS, Node73, AILUROPODA, CANIS, Node76, Node72, TADARIDA, PTEROPUS, MEGADERMA, Node83, Node81, EQUUS, TAPIRUS, Node86, Node80, ERINACEUS, SOREX, Node90, LAMA, SUS, BOS, HIPPOPOTAMUS, TURSIOPS, MEGAPTERA, Node102, Node100, Node98, Node96, Node94, MANIS, Node93, Node89, Node79, Node71, Node17, Node11, Node3`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -23425.29, AIC-c = 47076.96 (113 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  4.132
+
+### Fitting the baseline model with a single dN/dS class per branch, and no site-to-site variation. 
+* Log(L) = -21708.53, AIC-c = 43869.63 (224 estimated parameters)
+* Branch-level non-synonymous/synonymous rate ratio distribution has median  0.16, and 95% of the weight in  0.03 -  1.90
+
+### Determining the optimal number of rate classes per branch using a step up procedure
+
+|              Branch               |  Length  |  Rates   |     Max. dN/dS     |    Log(L)     |     AIC-c     |Best AIC-c so far|
+|-----------------------------------|----------|----------|--------------------|---------------|---------------|-----------------|
+|               SOREX               |   0.17   |    2     |    0.45 ( 2.72%)   |   -21708.53   |   43873.71    |    43869.63     |
+|             OCHOTONA              |   0.15   |    2     |    0.17 (46.31%)   |   -21708.26   |   43873.18    |    43869.63     |
+|             ERINACEUS             |   0.14   |    2     |    0.85 (19.27%)   |   -21703.28   |   43863.21    |    43863.21     |
+|             ERINACEUS             |   0.14   |    3     |   18.17 ( 2.14%)   |   -21701.64   |   43864.02    |    43863.21     |
+|             DIPODOMYS             |   0.13   |    2     |    0.18 (55.53%)   |   -21703.12   |   43866.98    |    43863.21     |
+|              TUPAIA               |   0.12   |    2     |    3.19 ( 3.39%)   |   -21700.57   |   43861.89    |    43861.89     |
+|              TUPAIA               |   0.12   |    3     |    3.34 ( 2.82%)   |   -21700.58   |   43865.99    |    43861.89     |
+|               CANIS               |   0.12   |    2     |    0.62 (16.75%)   |   -21697.40   |   43859.62    |    43859.62     |
+|               CANIS               |   0.12   |    3     |    0.62 (16.41%)   |   -21697.40   |   43863.70    |    43859.62     |
+|              Node12               |   0.11   |    2     |    0.94 (21.02%)   |   -21694.38   |   43857.67    |    43857.67     |
+|              Node12               |   0.11   |    3     |    1.00 ( 0.42%)   |   -21694.38   |   43861.75    |    43857.67     |
+|               MANIS               |   0.11   |    2     |    1.16 (41.96%)   |   -21692.29   |   43857.58    |    43857.58     |
+|               MANIS               |   0.11   |    3     |    1.66 (11.59%)   |   -21692.30   |   43861.69    |    43857.58     |
+|              Node56               |   0.10   |    2     |    0.74 (19.54%)   |   -21689.69   |   43856.45    |    43856.45     |
+|              Node56               |   0.10   |    3     |    0.75 ( 0.78%)   |   -21689.69   |   43860.54    |    43856.45     |
+|             TADARIDA              |   0.10   |    2     |    0.25 ( 0.00%)   |   -21689.69   |   43860.54    |    43856.45     |
+|              TARSIUS              |   0.09   |    2     |    0.98 (18.88%)   |   -21686.36   |   43853.88    |    43853.88     |
+|              TARSIUS              |   0.09   |    3     |    1.00 ( 0.38%)   |   -21686.36   |   43857.97    |    43853.88     |
+|               Node3               |   0.09   |    2     |    0.52 (32.62%)   |   -21685.96   |   43857.17    |    43853.88     |
+|            MUSCARDINUS            |   0.09   |    2     |    1.48 (11.36%)   |   -21681.16   |   43847.58    |    43847.58     |
+|            MUSCARDINUS            |   0.09   |    3     |    1.48 (11.36%)   |   -21681.16   |   43851.67    |    43847.58     |
+|            ORYCTEROPUS            |   0.09   |    2     |    0.27 (61.17%)   |   -21681.05   |   43851.45    |    43847.58     |
+|             OTOLEMUR              |   0.09   |    2     |    0.73 (18.60%)   |   -21679.98   |   43849.30    |    43847.58     |
+|              Node67               |   0.09   |    2     |    0.64 ( 4.26%)   |   -21681.13   |   43851.61    |    43847.58     |
+|              Node14               |   0.09   |    2     |   14.63 ( 1.70%)   |   -21678.13   |   43845.60    |    43845.60     |
+|              Node14               |   0.09   |    3     |   28.56 ( 1.38%)   |   -21678.16   |   43849.75    |    43845.60     |
+|              Node11               |   0.09   |    2     |    1.34 (24.35%)   |   -21674.86   |   43843.16    |    43843.16     |
+|              Node11               |   0.09   |    3     |    1.53 (13.45%)   |   -21674.88   |   43847.27    |    43843.16     |
+|              CASTOR               |   0.08   |    2     |    0.29 (50.90%)   |   -21674.67   |   43846.86    |    43843.16     |
+|             PROCAVIA              |   0.08   |    2     |    0.91 (11.95%)   |   -21671.97   |   43841.47    |    43841.47     |
+|             PROCAVIA              |   0.08   |    3     |   >1000 ( 0.32%)   |   -21671.47   |   43844.55    |    43841.47     |
+|                BOS                |   0.08   |    2     |    1.33 (19.48%)   |   -21668.44   |   43838.50    |    43838.50     |
+|                BOS                |   0.08   |    3     |    1.63 (10.22%)   |   -21668.46   |   43842.63    |    43838.50     |
+|              PEDETES              |   0.07   |    2     |    0.44 (21.97%)   |   -21667.65   |   43841.00    |    43838.50     |
+|             MEGADERMA             |   0.07   |    2     |   0.14 (100.00%)   |   -21668.44   |   43842.59    |    43838.50     |
+|            TRICHECHUS             |   0.07   |    2     |    2.67 (10.23%)   |   -21661.12   |   43827.94    |    43827.94     |
+|            TRICHECHUS             |   0.07   |    3     |    3.90 ( 5.84%)   |   -21661.08   |   43831.96    |    43827.94     |
+|            CHOLOEPUSDI            |   0.07   |    2     |    1.71 (18.22%)   |   -21658.89   |   43827.57    |    43827.57     |
+|            CHOLOEPUSDI            |   0.07   |    3     |    1.74 (17.80%)   |   -21658.89   |   43831.67    |    43827.57     |
+|             PTEROPUS              |   0.07   |    2     |    0.25 (24.58%)   |   -21658.88   |   43831.64    |    43827.57     |
+|              HYSTRIX              |   0.07   |    2     |    0.15 (99.59%)   |   -21658.89   |   43831.66    |    43827.57     |
+|              Node40               |   0.07   |    2     |    1.11 (11.09%)   |   -21657.31   |   43828.51    |    43827.57     |
+|              Node44               |   0.07   |    2     |    0.25 (49.49%)   |   -21658.88   |   43831.64    |    43827.57     |
+|               LAMA                |   0.06   |    2     |    0.25 (49.91%)   |   -21658.89   |   43831.66    |    43827.57     |
+|                SUS                |   0.06   |    2     |    0.63 (11.57%)   |   -21658.85   |   43831.59    |    43827.57     |
+|            ORYCTOLAGUS            |   0.06   |    2     |   0.13 (100.00%)   |   -21658.88   |   43831.66    |    43827.57     |
+|              Node27               |   0.06   |    2     |    1.13 (19.52%)   |   -21658.23   |   43830.36    |    43827.57     |
+|              Node60               |   0.06   |    2     |   0.14 (100.00%)   |   -21658.89   |   43831.66    |    43827.57     |
+|             ERETHIZON             |   0.05   |    2     |    0.54 (31.03%)   |   -21658.39   |   43830.67    |    43827.57     |
+|               EQUUS               |   0.05   |    2     |   0.15 (100.00%)   |   -21658.89   |   43831.66    |    43827.57     |
+|           MACROSCELIDES           |   0.05   |    2     |  750.53 ( 2.00%)   |   -21652.51   |   43818.90    |    43818.90     |
+|           MACROSCELIDES           |   0.05   |    3     |  682.08 ( 1.98%)   |   -21652.51   |   43823.01    |    43818.90     |
+|           HYDROCHOERUS            |   0.05   |    2     |   0.12 (100.00%)   |   -21652.51   |   43823.00    |    43818.90     |
+|             LOXODONTA             |   0.05   |    2     |   0.15 (100.00%)   |   -21652.47   |   43822.93    |    43818.90     |
+|              TAPIRUS              |   0.05   |    2     |    0.24 ( 0.00%)   |   -21652.51   |   43823.00    |    43818.90     |
+|            CALLITHRIX             |   0.05   |    2     |    0.76 (25.24%)   |   -21651.81   |   43821.60    |    43818.90     |
+|           SPERMOPHILUS            |   0.05   |    2     |    0.32 (51.90%)   |   -21652.51   |   43823.00    |    43818.90     |
+|               CAVIA               |   0.04   |    2     |   0.10 (100.00%)   |   -21652.51   |   43823.00    |    43818.90     |
+|              RATTUS               |   0.04   |    2     |   0.08 (100.00%)   |   -21652.51   |   43822.99    |    43818.90     |
+|            MICROCEBUS             |   0.04   |    2     |   0.15 (100.00%)   |   -21652.51   |   43823.00    |    43818.90     |
+|           ELEPHANTULUS            |   0.04   |    2     |   10.72 ( 5.11%)   |   -21649.79   |   43817.56    |    43817.56     |
+|           ELEPHANTULUS            |   0.04   |    3     |   31.89 ( 2.64%)   |   -21649.70   |   43821.48    |    43817.56     |
+|               Node6               |   0.04   |    2     |    0.08 (99.97%)   |   -21649.76   |   43821.60    |    43817.56     |
+|                MUS                |   0.04   |    2     |   0.14 (100.00%)   |   -21649.79   |   43821.66    |    43817.56     |
+|              Node48               |   0.04   |    2     |    4.92 (12.61%)   |   -21646.55   |   43815.18    |    43815.18     |
+|              Node48               |   0.04   |    3     |    4.98 (12.33%)   |   -21646.56   |   43819.28    |    43815.18     |
+|              Node72               |   0.04   |    2     |    0.21 (29.49%)   |   -21646.54   |   43819.26    |    43815.18     |
+|           HIPPOPOTAMUS            |   0.04   |    2     |    9.58 ( 5.11%)   |   -21640.90   |   43807.97    |    43807.97     |
+|           HIPPOPOTAMUS            |   0.04   |    3     |   33.16 ( 2.06%)   |   -21640.54   |   43811.34    |    43807.97     |
+|             MEGAPTERA             |   0.03   |    2     |    0.12 (94.36%)   |   -21640.90   |   43812.07    |    43807.97     |
+|              Node73               |   0.03   |    2     |    1.36 (15.10%)   |   -21640.66   |   43811.59    |    43807.97     |
+|            AILUROPODA             |   0.03   |    2     |    1.78 (13.74%)   |   -21640.35   |   43810.97    |    43807.97     |
+|              TAMIAS               |   0.03   |    2     |    0.27 ( 0.00%)   |   -21640.90   |   43812.07    |    43807.97     |
+|              Node46               |   0.03   |    2     |   >1000 ( 1.85%)   |   -21634.82   |   43799.90    |    43799.90     |
+|              Node46               |   0.03   |    3     |   >1000 ( 1.26%)   |   -21633.41   |   43801.18    |    43799.90     |
+|              Node86               |   0.03   |    2     |    0.31 (25.22%)   |   -21634.82   |   43804.00    |    43799.90     |
+|              MACACA               |   0.03   |    2     |   0.11 (100.00%)   |   -21634.82   |   43804.00    |    43799.90     |
+|              Node90               |   0.03   |    2     |    0.26 ( 8.92%)   |   -21634.76   |   43803.89    |    43799.90     |
+|               LEMUR               |   0.03   |    2     |    0.28 (37.96%)   |   -21634.82   |   43804.00    |    43799.90     |
+|              Node19               |   0.03   |    2     |    0.27 (32.47%)   |   -21634.81   |   43803.99    |    43799.90     |
+|              Node102              |   0.03   |    2     |   0.09 (100.00%)   |   -21634.80   |   43803.97    |    43799.90     |
+|           MYRMECOPHAGA            |   0.02   |    2     |    0.27 ( 0.00%)   |   -21634.82   |   43804.00    |    43799.90     |
+|              Node94               |   0.02   |    2     |    0.37 (61.73%)   |   -21634.81   |   43803.98    |    43799.90     |
+|              Node54               |   0.02   |    2     |   36.07 ( 0.32%)   |   -21632.66   |   43799.69    |    43799.69     |
+|              Node54               |   0.02   |    3     |   64.74 ( 0.28%)   |   -21632.78   |   43804.02    |    43799.69     |
+|              Node71               |   0.02   |    2     |   0.11 (100.00%)   |   -21632.66   |   43803.79    |    43799.69     |
+|              Node66               |   0.02   |    2     |    0.73 ( 0.00%)   |   -21632.66   |   43803.78    |    43799.69     |
+|              Node20               |   0.02   |    2     |    0.54 ( 5.02%)   |   -21632.66   |   43803.77    |    43799.69     |
+|              Node76               |   0.02   |    2     |    0.17 (49.60%)   |   -21632.66   |   43803.78    |    43799.69     |
+|             TAMANDUA              |   0.02   |    2     |    0.57 (75.07%)   |   -21632.67   |   43803.80    |    43799.69     |
+|              Node81               |   0.02   |    2     |    0.09 (99.00%)   |   -21632.66   |   43803.79    |    43799.69     |
+|             TURSIOPS              |   0.02   |    2     |   0.09 (100.00%)   |   -21632.66   |   43803.79    |    43799.69     |
+|              Node100              |   0.02   |    2     |    2.40 ( 4.54%)   |   -21632.47   |   43803.41    |    43799.69     |
+|              Node39               |   0.01   |    2     |    0.26 (30.23%)   |   -21632.66   |   43803.78    |    43799.69     |
+|              Node29               |   0.01   |    2     |    0.35 (44.66%)   |   -21632.67   |   43803.80    |    43799.69     |
+|              Node43               |   0.01   |    2     |    0.50 (23.75%)   |   -21632.66   |   43803.78    |    43799.69     |
+|              Node17               |   0.01   |    2     |    1.73 (55.95%)   |   -21632.64   |   43803.74    |    43799.69     |
+|              Node96               |   0.01   |    2     |    0.41 (50.64%)   |   -21632.66   |   43803.79    |    43799.69     |
+|              Node25               |   0.01   |    2     |    9.73 ( 4.20%)   |   -21630.38   |   43799.23    |    43799.23     |
+|              Node25               |   0.01   |    3     |   10.91 ( 3.48%)   |   -21630.38   |   43803.31    |    43799.23     |
+|               Node8               |   0.01   |    2     |    0.50 (10.27%)   |   -21630.31   |   43803.19    |    43799.23     |
+|              Node22               |   0.01   |    2     |   12.75 ( 3.59%)   |   -21629.36   |   43801.28    |    43799.23     |
+|             PANTHERA              |   0.01   |    2     |    0.25 ( 0.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node59               |   0.01   |    2     |    0.12 (68.39%)   |   -21630.35   |   43803.26    |    43799.23     |
+|              Node18               |   0.01   |    2     |    0.24 (50.05%)   |   -21630.34   |   43803.23    |    43799.23     |
+|              Node31               |   0.01   |    2     |    0.10 (76.64%)   |   -21630.39   |   43803.33    |    43799.23     |
+|               Node4               |   0.01   |    2     |    1.07 ( 0.00%)   |   -21630.37   |   43803.29    |    43799.23     |
+|              Node83               |   0.01   |    2     |    0.39 (76.23%)   |   -21630.38   |   43803.32    |    43799.23     |
+|               PONGO               |   0.01   |    2     |    0.79 (10.53%)   |   -21630.39   |   43803.35    |    43799.23     |
+|              Node89               |   0.01   |    2     |    0.24 (25.77%)   |   -21630.39   |   43803.33    |    43799.23     |
+|              Node53               |   0.01   |    2     |    0.38 (78.41%)   |   -21630.37   |   43803.31    |    43799.23     |
+|              Node80               |   0.01   |    2     |    0.13 (33.71%)   |   -21630.38   |   43803.32    |    43799.23     |
+|              Node33               |   0.01   |    2     |    0.29 (12.71%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node93               |   0.01   |    2     |    0.25 ( 2.00%)   |   -21641.40   |   43825.37    |    43799.23     |
+|               FELIS               |   0.01   |    2     |    3.55 ( 4.85%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node98               |   0.00   |    2     |    0.44 ( 7.45%)   |   -21630.36   |   43803.27    |    43799.23     |
+|              Node38               |   0.00   |    2     |    0.60 (50.68%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node51               |   0.00   |    2     |    0.80 (75.00%)   |   -21630.38   |   43803.32    |    43799.23     |
+|                PAN                |   0.00   |    2     |    0.26 ( 0.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|               HOMO                |   0.00   |    2     |   44.96 ( 0.58%)   |   -21630.35   |   43803.26    |    43799.23     |
+|              Node79               |   0.00   |    2     |    0.25 ( 0.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node63               |   0.00   |    2     |    0.49 (49.29%)   |   -21630.37   |   43803.31    |    43799.23     |
+|              GORILLA              |   0.00   |    2     |    0.26 ( 0.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|              Node35               |   0.00   |    2     |    0.25 ( 0.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|           CYNOCEPHALUS            |   0.00   |    2     |    0.25 ( 2.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+|            GALEOPTERUS            |   0.00   |    2     |    0.25 ( 2.00%)   |   -21630.38   |   43803.33    |    43799.23     |
+
+### Rate class analyses summary
+*  84 branches with **1** rate classes
+*  21 branches with **2** rate classes
+
+### Annotated Tree
+(MACROSCELIDES{2},ELEPHANTULUS{2},((ORYCTEROPUS{1},(PROCAVIA{2},(TRICHECHUS{2},LOXODONTA{1})Node8{1})Node6{1})Node4{1},((CHOLOEPUSDI{2},(TAMANDUA{1},MYRMECOPHAGA{1})Node14{2})Node12{2},((((OTOLEMUR{1},(MICROCEBUS{1},LEMUR{1})Node22{1})Node20{1},(TARSIUS{2},(CALLITHRIX{1},(MACACA{1},(PONGO{1},(GORILLA{1},(HOMO{1},PAN{1})Node35{1})Node33{1})Node31{1})Node29{1})Node27{1})Node25{2})Node19{1},(((OCHOTONA{1},ORYCTOLAGUS{1})Node40{1},((HYSTRIX{1},(ERETHIZON{1},(HYDROCHOERUS{1},CAVIA{1})Node48{2})Node46{2})Node44{1},(PEDETES{1},((DIPODOMYS{1},(RATTUS{1},MUS{1})Node56{2})Node54{2},((TAMIAS{1},SPERMOPHILUS{1})Node60{1},(CASTOR{1},MUSCARDINUS{2})Node63{1})Node59{1})Node53{1})Node51{1})Node43{1})Node39{1},((CYNOCEPHALUS{1},GALEOPTERUS{1})Node67{1},TUPAIA{2})Node66{1})Node38{1})Node18{1},(((PANTHERA{1},FELIS{1})Node73{1},(AILUROPODA{1},CANIS{2})Node76{1})Node72{1},(((TADARIDA{1},(PTEROPUS{1},MEGADERMA{1})Node83{1})Node81{1},(EQUUS{1},TAPIRUS{1})Node86{1})Node80{1},((ERINACEUS{2},SOREX{1})Node90{1},((LAMA{1},(SUS{1},(BOS{2},(HIPPOPOTAMUS{2},(TURSIOPS{1},MEGAPTERA{1})Node102{1})Node100{1})Node98{1})Node96{1})Node94{1},MANIS{2})Node93{1})Node89{1})Node79{1})Node71{1})Node17{1})Node11{2})Node3{1})
+
+----
+
+```
+|MACROSCELIDES (2)
+|ELEPHANTULUS (2)
+| |ORYCTEROPUS (1)
+||+Node4 (1)
+||||PROCAVIA (2)
+|||+Node6 (1)
+|| ||TRICHECHUS (2)
+|| |+Node8 (1)
+||  |LOXODONTA (1)
+|+Node3 (1)
+ | |CHOLOEPUSDI (2)
+ ||+Node12 (2)
+ ||||TAMANDUA (1)
+ |||+Node14 (2)
+ || |MYRMECOPHAGA (1)
+ |+Node11 (2)
+  |   |OTOLEMUR (1)
+  |  |+Node20 (1)
+  |  |||MICROCEBUS (1)
+  |  ||+Node22 (1)
+  |  | |LEMUR (1)
+  | |+Node19 (1)
+  | |||TARSIUS (2)
+  | ||+Node25 (2)
+  | | ||CALLITHRIX (1)
+  | | |+Node27 (1)
+  | |  ||MACACA (1)
+  | |  |+Node29 (1)
+  | |   ||PONGO (1)
+  | |   |+Node31 (1)
+  | |    ||GORILLA (1)
+  | |    |+Node33 (1)
+  | |     ||HOMO (1)
+  | |     |+Node35 (1)
+  | |      |PAN (1)
+  ||+Node18 (1)
+  |||  |OCHOTONA (1)
+  ||| |+Node40 (1)
+  ||| ||ORYCTOLAGUS (1)
+  ||||+Node39 (1)
+  ||||| |HYSTRIX (1)
+  ||||||+Node44 (1)
+  ||||||||ERETHIZON (1)
+  |||||||+Node46 (2)
+  |||||| ||HYDROCHOERUS (1)
+  |||||| |+Node48 (2)
+  ||||||  |CAVIA (1)
+  |||||+Node43 (1)
+  |||| ||PEDETES (1)
+  |||| |+Node51 (1)
+  ||||  | |DIPODOMYS (1)
+  ||||  ||+Node54 (2)
+  ||||  ||||RATTUS (1)
+  ||||  |||+Node56 (2)
+  ||||  || |MUS (1)
+  ||||  |+Node53 (1)
+  ||||   | |TAMIAS (1)
+  ||||   ||+Node60 (1)
+  ||||   |||SPERMOPHILUS (1)
+  ||||   |+Node59 (1)
+  ||||    ||CASTOR (1)
+  ||||    |+Node63 (1)
+  ||||     |MUSCARDINUS (2)
+  |||+Node38 (1)
+  || | |CYNOCEPHALUS (1)
+  || ||+Node67 (1)
+  || |||GALEOPTERUS (1)
+  || |+Node66 (1)
+  ||  |TUPAIA (2)
+  |+Node17 (1)
+   |  |PANTHERA (1)
+   | |+Node73 (1)
+   | ||FELIS (1)
+   ||+Node72 (1)
+   ||||AILUROPODA (1)
+   |||+Node76 (1)
+   || |CANIS (2)
+   |+Node71 (1)
+    |  |TADARIDA (1)
+    | |+Node81 (1)
+    | |||PTEROPUS (1)
+    | ||+Node83 (1)
+    | | |MEGADERMA (1)
+    ||+Node80 (1)
+    ||||EQUUS (1)
+    |||+Node86 (1)
+    || |TAPIRUS (1)
+    |+Node79 (1)
+     | |ERINACEUS (2)
+     ||+Node90 (1)
+     |||SOREX (1)
+     |+Node89 (1)
+      | |LAMA (1)
+      ||+Node94 (1)
+      ||||SUS (1)
+      |||+Node96 (1)
+      || ||BOS (2)
+      || |+Node98 (1)
+      ||  ||HIPPOPOTAMUS (2)
+      ||  |+Node100 (1)
+      ||   ||TURSIOPS (1)
+      ||   |+Node102 (1)
+      ||    |MEGAPTERA (1)
+      |+Node93 (1)
+       |MANIS (2)
+```
+
+
+### Improving parameter estimates of the adaptive rate class model
+* Log(L) = -21542.97, AIC-c = 43624.41 (266 estimated parameters)
+
+### Testing selected branches for selection
+
+|              Branch               |  Rates   |     Max. dN/dS     | Sites @ EBF>=100 |      Test LRT      |Uncorrected p-value |
+|-----------------------------------|----------|--------------------|------------------|--------------------|--------------------|
+|               SOREX               |     1    |   0.38 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             OCHOTONA              |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             ERINACEUS             |     2    |    7.64 ( 2.80%)   |          5       |        1.40        |       0.19636      |
+|             DIPODOMYS             |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              TUPAIA               |     2    |    2.45 ( 3.87%)   |          1       |        0.19        |       0.40647      |
+|               CANIS               |     2    |    0.54 (16.93%)   |       N/A        |        0.00        |       1.00000      |
+|              Node12               |     2    |    0.96 (18.65%)   |       N/A        |        0.00        |       1.00000      |
+|               MANIS               |     2    |    1.12 (39.90%)   |          5       |       -0.02        |       0.50000      |
+|              Node56               |     2    |    0.70 (19.53%)   |       N/A        |        0.00        |       1.00000      |
+|             TADARIDA              |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              TARSIUS              |     2    |    0.89 (19.32%)   |       N/A        |        0.00        |       1.00000      |
+|               Node3               |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            MUSCARDINUS            |     2    |    1.54 (10.57%)   |         22       |        0.63        |       0.30463      |
+|            ORYCTEROPUS            |     1    |   0.16 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             OTOLEMUR              |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node67               |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node14               |     2    |   30.95 ( 1.70%)   |          4       |        4.98        |       0.03005      |
+|              Node11               |     2    |    1.35 (23.59%)   |         25       |        0.30        |       0.37429      |
+|              CASTOR               |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             PROCAVIA              |     2    |    9.14 ( 1.10%)   |          3       |        1.34        |       0.20328      |
+|                BOS                |     2    |    1.11 (20.51%)   |         29       |        0.01        |       0.47847      |
+|              PEDETES              |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             MEGADERMA             |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            TRICHECHUS             |     2    |    4.61 ( 5.71%)   |          5       |        3.48        |       0.06491      |
+|            CHOLOEPUSDI            |     2    |    1.13 (22.13%)   |         16       |        0.00        |       0.48902      |
+|             PTEROPUS              |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              HYSTRIX              |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node40               |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node44               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               LAMA                |     1    |   0.20 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                SUS                |     1    |   0.21 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            ORYCTOLAGUS            |     1    |   0.12 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node27               |     1    |   0.26 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node60               |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             ERETHIZON             |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               EQUUS               |     1    |   0.14 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           MACROSCELIDES           |     2    |   54.58 ( 2.19%)   |          5       |        6.51        |       0.01375      |
+|           HYDROCHOERUS            |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             LOXODONTA             |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              TAPIRUS              |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            CALLITHRIX             |     1    |   0.17 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           SPERMOPHILUS            |     1    |   0.30 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               CAVIA               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              RATTUS               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            MICROCEBUS             |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           ELEPHANTULUS            |     2    |   12.13 ( 5.26%)   |          2       |        3.82        |       0.05460      |
+|               Node6               |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                MUS                |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node48               |     2    |    4.70 (12.76%)   |         20       |        3.13        |       0.07792      |
+|              Node72               |     1    |   0.19 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           HIPPOPOTAMUS            |     2    |   44.66 ( 1.98%)   |          6       |        7.74        |       0.00732      |
+|             MEGAPTERA             |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node73               |     1    |   0.15 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            AILUROPODA             |     1    |   0.19 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              TAMIAS               |     1    |   0.18 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node46               |     2    |   >1000 ( 1.34%)   |          5       |       11.15        |       0.00131      |
+|              Node86               |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              MACACA               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node90               |     1    |   0.18 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               LEMUR               |     1    |   0.24 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node19               |     1    |   0.24 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node102              |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           MYRMECOPHAGA            |     1    |   0.16 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node94               |     1    |   0.28 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node54               |     2    |   43.42 ( 0.31%)   |          1       |        2.59        |       0.10363      |
+|              Node71               |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node66               |     1    |   0.16 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node20               |     1    |   0.02 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node76               |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             TAMANDUA              |     1    |   0.49 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node81               |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             TURSIOPS              |     1    |   0.09 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node100              |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node39               |     1    |   0.19 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node29               |     1    |   0.13 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node43               |     1    |   0.11 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node17               |     1    |   2.29 (100.00%)   |       N/A        |        0.09        |       0.43823      |
+|              Node96               |     1    |   0.32 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node25               |     2    |   11.12 ( 2.81%)   |          1       |        1.78        |       0.15965      |
+|               Node8               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node22               |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|             PANTHERA              |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node59               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node18               |     1    |   0.10 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node31               |     1    |   0.07 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               Node4               |     1    |   0.22 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node83               |     1    |   0.33 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               PONGO               |     1    |   0.08 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node89               |     1    |   0.05 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node53               |     1    |   0.42 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node80               |     1    |   0.11 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node33               |     1    |   0.23 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node93               |     1    |  >1000 (100.00%)   |       N/A        |        1.20        |       0.21969      |
+|               FELIS               |     1    |   0.16 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node98               |     1    |   0.30 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node38               |     1    |   0.69 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node51               |     1    |   0.62 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|                PAN                |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|               HOMO                |     1    |   0.16 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node79               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node63               |     1    |   0.18 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              GORILLA              |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|              Node35               |     1    |   0.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|           CYNOCEPHALUS            |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+|            GALEOPTERUS            |     1    |   1.00 (100.00%)   |       N/A        |        0.00        |       1.00000      |
+----
+### Adaptive branch site random effects likelihood test 
+Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =   0.0500_ found **0** branches under selection among **105** tested.
+
+
+### Annotated Tree
+(MACROSCELIDES,ELEPHANTULUS,((ORYCTEROPUS,(PROCAVIA,(TRICHECHUS,LOXODONTA)Node8)Node6)Node4,((CHOLOEPUSDI,(TAMANDUA,MYRMECOPHAGA)Node14)Node12,((((OTOLEMUR,(MICROCEBUS,LEMUR)Node22)Node20,(TARSIUS,(CALLITHRIX,(MACACA,(PONGO,(GORILLA,(HOMO,PAN)Node35)Node33)Node31)Node29)Node27)Node25)Node19,(((OCHOTONA,ORYCTOLAGUS)Node40,((HYSTRIX,(ERETHIZON,(HYDROCHOERUS,CAVIA)Node48)Node46)Node44,(PEDETES,((DIPODOMYS,(RATTUS,MUS)Node56)Node54,((TAMIAS,SPERMOPHILUS)Node60,(CASTOR,MUSCARDINUS)Node63)Node59)Node53)Node51)Node43)Node39,((CYNOCEPHALUS,GALEOPTERUS)Node67,TUPAIA)Node66)Node38)Node18,(((PANTHERA,FELIS)Node73,(AILUROPODA,CANIS)Node76)Node72,(((TADARIDA,(PTEROPUS,MEGADERMA)Node83)Node81,(EQUUS,TAPIRUS)Node86)Node80,((ERINACEUS,SOREX)Node90,((LAMA,(SUS,(BOS,(HIPPOPOTAMUS,(TURSIOPS,MEGAPTERA)Node102)Node100)Node98)Node96)Node94,MANIS)Node93)Node89)Node79)Node71)Node17)Node11)Node3)
+
+----
+
+```
+|MACROSCELIDES (N.S)
+|ELEPHANTULUS (N.S)
+| |ORYCTEROPUS (N.S)
+||+Node4 (N.S)
+||||PROCAVIA (N.S)
+|||+Node6 (N.S)
+|| ||TRICHECHUS (N.S)
+|| |+Node8 (N.S)
+||  |LOXODONTA (N.S)
+|+Node3 (N.S)
+ | |CHOLOEPUSDI (N.S)
+ ||+Node12 (N.S)
+ ||||TAMANDUA (N.S)
+ |||+Node14 (N.S)
+ || |MYRMECOPHAGA (N.S)
+ |+Node11 (N.S)
+  |   |OTOLEMUR (N.S)
+  |  |+Node20 (N.S)
+  |  |||MICROCEBUS (N.S)
+  |  ||+Node22 (N.S)
+  |  | |LEMUR (N.S)
+  | |+Node19 (N.S)
+  | |||TARSIUS (N.S)
+  | ||+Node25 (N.S)
+  | | ||CALLITHRIX (N.S)
+  | | |+Node27 (N.S)
+  | |  ||MACACA (N.S)
+  | |  |+Node29 (N.S)
+  | |   ||PONGO (N.S)
+  | |   |+Node31 (N.S)
+  | |    ||GORILLA (N.S)
+  | |    |+Node33 (N.S)
+  | |     ||HOMO (N.S)
+  | |     |+Node35 (N.S)
+  | |      |PAN (N.S)
+  ||+Node18 (N.S)
+  |||  |OCHOTONA (N.S)
+  ||| |+Node40 (N.S)
+  ||| ||ORYCTOLAGUS (N.S)
+  ||||+Node39 (N.S)
+  ||||| |HYSTRIX (N.S)
+  ||||||+Node44 (N.S)
+  ||||||||ERETHIZON (N.S)
+  |||||||+Node46 (N.S)
+  |||||| ||HYDROCHOERUS (N.S)
+  |||||| |+Node48 (N.S)
+  ||||||  |CAVIA (N.S)
+  |||||+Node43 (N.S)
+  |||| ||PEDETES (N.S)
+  |||| |+Node51 (N.S)
+  ||||  | |DIPODOMYS (N.S)
+  ||||  ||+Node54 (N.S)
+  ||||  ||||RATTUS (N.S)
+  ||||  |||+Node56 (N.S)
+  ||||  || |MUS (N.S)
+  ||||  |+Node53 (N.S)
+  ||||   | |TAMIAS (N.S)
+  ||||   ||+Node60 (N.S)
+  ||||   |||SPERMOPHILUS (N.S)
+  ||||   |+Node59 (N.S)
+  ||||    ||CASTOR (N.S)
+  ||||    |+Node63 (N.S)
+  ||||     |MUSCARDINUS (N.S)
+  |||+Node38 (N.S)
+  || | |CYNOCEPHALUS (N.S)
+  || ||+Node67 (N.S)
+  || |||GALEOPTERUS (N.S)
+  || |+Node66 (N.S)
+  ||  |TUPAIA (N.S)
+  |+Node17 (N.S)
+   |  |PANTHERA (N.S)
+   | |+Node73 (N.S)
+   | ||FELIS (N.S)
+   ||+Node72 (N.S)
+   ||||AILUROPODA (N.S)
+   |||+Node76 (N.S)
+   || |CANIS (N.S)
+   |+Node71 (N.S)
+    |  |TADARIDA (N.S)
+    | |+Node81 (N.S)
+    | |||PTEROPUS (N.S)
+    | ||+Node83 (N.S)
+    | | |MEGADERMA (N.S)
+    ||+Node80 (N.S)
+    ||||EQUUS (N.S)
+    |||+Node86 (N.S)
+    || |TAPIRUS (N.S)
+    |+Node79 (N.S)
+     | |ERINACEUS (N.S)
+     ||+Node90 (N.S)
+     |||SOREX (N.S)
+     |+Node89 (N.S)
+      | |LAMA (N.S)
+      ||+Node94 (N.S)
+      ||||SUS (N.S)
+      |||+Node96 (N.S)
+      || ||BOS (N.S)
+      || |+Node98 (N.S)
+      ||  ||HIPPOPOTAMUS (N.S)
+      ||  |+Node100 (N.S)
+      ||   ||TURSIOPS (N.S)
+      ||   |+Node102 (N.S)
+      ||    |MEGAPTERA (N.S)
+      |+Node93 (N.S)
+       |MANIS (N.S)
+```
+

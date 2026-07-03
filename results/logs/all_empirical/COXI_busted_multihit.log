@@ -1,0 +1,259 @@
+
+Analysis Description
+--------------------
+BUSTED (branch-site unrestricted statistical test of episodic
+diversification) uses a random effects branch-site model fitted jointly
+to all or a subset of tree branches in order to test for alignment-wide
+evidence of episodic diversifying selection. Assuming there is evidence
+of positive selection (i.e. there is an omega > 1), BUSTED will also
+perform a quick evidence-ratio style analysis to explore which
+individual sites may have been subject to selection. Version 2.0 adds
+support for synonymous rate variation, and relaxes the test statistic to
+0.5 (chi^2_0 + chi^2_2). Version 2.1 adds a grid search for the initial
+starting point. Version 2.2 changes the grid search to LHC, and adds an
+initial search phase to use adaptive Nedler-Mead. Version 3.0 implements
+the option for branch-site variation in synonymous substitution rates.
+Version 3.1 adds HMM auto-correlation option for SRV, and binds SRV
+distributions for multiple branch sets. Version 4.0 adds support for
+multiple hits (MH), ancestral state reconstruction saved to JSON, and
+profiling of branch-site level support for selection / multiple hits.
+Version 4.2 adds calculation of MH-attributable fractions of
+substitutions. Version 4.5 adds an 'error absorption' component. Version
+4.6 adds support for MSS-type models. Version 4.7 adds user configurable
+options for the error class. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree (optionally annotated
+with {})
+
+- __Citation__: *Gene-wide identification of episodic selection*, Mol Biol Evol.
+32(5):1365-71, *Synonymous Site-to-Site Substitution Rate Variation
+Dramatically Inflates False Positive Rates of Selection Analyses: Ignore
+at Your Own Peril*, Mol Biol Evol. 37(8):2430-2439
+
+- __Written by__: Sergei L Kosakovsky Pond
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.7
+
+
+>code => Invertebrate-mtDNA
+>Loaded a multiple sequence alignment with **21** sequences, **510** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/COXI.mtnex`
+
+>branches => All
+
+>srv => Yes
+The number omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>multiple-hits => Double+Triple
+
+>mss => No
+The number alpha rate classes to include in the model [1-10, default 3] (permissible range = [1,10], default value = 3, integer): 
+>syn-rates => 3
+
+>error-sink => No
+The number of points in the initial distributional guess for likelihood fitting (permissible range = [1,10000], default value = 250, integer): 
+>grid-size => 250
+The number of initial random guesses to 'seed' rate values optimization (permissible range = [1,25], default value = 1, integer): 
+>starting-points => 1
+
+
+### Branches to test for selection in the BUSTED analysis
+* Selected 39 branches to test in the BUSTED analysis: `P_TROGLODYTES, P_PANISCUS, Node8, H_SAPIENS, Node7, G_GORILLA, Node6, P_PYGMAEUS_ABELII, P_PYGMAEUS, Node13, Node5, H_LAR, Node4, M_SYLVANUS, T_GELADA, P_HAMADRYAS, Node20, Node18, C_AETHIOPS, Node17, Node3, C_ALBIFRONS, S_USTUS, S_SCIUREUS, Node26, Node24, Node2, T_BANCANUS, Node1, L_CATTA, P_VERREAUXI, Node31, N_COUCANG, P_POTTO, Node34, Node30, M_MUSCULUS, R_NORVEGICUS, Node37`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+* Log(L) = -15439.46, AIC-c = 30973.05 (47 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  2.339
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -12525.03, AIC-c = 25158.62 (54 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  3.796
+* non-synonymous/synonymous rate ratio for *test* =   0.0297
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -12232.12, AIC-c = 24572.80 (54 estimated parameters)
+* non-synonymous/synonymous rate ratio for *test* =   0.0170
+
+### Performing the full (dN/dS > 1 allowed) branch-site model fit
+* Log(L) = -12111.37, AIC-c = 24353.54 (65 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   36.728    |                                   |
+|        Negative selection         |     0.008     |   62.199    |                                   |
+|      Diversifying selection       |     1.033     |    1.073    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.035               |     1.876     |                                   |
+|               0.599               |    95.003     |                                   |
+|              13.770               |     3.122     |                                   |
+
+
+### Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -12111.24, AIC-c = 24351.25 (64 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+
+### Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   39.765    |                                   |
+|        Negative selection         |     0.009     |   59.126    |                                   |
+|         Neutral evolution         |     1.000     |    1.108    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.907     |                                   |
+|               0.592               |    94.971     |                                   |
+|              14.001               |     3.121     |                                   |
+
+----
+## Negative test LRT (convergence problem). Refitting the alternative model using the null model as a start.
+----
+
+* Log(L) = -12111.20, AIC-c = 24353.20 (65 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   42.191    |                                   |
+|        Negative selection         |     0.009     |   56.722    |                                   |
+|      Diversifying selection       |     1.029     |    1.087    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.897     |                                   |
+|               0.591               |    94.972     |                                   |
+|              13.988               |     3.131     |                                   |
+
+Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -12111.16, AIC-c = 24351.09 (64 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   42.957    |                                   |
+|        Negative selection         |     0.009     |   55.927    |                                   |
+|         Neutral evolution         |     1.000     |    1.116    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.910     |                                   |
+|               0.588               |    94.976     |                                   |
+|              14.154               |     3.113     |                                   |
+
+----
+## Negative test LRT (convergence problem). Refitting the alternative model using the null model as a start.
+----
+
+* Log(L) = -12111.12, AIC-c = 24353.04 (65 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   45.060    |                                   |
+|        Negative selection         |     0.010     |   53.844    |                                   |
+|      Diversifying selection       |     1.024     |    1.096    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.881     |                                   |
+|               0.586               |    94.998     |                                   |
+|              14.174               |     3.121     |                                   |
+
+Performing the constrained (dN/dS > 1 not allowed) model fit
+* Log(L) = -12111.08, AIC-c = 24350.94 (64 estimated parameters)
+* For *test* branches under the null (no dN/dS > 1 model), the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   46.207    |                                   |
+|        Negative selection         |     0.010     |   52.672    |                                   |
+|         Neutral evolution         |     1.000     |    1.121    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.910     |                                   |
+|               0.584               |    94.959     |                                   |
+|              14.213               |     3.131     |                                   |
+
+----
+## Negative test LRT (convergence problem). Refitting the alternative model using the null model as a start.
+----
+
+* Log(L) = -12111.07, AIC-c = 24352.95 (65 estimated parameters)
+* For *test* branches, the following rate distribution for branch-site combinations was inferred
+Partition-level rates for multiple-hit substitutions
+* rate at which 2 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+* rate at which 3 nucleotides are changed instantly within a single codon :   0.0000
+* Corresponding fraction of substitutions :  0.000%
+
+|          Selection mode           |     dN/dS     |Proportion, %|               Notes               |
+|-----------------------------------|---------------|-------------|-----------------------------------|
+|        Negative selection         |     0.000     |   46.485    |                                   |
+|        Negative selection         |     0.010     |   52.390    |                                   |
+|         Neutral evolution         |     1.000     |    1.126    |                                   |
+
+* The following rate distribution for site-to-site **synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.034               |     1.909     |                                   |
+|               0.584               |    94.962     |                                   |
+|              14.217               |     3.129     |                                   |
+
+
+### No evidence for episodic diversifying positive selection under the unconstrained model, skipping constrained model fitting
+----
+## Branch-site unrestricted statistical test of episodic diversification [BUSTED]
+Likelihood ratio test for episodic diversifying positive selection, **p =   0.5000**.

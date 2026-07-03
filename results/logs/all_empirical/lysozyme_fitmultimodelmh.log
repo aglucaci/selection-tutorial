@@ -1,0 +1,89 @@
+
+Analysis Description
+--------------------
+Examine whether or not a codon alignment is better fit by models which
+permit multiple instantaneous substitutions. v0.2 adds a separate rate
+for codon-island triple-hit rates
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Submitted; preprint at hyphy.org/resources/fmm.pdf
+
+- __Written by__: Sergei L Kosakovsky Pond, Sadie Wisotsky and Alexander Lucaci
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 1.0
+
+
+>code => Universal
+>Loaded a multiple sequence alignment with **19** sequences, **130** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/lysozyme.nex`
+The number of omega rate classes to include in the model (permissible range = [1,10], default value = 3, integer): 
+>rates => 3
+
+>triple-islands => No
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 3 zero-length internal branches: `Node11, Node12, Node31`
+* Log(L) = -1057.87, AIC-c =  2198.20 (41 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.226
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -1034.35, AIC-c =  2160.41 (45 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  0.229
+* non-synonymous/synonymous rate ratio for *test* =   0.5943
+
+### Fitting Standard MG94
+* Log(L) = -1025.74, AIC-c =  2153.58 (50 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.6145
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.294               |     7.942     |                                   |
+|               0.366               |    74.172     |                                   |
+|               3.942               |    17.885     |                                   |
+
+
+### Fitting MG94 with double instantaneous substitutions
+* Log(L) = -1025.73, AIC-c =  2155.66 (51 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.6089
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0000
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.317               |    13.283     |                                   |
+|               0.364               |    68.763     |                                   |
+|               3.940               |    17.954     |                                   |
+
+
+### Fitting MG94 with double and triple instantaneous substitutions
+* Log(L) = -1025.73, AIC-c =  2157.75 (52 estimated parameters)
+* non-synonymous/synonymous rate ratio =   0.6030
+* rate at which 2 nucleotides are changed instantly within a single codon =   0.0000
+* rate at which 3 nucleotides are changed instantly within a single codon =   0.0000
+* rate at which 3 nucleotides are changed instantly within a single codon between synonymous codon islands =   0.0000
+* The following relative rate distribution (mean 1) for site-to-site **non-synonymous** rate variation was inferred
+
+|               Rate                | Proportion, % |               Notes               |
+|-----------------------------------|---------------|-----------------------------------|
+|               0.335               |    16.671     |                                   |
+|               0.362               |    65.337     |                                   |
+|               3.934               |    17.992     |                                   |
+
+
+### Summary of rate estimates and significance testing
+|                Model                 |   Log-L    |   omega    | 2-hit rate |              p-value               | 3-hit rate |              p-value               |
+|:------------------------------------:|:----------:|:----------:|:----------:|:----------------------------------:|:----------:|:----------------------------------:|
+|            Standard MG94             |  -1025.74  |    0.6145  |    N/A     |                N/A                 |    N/A     |                N/A                 |
+|        Standard MG94 + 2 hits        |  -1025.73  |    0.6089  |    0.0000  |       0.9455 (2-hit rate = 0)      |    N/A     |                N/A                 |
+|     Standard MG94 + 2 or 3 hits      |  -1025.73  |    0.6030  |    0.0000  |      0.9980 (2&3-hit rates = 0)    |    0.0000  |      1.0000 (3-hit rate(s) = 0)    |
+
+### No individual sites showed sufficiently strong preference for multiple-hit models
+
+### Writing detailed analysis report to `/Users/alex/Documents/selection-tutorial/results/session1_gene_wide/lysozyme_fitmultimodelmh.json'

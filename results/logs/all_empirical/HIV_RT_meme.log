@@ -1,0 +1,125 @@
+
+Analysis Description
+--------------------
+MEME (Mixed Effects Model of Evolution) estimates a site-wise synonymous
+(&alpha;) and a two-category mixture of non-synonymous (&beta;-, with
+proportion p-, and &beta;+ with proportion [1-p-]) rates, and uses a
+likelihood ratio test to determine if &beta;+ > &alpha; at a site. The
+estimates aggregate information over a proportion of branches at a site,
+so the signal is derived from episodic diversification, which is a
+combination of strength of selection [effect size] and the proportion of
+the tree affected. A subset of branches can be selected for testing as
+well, in which case an additional (nuisance) parameter will be inferred
+-- the non-synonymous rate on branches NOT selected for testing.
+Multiple partitions within a NEXUS file are also supported for
+recombination - aware analysis. Version 3.0 adds a different format for
+ancestral state reconstruction, branch-site posterior storage, and
+site-level heterogeneity testing. Version 4 adds support for multiple
+hits and more than 2 rate classes on omega, as well as site-level
+imputation option. Version 4.1 fixes bugs with EBF computation for > 2
+more rates and MH reporting. 
+
+- __Requirements__: in-frame codon alignment and a phylogenetic tree
+
+- __Citation__: Detecting Individual Sites Subject to Episodic Diversifying Selection.
+_PLoS Genet_ 8(7): e1002764.
+
+- __Written by__: Sergei L. Kosakovsky Pond, Steven Weaver
+
+- __Contact Information__: spond@temple.edu
+
+- __Analysis Version__: 4.1
+
+
+>code => Universal
+
+-------
+>[WARNING]
+'/Users/alex/Documents/selection-tutorial/data/21-empirical/HIV_RT.nex'
+contains 1 duplicate sequence. Identical sequences do not contribute any
+information to the analysis and only slow down computation. Please
+consider removing duplicate or 'nearly' duplicate sequences, e.g. using
+https://github.com/veg/hyphy-analyses/tree/master/remove-duplicates
+prior to running selection analyses
+-------
+>Loaded a multiple sequence alignment with **476** sequences, **335** codons, and **1** partitions from `/Users/alex/Documents/selection-tutorial/data/21-empirical/HIV_RT.nex`
+
+>branches => All
+
+>Select the p-value threshold to use when testing for selection (permissible range = [0,1], default value = 0.1): 
+>pvalue => 0.1
+
+>[Advanced setting, will result in MUCH SLOWER run time] Perform parametric bootstrap resampling to derive site-level null LRT distributions up to this many replicates per site. Recommended use for small to medium (<30 sequences) datasets (permissible range = [0,1000], default value = 50, integer): 
+>resample => 0
+The number omega rate classes to include in the model [2 is the strongly recommended default] (permissible range = [2,4], default value = 2, integer): 
+>rates => 2
+
+>multiple-hits => None
+
+>impute-states => No
+
+>precision => standard
+
+
+### Branches to include in the MEME analysis
+Selected 949 branches to include in the MEME analysis: `T27199905, N27199901, Node16, T20720000, N20719991, Node25, T72200011, N72199903, Node28, Node24, T13820000, N13819981, Node32, T90200101, N90199902, Node35, Node31, Node23, T17520011, N17519990, Node39, T14220000, N14219990, Node43, T14019990, N14019990, Node46, Node42, Node38, Node22, T15820000, N15819990, Node50, T17020000, N17019990, Node54, T23020000, N23019990, Node58, T22619990, N22619990, Node61, Node57, Node53, Node49, Node21, T11620001, N11619991, Node66, T21219991, N21219990, Node69, Node65, T12920010, N12919991, Node73, T11520000, N11519991, Node76, Node72, Node64, Node20, T84200002, N84199903, Node85, T15220010, N15219990, Node88, Node84, T19620000, N19619990, Node91, Node83, N28199901, T17319991, N17319990, Node100, T70200202, N70199812, Node104, T69200009, N69199906, Node107, Node103, Node99, T19720020, N19719990, Node111, T11120010, N11119990, Node114, Node110, Node98, Node96, T45200208, N45200201, Node117, Node95, T24020080, N24020071, Node122, T15120020, N15119991, Node125, Node121, T36199905, N36199901, Node128, Node120, Node94, Node82, T22320001, N22319990, Node135, T14120000, N14119990, Node138, Node134, T16019991, N16019991, Node141, Node133, T23620000, N23619991, Node147, T19520010, N19519990, Node150, Node146, T13200309, N13200010, Node153, Node145, T22520011, N22519990, Node157, T14200204, N14200012, Node160, Node156, Node144, Node132, T22220000, N22219991, Node166, T23720060, N23720041, Node171, T16720001, N16719991, Node174, Node170, T21120000, N21119990, Node178, T12519990, N12519981, Node182, T64199905, N64199904, Node185, Node181, Node177, Node169, Node165, T93200203, N93199906, Node192, T31200003, Node191, T18819991, N18819990, Node197, T88200112, N88199901, Node201, T8200310, N8199907, Node204, Node200, Node196, Node190, T21519991, N21519990, Node208, T23120000, N23119990, Node211, Node207, Node189, T22720000, N22719990, Node221, T66200012, N66199812, Node224, Node220, T32200007, N32199901, Node227, Node219, T23320011, N23319990, Node231, T15719991, N15719990, Node234, Node230, Node218, T10920010, N10919990, Node240, T97200204, N97199901, Node243, Node239, T24200309, N24200206, Node246, Node238, T16519991, N16519990, Node249, Node237, Node217, T17920000, N17919990, Node256, T74200204, T7199811, N7199611, Node261, Node259, Node255, T10020000, N10019990, Node265, T94200105, N94199910, Node268, Node264, Node254, T20620010, N20619990, Node272, T25200305, N25200207, Node275, Node271, Node253, N74199812, Node252, Node216, T13019990, N13019981, Node282, T16420011, N16419990, Node286, T17620000, N17619981, Node290, T29200003, N29199901, Node293, Node289, Node285, Node281, T18319990, N18319990, Node297, T24220020, N24220000, Node302, T85199908, N85199811, Node306, T22199809, Node305, Node301, T17199703, Node300, Node296, Node280, T10720000, N10719990, Node314, T1199908, Node313, T20200108, N20200107, Node318, Node312, T62200201, N62200101, Node322, N2199809, Node321, Node311, Node279, Node215, T14920010, N14919990, Node329, T11819990, N11819990, Node332, Node328, T23520000, N23519990, Node338, T10219990, N10219981, Node341, Node337, T14819991, N14819990, Node345, T6200007, N6199906, Node348, Node344, Node336, T13519991, N13519990, Node352, T67199909, N67199906, Node355, Node351, Node335, Node327, T21920000, N21919990, Node360, T18520000, N18519990, Node363, Node359, T14620001, N14619991, Node366, Node358, Node326, Node214, Node188, Node164, T16219990, N16219990, Node370, T16620000, N16619990, Node373, Node369, Node163, Node131, Node81, T82200102, N82199909, Node382, T12719990, N12719990, Node386, T76200005, N76199904, Node389, Node385, Node381, T22020000, N22019990, Node393, T11920000, N11919991, Node397, T11420000, N11419990, Node400, Node396, Node392, Node380, T23420001, N23419990, Node404, T13720000, N13719991, Node407, Node403, Node379, T78199912, N78199911, Node413, T75200101, N75199811, Node416, Node412, T13620010, N13619991, Node421, T16200304, N16200103, Node424, Node420, T18200309, N18200108, Node427, Node419, Node411, T26200211, N26200207, Node431, T21420000, N21419990, Node435, T13219990, N13219990, Node440, N31199901, Node439, T89199904, N89199902, Node445, T44200204, N44200201, Node448, Node444, Node438, Node434, Node430, Node410, Node378, T22820001, N22819990, Node459, T11200103, N11199911, Node462, Node458, T10320000, N10319990, Node465, Node457, T87200011, N87199903, Node469, T22420000, N22419990, Node472, Node468, Node456, T15319991, N15319990, Node475, Node455, T16119990, N16119990, Node479, T15520000, N15519981, Node483, T20520000, N20519990, Node487, T20419990, N20419990, Node491, T15019990, N15019990, Node494, Node490, Node486, Node482, Node478, Node454, T19219990, N19219990, Node498, T12020020, N12019991, Node501, Node497, Node453, T63200201, N63200101, Node506, T15920000, N15919990, Node510, T19120010, N19119990, Node513, Node509, Node505, T17420020, N17419990, Node516, Node504, Node452, T10420000, N10419990, Node522, T14720001, N14719991, Node525, Node521, T81200002, N81199910, Node529, T12200101, N12200008, Node532, Node528, Node520, T21019991, N21019990, Node535, Node519, Node451, Node377, T19020020, N19019990, Node541, T18720000, N18719990, Node545, T14320001, N14319990, Node549, T11319991, N11319990, Node552, Node548, Node544, Node540, T99200101, N99199903, Node556, T71200006, N71199901, Node559, Node555, Node539, T19420000, N19419981, Node564, T30199909, N30199901, Node567, Node563, T15419990, N15419981, Node571, T86200009, N86199901, Node574, Node570, Node562, Node538, Node376, Node80, N22199107, T22920001, N22919990, Node582, T11220000, N11219990, Node585, Node581, N19819990, T12619990, N12619990, Node594, Node592, T10200305, N10199911, Node597, Node591, T19920000, N19919991, Node601, T98199910, N98199901, Node604, Node600, Node590, N17199606, T23220001, N23219990, Node618, T15619991, N15619990, Node621, Node617, T17720000, N17719990, Node624, Node616, T21720000, N21719990, Node629, T21620020, N21619990, Node632, Node628, T33200009, N33199901, Node635, Node627, Node615, T18420000, N18419990, Node640, T83200010, N83199909, Node644, T79200004, N79199912, Node647, Node643, Node639, T12120000, N12119990, Node650, Node638, Node614, T17120000, N17119990, Node654, T12320000, N12319990, Node658, T95200001, N95199908, Node661, Node657, Node653, Node613, T37199910, N37199901, Node665, T20920000, N20919990, Node670, T18220000, N18219990, Node673, Node669, T35200006, N35199901, N34199901, Node679, T34199911, Node678, Node676, Node668, Node664, Node612, T18120000, N18119990, Node683, Node611, T13419991, N13419990, Node687, T13119990, N13119990, Node690, Node686, Node610, T20319990, N20319990, Node694, T21199809, N21199201, Node697, Node693, Node609, Node607, Node589, T20120010, N20119991, Node702, N1199101, Node701, T21319991, N21319990, Node707, T28200101, Node706, Node700, Node588, Node580, Node578, T16920011, N16919990, Node715, T20219990, N20219981, Node721, T12219990, N12219990, Node724, Node720, T12419991, N12419991, Node728, T11020000, N11019990, Node731, Node727, Node719, T13920000, N13919981, Node735, T43200209, N43200201, Node738, Node734, Node718, Node714, T17820020, N17819990, Node742, T12819991, N12819990, Node745, Node741, Node713, T18919990, N18919981, Node752, T10120000, N10119990, Node755, Node751, T20020000, N20019991, Node758, Node750, T22120000, N22119990, Node761, Node749, T10620010, N10619990, Node766, T96199911, N96199908, Node769, Node765, T68199912, N68199905, Node773, T15200201, N15200101, Node776, Node772, Node764, Node748, Node712, T16820010, N16819990, Node782, T11720000, N11719991, Node785, Node781, T92200003, N92199904, Node788, Node780, T19320000, N19319990, Node791, Node779, Node711, Node577, Node79, Node19, Node15, T9200006, N9199909, Node795, T23200207, N23200204, Node798, Node794, Node14, T13320000, N13319990, Node804, T5200107, N5199906, Node807, Node803, T16320000, N16319990, Node812, T14520001, N14519991, Node815, Node811, T91199912, N91199903, Node819, T4200608, N4199904, Node822, Node818, Node810, Node802, T18620020, N18619991, Node826, T10819990, N10819981, Node829, Node825, Node801, Node13, T80200007, N80199904, Node832, Node12, T73200108, N73199904, Node836, T65200101, N65199902, Node841, T19820000, T18020000, N18019990, Node847, Node845, T17220001, N17219990, Node850, Node844, Node840, T3200011, N3199901, Node853, Node839, Node835, Node11, T14420000, N14419990, Node856, Node10, T10520000, N10519990, Node859, Node9, T40199905, N40199903, Node864, T39199907, N39199905, Node867, Node863, T38199907, N38199905, Node870, Node862, Node8, T20820000, N20819990, Node873, Node7, T23820090, N23820050, Node877, T77200005, N77199906, Node880, Node876, Node6, T24120081, Node5, T41200107, N41200002, Node885, T56200502, Node884, Node4, T49200502, N49200412, Node889, Node3, T51200502, N51200412, Node892, Node2, T47200502, N47200412, Node900, T59200502, N59200412, Node904, T60200502, N60200412, Node907, Node903, Node899, T54200502, N54200412, Node911, T48200502, N48200412, Node914, Node910, Node898, T23920070, N23920060, Node919, T50200502, N50200412, Node922, Node918, T52200502, N52200412, Node925, Node917, Node897, T55200502, N55200412, Node931, T46200502, N46200412, Node934, Node930, T61200502, N61200412, Node937, Node929, T58200502, N58200412, Node940, Node928, Node896, T57200502, N57200412, Node944, N56200412, Node943, Node895, Node1, T53200502, N53200412`
+
+
+### Obtaining branch lengths and nucleotide substitution biases under the nucleotide GTR model
+
+>kill-zero-lengths => Yes
+
+### Deleted 40 zero-length internal branches: `Node13, Node14, Node164, Node19, Node190, Node214, Node216, Node252, Node285, Node335, Node392, Node4, Node411, Node451, Node453, Node455, Node482, Node490, Node504, Node538, Node539, Node544, Node577, Node580, Node588, Node609, Node610, Node611, Node612, Node615, Node639, Node679, Node765, Node81, Node825, Node844, Node895, Node899, Node98, Node99`
+* Log(L) = -27758.89, AIC-c = 57435.62 (957 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  5.977
+
+### Obtaining the global omega estimate based on relative GTR branch lengths and nucleotide substitution biases
+* Log(L) = -26211.73, AIC-c = 54282.24 (924 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  6.414
+* non-synonymous/synonymous rate ratio for *test* =   0.1960
+
+>full-model => Yes
+Only analyze sites whose 1-based indices match the following list (null to skip) : 
+>limit-to-sites => null
+For sites whose 1-based indices match the following list, write out likelihood function snapshots (null string to skip) : 
+>save-lf-for-sites => null
+
+### Improving branch lengths, nucleotide substitution biases, and global dN/dS ratios under a full codon model
+* Log(L) = -26144.62
+* Log(L) = -26144.62, AIC-c = 54148.03 (924 estimated parameters)
+* 1 partition. Total tree length by partition (subs/site)  6.420
+* non-synonymous/synonymous rate ratio for *test* =   0.1800
+
+### For partition 1 these sites are significant at p <=0.1
+
+|   Codon    | Partition  |   alpha    |non-syn rate (beta) distribution, rates : weights|    LRT     |Episodic selection detected?| # branches |         List of most common codon substitutions at this site          |
+|:----------:|:----------:|:----------:|:-----------------------------------------------:|:----------:|:--------------------------:|:----------:|:---------------------------------------------------------------------:|
+|     35     |     1      |    1.319   |             0.43/47.13 : 0.76/0.24              |   11.927   |      Yes, p =  0.0011      |     2      |[10]Gta>Ata|[4]GtA>AtG|[2]aCa>aTa,atA>atG,GTa>ACa,Gta>Rta|[1]acA>acG...|
+|     48     |     1      |    1.715   |             0.64/173.10 : 0.97/0.03             |   18.572   |      Yes, p =  0.0000      |     4      |[8]Tca>Aca|[4]tcA>tcR|[2]TCa>GAa,tcA>tcG|[1]Aca>Rca,TCa>CAa,tcA>tcC,...|
+|     64     |     1      |    1.003   |             0.37/143.55 : 0.98/0.02             |   13.668   |      Yes, p =  0.0005      |     5      |[5]aAg>aGg|[3]aaG>aaA,aAg>aRg,aGg>aRg|[2]aAa>aRa|[1]aaG>aaR,aAg>aNg,...|
+|     69     |     1      |    4.790   |             0.00/49.86 : 0.93/0.07              |    9.902   |      Yes, p =  0.0031      |     12     |[4]acT>acA,acT>acY|[3]aCt>aAt,Act>Gct|[2]acC>acY,acT>acC,ACt>GAt|[1]...|
+|     75     |     1      |    7.072   |             0.00/98.94 : 0.97/0.03              |    8.062   |      Yes, p =  0.0079      |     7      |[5]Gta>Rta|[4]Gta>Ata,gtG>gtA|[3]gtA>gtG,gtA>gtR|[2]gtA>gtT|[1]GtA>A...|
+|    102     |     1      |    0.000   |              0.00/1.94 : 0.01/0.99              |    8.812   |      Yes, p =  0.0054      |     7      |      [6]Aag>Cag|[4]Aag>Mag|[2]aAg>aGg,aAg>aRg|[1]aaG>aaK,aaG>aaS      |
+|    103     |     1      |    9.780   |             0.00/103.83 : 0.64/0.36             |   16.908   |      Yes, p =  0.0001      |     75     |[59]aaA>aaC|[11]aaA>aaG,aaA>aaM|[10]aaA>aaT|[9]aaA>aaY|[7]aaA>aaR|[5...|
+|    122     |     1      |   10.581   |             0.16/59.68 : 0.80/0.20              |    5.705   |      Yes, p =  0.0262      |     16     |[20]Aaa>Gaa|[8]aaA>aaG,aaA>aaR,Aaa>Raa,Gaa>Aaa|[5]Gaa>Raa|[4]gaA>gaR...|
+|    138     |     1      |    2.032   |             0.00/77.35 : 0.98/0.02              |    4.963   |      Yes, p =  0.0384      |     4      |  [6]gaG>gaA|[4]gaG>gaR|[2]gAg>gCg|[1]gAa>gCa,GAg>AGg,gAg>gMg,gAg>gRg  |
+|    151     |     1      |    5.932   |             0.00/331.08 : 0.99/0.01             |   22.138   |      Yes, p =  0.0000      |     4      |         [18]caG>caA|[9]caG>caR|[4]CAg>ATg|[1]caA>caR,caG>caN          |
+|    162     |     1      |   12.063   |             0.00/87.44 : 0.87/0.13              |   16.086   |      Yes, p =  0.0001      |     37     |[26]Agt>Tgt|[7]agT>agC|[5]AGt>RSt,Agt>Wgt|[4]agT>agY,AGt>GCt,tgT>tgY...|
+|    163     |     1      |    4.942   |             0.14/293.61 : 1.00/0.00             |    4.976   |      Yes, p =  0.0382      |     1      |   [9]agC>agT,agC>agY|[3]aGc>aSc|[1]AGc>TCc,Agc>Wgc,agT>agC,agT>agY    |
+|    165     |     1      |    0.590   |              0.00/3.14 : 0.01/0.99              |    4.326   |      Yes, p =  0.0534      |     16     |[14]aCa>aTa|[6]aCa>aYa|[3]aTa>aYa|[2]Ata>Cta|[1]acA>acC,acA>acW,aTa>...|
+|    181     |     1      |   22.684   |             0.00/243.45 : 0.97/0.03             |   12.951   |      Yes, p =  0.0007      |     10     |[16]taT>taC|[9]taT>taY|[5]tAt>tGt,tAt>tRt|[4]TAt>ATt|[2]taC>taT,taC>...|
+|    184     |     1      |    0.016   |             0.00/73.92 : 0.84/0.16              |   16.403   |      Yes, p =  0.0001      |     48     |[38]Atg>Gtg|[10]Atg>Rtg|[4]atG>atA|[3]AtG>GtA|[1]atG>atT,aTG>aYR,AtG...|
+|    188     |     1      |    0.981   |             0.43/618.29 : 0.99/0.01             |   36.872   |      Yes, p =  0.0000      |     5      |[4]Tat>Yat|[2]Tat>Cat,tAt>tRt,tAT>tTA|[1]TAt>CTt,taT>taC,taT>taY,tAT...|
+|    190     |     1      |    9.917   |             0.00/66.74 : 0.93/0.07              |    3.840   |      Yes, p =  0.0688      |     16     |[11]ggA>ggM|[8]ggA>ggC|[7]gGa>gSa|[6]gGa>gCa,ggA>ggG,ggA>ggR|[4]Ggc>...|
+|    200     |     1      |    1.736   |             0.00/13.81 : 0.01/0.99              |   21.391   |      Yes, p =  0.0000      |     22     |[33]Aca>Gca|[20]aCa>aTa|[8]aCa>aYa|[7]Aca>Rca|[5]Gca>Rca|[3]aCa>aAa,...|
+|    207     |     1      |   16.375   |             8.92/163.65 : 0.94/0.06             |    4.133   |      Yes, p =  0.0590      |     1      |[21]Caa>Gaa|[15]caA>caG|[10]caA>caR|[7]Caa>Saa|[4]Gaa>Caa|[3]Caa>Aaa...|
+|    211     |     1      |    4.894   |             0.00/13.23 : 0.01/0.99              |   12.577   |      Yes, p =  0.0008      |     24     |[29]aGg>aAg|[23]aGg>aRg|[14]aAg>aRg|[9]aAg>aGg|[7]aaG>aaA|[6]agG>agR...|
+|    215     |     1      |    3.018   |             0.00/279.62 : 0.98/0.02             |   32.028   |      Yes, p =  0.0000      |     7      |[12]acC>acY|[6]acC>acT|[2]ACc>GAc,gaA>gaR|[1]aCc>aAc,acC>acA,tAc>tRc...|
+|    228     |     1      |    9.403   |             0.00/384.15 : 0.99/0.01             |   16.811   |      Yes, p =  0.0001      |     6      |[11]ctT>ctY|[10]ctT>ctC|[5]cTt>cKt|[4]ctT>ctG|[3]cTt>cGt|[1]aaG>aaR,...|
+|    245     |     1      |    2.096   |             1.18/65.58 : 0.64/0.36              |   49.954   |      Yes, p =  0.0000      |     6      |[22]gTg>gAg|[20]Gtg>Atg|[5]gtG>gtR|[4]GTg>CAg,gtG>gtA,Gtg>Rtg|[3]aTg...|
+|    248     |     1      |    0.819   |              0.00/7.52 : 0.01/0.99              |    3.688   |      Yes, p =  0.0744      |     5      |[10]gaA>gaC|[2]gaA>gaT|[1]GaA>AaT,Gaa>Caa,gAa>gWa,Gac>Aac,gaC>gaA,ga...|
+|    272     |     1      |    1.516   |             0.61/242.95 : 0.89/0.11             |    9.786   |      Yes, p =  0.0033      |     4      |[17]Cca>Gca|[2]Cca>Tca,Cca>Yca,Gca>Cca|[1]ccA>ccC,ccA>ccR,Tca>Bca,Tc...|
+|    286     |     1      |    2.527   |             0.00/11.95 : 0.01/0.99              |    8.604   |      Yes, p =  0.0060      |     3      |[17]Acc>Gcc|[3]acC>acY|[2]Acc>Ccc,Acc>Rcc,Gcc>Acc|[1]acC>acT,aCc>aNc...|
+|    322     |     1      |    0.000   |             0.00/703.10 : 0.97/0.03             |    3.466   |      Yes, p =  0.0836      |     1      |                          [2]Tca>Aca,Tca>Kca                           |
+
+### ** Found _27_ sites under episodic diversifying positive selection at p <= 0.1**
