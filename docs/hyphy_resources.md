@@ -13,6 +13,7 @@ practical.
 - [HyPhy book](https://hyphy.org/resources/hyphybook2007.pdf)
 - [Evolution of viral genomes tutorial chapter](https://hyphy.org/resources/tutorial-2017.pdf)
 - [AOC JOSS paper](https://joss.theoj.org/papers/10.21105/joss.09872)
+- [RASCL workflow](https://github.com/veg/RASCL)
 
 ## Reading
 
@@ -45,6 +46,20 @@ diversifying or directional positive selection, and differential selection betwe
 branch groups. The workflow is useful for moving beyond one-gene examples and for
 connecting site-level dN/dS estimates, lineage-specific patterns, and statistical support
 to functional or evolutionary hypotheses.
+
+### [RASCL: Rapid Assessment of Selection in Clades Through Molecular Sequence Analysis](https://github.com/veg/RASCL)
+
+Lucaci, A. G., et al. (2022). DOI:
+[10.1371/journal.pone.0275623](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0275623).
+
+RASCL is a workflow for using molecular sequence data from genotypically distinct viral
+lineages to identify distinguishing features and evolutionary patterns within lineages.
+Using whole-genome sequences, a query set of sequences is compared against a globally
+diverse background set of circulating viral sequences. The application combines several
+open-source tools with selection analysis methods from [HyPhy](https://www.hyphy.org/)
+and assembles analysis results into JSON files that can be explored in a full-featured
+[Observable notebook](https://observablehq.com/@aglucaci/rascl). Selected SARS-CoV-2
+clade results are available in the notebook as examples.
 
 ## General Introduction
 
